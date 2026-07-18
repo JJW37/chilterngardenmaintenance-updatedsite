@@ -1,0 +1,39 @@
+# Cloudflare Pages redirects
+# https://developers.cloudflare.com/pages/configuration/redirects/
+
+# Placeholder plant page redirects (added by audit fix C4)
+/plants/daffodil.html /plants/daffodils.html 301
+/plants/hellebore.html /plants/hellebores.html 301
+/plants/rose.html /plants/roses.html 301
+/plants/tulip.html /plants/tulips.html 301
+/plants/crab-apple.html /plants/malus.html 301
+/plants/dogwood.html /plants/cornus.html 301
+/plants/rowan.html /plants/sorbus.html 301
+/plants/spindle.html /plants/euonymus.html 301
+/plants/witch-hazel.html /plants/hamamelis.html 301
+/plants/aster.html /plants/ 301
+/plants/astrantia.html /plants/ 301
+/plants/aulax.html /plants/ 301
+/plants/birch.html /plants/ 301
+/plants/bluebell.html /plants/ 301
+/plants/buddleja.html /plants/ 301
+/plants/ceanothus.html /plants/ 301
+/plants/colchicum.html /plants/ 301
+/plants/eryngium.html /plants/ 301
+/plants/fatsia.html /plants/ 301
+/plants/filipendula.html /plants/ 301
+/plants/fuchsia.html /plants/ 301
+/plants/grasses.html /plants/ 301
+/plants/guelder-rose.html /plants/ 301
+/plants/hebe.html /plants/ 301
+/plants/ivy.html /plants/ 301
+/plants/marjoram.html /plants/ 301
+/plants/nettle.html /plants/ 301
+/plants/phoenix-palm.html /plants/ 301
+/plants/pine.html /plants/ 301
+/plants/primrose.html /plants/ 301
+/plants/sea-buckthorn.html /plants/ 301
+/plants/sedum.html /plants/ 301
+/plants/spiraea.html /plants/ 301
+/plants/stachys.html /plants/ 301
+/plants/teasel.html /plants/ 301

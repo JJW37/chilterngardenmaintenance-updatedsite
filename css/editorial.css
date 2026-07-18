@@ -1,0 +1,3741 @@
+
+/* ===================================================================
+   CGM EDITORIAL DESIGN SYSTEM v2.4 (2026-07-18)
+   --------------------------------------------------------------------
+   Appended to existing stylesheet. Adds editorial layout primitives,
+   full-width photo interludes, before/after storytelling, larger type
+   scale, irregular section rhythm, and mobile-only patterns:
+     - .swipe-row (horizontal swipeable utility row, replaces 9 tiles)
+     - .editorial-feature (full-width image + text asymmetric layout)
+   - .photo-interlude (full-bleed dark photographic section)
+   - .before-after (split before/after storytelling block)
+   - .proof-strip (concrete project facts, replaces decorative stats)
+   - .footer-accordion (mobile-only footer columns as accordions)
+   - .bottom-action-bar (mobile-only fixed bottom CTA bar)
+   These classes coexist with existing .card / .grid / .section rules.
+   Existing pages remain unaffected. New homepage opts into these.
+   =================================================================== */
+
+/* ---- Type scale (editorial, larger, more confident) ---- */
+.editorial-kicker {
+  display: inline-block;
+  font-family: var(--sans);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--forest-light);
+  margin-bottom: 1rem;
+}
+.editorial-h1 {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: clamp(2.6rem, 6vw, 4.6rem);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: var(--forest-dark);
+  margin-bottom: 1.5rem;
+}
+.editorial-h2 {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: clamp(2rem, 4.2vw, 3.2rem);
+  line-height: 1.1;
+  letter-spacing: -0.015em;
+  color: var(--forest-dark);
+  margin-bottom: 1rem;
+}
+.editorial-h3 {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: clamp(1.5rem, 2.6vw, 2rem);
+  line-height: 1.2;
+  color: var(--forest-dark);
+  margin-bottom: 0.6rem;
+}
+.editorial-lede {
+  font-family: var(--serif);
+  font-size: clamp(1.15rem, 1.8vw, 1.4rem);
+  line-height: 1.5;
+  color: var(--forest);
+  font-weight: 400;
+  max-width: 38em;
+}
+.editorial-body {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--forest);
+  max-width: 38em;
+}
+.editorial-body + .editorial-body { margin-top: 1.2rem; }
+
+/* ---- Section rhythm (irregular, asymmetric, more white space) ---- */
+.section-editorial { padding: 3rem 0; }
+.section-editorial-tight { padding: 2.5rem 0; }
+.section-editorial-loose { padding: 3.5rem 0; }
+@media (max-width: 768px) {
+  .section-editorial { padding: 3rem 0; }
+  .section-editorial-tight { padding: 2rem 0; }
+  .section-editorial-loose { padding: 3.5rem 0; }
+}
+
+/* ---- Full-width photographic interlude (dark, editorial) ---- */
+.photo-interlude {
+  position: relative;
+  width: 100%;
+  min-height: 60vh;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+  background: var(--forest-dark);
+}
+.photo-interlude__img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+.photo-interlude::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(21, 40, 28, 0.15) 0%,
+    rgba(21, 40, 28, 0.55) 60%,
+    rgba(21, 40, 28, 0.85) 100%
+  );
+  z-index: 2;
+}
+.photo-interlude__content {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  padding: 3rem 1.5rem 3.5rem;
+  color: #fff;
+}
+.photo-interlude__kicker {
+  font-family: var(--sans);
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 0.6rem;
+}
+.photo-interlude__title {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  max-width: 24em;
+  margin-bottom: 0.8rem;
+  color: #fff !important;
+}
+.photo-interlude__caption {
+  font-family: var(--sans);
+  font-size: 0.92rem;
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.85);
+  max-width: 36em;
+}
+
+/* ---- Editorial feature: asymmetric image + text ---- */
+.editorial-feature {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+.editorial-feature--reverse {
+  grid-template-columns: 1fr 1fr;
+}
+.editorial-feature--reverse .editorial-feature__media { order: 2; }
+.editorial-feature__media {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border-radius: 2px;
+  background: var(--cream);
+}
+.editorial-feature__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.editorial-feature__caption {
+  font-family: var(--sans);
+  font-size: 0.82rem;
+  color: var(--muted);
+  margin-top: 0.7rem;
+  font-style: italic;
+}
+.editorial-feature__text { padding: 1rem 0; }
+.editorial-feature__text .editorial-h2 { margin-bottom: 1.2rem; }
+.editorial-feature__text .editorial-body { margin-bottom: 1.5rem; }
+@media (max-width: 900px) {
+  .editorial-feature,
+  .editorial-feature--reverse {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  .editorial-feature--reverse .editorial-feature__media { order: 0; }
+}
+
+/* ---- Before/after storytelling ---- */
+.before-after {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+  background: var(--forest-dark);
+  border-radius: 2px;
+  overflow: hidden;
+}
+.before-after__panel {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  background: var(--cream);
+}
+.before-after__panel img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.before-after__tag {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  font-family: var(--sans);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 0.4rem 0.7rem;
+  border-radius: 2px;
+  z-index: 2;
+}
+.before-after__tag--before {
+  background: rgba(21, 40, 28, 0.85);
+  color: #fff;
+}
+.before-after__tag--after {
+  background: var(--gold);
+  color: var(--forest-dark);
+}
+.before-after__caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1.5rem 1.2rem 1rem;
+  background: linear-gradient(0deg, rgba(21, 40, 28, 0.85) 0%, transparent 100%);
+  color: #fff;
+  font-family: var(--sans);
+  font-size: 0.85rem;
+  line-height: 1.4;
+}
+@media (max-width: 700px) {
+  .before-after { grid-template-columns: 1fr; }
+  .before-after__panel { aspect-ratio: 4 / 3; }
+}
+
+/* ---- Proof strip (concrete project facts, not decorative stats) ---- */
+.proof-strip {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  border-top: 1px solid var(--border-soft);
+  border-bottom: 1px solid var(--border-soft);
+}
+.proof-strip__item {
+  padding: 2.2rem 1.5rem;
+  border-right: 1px solid var(--border-soft);
+}
+.proof-strip__item:last-child { border-right: none; }
+.proof-strip__value {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: clamp(2rem, 3vw, 2.6rem);
+  line-height: 1;
+  color: var(--forest-dark);
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.02em;
+}
+.proof-strip__value-suffix {
+  font-size: 0.55em;
+  color: var(--forest-light);
+  margin-left: 0.2em;
+  font-weight: 400;
+}
+.proof-strip__label {
+  font-family: var(--sans);
+  font-size: 0.78rem;
+  color: var(--muted);
+  line-height: 1.4;
+}
+@media (max-width: 900px) {
+  .proof-strip { grid-template-columns: 1fr 1fr; }
+  .proof-strip__item:nth-child(2) { border-right: none; }
+  .proof-strip__item:nth-child(1),
+  .proof-strip__item:nth-child(2) {
+    border-bottom: 1px solid var(--border-soft);
+  }
+}
+@media (max-width: 540px) {
+  .proof-strip { grid-template-columns: 1fr; }
+  .proof-strip__item {
+    border-right: none;
+    border-bottom: 1px solid var(--border-soft);
+    padding: 1.5rem;
+  }
+  .proof-strip__item:last-child { border-bottom: none; }
+}
+
+/* ---- Swipeable utility row (replaces 9 shortcut tiles on mobile) ---- */
+.swipe-row {
+  display: none; /* only shown on mobile via media query */
+}
+@media (max-width: 768px) {
+  .swipe-row {
+    display: block;
+    margin: 0 -1.5rem;
+    padding: 0 1.5rem 1rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .swipe-row::-webkit-scrollbar { display: none; }
+  .swipe-row__inner {
+    display: flex;
+    gap: 0.6rem;
+    width: max-content;
+    padding-bottom: 0.2rem;
+  }
+  .swipe-row__item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1.1rem;
+    background: var(--cream);
+    border: 1px solid var(--border-soft);
+    border-radius: 999px;
+    font-family: var(--sans);
+    font-size: 0.92rem;
+    font-weight: 600;
+    color: var(--forest-dark);
+    text-decoration: none;
+    white-space: nowrap;
+    min-height: 44px; /* touch target */
+    transition: background var(--transition), color var(--transition);
+  }
+  .swipe-row__item:active {
+    background: var(--forest-dark);
+    color: #fff;
+  }
+  .swipe-row__item svg {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+  }
+  .swipe-row__hint {
+    font-family: var(--sans);
+    font-size: 0.72rem;
+    color: var(--muted);
+    margin-bottom: 0.6rem;
+    padding-left: 0.2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+}
+
+/* ---- Single substantial service card (mobile only) ---- */
+@media (max-width: 768px) {
+  .service-list-mobile {
+    display: flex !important;
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+  .service-list-mobile .service-card-mobile {
+    display: block;
+    padding: 1.2rem 1.3rem;
+    background: var(--cream);
+    border: 1px solid var(--border-soft);
+    border-radius: 4px;
+    text-decoration: none;
+    color: var(--forest-dark);
+    min-height: 72px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    transition: background var(--transition);
+  }
+  .service-list-mobile .service-card-mobile:active {
+    background: #fff;
+  }
+  .service-card-mobile__title {
+    font-family: var(--serif);
+    font-size: 1.25rem;
+    font-weight: 500;
+    line-height: 1.2;
+  }
+  .service-card-mobile__sub {
+    font-family: var(--sans);
+    font-size: 0.82rem;
+    color: var(--muted);
+    margin-top: 0.15rem;
+  }
+  .service-card-mobile__arrow {
+    color: var(--forest-light);
+    flex-shrink: 0;
+  }
+  .service-card-mobile__arrow svg {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+/* ---- Footer accordion (mobile only) ---- */
+@media (max-width: 768px) {
+  .footer-grid.footer-accordion {
+    display: block;
+  }
+  .footer-grid.footer-accordion > div {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  .footer-grid.footer-accordion > div:first-child {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  .footer-grid.footer-accordion > div > h3 {
+    position: relative;
+    padding: 1.1rem 0;
+    margin: 0;
+    cursor: pointer;
+    font-size: 0.92rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.85);
+    list-style: none;
+    user-select: none;
+  }
+  .footer-grid.footer-accordion > div > h3::after {
+    content: '+';
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.3rem;
+    font-weight: 300;
+    color: var(--gold);
+    transition: transform 0.25s ease;
+  }
+  .footer-grid.footer-accordion > div.is-open > h3::after {
+    content: '−';
+  }
+  .footer-grid.footer-accordion > div > ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, padding 0.3s ease;
+  }
+  .footer-grid.footer-accordion > div.is-open > ul {
+    max-height: 600px;
+    padding-bottom: 1rem;
+  }
+  .footer-grid.footer-accordion > div > ul li {
+    margin: 0.4rem 0;
+  }
+  .footer-grid.footer-accordion > div > ul li a {
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.7);
+  }
+  /* Brand column always open, no toggle */
+  .footer-grid.footer-accordion .footer-brand {
+    padding-bottom: 1.2rem;
+  }
+  .footer-grid.footer-accordion .footer-brand br { display: none; }
+  .footer-grid.footer-accordion .footer-brand h3::after { display: none; }
+}
+
+/* ---- Mobile bottom action bar (single, after cookie consent) ---- */
+.bottom-action-bar {
+  display: none; /* shown via media query + JS */
+}
+@media (max-width: 768px) {
+  .bottom-action-bar {
+    display: block; /* show on mobile, then JS toggles is-visible for animation */
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    background: var(--forest-dark);
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 0.6rem 0.8rem calc(0.6rem + env(safe-area-inset-bottom, 0.4rem));
+    box-shadow: 0 -8px 24px rgba(21, 40, 28, 0.18);
+    transform: translateY(100%);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .bottom-action-bar.is-visible {
+    transform: translateY(0);
+  }
+  .bottom-action-bar__inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+  .bottom-action-bar__btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.9rem 1rem;
+    min-height: 48px; /* touch target */
+    font-family: var(--sans);
+    font-size: 0.95rem;
+    font-weight: 600;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: opacity var(--transition);
+  }
+  .bottom-action-bar__btn:active { opacity: 0.85; }
+  .bottom-action-bar__btn--primary {
+    background: var(--gold);
+    color: var(--forest-dark);
+  }
+  .bottom-action-bar__btn--whatsapp {
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+  .bottom-action-bar__btn svg {
+    width: 18px;
+    height: 18px;
+  }
+  /* When bottom bar is visible, add bottom padding so content isn't hidden */
+  body.has-bottom-action-bar {
+    padding-bottom: 80px;
+  }
+}
+
+/* ---- Editorial service grid (desktop, replaces 9 equal cards) ---- */
+.editorial-service-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr;
+  gap: 1px;
+  background: var(--border-soft);
+  border: 1px solid var(--border-soft);
+  border-radius: 2px;
+  overflow: hidden;
+}
+.editorial-service-grid__cell {
+  background: var(--cream);
+  padding: 1.8rem 1.6rem;
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: var(--forest-dark);
+  transition: background var(--transition);
+  min-height: 180px;
+}
+.editorial-service-grid__cell:hover {
+  background: #fff;
+}
+.editorial-service-grid__cell--featured {
+  grid-row: span 2;
+  background: var(--forest-dark);
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+}
+.editorial-service-grid__cell--featured::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 40%, rgba(21, 40, 28, 0.9) 100%);
+  z-index: 1;
+}
+.editorial-service-grid__cell--featured:hover {
+  background: var(--forest-dark);
+}
+.editorial-service-grid__cell--featured img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+.editorial-service-grid__cell--featured .editorial-service-grid__content {
+  position: relative;
+  z-index: 2;
+  margin-top: auto;
+}
+.editorial-service-grid__cell--featured h3,
+.editorial-service-grid__cell--featured p {
+  color: #fff;
+}
+.editorial-service-grid__num {
+  font-family: var(--sans);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: var(--forest-light);
+  margin-bottom: 0.7rem;
+}
+.editorial-service-grid__cell--featured .editorial-service-grid__num {
+  color: var(--gold);
+}
+.editorial-service-grid__cell h3 {
+  font-family: var(--serif);
+  font-size: 1.4rem;
+  font-weight: 500;
+  line-height: 1.2;
+  margin-bottom: 0.4rem;
+}
+.editorial-service-grid__cell--featured h3 {
+  font-size: 1.8rem;
+}
+.editorial-service-grid__cell p {
+  font-family: var(--sans);
+  font-size: 0.88rem;
+  color: var(--muted);
+  line-height: 1.4;
+  margin: 0 0 0.8rem 0;
+}
+.editorial-service-grid__cell--featured p {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 0.95rem;
+}
+.editorial-service-grid__arrow {
+  margin-top: auto;
+  font-family: var(--sans);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--forest);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+.editorial-service-grid__cell--featured .editorial-service-grid__arrow {
+  color: var(--gold);
+}
+@media (max-width: 900px) {
+  .editorial-service-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .editorial-service-grid__cell--featured {
+    grid-row: span 1;
+    grid-column: span 2;
+    min-height: 240px;
+  }
+}
+@media (max-width: 768px) {
+  .editorial-service-grid { display: none; }
+}
+
+/* ---- Editorial intro section (kicker + h1 + lede asymmetric) ---- */
+.editorial-intro {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 3rem;
+  align-items: end;
+  padding-top: 2rem;
+}
+.editorial-intro__kicker-block {
+  border-top: 2px solid var(--forest-dark);
+  padding-top: 1rem;
+}
+.editorial-intro__kicker-block .editorial-kicker {
+  margin-bottom: 0.4rem;
+}
+.editorial-intro__kicker-block .editorial-meta {
+  font-family: var(--sans);
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+@media (max-width: 768px) {
+  .editorial-intro {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+
+/* ---- Hide existing homepage shortcut tiles and problem grid on mobile ---- */
+@media (max-width: 768px) {
+  .home-explore { display: none !important; }
+  /* Problem grid: stack single column with larger touch targets */
+  .problem-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .problem-card {
+    min-height: 64px;
+    padding: 1.1rem 1.2rem !important;
+  }
+  .problem-card strong {
+    font-size: 1rem !important;
+  }
+  .problem-card span {
+    font-size: 0.82rem !important;
+  }
+  /* Stats band: hide decorative icons on mobile, keep just facts */
+  .home-stats-band {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 1rem !important;
+  }
+  .home-stats-band__icon { display: none; }
+  .home-stats-band__item {
+    padding: 1rem 0.6rem !important;
+    text-align: left;
+  }
+  .home-stats-band__text strong {
+    font-size: 1.15rem !important;
+  }
+  .home-stats-band__text span {
+    font-size: 0.75rem !important;
+  }
+  /* Cards grid on mobile: single column */
+  .grid.grid-3, .grid.grid-4 {
+    grid-template-columns: 1fr !important;
+    gap: 0.6rem !important;
+  }
+  .card {
+    padding: 1.2rem !important;
+  }
+  /* Hide card icons on mobile - text is enough */
+  .card-icon { display: none; }
+  .card h3 { font-size: 1.2rem !important; }
+  /* Hide "Find out more" text links on mobile cards - whole card is tappable */
+  .card-link { display: none; }
+  /* Section padding tightened on mobile */
+  .section { padding: 3rem 0 !important; }
+}
+
+/* ---- Make entire card clickable (mobile) ---- */
+@media (max-width: 768px) {
+  .card[data-href] {
+    cursor: pointer;
+  }
+}
+
+/* ---- Reduced motion ---- */
+@media (prefers-reduced-motion: reduce) {
+  .photo-interlude,
+  .editorial-feature__media img,
+  .bottom-action-bar {
+    transition: none !important;
+  }
+}
+
+/* ===================================================================
+   EDITORIAL DESIGN SYSTEM v2.5 - Phase 2 extensions (2026-07-18)
+   --------------------------------------------------------------------
+   Targets the 168 secondary pages: 9 services, 7 calculators,
+   1 CGM Method, 1 Tips index, 150 tips articles.
+   The approach is opt-in via classes - existing pages keep working
+   until the editorial class is added.
+   =================================================================== */
+
+/* ---- Editorial page header (replaces .page-header on upgraded pages) ----
+   Adds: full-bleed image background at 50vh, larger serif h1,
+   gold kicker, lede paragraph, asymmetric padding. */
+.page-header-editorial {
+  position: relative;
+  min-height: 50vh;
+  display: flex;
+  align-items: flex-end;
+  background: var(--forest-dark);
+  color: #fff;
+  overflow: hidden;
+  padding: 0;
+}
+.page-header-editorial .page-header-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+.page-header-editorial .page-header-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.55;
+}
+.page-header-editorial .page-header-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(21, 40, 28, 0.45) 0%,
+    rgba(21, 40, 28, 0.65) 60%,
+    rgba(21, 40, 28, 0.92) 100%
+  );
+}
+.page-header-editorial .container {
+  position: relative;
+  z-index: 1;
+  padding: 5rem 1.5rem 4rem;
+  width: 100%;
+}
+.page-header-editorial .breadcrumbs {
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 1.2rem;
+}
+.page-header-editorial .breadcrumbs a {
+  color: rgba(255, 255, 255, 0.85);
+}
+.page-header-editorial .breadcrumbs span {
+  color: rgba(255, 255, 255, 0.4);
+}
+.page-header-editorial .editorial-kicker {
+  color: var(--gold-light);
+  margin-bottom: 0.8rem;
+  display: block;
+}
+.page-header-editorial h1 {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: clamp(2.4rem, 5.5vw, 4rem);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: #fff;
+  margin-bottom: 1rem;
+  max-width: 18em;
+}
+.page-header-editorial h1 em {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--gold-light);
+}
+.page-header-editorial > .container > p,
+.page-header-editorial .page-header-lede {
+  font-family: var(--serif);
+  font-size: clamp(1.1rem, 1.7vw, 1.35rem);
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.92);
+  max-width: 38em;
+  margin-bottom: 0;
+}
+@media (max-width: 768px) {
+  .page-header-editorial { min-height: 42vh; }
+  .page-header-editorial .container { padding: 3.5rem 1.5rem 2.5rem; }
+}
+
+/* ---- Apply editorial typography to existing .article-body content ----
+   (used on service pages, tips articles, CGM Method, calculators)
+   These rules upgrade typography without restructuring HTML. */
+.article-body.editorial-typography h2 {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: clamp(1.7rem, 3vw, 2.3rem);
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+  color: var(--forest-dark);
+  margin-top: 2.5rem;
+  margin-bottom: 0.8rem;
+}
+.article-body.editorial-typography h2:first-child { margin-top: 0; }
+.article-body.editorial-typography h3 {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: clamp(1.3rem, 2vw, 1.6rem);
+  line-height: 1.2;
+  color: var(--forest-dark);
+  margin-top: 2rem;
+  margin-bottom: 0.6rem;
+}
+.article-body.editorial-typography p {
+  font-size: 1.02rem;
+  line-height: 1.7;
+  color: var(--forest);
+  margin-bottom: 1.1rem;
+}
+.article-body.editorial-typography p.lead,
+.article-body.editorial-typography > p:first-of-type {
+  font-family: var(--serif);
+  font-size: clamp(1.1rem, 1.6vw, 1.3rem);
+  line-height: 1.55;
+  color: var(--forest);
+  font-weight: 400;
+  margin-bottom: 1.5rem;
+}
+.article-body.editorial-typography ul,
+.article-body.editorial-typography ol {
+  font-size: 1rem;
+  line-height: 1.7;
+  margin-bottom: 1.2rem;
+}
+.article-body.editorial-typography li {
+  margin-bottom: 0.4rem;
+}
+.article-body.editorial-typography blockquote {
+  border-left: 3px solid var(--gold);
+  padding: 0.8rem 0 0.8rem 1.5rem;
+  margin: 1.8rem 0;
+  font-family: var(--serif);
+  font-size: 1.2rem;
+  line-height: 1.5;
+  color: var(--forest-dark);
+  font-style: italic;
+}
+
+/* ---- Editorial section rhythm for upgraded .section blocks ---- */
+.section.section-editorial { padding: 3.5rem 0; }
+.section.section-editorial-loose { padding: 4rem 0; }
+@media (max-width: 768px) {
+  .section.section-editorial { padding: 2.5rem 0; }
+  .section.section-editorial-loose { padding: 3rem 0; }
+}
+
+/* ---- Editorial card grid (3-up on desktop, single col mobile) ---- */
+.editorial-card-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--border-soft);
+  border: 1px solid var(--border-soft);
+  border-radius: 2px;
+  overflow: hidden;
+  margin: 2rem 0;
+}
+.editorial-card-grid__cell {
+  background: var(--cream);
+  padding: 1.6rem 1.4rem;
+  text-decoration: none;
+  color: var(--forest-dark);
+  display: flex;
+  flex-direction: column;
+  transition: background var(--transition);
+  min-height: 140px;
+}
+.editorial-card-grid__cell:hover { background: #fff; }
+.editorial-card-grid__cell h3 {
+  font-family: var(--serif);
+  font-size: 1.25rem;
+  font-weight: 500;
+  margin-bottom: 0.3rem;
+  line-height: 1.2;
+}
+.editorial-card-grid__cell p {
+  font-family: var(--sans);
+  font-size: 0.88rem;
+  color: var(--muted);
+  line-height: 1.45;
+  margin: 0;
+}
+.editorial-card-grid__cell .editorial-card-grid__arrow {
+  margin-top: auto;
+  padding-top: 0.8rem;
+  font-family: var(--sans);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--forest);
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+@media (max-width: 900px) {
+  .editorial-card-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 600px) {
+  .editorial-card-grid { grid-template-columns: 1fr; }
+  .editorial-card-grid__cell { min-height: 96px; padding: 1.2rem; }
+}
+
+/* ---- Editorial principles grid (for CGM Method 4-principles block) ---- */
+.editorial-principles {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+  margin: 2.5rem 0;
+}
+.editorial-principles__item {
+  border-top: 2px solid var(--forest-dark);
+  padding-top: 1rem;
+}
+.editorial-principles__num {
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  color: var(--forest-light);
+  margin-bottom: 0.6rem;
+}
+.editorial-principles__title {
+  font-family: var(--serif);
+  font-size: 1.35rem;
+  font-weight: 500;
+  line-height: 1.2;
+  color: var(--forest-dark);
+  margin-bottom: 0.6rem;
+}
+.editorial-principles__body {
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: var(--forest);
+}
+@media (max-width: 900px) {
+  .editorial-principles { grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+}
+@media (max-width: 600px) {
+  .editorial-principles { grid-template-columns: 1fr; }
+}
+
+/* ---- Editorial process steps (for CGM Method ASSESS/RECOVER/etc) ---- */
+.editorial-process {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1px;
+  background: var(--border-soft);
+  border: 1px solid var(--border-soft);
+  border-radius: 2px;
+  overflow: hidden;
+  margin: 2rem 0;
+}
+.editorial-process__step {
+  background: var(--cream);
+  padding: 1.6rem 1.2rem;
+  text-align: left;
+}
+.editorial-process__num {
+  font-family: var(--serif);
+  font-size: 2.2rem;
+  font-weight: 500;
+  color: var(--gold);
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+.editorial-process__title {
+  font-family: var(--serif);
+  font-size: 1.15rem;
+  font-weight: 500;
+  color: var(--forest-dark);
+  margin-bottom: 0.4rem;
+  line-height: 1.2;
+}
+.editorial-process__body {
+  font-family: var(--sans);
+  font-size: 0.85rem;
+  color: var(--muted);
+  line-height: 1.5;
+}
+@media (max-width: 900px) {
+  .editorial-process { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 600px) {
+  .editorial-process { grid-template-columns: 1fr; }
+}
+
+/* ---- Editorial category list (for Tips index browse-by-category) ---- */
+.editorial-category-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  margin: 2rem 0;
+}
+.editorial-category-list__category {
+  border-top: 1px solid var(--border-soft);
+  padding-top: 1.5rem;
+}
+.editorial-category-list__title {
+  font-family: var(--serif);
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: var(--forest-dark);
+  margin-bottom: 0.8rem;
+}
+.editorial-category-list__count {
+  font-family: var(--sans);
+  font-size: 0.78rem;
+  color: var(--muted);
+  margin-left: 0.6rem;
+  font-weight: 400;
+}
+.editorial-category-list__articles {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.4rem 2rem;
+}
+.editorial-category-list__articles li {
+  margin: 0;
+  padding: 0.3rem 0;
+  border-bottom: 1px dotted var(--border-soft);
+}
+.editorial-category-list__articles a {
+  font-family: var(--sans);
+  font-size: 0.95rem;
+  color: var(--forest);
+  text-decoration: none;
+  line-height: 1.4;
+  display: block;
+}
+.editorial-category-list__articles a:hover {
+  color: var(--forest-dark);
+  text-decoration: underline;
+}
+@media (max-width: 700px) {
+  .editorial-category-list__articles { grid-template-columns: 1fr; }
+}
+
+/* ---- Editorial calculator card (for calculators index) ---- */
+.editorial-calc-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin: 2.5rem 0;
+}
+.editorial-calc-card {
+  background: var(--cream);
+  border: 1px solid var(--border-soft);
+  border-radius: 2px;
+  padding: 1.8rem 1.6rem;
+  text-decoration: none;
+  color: var(--forest-dark);
+  display: flex;
+  flex-direction: column;
+  min-height: 200px;
+  transition: background var(--transition), transform var(--transition);
+}
+.editorial-calc-card:hover {
+  background: #fff;
+  transform: translateY(-2px);
+}
+.editorial-calc-card__num {
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  color: var(--gold-deep);
+  margin-bottom: 0.8rem;
+}
+.editorial-calc-card__title {
+  font-family: var(--serif);
+  font-size: 1.4rem;
+  font-weight: 500;
+  line-height: 1.2;
+  margin-bottom: 0.5rem;
+}
+.editorial-calc-card__body {
+  font-family: var(--sans);
+  font-size: 0.9rem;
+  color: var(--muted);
+  line-height: 1.5;
+  margin-bottom: 1rem;
+}
+.editorial-calc-card__cta {
+  margin-top: auto;
+  font-family: var(--sans);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--forest);
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+@media (max-width: 900px) {
+  .editorial-calc-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 600px) {
+  .editorial-calc-grid { grid-template-columns: 1fr; }
+  .editorial-calc-card { min-height: 140px; padding: 1.4rem; }
+}
+
+/* ---- Mobile bottom action bar + footer accordion + swipe row:
+       Already defined in v2.4 CSS above. The JS in main.js needs to be
+       extended to detect these pages. We add a generic enhancement
+       script that runs on every page that has these elements. ---- */
+
+/* ---- Photo interlude (already defined in v2.4) - these overrides make
+       it work well on shorter article pages too ---- */
+.photo-interlude.photo-interlude--compact {
+  min-height: 40vh;
+}
+.photo-interlude.photo-interlude--compact .photo-interlude__content {
+  padding: 2.5rem 1.5rem 3rem;
+}
+@media (max-width: 768px) {
+  .photo-interlude.photo-interlude--compact { min-height: 35vh; }
+}
+
+
+/* ===================================================================
+   EDITORIAL DESIGN SYSTEM v2.8 - Article TOC + Quick Answer (2026-07-18)
+   --------------------------------------------------------------------
+   Redesigns the "On this page" table of contents and "Quick Answer"
+   block on tips articles and plant library pages to match the editorial
+   professionalism of the rest of the site. Applied via the .editorial-toc
+   and .editorial-quick-answer classes (opt-in, existing styles preserved).
+   =================================================================== */
+
+/* ---- Editorial Article TOC ("On this page") ----
+   Replaces the plain text-link TOC with a structured editorial card:
+   - Stronger "On this page" label in serif
+   - Numbered top-level items (01, 02, 03...)
+   - Better visual hierarchy with serif typography for labels
+   - Subtle background tint to distinguish from article body
+   - Gold accent for hover/active states
+   - Preserves all existing .toc-item / .toc-toggle / .toc-subs markup
+   ---- */
+.article-toc.editorial-toc {
+  margin: 2.5rem 0 2rem;
+  padding: 1.6rem 1.8rem 1.4rem;
+  background: var(--cream);
+  border-top: none;
+  border: 1px solid var(--border-soft);
+  border-radius: 2px;
+  position: relative;
+}
+.article-toc.editorial-toc::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 3px;
+  height: 100%;
+  background: var(--forest-dark);
+  border-radius: 2px 0 0 2px;
+}
+.article-toc.editorial-toc .article-toc__label {
+  font-family: var(--serif);
+  font-size: 1.25rem;
+  font-weight: 500;
+  text-transform: none;
+  letter-spacing: -0.01em;
+  color: var(--forest-dark);
+  margin: 0 0 1rem;
+  line-height: 1.2;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+.article-toc.editorial-toc .article-toc__label::before {
+  content: 'On this page';
+  font-family: var(--serif);
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: var(--forest-dark);
+}
+.article-toc.editorial-toc .article-toc__label {
+  font-size: 0;
+  color: transparent;
+}
+.article-toc.editorial-toc .article-toc__label::before {
+  font-size: 1.25rem;
+}
+.article-toc.editorial-toc .article-toc__nav {
+  gap: 0.15rem;
+}
+.article-toc.editorial-toc .toc-item {
+  font-family: var(--sans);
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: var(--forest);
+  padding: 0.35rem 0;
+  position: relative;
+  padding-left: 2rem;
+  counter-increment: editorial-toc-counter;
+  transition: color var(--transition), padding-left var(--transition);
+}
+.article-toc.editorial-toc .article-toc__nav {
+  counter-reset: editorial-toc-counter;
+}
+.article-toc.editorial-toc .toc-item:not(.toc-item--has-subs):not(.toc-sub-item)::before {
+  content: counter(editorial-toc-counter, decimal-leading-zero);
+  position: absolute;
+  left: 0;
+  top: 0.35rem;
+  font-family: var(--serif);
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--gold-deep);
+  letter-spacing: 0.04em;
+  width: 1.6rem;
+}
+.article-toc.editorial-toc .toc-item--has-subs {
+  padding-left: 2rem;
+}
+.article-toc.editorial-toc .toc-item--has-subs::before {
+  content: counter(editorial-toc-counter, decimal-leading-zero);
+  position: absolute;
+  left: 0;
+  top: 0.35rem;
+  font-family: var(--serif);
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--gold-deep);
+  letter-spacing: 0.04em;
+  width: 1.6rem;
+}
+.article-toc.editorial-toc .toc-item:hover {
+  color: var(--forest-dark);
+  padding-left: 2.2rem;
+}
+.article-toc.editorial-toc .toc-item--expanded {
+  color: var(--forest-dark);
+  font-weight: 600;
+}
+.article-toc.editorial-toc .toc-row {
+  position: relative;
+}
+.article-toc.editorial-toc .toc-toggle {
+  width: 24px;
+  height: 24px;
+  border: 1px solid var(--border-soft);
+  background: #fff;
+}
+.article-toc.editorial-toc .toc-toggle:hover {
+  background: var(--forest-dark);
+  color: #fff;
+  border-color: var(--forest-dark);
+}
+.article-toc.editorial-toc .toc-toggle--open {
+  background: var(--forest-dark);
+  color: #fff;
+  border-color: var(--forest-dark);
+}
+.article-toc.editorial-toc .toc-subs {
+  padding-left: 2rem;
+  margin-top: 0.25rem;
+  margin-bottom: 0.4rem;
+  border-left: 1px solid var(--border-soft);
+  margin-left: 1rem;
+}
+.article-toc.editorial-toc .toc-sub-item {
+  font-size: 0.85rem;
+  color: var(--muted);
+  padding: 0.25rem 0 0.25rem 0.8rem;
+  font-weight: 400;
+  position: relative;
+}
+.article-toc.editorial-toc .toc-sub-item::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.7rem;
+  width: 0.4rem;
+  height: 1px;
+  background: var(--border-soft);
+}
+.article-toc.editorial-toc .toc-sub-item:hover {
+  color: var(--forest-dark);
+}
+
+@media (max-width: 768px) {
+  .article-toc.editorial-toc {
+    margin: 1.5rem 0 1.5rem;
+    padding: 1.2rem 1.1rem 1rem;
+  }
+  .article-toc.editorial-toc .article-toc__label::before,
+  .article-toc.editorial-toc .article-toc__label {
+    font-size: 1.1rem;
+  }
+  .article-toc.editorial-toc .toc-item {
+    font-size: 0.9rem;
+    padding: 0.45rem 0;
+    padding-left: 2rem;
+  }
+  .article-toc.editorial-toc .toc-item::before,
+  .article-toc.editorial-toc .toc-item--has-subs::before {
+    top: 0.45rem;
+  }
+}
+
+/* ---- Editorial Quick Answer block ----
+   Replaces the bare <h2>Quick Answer</h2> + paragraph with a distinctive
+   editorial block that signals "this is the answer, scroll for detail".
+   - Dark forest background, white text
+   - Gold "Quick Answer" kicker
+   - Larger serif typography for the answer text
+   - Clear visual separation from the rest of the article
+   Applied via .editorial-quick-answer class on the h2's parent or the h2 itself.
+   ---- */
+.editorial-quick-answer {
+  background: var(--forest-dark);
+  color: #fff;
+  padding: 2.2rem 2.4rem 2.4rem;
+  margin: 2.5rem 0 2rem;
+  border-radius: 2px;
+  position: relative;
+  overflow: hidden;
+}
+.editorial-quick-answer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 3px;
+  height: 100%;
+  background: var(--gold);
+}
+.editorial-quick-answer__kicker,
+.article-body.editorial-typography .editorial-quick-answer__kicker {
+  display: inline-block;
+  font-family: var(--sans);
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold-light);
+  margin-bottom: 0.8rem;
+}
+.editorial-quick-answer__title,
+.article-body.editorial-typography .editorial-quick-answer__title {
+  font-family: var(--serif);
+  font-size: clamp(1.6rem, 2.5vw, 2rem);
+  font-weight: 500;
+  line-height: 1.15;
+  color: #fff;
+  margin: 0 0 1rem;
+  letter-spacing: -0.015em;
+}
+.editorial-quick-answer__body,
+.article-body.editorial-typography .editorial-quick-answer__body {
+  font-family: var(--serif);
+  font-size: clamp(1.05rem, 1.4vw, 1.2rem);
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.92) !important;
+  margin: 0 0 1rem;
+}
+.editorial-quick-answer__body:last-child,
+.article-body.editorial-typography .editorial-quick-answer__body:last-child {
+  margin-bottom: 0;
+}
+.editorial-quick-answer__body strong,
+.article-body.editorial-typography .editorial-quick-answer__body strong {
+  color: var(--gold-light);
+  font-weight: 600;
+}
+.editorial-quick-answer .callout {
+  background: rgba(255, 255, 255, 0.08);
+  border-left: 3px solid var(--gold);
+  padding: 1.2rem 1.4rem;
+  margin: 1.4rem 0 0;
+  box-shadow: none;
+  border-radius: 0;
+}
+.editorial-quick-answer .callout h3,
+.editorial-quick-answer .callout h4 {
+  color: var(--gold-light);
+  font-family: var(--serif);
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin: 0 0 0.5rem;
+}
+.editorial-quick-answer .callout p,
+.editorial-quick-answer .callout ul {
+  color: rgba(255, 255, 255, 0.88);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+.editorial-quick-answer .callout strong {
+  color: #fff;
+}
+@media (max-width: 768px) {
+  .editorial-quick-answer {
+    padding: 1.6rem 1.3rem 1.8rem;
+    margin: 1.8rem 0 1.5rem;
+  }
+}
+
+/* ---- Editorial callout (upgraded version of .callout) ----
+   Applied via .callout-editorial class. Keeps the existing .callout
+   working but offers a cleaner editorial variant for new content.
+   ---- */
+.callout.callout-editorial {
+  background: var(--cream);
+  border-left: 3px solid var(--gold);
+  padding: 1.5rem 1.6rem;
+  border-radius: 0;
+  box-shadow: none;
+  margin: 2rem 0;
+}
+.callout.callout-editorial h3,
+.callout.callout-editorial h4 {
+  font-family: var(--serif);
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: var(--forest-dark);
+  margin: 0 0 0.6rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.callout.callout-editorial h3 svg,
+.callout.callout-editorial h4 svg {
+  width: 20px;
+  height: 20px;
+  color: var(--gold-deep);
+}
+.callout.callout-editorial p,
+.callout.callout-editorial ul {
+  font-size: 0.95rem;
+  line-height: 1.65;
+  color: var(--forest);
+}
+.callout.callout-editorial strong {
+  color: var(--forest-dark);
+}
+
+/* ---- Editorial FAQ styling (for tips articles with FAQ sections) ----
+   Applied automatically to .article-body.editorial-typography h3 + p
+   pairs that follow an h2 with id containing "frequently-asked" or "faq".
+   This is done via JS that wraps them. For now, just style existing
+   .faq-item elements if present.
+   ---- */
+.article-body.editorial-typography .faq-item {
+  border-top: 1px solid var(--border-soft);
+  padding: 1.3rem 0;
+  margin: 0;
+}
+.article-body.editorial-typography .faq-item:first-child {
+  border-top: none;
+}
+.article-body.editorial-typography .faq-item summary {
+  font-family: var(--serif);
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: var(--forest-dark);
+  cursor: pointer;
+  list-style: none;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.article-body.editorial-typography .faq-item summary::-webkit-details-marker {
+  display: none;
+}
+.article-body.editorial-typography .faq-item summary::after {
+  content: '+';
+  font-family: var(--sans);
+  font-size: 1.5rem;
+  font-weight: 300;
+  color: var(--gold-deep);
+  transition: transform 0.2s ease;
+}
+.article-body.editorial-typography .faq-item[open] summary::after {
+  content: '−';
+}
+.article-body.editorial-typography .faq-item .accordion-content {
+  padding-top: 0.8rem;
+}
+
+/* ---- Plant page fact-grid editorial upgrade ----
+   Plant pages have a .fact-grid with .fact items (Light, Temperature, etc.)
+   Upgrade to editorial styling when .editorial-typography is present.
+   ---- */
+.editorial-typography ~ .fact-grid,
+.article-body.editorial-typography .fact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1px;
+  background: var(--border-soft);
+  border: 1px solid var(--border-soft);
+  border-radius: 2px;
+  overflow: hidden;
+  margin: 2rem 0;
+}
+.editorial-typography ~ .fact-grid .fact,
+.article-body.editorial-typography .fact-grid .fact {
+  background: var(--cream);
+  padding: 1.1rem 1.2rem;
+  margin: 0;
+}
+.editorial-typography ~ .fact-grid .fact dt,
+.article-body.editorial-typography .fact-grid .fact dt {
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--forest-light);
+  margin-bottom: 0.4rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+.editorial-typography ~ .fact-grid .fact dt svg,
+.article-body.editorial-typography .fact-grid .fact dt svg {
+  width: 16px;
+  height: 16px;
+  color: var(--gold-deep);
+}
+.editorial-typography ~ .fact-grid .fact dd,
+.article-body.editorial-typography .fact-grid .fact dd {
+  font-family: var(--sans);
+  font-size: 0.92rem;
+  color: var(--forest-dark);
+  line-height: 1.5;
+  margin: 0;
+}
+
+
+/* ===================================================================
+   EDITORIAL DESIGN SYSTEM v2.9 - Plant fact grid color-coding (2026-07-18)
+   --------------------------------------------------------------------
+   Color-codes each fact type in the plant fact-grid by topic.
+   Light = sun/gold, Water = blue, Temperature = red, Soil = brown,
+   Drainage = teal, Mature size = purple, Soil pH = green, Feeding = orange.
+   Adds a subtle colored icon background per fact type.
+   =================================================================== */
+.article-body.editorial-typography .fact-grid .fact dt {
+  /* Default styling inherited from v2.5 */
+}
+
+/* Color-code each fact type by its label text */
+.article-body.editorial-typography .fact-grid .fact dt:has(svg) {
+  position: relative;
+  padding-left: 1.6rem;
+}
+.article-body.editorial-typography .fact-grid .fact dt svg {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 18px;
+  height: 18px;
+  padding: 2px;
+  border-radius: 3px;
+  color: #fff;
+}
+
+/* Per-fact-type color coding (using :has() selector for modern browsers) */
+.article-body.editorial-typography .fact-grid .fact dt:has(svg) {
+  /* Fallback: gold icon background */
+  --fact-icon-bg: var(--gold-deep);
+}
+.article-body.editorial-typography .fact-grid .fact dt svg {
+  background: var(--fact-icon-bg, var(--gold-deep));
+}
+
+/* Specific colors per fact type - match by text content */
+/* Light → sun gold */
+.article-body.editorial-typography .fact-grid .fact:has(dt:-webkit-any(:contains("Light"))) svg,
+.article-body.editorial-typography .fact-grid .fact dt:-webkit-any(:contains("Light")) svg {
+  background: #d9941f;
+}
+/* Water → blue */
+.article-body.editorial-typography .fact-grid .fact dt:-webkit-any(:contains("Water")) svg {
+  background: #3a7fb5;
+}
+/* Temperature → red */
+.article-body.editorial-typography .fact-grid .fact dt:-webkit-any(:contains("Temperature")) svg {
+  background: #c8543c;
+}
+/* Soil type → brown */
+.article-body.editorial-typography .fact-grid .fact dt:-webkit-any(:contains("Soil type")) svg {
+  background: #8b6f47;
+}
+/* Soil pH → green */
+.article-body.editorial-typography .fact-grid .fact dt:-webkit-any(:contains("Soil pH")) svg {
+  background: #5a9a3e;
+}
+/* Drainage → teal */
+.article-body.editorial-typography .fact-grid .fact dt:-webkit-any(:contains("Drainage")) svg {
+  background: #3a8b8b;
+}
+/* Mature size → purple */
+.article-body.editorial-typography .fact-grid .fact dt:-webkit-any(:contains("Mature size")) svg {
+  background: #8e5fa8;
+}
+/* Feeding → orange */
+.article-body.editorial-typography .fact-grid .fact dt:-webkit-any(:contains("Feeding")) svg {
+  background: #d9651f;
+}
+
+/* Modern browser support using :has() - applies colored backgrounds
+   to fact dt's based on their text content. Falls back to gold
+   (the default) on older browsers. */
+@supports (selector(:has(*))) {
+  .article-body.editorial-typography .fact-grid .fact:has(dt svg) dt {
+    padding-left: 1.6rem;
+    position: relative;
+  }
+  .article-body.editorial-typography .fact-grid .fact dt svg {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}
+
+/* Larger, more legible fact values on desktop */
+.article-body.editorial-typography .fact-grid .fact dd {
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: var(--forest-dark);
+  font-weight: 500;
+}
+
+/* Subtle hover state on fact cells */
+.article-body.editorial-typography .fact-grid .fact {
+  transition: background var(--transition);
+  cursor: default;
+}
+.article-body.editorial-typography .fact-grid .fact:hover {
+  background: #fff;
+}
+
+/* On mobile, stack facts vertically with clearer separation */
+@media (max-width: 600px) {
+  .article-body.editorial-typography .fact-grid {
+    grid-template-columns: 1fr;
+  }
+  .article-body.editorial-typography .fact-grid .fact {
+    padding: 1rem 1.1rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.8rem;
+  }
+  .article-body.editorial-typography .fact-grid .fact dt {
+    flex: 0 0 35%;
+    margin: 0;
+    padding-left: 1.6rem;
+  }
+  .article-body.editorial-typography .fact-grid .fact dd {
+    flex: 1;
+    font-size: 0.9rem;
+  }
+}
+
+
+/* ===================================================================
+   EDITORIAL DESIGN SYSTEM v2.10 - Homepage enhancements (2026-07-18)
+   --------------------------------------------------------------------
+   - Animated ticker stats strip
+   - Problem diagnosis compact accordion + interactive decision tool
+   - Gardening intelligence card grid (uses existing editorial-card-grid)
+   =================================================================== */
+
+/* ---- Ticker animation ---- */
+.proof-strip--ticker .proof-strip__value {
+  font-variant-numeric: tabular-nums;
+}
+.proof-strip__value.is-ticking {
+  /* Slight scale-up while ticking */
+  transition: transform 0.3s ease;
+}
+
+/* ---- Problem diagnosis accordion ---- */
+.problem-diagnosis-accordion {
+  background: var(--cream);
+  border: 1px solid var(--border-soft);
+  border-radius: 2px;
+  margin-top: 1rem;
+  overflow: hidden;
+}
+.problem-diagnosis-accordion > summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 1.4rem 1.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: var(--serif);
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: var(--forest-dark);
+  background: var(--cream);
+  border-bottom: 1px solid var(--border-soft);
+  user-select: none;
+}
+.problem-diagnosis-accordion > summary::-webkit-details-marker { display: none; }
+.problem-diagnosis-accordion > summary:hover {
+  background: #fff;
+}
+.problem-diagnosis-accordion__chevron {
+  transition: transform 0.25s ease;
+  color: var(--gold-deep);
+  flex-shrink: 0;
+}
+.problem-diagnosis-accordion[open] > summary .problem-diagnosis-accordion__chevron {
+  transform: rotate(180deg);
+}
+.problem-diagnosis-accordion__body {
+  padding: 1.6rem;
+}
+
+/* ---- Problem diagnosis tool ---- */
+.problem-diagnosis {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 1.6rem;
+}
+.problem-diagnosis__options {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+.problem-diagnosis__option {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  padding: 0.9rem 1rem;
+  background: #fff;
+  border: 1px solid var(--border-soft);
+  border-radius: 2px;
+  text-align: left;
+  cursor: pointer;
+  transition: background var(--transition), border-color var(--transition), transform var(--transition);
+  font-family: var(--sans);
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--forest-dark);
+}
+.problem-diagnosis__option:hover {
+  background: var(--forest-dark);
+  color: #fff;
+  border-color: var(--forest-dark);
+  transform: translateX(4px);
+}
+.problem-diagnosis__option:hover .problem-diagnosis__option-num {
+  color: var(--gold-light);
+}
+.problem-diagnosis__option.is-active {
+  background: var(--forest-dark);
+  color: #fff;
+  border-color: var(--forest-dark);
+}
+.problem-diagnosis__option.is-active .problem-diagnosis__option-num {
+  color: var(--gold-light);
+}
+.problem-diagnosis__option-num {
+  font-family: var(--serif);
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--gold-deep);
+  letter-spacing: 0.04em;
+  flex-shrink: 0;
+  min-width: 1.5rem;
+}
+.problem-diagnosis__option-text {
+  flex: 1;
+}
+
+/* Result panel */
+.problem-diagnosis__result {
+  background: #fff;
+  border: 1px solid var(--border-soft);
+  border-radius: 2px;
+  padding: 1.4rem 1.5rem;
+}
+.problem-diagnosis__result-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.2rem 1.4rem;
+}
+.problem-diagnosis__result-cell {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+.problem-diagnosis__result-cell--full {
+  grid-column: 1 / -1;
+}
+.problem-diagnosis__result-label {
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--forest-light);
+}
+.problem-diagnosis__result-value {
+  font-family: var(--serif);
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--forest-dark);
+  margin: 0;
+}
+
+/* Empty state hint when no option selected */
+.problem-diagnosis__result:empty::before,
+.problem-diagnosis__result[hidden] ~ .problem-diagnosis__hint {
+  content: '← Pick an option to see the diagnosis';
+  font-family: var(--serif);
+  font-size: 1rem;
+  color: var(--muted);
+  font-style: italic;
+}
+
+@media (max-width: 900px) {
+  .problem-diagnosis {
+    grid-template-columns: 1fr;
+  }
+  .problem-diagnosis__result-grid {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 768px) {
+  .problem-diagnosis-accordion__body { padding: 1rem; }
+  .problem-diagnosis__option {
+    padding: 0.8rem 0.9rem;
+    font-size: 0.9rem;
+    min-height: 48px;
+  }
+}
+
+
+/* ===================================================================
+   EDITORIAL DESIGN SYSTEM v2.11 - Photo Markup Tool (2026-07-18)
+   --------------------------------------------------------------------
+   For the quote form. Lets users annotate up to 3 garden photos.
+   =================================================================== */
+.photo-markup-tool {
+  margin: 1.5rem 0 0;
+  padding: 1.5rem 1.6rem;
+  background: var(--cream);
+  border: 1px solid var(--border-soft);
+  border-radius: 2px;
+  position: relative;
+}
+.photo-markup-tool::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 3px;
+  height: 100%;
+  background: var(--gold);
+  border-radius: 2px 0 0 2px;
+}
+.photo-markup-tool__header {
+  margin-bottom: 1.2rem;
+}
+.photo-markup-tool__kicker {
+  display: inline-block;
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold-deep);
+  margin-bottom: 0.4rem;
+}
+.photo-markup-tool__title {
+  font-family: var(--serif);
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: var(--forest-dark);
+  margin: 0 0 0.4rem;
+  line-height: 1.2;
+}
+.photo-markup-tool__lede {
+  font-family: var(--sans);
+  font-size: 0.88rem;
+  color: var(--muted);
+  line-height: 1.5;
+  margin: 0;
+}
+
+.photo-markup-tool__slots {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.8rem;
+  margin-bottom: 1.2rem;
+}
+@media (max-width: 768px) {
+  .photo-markup-tool__slots {
+    grid-template-columns: 1fr;
+  }
+}
+
+.photo-markup-tool__slot {
+  background: #fff;
+  border: 1px solid var(--border-soft);
+  border-radius: 2px;
+  overflow: hidden;
+  min-height: 140px;
+  display: flex;
+  flex-direction: column;
+}
+.photo-markup-tool__slot-empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  padding: 1rem;
+}
+.photo-markup-tool__upload-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  cursor: pointer;
+  font-family: var(--sans);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--forest);
+  text-align: center;
+  user-select: none;
+  padding: 1rem 0.6rem;
+  border-radius: 2px;
+  transition: color var(--transition);
+}
+.photo-markup-tool__upload-btn:hover {
+  color: var(--forest-dark);
+}
+.photo-markup-tool__upload-btn svg {
+  width: 28px;
+  height: 28px;
+  color: var(--gold-deep);
+}
+.photo-markup-tool__file-input {
+  /* Visually hidden but accessible */
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.photo-markup-tool__slot-active {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+.photo-markup-tool__canvas {
+  display: block;
+  width: 100%;
+  height: auto;
+  cursor: pointer;
+  touch-action: none; /* prevent scroll while drawing on mobile */
+}
+.photo-markup-tool__slot-actions {
+  display: flex;
+  justify-content: flex-end;
+  padding: 0.4rem 0.6rem;
+  background: var(--cream);
+  border-top: 1px solid var(--border-soft);
+}
+.photo-markup-tool__slot-clear {
+  font-family: var(--sans);
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--muted);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0.3rem 0.5rem;
+  text-decoration: underline;
+}
+.photo-markup-tool__slot-clear:hover {
+  color: #c8543c;
+}
+
+.photo-markup-tool__presets {
+  margin-bottom: 0.8rem;
+}
+.photo-markup-tool__presets-label {
+  font-family: var(--sans);
+  font-size: 0.78rem;
+  color: var(--muted);
+  margin: 0 0 0.5rem;
+}
+.photo-markup-tool__presets-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+.photo-markup-tool__preset {
+  font-family: var(--sans);
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--forest-dark);
+  background: #fff;
+  border: 1px solid var(--border-soft);
+  border-radius: 999px;
+  padding: 0.45rem 0.9rem;
+  cursor: pointer;
+  transition: background var(--transition), color var(--transition), border-color var(--transition);
+  min-height: 36px;
+  display: inline-flex;
+  align-items: center;
+}
+.photo-markup-tool__preset:hover {
+  background: var(--cream);
+  border-color: var(--forest-light);
+}
+.photo-markup-tool__preset.is-active {
+  background: var(--forest-dark);
+  color: #fff;
+  border-color: var(--forest-dark);
+}
+
+.photo-markup-tool__active-label {
+  font-family: var(--sans);
+  font-size: 0.85rem;
+  color: var(--muted);
+  padding: 0.6rem 0.8rem;
+  background: #fff;
+  border: 1px solid var(--border-soft);
+  border-radius: 2px;
+  transition: background 0.3s ease;
+}
+.photo-markup-tool__active-label.is-active {
+  background: var(--cream-warm);
+  color: var(--forest-dark);
+}
+.photo-markup-tool__active-label.is-active strong {
+  color: var(--gold-deep);
+}
+.photo-markup-tool__active-label.is-flash {
+  background: #fef2f2;
+  color: #c8543c;
+}
+
+
+/* ===================================================================
+   EDITORIAL DESIGN SYSTEM v2.12 - Right Plant, Right Place tool (2026-07-18)
+   --------------------------------------------------------------------
+   Interactive plant finder for the /plants/ page.
+   =================================================================== */
+   EDITORIAL DESIGN SYSTEM v2.14 - Photo markup tool v2 (2026-07-18)
+   Improved toolbar with label count, clear-labels button, step instructions
+   =================================================================== */
+.photo-markup-tool__steps {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.6rem;
+  font-family: var(--sans);
+  font-size: 0.82rem;
+  color: var(--forest);
+  line-height: 1.4;
+}
+.photo-markup-tool__steps li {
+  background: #fff;
+  border: 1px solid var(--border-soft);
+  border-radius: 2px;
+  padding: 0.6rem 0.7rem;
+}
+.photo-markup-tool__steps strong {
+  color: var(--gold-deep);
+  font-size: 0.9rem;
+}
+@media (max-width: 768px) {
+  .photo-markup-tool__steps {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.photo-markup-tool__slot-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 0.5rem 0.7rem;
+  background: var(--forest-dark);
+  color: #fff;
+  font-family: var(--sans);
+  font-size: 0.78rem;
+}
+.photo-markup-tool__slot-label-count {
+  flex: 1;
+  color: var(--gold-light);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-size: 0.72rem;
+}
+.photo-markup-tool__slot-clear-labels,
+.photo-markup-tool__slot-clear {
+  font-family: var(--sans);
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: rgba(255,255,255,0.8);
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 2px;
+  padding: 0.3rem 0.6rem;
+  cursor: pointer;
+  transition: background var(--transition), color var(--transition);
+  min-height: 32px;
+}
+.photo-markup-tool__slot-clear-labels:hover,
+.photo-markup-tool__slot-clear:hover {
+  background: rgba(255,255,255,0.1);
+  color: #fff;
+}
+.photo-markup-tool__slot-clear:hover {
+  background: rgba(200, 84, 60, 0.3);
+  border-color: #c8543c;
+  color: #ffb4a8;
+}
+
+.photo-markup-tool__slot-active {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+.photo-markup-tool__slot-active .photo-markup-tool__canvas {
+  border-top: none;
+}
+
+/* Remove the old slot-actions styling (no longer used) */
+.photo-markup-tool__slot-actions {
+  display: none;
+}
+
+
+/* ===================================================================
+   EDITORIAL DESIGN SYSTEM v2.15 - Problem diagnosis result v2 (2026-07-18)
+   Stronger visual hierarchy: hero service title, then 2-col inspect/cost,
+   then full-width project, then next-question prompt, then CTA
+   =================================================================== */
+.problem-diagnosis__result-hero {
+  background: var(--forest-dark);
+  color: #fff;
+  padding: 1.6rem 1.8rem;
+  border-radius: 2px 2px 0 0;
+  margin: -1.4rem -1.5rem 1.2rem;
+  position: relative;
+}
+.problem-diagnosis__result-hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: var(--gold);
+}
+.problem-diagnosis__result-kicker {
+  display: block;
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold-light);
+  margin-bottom: 0.5rem;
+}
+.problem-diagnosis__result-title {
+  font-family: var(--serif);
+  font-size: clamp(1.3rem, 2vw, 1.7rem);
+  font-weight: 500;
+  line-height: 1.2;
+  color: #fff;
+  margin: 0;
+  letter-spacing: -0.015em;
+}
+
+/* Restructured grid: inspect + cost side by side, project full width, next-question prominent */
+.problem-diagnosis__result-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.2rem 1.4rem;
+}
+.problem-diagnosis__result-cell--inspect {
+  /* Same as default */
+}
+.problem-diagnosis__result-cell--cost {
+  background: var(--cream);
+  padding: 1rem 1.1rem;
+  border-radius: 2px;
+  border-left: 2px solid var(--gold);
+}
+.problem-diagnosis__result-cell--full {
+  grid-column: 1 / -1;
+}
+.problem-diagnosis__result-cell--next {
+  grid-column: 1 / -1;
+  background: var(--cream-warm);
+  padding: 1.2rem 1.3rem;
+  border-radius: 2px;
+  border-left: 3px solid var(--forest);
+}
+.problem-diagnosis__result-cell--next .problem-diagnosis__result-label {
+  color: var(--forest-dark);
+}
+.problem-diagnosis__result-cell--next .problem-diagnosis__result-value {
+  font-family: var(--serif);
+  font-size: 1.15rem;
+  font-style: italic;
+  color: var(--forest-dark);
+  font-weight: 500;
+}
+.problem-diagnosis__result-cell--cta {
+  text-align: center;
+  padding-top: 0.5rem;
+}
+
+@media (max-width: 900px) {
+  .problem-diagnosis__result-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* ===================================================================
+   EDITORIAL DESIGN SYSTEM v2.17 - Quote form modernization (2026-07-18)
+   Remove 1990s HTML form vibe - modern inputs, better radio buttons,
+   cleaner file upload, improved spacing
+   =================================================================== */
+
+/* Modern form container */
+#quoteForm {
+  background: var(--cream);
+  border: none;
+  border-radius: 4px;
+  padding: 2.5rem;
+  box-shadow: 0 2px 12px rgba(21, 40, 28, 0.06);
+}
+@media (max-width: 768px) {
+  #quoteForm {
+    padding: 1.5rem 1.2rem;
+  }
+}
+
+/* Modern step spacing */
+.calc-step {
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border-soft);
+}
+.calc-step:last-of-type {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+/* Modern labels */
+.calc-step label {
+  display: block;
+  font-family: var(--sans);
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: var(--forest-dark);
+  font-size: 0.92rem;
+  letter-spacing: 0.01em;
+}
+.calc-step .hint {
+  font-weight: 400;
+  color: var(--muted);
+  font-size: 0.82rem;
+  font-style: italic;
+}
+
+/* Modern text inputs */
+.calc-number {
+  width: 100%;
+  padding: 0.75rem 0.9rem;
+  border: 1px solid var(--border-soft);
+  border-radius: 3px;
+  font-size: 1rem;
+  font-family: var(--sans);
+  background: #fff;
+  color: var(--forest-dark);
+  transition: border-color var(--transition), box-shadow var(--transition);
+  min-height: 48px;
+  box-sizing: border-box;
+}
+.calc-number:hover {
+  border-color: var(--forest-light);
+}
+.calc-number:focus {
+  outline: none;
+  border-color: var(--forest);
+  box-shadow: 0 0 0 3px rgba(45, 90, 61, 0.1);
+  background: #fff;
+}
+.calc-number::placeholder {
+  color: var(--muted);
+  font-weight: 400;
+}
+
+/* Modern radio button options */
+.calc-options {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 0.5rem;
+}
+.calc-options label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  border: 1px solid var(--border-soft);
+  border-radius: 3px;
+  padding: 0.7rem 0.85rem;
+  font-family: var(--sans);
+  font-weight: 500;
+  cursor: pointer;
+  font-size: 0.88rem;
+  text-align: center;
+  transition: all var(--transition);
+  margin-bottom: 0;
+  color: var(--forest);
+  min-height: 44px;
+}
+.calc-options label:hover {
+  background: var(--cream);
+  border-color: var(--forest-light);
+  color: var(--forest-dark);
+}
+.calc-options input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+.calc-options input[type="radio"]:checked + label {
+  background: var(--forest-dark);
+  border-color: var(--forest-dark);
+  color: #fff;
+  font-weight: 600;
+}
+
+/* Modern file upload */
+.file-upload {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1.5rem 1rem;
+  border: 1px dashed var(--border-soft);
+  border-radius: 3px;
+  cursor: pointer;
+  transition: all var(--transition);
+  background: #fff;
+  font-family: var(--sans);
+  font-size: 0.88rem;
+  color: var(--forest);
+  text-align: center;
+}
+.file-upload:hover {
+  border-color: var(--forest);
+  border-style: solid;
+  background: var(--cream);
+  color: var(--forest-dark);
+}
+.file-upload svg {
+  width: 22px;
+  height: 22px;
+  color: var(--gold-deep);
+}
+
+/* Modern checkbox */
+.calc-step input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--forest);
+  cursor: pointer;
+}
+
+/* Modern submit button */
+#submitBtn {
+  min-height: 52px;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  padding: 0.9rem 2rem;
+}
+
+/* Modern success/error messages */
+#successMessage {
+  padding: 1.5rem;
+  background: var(--cream);
+  border-radius: 4px;
+  border-left: 3px solid var(--forest);
+  margin: 1rem 0;
+  box-shadow: 0 2px 8px rgba(21, 40, 28, 0.06);
+}
+#errorMessage {
+  padding: 1.5rem;
+  background: #fef2f2;
+  border-radius: 4px;
+  border-left: 3px solid #dc2626;
+  margin: 1rem 0;
+}
+
+
+/* ===================================================================
+   EDITORIAL DESIGN SYSTEM v2.18 - Photo markup v3 Paint-like (2026-07-18)
+   Toolbar with Pen/Label/Eraser tools, color picker, custom labels
+   =================================================================== */
+.photo-markup-tool__global-toolbar {
+  margin-top: 1.2rem;
+  padding: 1.2rem 1.3rem;
+  background: #fff;
+  border: 1px solid var(--border-soft);
+  border-radius: 3px;
+}
+
+.photo-markup-tool__tools-section,
+.photo-markup-tool__colors-section,
+.photo-markup-tool__labels-section {
+  margin-bottom: 1rem;
+}
+.photo-markup-tool__tools-section:last-child,
+.photo-markup-tool__colors-section:last-child,
+.photo-markup-tool__labels-section:last-child {
+  margin-bottom: 0;
+}
+
+.photo-markup-tool__tools-label {
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--forest-light);
+  margin: 0 0 0.5rem;
+}
+
+.photo-markup-tool__tools-row {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+.photo-markup-tool__tool {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.6rem 1rem;
+  background: var(--cream);
+  border: 1px solid var(--border-soft);
+  border-radius: 3px;
+  font-family: var(--sans);
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--forest);
+  cursor: pointer;
+  transition: all var(--transition);
+  min-height: 44px;
+}
+.photo-markup-tool__tool:hover {
+  background: #fff;
+  border-color: var(--forest-light);
+}
+.photo-markup-tool__tool.is-active {
+  background: var(--forest-dark);
+  color: #fff;
+  border-color: var(--forest-dark);
+}
+.photo-markup-tool__tool svg {
+  flex-shrink: 0;
+}
+
+.photo-markup-tool__colors-row {
+  display: flex;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+}
+.photo-markup-tool__color {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid var(--border-soft);
+  cursor: pointer;
+  transition: all var(--transition);
+  padding: 0;
+}
+.photo-markup-tool__color:hover {
+  transform: scale(1.1);
+  border-color: var(--forest);
+}
+.photo-markup-tool__color.is-active {
+  border-color: var(--forest-dark);
+  border-width: 3px;
+  transform: scale(1.1);
+  box-shadow: 0 2px 6px rgba(21, 40, 28, 0.2);
+}
+
+.photo-markup-tool__custom-label {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.6rem;
+}
+.photo-markup-tool__custom-label input {
+  flex: 1;
+  font-family: var(--sans);
+  font-size: 0.88rem;
+  padding: 0.5rem 0.7rem;
+  border: 1px solid var(--border-soft);
+  border-radius: 3px;
+  background: var(--cream);
+  color: var(--forest-dark);
+  min-height: 40px;
+}
+.photo-markup-tool__custom-label input:focus {
+  outline: none;
+  border-color: var(--forest);
+  background: #fff;
+}
+
+.photo-markup-tool__active-indicator {
+  margin-top: 0.8rem;
+  padding: 0.6rem 0.9rem;
+  background: var(--cream);
+  border: 1px solid var(--border-soft);
+  border-radius: 3px;
+  font-family: var(--sans);
+  font-size: 0.85rem;
+  color: var(--muted);
+  transition: all var(--transition);
+}
+.photo-markup-tool__active-indicator.is-active {
+  background: var(--cream-warm);
+  color: var(--forest-dark);
+}
+.photo-markup-tool__active-indicator.is-active strong {
+  color: var(--gold-deep);
+}
+
+/* Canvas wrapper for better positioning */
+.photo-markup-tool__canvas-wrap {
+  position: relative;
+  background: #fff;
+  overflow: hidden;
+}
+.photo-markup-tool__canvas {
+  display: block;
+  width: 100%;
+  height: auto;
+  cursor: crosshair;
+  touch-action: none;
+}
+
+/* Hide old presets section that was inline */
+.photo-markup-tool__presets {
+  display: none;
+}
+
+
+/* ===================================================================
+   EDITORIAL DESIGN SYSTEM v2.19 — Gardening Knowledge premium (2026-07-18)
+   Modernize the tips index page from 1990s HTML to premium editorial
+   =================================================================== */
+
+/* Premium article card redesign for tips index */
+.tip-card.editorial-row {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 1.5rem;
+  align-items: center;
+  padding: 1.4rem 1.6rem;
+  background: #fff;
+  border: 1px solid var(--border-soft);
+  border-radius: 4px;
+  text-decoration: none;
+  transition: all 0.25s ease;
+  box-shadow: 0 1px 3px rgba(21, 40, 28, 0.04);
+  position: relative;
+  overflow: hidden;
+}
+.tip-card.editorial-row::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 3px;
+  height: 100%;
+  background: var(--gold);
+  transform: scaleY(0);
+  transition: transform 0.25s ease;
+  transform-origin: top;
+}
+.tip-card.editorial-row:hover {
+  border-color: var(--forest-light);
+  box-shadow: 0 4px 16px rgba(21, 40, 28, 0.1);
+  transform: translateY(-2px);
+}
+.tip-card.editorial-row:hover::before {
+  transform: scaleY(1);
+}
+
+/* Modernize the visual icon */
+.editorial-row__visual {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--cream);
+  border-radius: 4px;
+  flex-shrink: 0;
+  border: 1px solid var(--border-soft);
+}
+.editorial-row__visual-icon svg {
+  width: 22px;
+  height: 22px;
+  color: var(--gold-deep);
+}
+
+/* Better title */
+.editorial-row__title {
+  font-family: var(--serif);
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: var(--forest-dark);
+  margin: 0 0 0.3rem;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+}
+
+/* Better intro text */
+.editorial-row__intro {
+  font-size: 0.88rem;
+  color: var(--muted);
+  line-height: 1.5;
+  margin: 0 0 0.6rem;
+  font-family: var(--sans);
+}
+
+/* Better pills */
+.editorial-row__pill {
+  font-family: var(--sans);
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  letter-spacing: 0.04em;
+  background: var(--cream);
+  color: var(--muted);
+}
+.editorial-row__pill--easy {
+  background: rgba(90, 154, 62, 0.12);
+  color: #4a7a3a;
+  font-weight: 600;
+}
+
+/* Better tags */
+.editorial-row__tag {
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  font-weight: 500;
+  padding: 0.15rem 0.5rem;
+  border-radius: 2px;
+  background: var(--cream-warm);
+  color: var(--forest);
+  letter-spacing: 0.02em;
+}
+
+/* Better CTA */
+.editorial-row__cta {
+  font-family: var(--sans);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--forest);
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  flex-shrink: 0;
+  padding-left: 1rem;
+  border-left: 1px solid var(--border-soft);
+}
+.editorial-row__cta svg {
+  width: 16px;
+  height: 16px;
+  transition: transform var(--transition);
+}
+.tip-card.editorial-row:hover .editorial-row__cta svg {
+  transform: translateX(4px);
+}
+
+/* Premium category section headers */
+.tip-cat-header {
+  font-family: var(--serif);
+  font-size: 1.8rem;
+  font-weight: 500;
+  color: var(--forest-dark);
+  margin: 3rem 0 1.2rem;
+  padding-bottom: 0.6rem;
+  border-bottom: 2px solid var(--forest-dark);
+  letter-spacing: -0.015em;
+}
+.tip-cat-header:first-child {
+  margin-top: 0;
+}
+
+/* Premium featured section */
+.tip-featured-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+@media (max-width: 768px) {
+  .tip-featured-grid {
+    grid-template-columns: 1fr;
+  }
+  .tip-card.editorial-row {
+    grid-template-columns: auto 1fr;
+    gap: 1rem;
+  }
+  .editorial-row__cta {
+    grid-column: 2;
+    padding-left: 0;
+    border-left: none;
+    margin-top: 0.4rem;
+  }
+}
+
+/* Premium search bar for tips */
+.tip-search-wrap {
+  margin-bottom: 2rem;
+  position: relative;
+}
+.tip-search-input {
+  width: 100%;
+  font-family: var(--sans);
+  font-size: 1rem;
+  padding: 0.9rem 1rem 0.9rem 2.8rem;
+  border: 1px solid var(--border-soft);
+  border-radius: 4px;
+  background: #fff;
+  color: var(--forest-dark);
+  min-height: 52px;
+  box-sizing: border-box;
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+.tip-search-input:focus {
+  outline: none;
+  border-color: var(--forest);
+  box-shadow: 0 0 0 3px rgba(45, 90, 61, 0.1);
+}
+.tip-search-input::placeholder {
+  color: var(--muted);
+}
+.tip-search-icon {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 18px;
+  height: 18px;
+  color: var(--muted);
+  pointer-events: none;
+}
+
+/* Better section title for featured/newest/popular */
+.tip-section-title {
+  font-family: var(--serif);
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: var(--forest-dark);
+  margin: 0 0 1rem;
+  letter-spacing: -0.01em;
+}
+
+
+/* ===================================================================
+   EDITORIAL DESIGN SYSTEM v2.20 - RPRP form premium redesign (2026-07-18)
+   =================================================================== */
+
+/* Premium form container */
+.rprp-tool {
+  background: linear-gradient(180deg, var(--cream) 0%, #fff 100%);
+  border: 1px solid var(--border-soft);
+  border-radius: 6px;
+  padding: 2rem 2.2rem 2.2rem;
+  margin: 2rem 0 3rem;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 2px 12px rgba(21, 40, 28, 0.04);
+}
+.rprp-tool::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, var(--forest-dark), var(--gold), var(--forest-dark));
+}
+
+/* Premium form wrap */
+.rprp-tool__form-wrap {
+  background: #fff;
+  border: 1px solid var(--border-soft);
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 1px 4px rgba(21, 40, 28, 0.04);
+}
+
+/* Premium summary bar */
+.rprp-tool__form-summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 1rem 1.3rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: var(--serif);
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--forest-dark);
+  user-select: none;
+  background: var(--forest-dark);
+  color: #fff;
+  border: none;
+  transition: background var(--transition);
+}
+.rprp-tool__form-summary:hover {
+  background: var(--forest);
+}
+.rprp-tool__form-summary::-webkit-details-marker { display: none; }
+.rprp-tool__form-summary svg {
+  transition: transform 0.25s ease;
+  color: var(--gold-light);
+}
+.rprp-tool__form-wrap[open] .rprp-tool__form-summary svg {
+  transform: rotate(180deg);
+}
+
+/* Premium form body */
+.rprp-tool__form {
+  padding: 1.5rem 1.6rem 1.6rem;
+  border-top: none;
+}
+
+/* Premium grid */
+.rprp-tool__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.8rem 1rem;
+}
+@media (max-width: 900px) {
+  .rprp-tool__grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 600px) {
+  .rprp-tool__grid { grid-template-columns: 1fr; }
+}
+
+/* Premium field labels */
+.rprp-tool__field label {
+  font-family: var(--sans);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--forest-light);
+  margin-bottom: 0.3rem;
+  display: block;
+}
+
+/* Premium selects */
+.rprp-tool__field select {
+  font-family: var(--sans);
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--forest-dark);
+  background: var(--cream);
+  border: 1px solid var(--border-soft);
+  border-radius: 4px;
+  padding: 0.6rem 2rem 0.6rem 0.8rem;
+  min-height: 44px;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23a08343' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3e%3cpath d='m6 9 6 6 6-6'/%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 0.7rem center;
+  background-size: 12px;
+  cursor: pointer;
+  transition: all var(--transition);
+  width: 100%;
+  box-sizing: border-box;
+}
+.rprp-tool__field select:hover {
+  border-color: var(--forest-light);
+  background-color: #fff;
+  box-shadow: 0 1px 4px rgba(21, 40, 28, 0.06);
+}
+.rprp-tool__field select:focus {
+  outline: none;
+  border-color: var(--forest);
+  box-shadow: 0 0 0 3px rgba(45, 90, 61, 0.12);
+  background-color: #fff;
+}
+
+/* Premium actions */
+.rprp-tool__actions {
+  margin-top: 1rem;
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border-soft);
+}
+
+/* Premium divider */
+.rprp-tool__divider {
+  text-align: center;
+  margin: 1rem 0 0.8rem;
+  position: relative;
+  font-family: var(--sans);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.rprp-tool__divider span {
+  background: #fff;
+  padding: 0 0.8rem;
+  position: relative;
+  z-index: 1;
+}
+.rprp-tool__divider::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--border-soft);
+  z-index: 0;
+}
+
+/* Premium postcode section */
+.rprp-tool__postcode {
+  margin-bottom: 0.8rem;
+  padding: 1rem 1.2rem;
+  background: linear-gradient(135deg, var(--forest-dark), var(--forest));
+  border-radius: 4px;
+  color: #fff;
+}
+.rprp-tool__postcode label {
+  font-family: var(--sans);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold-light);
+  margin-bottom: 0.4rem;
+  display: block;
+}
+.rprp-tool__postcode-row {
+  display: flex;
+  gap: 0.5rem;
+}
+.rprp-tool__postcode-row input {
+  flex: 1;
+  font-family: var(--sans);
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 0.6rem 0.9rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  min-height: 44px;
+  transition: all var(--transition);
+  letter-spacing: 0.02em;
+}
+.rprp-tool__postcode-row input::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+  font-weight: 400;
+}
+.rprp-tool__postcode-row input:focus {
+  outline: none;
+  background: rgba(255, 255, 255, 0.15);
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(200, 164, 94, 0.15);
+}
+.rprp-tool__postcode-row button {
+  min-height: 44px;
+  white-space: nowrap;
+  border-radius: 4px;
+}
+
+/* Premium detect result */
+.rprp-tool__detect-result {
+  margin-top: 0.6rem;
+  padding: 0.7rem 0.9rem;
+  border-radius: 4px;
+  font-family: var(--sans);
+  font-size: 0.85rem;
+  line-height: 1.5;
+  border: 1px solid transparent;
+}
+
+/* Premium active indicator */
+.rprp-tool__active-indicator {
+  margin-top: 0.6rem;
+  padding: 0.5rem 0.9rem;
+  background: var(--cream);
+  border: 1px solid var(--border-soft);
+  border-radius: 4px;
+  font-family: var(--sans);
+  font-size: 0.82rem;
+  color: var(--muted);
+  transition: all var(--transition);
+}
+
+/* Premium result cards */
+.rprp-result {
+  display: flex;
+  flex-direction: row;
+  gap: 1.2rem;
+  background: #fff;
+  border: 1px solid var(--border-soft);
+  border-radius: 4px;
+  padding: 1.2rem 1.4rem;
+  text-decoration: none;
+  color: var(--forest-dark);
+  transition: all var(--transition);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(21, 40, 28, 0.04);
+}
+.rprp-result::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 3px;
+  height: 100%;
+  background: var(--gold);
+  transform: scaleY(0);
+  transition: transform var(--transition);
+  transform-origin: top;
+}
+.rprp-result:hover {
+  border-color: var(--forest-light);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(21, 40, 28, 0.08);
+}
+.rprp-result:hover::before {
+  transform: scaleY(1);
+}
+
+
+/* Constrain SVGs inside callout headings (was oversized on guides page) */
+.callout h3 svg,
+.callout h4 svg {
+  width: 18px !important;
+  height: 18px !important;
+  flex-shrink: 0;
+}
+
+/* Reduce callout padding on guides page specifically */
+.callout {
+  padding: 1rem 1.3rem;
+  margin: 1rem 0;
+}
+.callout h3 {
+  font-size: 1.1rem;
+  margin-bottom: 0.4rem;
+}
+.callout p {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin-bottom: 0;
+}
+
+
+/* ===================================================================
+   EDITORIAL DESIGN SYSTEM v2.21 - Photo markup modal popup (2026-07-18)
+   Click small canvas → opens large modal → draw → save → closes
+   =================================================================== */
+.photo-markup-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(21, 40, 28, 0.85);
+  z-index: 9999;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  backdrop-filter: blur(4px);
+}
+.photo-markup-modal.is-open {
+  display: flex;
+}
+.photo-markup-modal__inner {
+  background: #fff;
+  border-radius: 6px;
+  max-width: 900px;
+  width: 100%;
+  max-height: 90vh;
+  overflow: auto;
+  position: relative;
+}
+.photo-markup-modal__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.5rem;
+  background: var(--forest-dark);
+  color: #fff;
+  border-radius: 6px 6px 0 0;
+}
+.photo-markup-modal__title {
+  font-family: var(--serif);
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin: 0;
+}
+.photo-markup-modal__close {
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.3);
+  color: #fff;
+  font-size: 1.3rem;
+  width: 36px;
+  height: 36px;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background var(--transition);
+}
+.photo-markup-modal__close:hover {
+  background: rgba(255,255,255,0.15);
+}
+.photo-markup-modal__body {
+  padding: 1.5rem;
+}
+.photo-markup-modal__canvas-wrap {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+.photo-markup-modal__canvas-wrap canvas {
+  max-width: 100%;
+  height: auto;
+  border: 1px solid var(--border-soft);
+  border-radius: 4px;
+}
+.photo-markup-modal__actions {
+  display: flex;
+  gap: 0.6rem;
+  justify-content: flex-end;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border-soft);
+}
+
+/* Small preview in the form */
+.photo-markup-tool__slot-preview {
+  cursor: pointer;
+  position: relative;
+}
+.photo-markup-tool__slot-preview:hover .photo-markup-tool__slot-preview-overlay {
+  opacity: 1;
+}
+.photo-markup-tool__slot-preview-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(21, 40, 28, 0.6);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--sans);
+  font-size: 0.85rem;
+  font-weight: 600;
+  opacity: 0;
+  transition: opacity var(--transition);
+  border-radius: 4px;
+}
+
+
+/* ===================================================================
+   EDITORIAL DESIGN SYSTEM v2.22 - Calculator results modal (2026-07-18)
+   Results show in a popup modal with X close button
+   =================================================================== */
+.calc-result-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(21, 40, 28, 0.8);
+  z-index: 9999;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  backdrop-filter: blur(4px);
+}
+.calc-result-modal.is-open {
+  display: flex;
+}
+.calc-result-modal__inner {
+  background: #fff;
+  border-radius: 6px;
+  max-width: 700px;
+  width: 100%;
+  max-height: 90vh;
+  overflow: auto;
+  position: relative;
+}
+.calc-result-modal__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.2rem 1.5rem;
+  background: var(--forest-dark);
+  color: #fff;
+  border-radius: 6px 6px 0 0;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+.calc-result-modal__title {
+  font-family: var(--serif);
+  font-size: 1.3rem;
+  font-weight: 500;
+  margin: 0;
+  color: #fff;
+}
+.calc-result-modal__close {
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.3);
+  color: #fff;
+  font-size: 1.5rem;
+  width: 40px;
+  height: 40px;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background var(--transition);
+  flex-shrink: 0;
+}
+.calc-result-modal__close:hover {
+  background: rgba(255,255,255,0.15);
+}
+.calc-result-modal__body {
+  padding: 1.5rem;
+}
+.calc-result-modal__footer {
+  padding: 1.2rem 1.5rem;
+  border-top: 1px solid var(--border-soft);
+  display: flex;
+  gap: 0.6rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  background: var(--cream);
+  border-radius: 0 0 6px 6px;
+}
+
+
+/* ===================================================================
+   v2.23 - Photo markup slots ENLARGED (2026-07-18)
+   User: images way too small. Fix: single column, large slots
+   =================================================================== */
+
+/* Override the 3-column grid - use single column with large slots */
+.photo-markup-tool__slots {
+  display: grid;
+  grid-template-columns: 1fr !important;
+  gap: 1.5rem !important;
+  margin-bottom: 1.5rem !important;
+}
+
+/* Make each slot much larger */
+.photo-markup-tool__slot {
+  min-height: 300px !important;
+  border: 2px dashed var(--border-soft) !important;
+  border-radius: 6px !important;
+  overflow: hidden;
+}
+
+/* Larger upload button area */
+.photo-markup-tool__slot-empty {
+  padding: 3rem 2rem !important;
+}
+.photo-markup-tool__upload-btn {
+  padding: 2rem 1.5rem !important;
+}
+.photo-markup-tool__upload-btn svg {
+  width: 48px !important;
+  height: 48px !important;
+}
+.photo-markup-tool__upload-btn span {
+  font-size: 1.1rem !important;
+}
+
+/* Make the canvas full width and taller */
+.photo-markup-tool__canvas {
+  width: 100% !important;
+  max-height: 500px;
+  object-fit: contain;
+  background: #fff;
+}
+
+/* Larger canvas wrapper */
+.photo-markup-tool__canvas-wrap {
+  min-height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--cream);
+}
+
+/* Better toolbar sizing */
+.photo-markup-tool__slot-toolbar {
+  padding: 0.6rem 1rem !important;
+  font-size: 0.85rem !important;
+}
+
+
+/* ===================================================================
+   v2.24 - Plant Library premium redesign (2026-07-18)
+   Complete overhaul to match homepage editorial quality x1000
+   =================================================================== */
+
+/* ---- Premium page header ---- */
+.plants/index.html .page-header,
+.page-header.page-header-editorial {
+  min-height: 45vh;
+}
+
+/* ---- Premium callout (About this library) ---- */
+.plants-callout {
+  background: linear-gradient(135deg, var(--forest-dark), var(--forest)) !important;
+  color: #fff !important;
+  border: none !important;
+  border-radius: 4px !important;
+  padding: 1.8rem 2rem !important;
+  margin-bottom: 1.5rem !important;
+  border-left: 4px solid var(--gold) !important;
+  position: relative;
+  overflow: hidden;
+}
+.plants-callout h3 {
+  color: var(--gold-light) !important;
+  font-family: var(--serif) !important;
+  font-size: 1.4rem !important;
+  font-weight: 500 !important;
+  margin: 0 0 0.5rem !important;
+  display: block !important;
+}
+.plants-callout h3 svg {
+  display: none !important;
+}
+.plants-callout p {
+  color: rgba(255,255,255,0.88) !important;
+  font-size: 0.95rem !important;
+  line-height: 1.6 !important;
+  font-family: var(--sans) !important;
+}
+
+/* ---- Premium search bar ---- */
+.plant-search-premium__wrap {
+  position: relative;
+  margin-bottom: 1.5rem;
+}
+.plant-search-premium__input {
+  width: 100%;
+  font-family: var(--sans) !important;
+  font-size: 1rem !important;
+  padding: 0.9rem 1rem 0.9rem 2.8rem !important;
+  border: 1px solid var(--border-soft) !important;
+  border-radius: 4px !important;
+  background: #fff !important;
+  color: var(--forest-dark) !important;
+  min-height: 52px !important;
+  box-sizing: border-box !important;
+  transition: all var(--transition) !important;
+  box-shadow: 0 1px 3px rgba(21,40,28,0.04) !important;
+}
+.plant-search-premium__input:focus {
+  outline: none !important;
+  border-color: var(--forest) !important;
+  box-shadow: 0 0 0 3px rgba(45,90,61,0.1), 0 1px 3px rgba(21,40,28,0.04) !important;
+}
+.plant-search-premium__icon {
+  position: absolute !important;
+  left: 1rem !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  width: 18px !important;
+  height: 18px !important;
+  color: var(--gold-deep) !important;
+  pointer-events: none !important;
+}
+.plant-search-premium__icon svg {
+  width: 18px !important;
+  height: 18px !important;
+}
+
+/* ---- Premium category chips ---- */
+.plant-cat-chips {
+  margin-bottom: 2rem !important;
+}
+.plant-cat-chips__toggle {
+  font-family: var(--sans) !important;
+  font-size: 0.82rem !important;
+  font-weight: 600 !important;
+  padding: 0.5rem 1rem !important;
+  background: var(--cream) !important;
+  border: 1px solid var(--border-soft) !important;
+  border-radius: 4px !important;
+  color: var(--forest-dark) !important;
+  cursor: pointer !important;
+}
+.plant-cat-chip {
+  font-family: var(--sans) !important;
+  font-size: 0.82rem !important;
+  font-weight: 500 !important;
+  padding: 0.35rem 0.8rem !important;
+  background: #fff !important;
+  border: 1px solid var(--border-soft) !important;
+  border-radius: 999px !important;
+  color: var(--forest) !important;
+  text-decoration: none !important;
+  transition: all var(--transition) !important;
+}
+.plant-cat-chip:hover {
+  background: var(--forest-dark) !important;
+  color: #fff !important;
+  border-color: var(--forest-dark) !important;
+}
+.plant-cat-chip__count {
+  background: var(--cream) !important;
+  color: var(--muted) !important;
+  padding: 0.05rem 0.4rem !important;
+  border-radius: 999px !important;
+  font-size: 0.7rem !important;
+  margin-left: 0.3rem !important;
+}
+.plant-cat-chip:hover .plant-cat-chip__count {
+  background: rgba(255,255,255,0.2) !important;
+  color: rgba(255,255,255,0.8) !important;
+}
+
+/* ---- Premium category headers ---- */
+.plant-cat-header {
+  display: flex !important;
+  align-items: baseline !important;
+  gap: 0.8rem !important;
+  margin: 3rem 0 1.5rem !important;
+  padding-bottom: 0.8rem !important;
+  border-bottom: 2px solid var(--forest-dark) !important;
+  position: relative;
+}
+.plant-cat-header::before {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 60px;
+  height: 2px;
+  background: var(--gold);
+}
+.plant-cat-header h2 {
+  font-family: var(--serif) !important;
+  font-size: 1.8rem !important;
+  font-weight: 500 !important;
+  color: var(--forest-dark) !important;
+  margin: 0 !important;
+  line-height: 1.2 !important;
+  letter-spacing: -0.015em !important;
+}
+.plant-cat-count {
+  font-family: var(--sans) !important;
+  font-size: 0.75rem !important;
+  font-weight: 600 !important;
+  color: var(--gold-deep) !important;
+  background: var(--cream) !important;
+  padding: 0.2rem 0.7rem !important;
+  border-radius: 999px !important;
+  min-width: 2rem !important;
+  text-align: center !important;
+  letter-spacing: 0.04em !important;
+}
+
+/* ---- Premium plant grid ---- */
+.plant-grid-premium {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)) !important;
+  gap: 1.5rem !important;
+}
+
+/* ---- Premium plant cards (magazine quality) ---- */
+.plant-card-premium {
+  background: #fff !important;
+  border: 1px solid var(--border-soft) !important;
+  border-radius: 4px !important;
+  overflow: hidden !important;
+  box-shadow: 0 1px 3px rgba(21,40,28,0.04) !important;
+  transition: all 0.3s cubic-bezier(0.4,0,0.2,1) !important;
+  position: relative !important;
+}
+.plant-card-premium::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 3px;
+  height: 100%;
+  background: var(--gold);
+  transform: scaleY(0);
+  transition: transform 0.3s ease;
+  transform-origin: top;
+  z-index: 2;
+}
+.plant-card-premium:hover {
+  border-color: var(--forest-light) !important;
+  box-shadow: 0 8px 24px rgba(21,40,28,0.1) !important;
+  transform: translateY(-3px) !important;
+}
+.plant-card-premium:hover::before {
+  transform: scaleY(1);
+}
+
+/* Premium card image */
+.plant-card-premium .plant-card-image {
+  margin: 0 !important;
+  border-radius: 0 !important;
+  aspect-ratio: 4 / 3 !important;
+  overflow: hidden !important;
+  background: var(--cream) !important;
+}
+.plant-card-premium .plant-card-image img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  transition: transform 0.5s ease !important;
+}
+.plant-card-premium:hover .plant-card-image img {
+  transform: scale(1.05) !important;
+}
+
+/* Premium card body */
+.plant-card-premium__body {
+  padding: 1.2rem 1.3rem 1.3rem !important;
+}
+.plant-card-premium__name {
+  font-family: var(--serif) !important;
+  font-size: 1.25rem !important;
+  font-weight: 500 !important;
+  color: var(--forest-dark) !important;
+  margin: 0 0 0.15rem !important;
+  line-height: 1.2 !important;
+  letter-spacing: -0.01em !important;
+}
+.plant-card-premium__latin {
+  font-style: italic !important;
+  font-size: 0.82rem !important;
+  color: var(--muted) !important;
+  margin: 0 0 0.6rem !important;
+  font-family: var(--serif) !important;
+}
+
+/* Premium flower bar + prune bar */
+.flower-bar, .prune-bar {
+  margin: 0.5rem 0 !important;
+  padding: 0.4rem 0.6rem !important;
+  background: var(--cream) !important;
+  border-radius: 3px !important;
+  font-size: 0.7rem !important;
+}
+.flower-bar__caption, .prune-bar__caption {
+  font-family: var(--sans) !important;
+  font-weight: 600 !important;
+  color: var(--forest-light) !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.06em !important;
+}
+
+/* Premium description */
+.plant-card-premium__desc {
+  font-size: 0.85rem !important;
+  color: var(--muted) !important;
+  line-height: 1.55 !important;
+  margin: 0.6rem 0 0.8rem !important;
+  font-family: var(--sans) !important;
+}
+
+/* Premium CTA */
+.plant-card-premium__cta {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 0.3rem !important;
+  font-family: var(--sans) !important;
+  font-size: 0.75rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.06em !important;
+  text-transform: uppercase !important;
+  color: var(--forest) !important;
+  transition: gap var(--transition), color var(--transition) !important;
+}
+.plant-card-premium:hover .plant-card-premium__cta {
+  gap: 0.5rem !important;
+  color: var(--forest-dark) !important;
+}
+
+/* ---- Premium no results ---- */
+.plant-no-results {
+  text-align: center !important;
+  padding: 3rem 1.5rem !important;
+  background: var(--cream) !important;
+  border-radius: 4px !important;
+}
+.plant-no-results h3 {
+  font-family: var(--serif) !important;
+  font-size: 1.4rem !important;
+  color: var(--forest-dark) !important;
+}
+
+/* ---- Premium CTA band at bottom ---- */
+.cta-band-compact {
+  background: var(--forest-dark) !important;
+  color: #fff !important;
+  padding: 2.5rem 0 !important;
+}
+.cta-band-compact h2 {
+  font-family: var(--serif) !important;
+  font-size: 1.6rem !important;
+  font-weight: 500 !important;
+  color: #fff !important;
+  margin-bottom: 0.5rem !important;
+}
+.cta-band-compact p {
+  color: rgba(255,255,255,0.8) !important;
+}
+.cta-band-compact-actions {
+  margin-top: 1rem !important;
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 700px) {
+  .plant-grid-premium {
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
+  }
+  .plant-cat-header h2 {
+    font-size: 1.4rem !important;
+  }
+}
+
