@@ -31,6 +31,14 @@
         {name: "Birdsfoot Trefoil (<em>Lotus corniculatus</em>)", percent: "7%"},
         {name: "Oxeye Daisy (<em>Leucanthemum vulgare</em>)", percent: "6%"},
         {name: "Field Scabious (<em>Knautia arvensis</em>)", percent: "5%"},
+        {name: "Lady's Bedstraw (<em>Galium verum</em>)", percent: "included"},
+        {name: "Yellow Rattle (<em>Rhinanthus minor</em>)", percent: "included"},
+        {name: "Wild Thyme (<em>Thymus polytrichus</em>)", percent: "included"},
+        {name: "Harebell (<em>Campanula rotundifolia</em>)", percent: "included"},
+        {name: "Common Knapweed (<em>Centaurea nigra</em>)", percent: "included"},
+        {name: "Rough Hawkbit (<em>Leontodon hispidus</em>)", percent: "included"},
+        {name: "Meadow Cranesbill (<em>Geranium pratense</em>)", percent: "included"},
+        {name: "Greater Knapweed (<em>Centaurea scabiosa</em>)", percent: "included"},
         {name: "Plus 8 more chalk-loving species", percent: "30%"},
       ];
       recNotes = "Calcareous chalk soils support a distinctive flora. This mix thrives on the free-draining alkaline soils of the Chilterns and includes species that host rare butterflies like the Chalkhill Blue.";
@@ -45,6 +53,13 @@
         {name: "Purple Loosestrife (<em>Lythrum salicaria</em>)", percent: "7%"},
         {name: "Marsh Marigold (<em>Caltha palustris</em>)", percent: "6%"},
         {name: "Gipsywort (<em>Lycopus europaeus</em>)", percent: "5%"},
+        {name: "Meadow Cranesbill (<em>Geranium pratense</em>)", percent: "included"},
+        {name: "Yellow Rattle (<em>Rhinanthus minor</em>)", percent: "included"},
+        {name: "Cuckooflower (<em>Cardamine pratensis</em>)", percent: "included"},
+        {name: "Meadow Vetchling (<em>Lathyrus pratensis</em>)", percent: "included"},
+        {name: "Greater Bird's-foot Trefoil (<em>Lotus pedunculatus</em>)", percent: "included"},
+        {name: "Water Avens (<em>Geum rivale</em>)", percent: "included"},
+        {name: "Meadow Sweet (<em>Filipendula ulmaria</em>)", percent: "included"},
         {name: "Plus 7 more damp-tolerant species", percent: "30%"},
       ];
       recNotes = "Heavy clay and damp soils need species adapted to wetter conditions. This mix suits low-lying areas, pond edges and gardens with poor drainage.";
@@ -72,6 +87,11 @@
         {name: "Slender St Johns Wort (<em>Hypericum pulchrum</em>)", percent: "8%"},
         {name: "Sheeps Sorrel (<em>Rumex acetosella</em>)", percent: "7%"},
         {name: "Fairy Flax (<em>Linum catharticum</em>)", percent: "6%"},
+        {name: "Harebell (<em>Campanula rotundifolia</em>)", percent: "included"},
+        {name: "Common Knapweed (<em>Centaurea nigra</em>)", percent: "included"},
+        {name: "Yarrow (<em>Achillea millefolium</em>)", percent: "included"},
+        {name: "Mouse-ear Hawkweed (<em>Hieracium pilosella</em>)", percent: "included"},
+        {name: "Cowslip (<em>Primula veris</em>)", percent: "included"},
         {name: "Plus 5 more low-growing species", percent: "22%"},
         {name: "Sowing rate: 1 to 2 g/m2 of pure wildflower seed", percent: "-"},
       ];
@@ -86,6 +106,15 @@
         {name: "Ladies Bedstraw (<em>Galium verum</em>)", percent: "7%"},
         {name: "Teasel (<em>Dipsacus fullonum</em>)", percent: "6%"},
         {name: "Verbascum (<em>Verbascum nigrum</em>)", percent: "5%"},
+        {name: "Common Knapweed (<em>Centaurea nigra</em>)", percent: "included"},
+        {name: "Meadow Cranesbill (<em>Geranium pratense</em>)", percent: "included"},
+        {name: "Yarrow (<em>Achillea millefolium</em>)", percent: "included"},
+        {name: "Common Vetch (<em>Vicia sativa</em>)", percent: "included"},
+        {name: "Corn Marigold (<em>Glebionis segetum</em>)", percent: "included"},
+        {name: "Cornflower (<em>Centaurea cyanus</em>)", percent: "included"},
+        {name: "Red Poppy (<em>Papaver rhoeas</em>)", percent: "included"},
+        {name: "Viper's Bugloss (<em>Echium vulgare</em>)", percent: "included"},
+        {name: "Musk Mallow (<em>Malva moschata</em>)", percent: "included"},
         {name: "Plus 9 more cottage garden species", percent: "44%"},
         {name: "Sowing rate: 3 to 5 g/m2", percent: "-"},
       ];
@@ -101,6 +130,16 @@
         {name: "Knapweed (<em>Centaurea nigra</em>)", percent: "7%"},
         {name: "Yarrow (<em>Achillea millefolium</em>)", percent: "7%"},
         {name: "Ribwort Plantain (<em>Plantago lanceolata</em>)", percent: "6%"},
+        {name: "Yellow Rattle (<em>Rhinanthus minor</em>)", percent: "included"},
+        {name: "Meadow Buttercup (<em>Ranunculus acris</em>)", percent: "included"},
+        {name: "Red Campion (<em>Silene dioica</em>)", percent: "included"},
+        {name: "Common Sorrel (<em>Rumex acetosa</em>)", percent: "included"},
+        {name: "Meadow Cranesbill (<em>Geranium pratense</em>)", percent: "included"},
+        {name: "Lady's Bedstraw (<em>Galium verum</em>)", percent: "included"},
+        {name: "Rough Hawkbit (<em>Leontodon hispidus</em>)", percent: "included"},
+        {name: "Greater Knapweed (<em>Centaurea scabiosa</em>)", percent: "included"},
+        {name: "Cowslip (<em>Primula veris</em>)", percent: "included"},
+        {name: "Meadow Vetchling (<em>Lathyrus pratensis</em>)", percent: "included"},
         {name: "Plus 10 more meadow species", percent: "25%"},
         {name: "Grass component: 20% fine fescues and bents", percent: "-"},
         {name: "Sowing rate: 4 g/m2 wildflower + 1 g/m2 grass", percent: "-"},
@@ -118,24 +157,17 @@
       colourNote = " White and blue dominant species emphasised: Oxeye Daisy, Field Scabious, Meadow Cranesbill, Selfheal.";
     }
 
-    // Build the seed list display - first 3 visible, rest blurred
+    // Show the complete recommendation so the result is useful on its own.
     var mixHtml = '<div class="calc-seed-list">';
-    seedParts.forEach(function(part, i) {
-      if (i < 3) {
-        mixHtml += '<div class="calc-seed-item">' +
-          '<span class="calc-seed-percent">' + part.percent + '</span>' +
-          '<span class="calc-seed-name">' + part.name + '</span>' +
-          '</div>';
-      } else {
-        mixHtml += '<div class="calc-seed-item calc-seed-item--blurred">' +
-          '<span class="calc-seed-percent">' + part.percent + '</span>' +
-          '<span class="calc-seed-name">' + part.name + '</span>' +
-          '</div>';
-      }
+    seedParts.forEach(function(part) {
+      mixHtml += '<div class="calc-seed-item">' +
+        '<span class="calc-seed-percent">' + part.percent + '</span>' +
+        '<span class="calc-seed-name">' + part.name + '</span>' +
+        '</div>';
     });
     mixHtml += '</div>';
 
-    // Build the method section - first 3 steps visible, rest blurred
+    // Show the complete establishment method.
     var methodSteps = [
       "Clear the area of existing vegetation. Use a systemic weedkiller or solarise with black plastic for 6 to 8 weeks in summer.",
       "Cultivate the top 100 to 150mm of soil to a fine tilth. Remove all perennial weed roots, especially couch grass and bindweed.",
@@ -151,18 +183,14 @@
     var methodHtml = '<div class="calc-method">' +
       '<h4>How to establish your wildflower area (10-step method)</h4>' +
       '<ol class="calc-method-list">';
-    methodSteps.forEach(function(step, i) {
-      if (i < 3) {
-        methodHtml += '<li>' + step + '</li>';
-      } else {
-        methodHtml += '<li class="calc-method-step--blurred">' + step + '</li>';
-      }
+    methodSteps.forEach(function(step) {
+      methodHtml += '<li>' + step + '</li>';
     });
     methodHtml += '</ol>' +
       '<div class="calc-locked-cta">' +
         '<div class="calc-locked-cta__content">' +
-          '<strong>' + '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:4px;"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>' + ' Want the full method?</strong>' +
-          '<p>The remaining 7 steps, full species list, sowing rates and maintenance schedule are available via a detailed quote or our Wildflower Establishment Guide PDF.</p>' +
+          '<strong>' + '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:4px;"><path d="M12 3v18"/><path d="M3 12h18"/></svg>' + ' Want help putting this plan into practice?</strong>' +
+          '<p>The complete mix, named species, establishment steps, sowing rates and maintenance guidance are shown above. Send us photos if you would like a site-specific recommendation or installation plan.</p>' +
         '</div>' +
         '<div class="calc-locked-cta__actions">' +
           '<a class="btn btn-primary" href="/chilterngardenmaintenance-updatedsite/booking/">Get a quote</a>' +

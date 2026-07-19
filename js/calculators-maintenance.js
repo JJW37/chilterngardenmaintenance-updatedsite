@@ -120,7 +120,6 @@
 
   /* ---- LAWN PLANNING TOOL ----
      Recommends specific seed species and cultivars.
-     First 3 seed varieties are shown clearly, the rest are blurred.
-     A "how to" method section shows the first 3 steps, then blurs.
-     CTA after blurred content links to quote form + guides.
+     The result gives the complete assessment. The optional CTA links to
+     quote form and guides for users who want site-specific help.
   */

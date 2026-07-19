@@ -3065,6 +3065,31 @@
           searchIndexLoading = false;
         });
     }
+    // Put every article in its category's single horizontal rail. The older
+    // markup kept the later cards in a hidden "show more" box, which made the
+    // library feel like a long list and also hid useful content on touch
+    // screens. Moving the existing nodes preserves every article and keeps
+    // search working across the complete library.
+    document.querySelectorAll('.tip-hidden-grid').forEach(function(hiddenGrid) {
+      var section = hiddenGrid.closest('.tip-category-section');
+      if (!section) return;
+      var mainList = null;
+      Array.prototype.some.call(section.children, function(child) {
+        if (child.classList && child.classList.contains('editorial-list')) {
+          mainList = child;
+          return true;
+        }
+        return false;
+      });
+      if (!mainList) return;
+      hiddenGrid.querySelectorAll('.tip-card').forEach(function(card) {
+        mainList.appendChild(card);
+      });
+      hiddenGrid.remove();
+      var expandWrap = section.querySelector('.tip-expand-wrap');
+      if (expandWrap) expandWrap.remove();
+    });
+
     var input = document.getElementById('tipSearch');
     var clearBtn = document.getElementById('tipSearchClear');
     var status = document.getElementById('tipSearchStatus');
@@ -3073,6 +3098,55 @@
     var cards = Array.from(document.querySelectorAll('.tip-card'));
     var sections = Array.from(document.querySelectorAll('.tip-category-section'));
     var jumpNav = document.querySelector('#tipCatChips');
+
+    // Native horizontal scrolling gives finger swipes and trackpads a
+    // natural feel. This small pointer layer also allows click-dragging with
+    // a mouse without changing the links' normal click behaviour.
+    document.querySelectorAll('.tip-category-section > .editorial-list').forEach(function(slider) {
+      var dragging = false;
+      var moved = false;
+      var startX = 0;
+      var startScroll = 0;
+      slider.addEventListener('pointerdown', function(e) {
+        if (e.pointerType === 'mouse' && e.button !== 0) return;
+        dragging = true;
+        moved = false;
+        startX = e.clientX;
+        startScroll = slider.scrollLeft;
+        slider.classList.add('is-dragging');
+        try { slider.setPointerCapture(e.pointerId); } catch (err) {}
+      });
+      slider.addEventListener('pointermove', function(e) {
+        if (!dragging) return;
+        var distance = e.clientX - startX;
+        if (Math.abs(distance) > 5) moved = true;
+        if (moved) {
+          e.preventDefault();
+          slider.scrollLeft = startScroll - distance;
+        }
+      });
+      function stopDragging(e) {
+        if (!dragging) return;
+        dragging = false;
+        slider.classList.remove('is-dragging');
+        if (moved) {
+          slider.addEventListener('click', function suppressClick(ev) {
+            ev.preventDefault();
+            ev.stopPropagation();
+            slider.removeEventListener('click', suppressClick, true);
+          }, true);
+        }
+        try { slider.releasePointerCapture(e.pointerId); } catch (err) {}
+      }
+      slider.addEventListener('pointerup', stopDragging);
+      slider.addEventListener('pointercancel', stopDragging);
+      slider.addEventListener('wheel', function(e) {
+        if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) return;
+        if (slider.scrollWidth <= slider.clientWidth) return;
+        e.preventDefault();
+        slider.scrollLeft += e.deltaY;
+      }, { passive: false });
+    });
 
     // Build a map from slug -> haystack for quick lookup (lazy: populated when index loads)
     var haystackBySlug = {};

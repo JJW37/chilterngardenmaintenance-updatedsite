@@ -284,7 +284,7 @@
           <p>130 plants profiled with soil, light, drainage and chalk tolerance data - all mapped to Chiltern conditions.</p>
           <span class="editorial-card-grid__arrow">Browse plants &rarr;</span>
         </a>
-        <a class="editorial-card-grid__cell" href="/chilterngardenmaintenance-updatedsite/locations/">
+        <a class="editorial-card-grid__cell" href="/chilterngardenmaintenance-updatedsite/locations/calendar.html">
           <h3>Local garden intelligence</h3>
           <p>65 town pages with soil pH, rainfall, drainage, frost pockets and seasonal calendars - research-grade, free.</p>
           <span class="editorial-card-grid__arrow">Find your town &rarr;</span>
@@ -743,7 +743,10 @@
         var wordCount = a.intro.split(' ').length;
         var readTime = Math.max(3, Math.round(wordCount / 200 * 8));
         card.innerHTML =
-          '<span style="font-family:var(--sans);font-size:0.7rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--forest-light);display:block;margin-bottom:0.4rem;">' + a.category + ' - ' + readTime + ' min read</span>' +
+          '<div class="article-card-popular__meta">' +
+            '<span class="article-card-popular__tag">' + a.category + '</span>' +
+            '<span class="article-card-popular__read">' + readTime + ' min read</span>' +
+          '</div>' +
           '<h3>' + a.title + '</h3>' +
           '<p>' + truncate(a.intro, 12) + '</p>' +
           '<a class="card-link" href="/chilterngardenmaintenance-updatedsite/tips/' + a.slug + '.html">Read the guide</a>';

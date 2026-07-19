@@ -5,8 +5,11 @@ This folder is the **repository root** for:
 `https://jjw37.github.io/chilterngardenmaintenance-updatedsite/`
 
 Upload the contents of this folder so that `index.html`, `css/`, `js/`,
-`images/`, `plants/`, `tips/`, `locations/` and the other directories sit at
+`images/`, `images-ppt/`, `plants/`, `tips/`, `locations/` and the other directories sit at
 the top level of the repository. Do not upload the enclosing folder itself.
+
+`images-ppt/` contains the restored plant photographs. Keep this directory
+with the site; the plant index and all 130 plant profiles use it.
 
 ## Why the previous upload failed
 
@@ -31,6 +34,7 @@ index.html
 css/styles.css
 js/main.js
 images/plant-header.jpg
+images-ppt/a78848e0a320.jpg
 plants/index.html
 plants/lavender.html
 tips/index.html
@@ -58,4 +62,3 @@ git push origin main
 The current files are already prefixed for the project-site path. If the site
 later moves to a custom domain or a user-site repository, rebuild from the
 original root-domain ZIP rather than keeping this prefix.
-

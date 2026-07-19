@@ -1314,11 +1314,10 @@ body { padding-top: 0; }
   z-index: 1;
 }
 
-/* ---------- Calculator seed list + blur effect ----------
+/* ---------- Calculator seed list + practical guidance ----------
    Used by the Lawn Renovation and Wildflower Seed calculators.
-   Shows the first 3 seed varieties/steps clearly, then blurs the rest
-   with a CSS filter. A "locked CTA" appears after the blurred content
-   prompting the user to get a quote or view guides for the full detail. */
+   Every recommended seed, cultivar, sowing rate and method step remains
+   readable. The optional CTA offers site-specific help after the result. */
 .calc-seed-list {
   margin: 0.6rem 0 0.8rem;
   background: rgba(255, 255, 255, 0.06);
@@ -1334,10 +1333,12 @@ body { padding-top: 0; }
   font-size: 0.9rem;
 }
 .calc-seed-item:last-child { border-bottom: none; }
-.calc-seed-item--blurred {
-  filter: blur(3.5px);
-  user-select: none;
-  pointer-events: none;
+.calc-seed-item--blurred,
+.calc-method-step--blurred {
+  /* Compatibility for older generated result markup: never hide guidance. */
+  filter: none;
+  user-select: text;
+  pointer-events: auto;
 }
 .calc-seed-percent {
   font-weight: 700;
@@ -1355,7 +1356,7 @@ body { padding-top: 0; }
   font-size: 0.85em;
 }
 
-/* Method / how-to section with blur after step 3 */
+/* Method / how-to section */
 .calc-method {
   margin-top: 1.2rem;
   background: rgba(255, 255, 255, 0.04);
@@ -1380,17 +1381,7 @@ body { padding-top: 0; }
   line-height: 1.55;
   padding: 0.3rem 0;
 }
-.calc-method-list li:not(.calc-method-step--blurred) + li.calc-method-step--blurred {
-  /* Add a small gap before the first blurred step */
-  margin-top: 0.3rem;
-}
-.calc-method-step--blurred {
-  filter: blur(3.5px);
-  user-select: none;
-  pointer-events: none;
-}
-
-/* Locked CTA - appears after the blurred content */
+/* Optional CTA after the complete result */
 .calc-locked-cta {
   margin-top: 1rem;
   background: linear-gradient(135deg, rgba(200, 164, 94, 0.15), rgba(160, 131, 67, 0.1));

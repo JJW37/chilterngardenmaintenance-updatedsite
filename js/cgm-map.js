@@ -28,6 +28,8 @@
   var state = { cluster: null, town: null, zoom: 1, panX: 0, panY: 0 };
   var svg, viewport, geoLayer, interactiveLayer, backBtn, infoPanel, infoName, infoCount, animFrame = null;
   var mapStatusText;
+  var markerMode = "clusters";
+  var TOWN_REVEAL_ZOOM = 1.8;
 
   function el(tag, attrs, text) {
     var e = document.createElementNS(SVG_NS, tag);
@@ -112,7 +114,15 @@
     if (animFrame) cancelAnimationFrame(animFrame);
     // Clamp target zoom to [1, 8] - never below 1 (no white space)
     targetZoom = Math.max(1, Math.min(8, targetZoom));
-    if (reducedMotion) { state.zoom = targetZoom; state.panX = targetPanX; state.panY = targetPanY; applyTransform(); checkOverviewRestore(); return; }
+    if (reducedMotion) {
+      state.zoom = targetZoom;
+      state.panX = targetPanX;
+      state.panY = targetPanY;
+      applyTransform();
+      updateZoomMarkerMode();
+      checkOverviewRestore();
+      return;
+    }
     var sZ = state.zoom, sX = state.panX, sY = state.panY, t0 = null;
     dur = dur || 200;
     function ease(t) { return 1 - Math.pow(1-t, 3); }
@@ -124,7 +134,11 @@
       state.panY = sY + (targetPanY-sY)*e;
       applyTransform();
       if (t < 1) animFrame = requestAnimationFrame(step);
-      else { animFrame = null; checkOverviewRestore(); }
+      else {
+        animFrame = null;
+        updateZoomMarkerMode();
+        checkOverviewRestore();
+      }
     }
     animFrame = requestAnimationFrame(step);
   }
@@ -164,6 +178,7 @@
     state.panY = screenY - (screenY - state.panY) * ratio;
     state.zoom = newZoom;
     applyTransform();
+    updateZoomMarkerMode();
     checkOverviewRestore();
   }
 
@@ -194,6 +209,7 @@
 
   function renderOverview() {
     interactiveLayer.innerHTML = "";
+    markerMode = "clusters";
 
     // Basemap
     var basemap = el("image", {
@@ -261,19 +277,54 @@
 
   function renderClusterTowns(cluster) {
     interactiveLayer.querySelectorAll(".coverage-atlas__cluster").forEach(function(g) { g.remove(); });
+    markerMode = "cluster-towns";
     cluster.towns.forEach(function(t) {
-      var g = el("g", {
-        class: "coverage-atlas__town" + (t.slug === state.town ? " is-selected" : ""),
-        "data-slug": t.slug,
-        "data-transform": "translate(" + t.x + "," + t.y + ")",
-        transform: "translate(" + t.x + "," + t.y + ")",
-        tabindex: "0", role: "button",
-        "aria-label": t.name
-      });
-      g.appendChild(el("circle", { r: 6, class: "coverage-atlas__town-dot" }));
-      g.appendChild(el("text", { y: -12, class: "coverage-atlas__town-label" }, t.name));
-      interactiveLayer.appendChild(g);
+      appendTownMarker(interactiveLayer, t);
     });
+    applyTransform();
+  }
+
+  function appendTownMarker(parent, town) {
+    var extended = town.coverage === "extended";
+    var g = el("g", {
+      class: "coverage-atlas__town" + (extended ? " coverage-atlas__town--extended" : "") + (town.slug === state.town ? " is-selected" : ""),
+      "data-slug": town.slug,
+      "data-transform": "translate(" + town.x + "," + town.y + ")",
+      transform: "translate(" + town.x + "," + town.y + ")",
+      tabindex: "0", role: "button",
+      "aria-label": town.name + (extended ? ", extended coverage" : ", regular coverage")
+    });
+    g.appendChild(el("circle", {
+      r: 6,
+      class: "coverage-atlas__town-dot" + (extended ? " coverage-atlas__town-dot--extended" : "")
+    }));
+    g.appendChild(el("text", { y: -12, class: "coverage-atlas__town-label" }, town.name));
+    parent.appendChild(g);
+  }
+
+  function renderAllTownMarkers() {
+    interactiveLayer.innerHTML = "";
+    TOWNS.forEach(function(town) { appendTownMarker(interactiveLayer, town); });
+    markerMode = "towns";
+    applyTransform();
+  }
+
+  function updateZoomMarkerMode() {
+    if (!interactiveLayer || state.cluster) return;
+
+    if (state.zoom >= TOWN_REVEAL_ZOOM && markerMode !== "towns") {
+      renderAllTownMarkers();
+      if (backBtn) backBtn.hidden = true;
+      if (infoPanel) infoPanel.hidden = true;
+      if (mapStatusText) mapStatusText.textContent = "Town markers - select a town to explore";
+      emitMapState("overview", { zoomed: true });
+    } else if (state.zoom < TOWN_REVEAL_ZOOM && markerMode === "towns") {
+      state.town = null;
+      renderOverview();
+      if (backBtn) backBtn.hidden = true;
+      if (infoPanel) infoPanel.hidden = true;
+      if (mapStatusText) mapStatusText.textContent = "CGM regular and extended coverage";
+    }
   }
 
   function focusCluster(clusterId) {
@@ -471,6 +522,16 @@
     });
     if (zReset) zReset.addEventListener("click", function() { reset(); });
 
+    var exploreBtn = document.getElementById("svgMapExplore");
+    if (exploreBtn) exploreBtn.addEventListener("click", function(e) {
+      e.preventDefault();
+      var cluster = CLUSTERS.find(function(c) { return c.id === state.cluster; });
+      if (!cluster) return;
+      renderClusterTowns(cluster);
+      if (mapStatusText) mapStatusText.textContent = "Viewing " + cluster.name + " towns";
+      emitMapState("cluster", { clusterData: cluster });
+    });
+
     // V2.2: Mouse wheel zoom - zoom toward cursor position
     svg.addEventListener("wheel", function(e) {
       e.preventDefault();
@@ -481,6 +542,7 @@
 
     // V2.2: Mouse drag to pan
     var isMapDragging = false;
+    var activeTouchPointers = 0;
     var mapDragStartX = 0, mapDragStartY = 0;
     var mapDragStartPanX = 0, mapDragStartPanY = 0;
     var mapDragMoved = false;
@@ -488,8 +550,14 @@
     svg.addEventListener("pointerdown", function(e) {
       // Don't start drag if clicking on a cluster or town marker
       if (e.target.closest(".coverage-atlas__cluster, .coverage-atlas__town, .coverage-atlas__user-loc")) return;
-      // Don't start drag on touch devices (handled by pinch gesture)
-      if (e.pointerType === "touch") return;
+      if (e.pointerType === "touch") {
+        activeTouchPointers += 1;
+        // Two-finger gestures are handled by the pinch listener below.
+        if (activeTouchPointers > 1) {
+          isMapDragging = false;
+          return;
+        }
+      }
       isMapDragging = true;
       mapDragMoved = false;
       mapDragStartX = e.clientX;
@@ -501,6 +569,7 @@
     });
     svg.addEventListener("pointermove", function(e) {
       if (!isMapDragging) return;
+      if (e.pointerType === "touch") e.preventDefault();
       var rect = svg.getBoundingClientRect();
       var dx = (e.clientX - mapDragStartX) * (OW / rect.width);
       var dy = (e.clientY - mapDragStartY) * (OH / rect.height);
@@ -512,6 +581,7 @@
       applyTransform();
     });
     svg.addEventListener("pointerup", function(e) {
+      if (e.pointerType === "touch") activeTouchPointers = Math.max(0, activeTouchPointers - 1);
       if (isMapDragging) {
         isMapDragging = false;
         svg.style.cursor = "";
@@ -526,7 +596,8 @@
         }
       }
     });
-    svg.addEventListener("pointercancel", function() {
+    svg.addEventListener("pointercancel", function(e) {
+      if (e.pointerType === "touch") activeTouchPointers = Math.max(0, activeTouchPointers - 1);
       isMapDragging = false;
       svg.style.cursor = "";
     });
@@ -595,6 +666,7 @@
             state.panY = screenY - (screenY - state.panY) * ratio;
             state.zoom = newZoom;
             applyTransform();
+            updateZoomMarkerMode();
           }
         }
       }

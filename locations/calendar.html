@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Seasonal Garden Calendar by Town | Chiltern Garden Maintenance</title>
+  <meta name="description" content="Explore a 12-month garden calendar for towns across Oxfordshire, Buckinghamshire, Berkshire and Bedfordshire, with local planting, pruning, lawn and wildlife guidance.">
+  <meta name="theme-color" content="#1e3a2a">
+  <link rel="canonical" href="https://www.chilterngardenmaintenance.com/locations/calendar.html">
+  <link rel="stylesheet" href="/chilterngardenmaintenance-updatedsite/css/styles.css?v=20260807a">
+  <link rel="stylesheet" href="/chilterngardenmaintenance-updatedsite/css/editorial.css?v=20260807a">
+  <link rel="icon" type="image/png" sizes="32x32" href="/chilterngardenmaintenance-updatedsite/images/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/chilterngardenmaintenance-updatedsite/images/favicon-16.png">
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <header class="header">
+    <div class="container">
+      <nav class="nav" aria-label="Primary">
+        <a class="brand" href="/chilterngardenmaintenance-updatedsite/" aria-current="false">
+          <img class="brand-logo" src="/chilterngardenmaintenance-updatedsite/images/cgm-logo-square.png" alt="Chiltern Garden Maintenance logo" width="48" height="48">
+          <span class="brand-title"><strong>Chiltern Garden</strong><span>Maintenance</span></span>
+        </a>
+        <div class="nav-links" aria-label="Site links">
+          <a href="/chilterngardenmaintenance-updatedsite/services/">Services</a>
+          <a href="/chilterngardenmaintenance-updatedsite/portfolio/">Portfolio</a>
+          <div class="nav-dropdown">
+            <button class="nav-dropdown-toggle" type="button" aria-haspopup="true" aria-expanded="false">Garden Knowledge <span aria-hidden="true">⌄</span></button>
+            <div class="nav-dropdown-menu">
+              <a href="/chilterngardenmaintenance-updatedsite/tips/">Gardening Knowledge</a>
+              <a href="/chilterngardenmaintenance-updatedsite/plants/">Chiltern Plant Library</a>
+              <a href="/chilterngardenmaintenance-updatedsite/calculators/">Garden Tools &amp; Planners</a>
+              <a href="/chilterngardenmaintenance-updatedsite/guides/">Garden Guides</a>
+            </div>
+          </div>
+          <a class="active" href="/chilterngardenmaintenance-updatedsite/locations/">Locations</a>
+          <a href="/chilterngardenmaintenance-updatedsite/about/maintenance.html">The CGM Method</a>
+          <a href="/chilterngardenmaintenance-updatedsite/booking/">Get a Quote</a>
+        </div>
+        <div class="nav-cta">
+          <a class="btn btn-primary" href="/chilterngardenmaintenance-updatedsite/booking/">Get a Quote</a>
+          <button id="mobileMenuToggle" class="mobile-menu-toggle" type="button" aria-controls="mobileMenu" aria-expanded="false" aria-label="Open navigation menu"><span aria-hidden="true">&#9776;</span></button>
+        </div>
+      </nav>
+    </div>
+    <nav id="mobileMenu" class="mobile-menu" hidden aria-label="Mobile navigation">
+      <a href="/chilterngardenmaintenance-updatedsite/services/">Services</a>
+      <a href="/chilterngardenmaintenance-updatedsite/portfolio/">Portfolio</a>
+      <div class="mobile-gk-section">
+        <button class="mobile-gk-toggle" type="button" aria-expanded="false" aria-controls="mobileGK">Garden Knowledge <span aria-hidden="true">⌄</span></button>
+        <div class="mobile-gk-items" id="mobileGK" hidden>
+          <a href="/chilterngardenmaintenance-updatedsite/tips/">Gardening Knowledge</a>
+          <a href="/chilterngardenmaintenance-updatedsite/plants/">Chiltern Plant Library</a>
+          <a href="/chilterngardenmaintenance-updatedsite/calculators/">Garden Tools &amp; Planners</a>
+          <a href="/chilterngardenmaintenance-updatedsite/guides/">Garden Guides</a>
+        </div>
+      </div>
+      <a href="/chilterngardenmaintenance-updatedsite/locations/">Locations</a>
+      <a href="/chilterngardenmaintenance-updatedsite/about/maintenance.html">The CGM Method</a>
+      <a href="/chilterngardenmaintenance-updatedsite/booking/">Get a Quote</a>
+      <a href="https://wa.me/447467657459" target="_blank" rel="noopener">WhatsApp</a>
+    </nav>
+  </header>
+
+  <main id="main-content">
+    <section class="page-header page-header-editorial">
+      <div class="page-header-bg"><img src="/chilterngardenmaintenance-updatedsite/images/project/tools-planning.webp" alt="Garden planning notes and tools" loading="eager" decoding="async"></div>
+      <div class="container">
+        <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/chilterngardenmaintenance-updatedsite/">Home</a><span>/</span><a href="/chilterngardenmaintenance-updatedsite/locations/">Locations</a><span>/</span>Seasonal calendar</nav>
+        <span class="editorial-kicker">Local garden intelligence</span>
+        <h1>Seasonal garden calendar</h1>
+        <p class="page-header-lede">Choose your town for a practical 12-month view of what to do, what is in flower and what to watch for.</p>
+      </div>
+    </section>
+
+    <section class="section seasonal-calendar-page" id="seasonal-calendar">
+      <div class="container">
+        <div class="seasonal-calendar-intro">
+          <span class="editorial-kicker">Plan the year with confidence</span>
+          <h2>What should happen in your garden this month?</h2>
+          <p>Every town profile carries local soil, climate and seasonal information. Select a town below to see the complete calendar, then use the town link for deeper local guidance.</p>
+        </div>
+
+        <div class="seasonal-calendar-toolbar" aria-label="Calendar controls">
+          <label for="calendarTown">Your town</label>
+          <select id="calendarTown"></select>
+          <button class="btn btn-ghost" id="calendarPrev" type="button" aria-label="Previous town">Previous</button>
+          <button class="btn btn-primary" id="calendarNext" type="button" aria-label="Next town">Next town</button>
+        </div>
+        <p class="seasonal-calendar-status" id="calendarStatus" role="status" aria-live="polite">Loading local calendars...</p>
+        <div class="seasonal-calendar-grid" id="calendarMonths"></div>
+
+        <div class="callout callout-editorial seasonal-calendar-note">
+          <h3>Use the calendar as a rhythm, not a rule</h3>
+          <p>Weather, soil and the condition of an individual garden always come first. The calendar gives you a clear local starting point for planning, maintenance and planting.</p>
+          <a class="btn btn-primary" href="/chilterngardenmaintenance-updatedsite/locations/">Explore the map and town profiles</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid footer-accordion">
+        <div class="footer-brand"><strong>Chiltern Garden Maintenance</strong><br><span class="footer-desc">Garden and grounds maintenance, clearance, soft landscaping, pressure washing and lawn recovery.</span><br><br><a href="https://wa.me/447467657459" target="_blank" rel="noopener" class="footer-link">WhatsApp</a></div>
+        <div><h3>Services</h3><ul><li><a href="/chilterngardenmaintenance-updatedsite/services/garden-maintenance.html">Garden Maintenance</a></li><li><a href="/chilterngardenmaintenance-updatedsite/services/garden-clearance.html">Garden Clearance</a></li><li><a href="/chilterngardenmaintenance-updatedsite/services/soft-landscaping.html">Soft Landscaping</a></li><li><a href="/chilterngardenmaintenance-updatedsite/services/hedge-cutting.html">Hedge Cutting</a></li></ul></div>
+        <div><h3>Explore</h3><ul><li><a href="/chilterngardenmaintenance-updatedsite/tips/">Gardening Knowledge</a></li><li><a href="/chilterngardenmaintenance-updatedsite/plants/">Plant Library</a></li><li><a href="/chilterngardenmaintenance-updatedsite/calculators/">Garden Tools &amp; Planners</a></li><li><a href="/chilterngardenmaintenance-updatedsite/locations/">Locations</a></li><li><a href="/chilterngardenmaintenance-updatedsite/locations/calendar.html">Seasonal calendar</a></li></ul></div>
+        <div><h3>Company</h3><ul><li><a href="/chilterngardenmaintenance-updatedsite/about/maintenance.html">The CGM Method</a></li><li><a href="/chilterngardenmaintenance-updatedsite/booking/">Get a Quote</a></li><li><a href="/chilterngardenmaintenance-updatedsite/contact/">Contact</a></li><li><a href="/chilterngardenmaintenance-updatedsite/privacy.html">Privacy</a></li></ul></div>
+      </div>
+      <div class="footer-bottom"><span>&copy; 2026 Chiltern Garden Maintenance. All rights reserved.</span><span>Oxfordshire &middot; Buckinghamshire &middot; Berkshire &middot; Bedfordshire</span></div>
+    </div>
+  </footer>
+
+  <script src="/chilterngardenmaintenance-updatedsite/js/main.js?v=20260713a"></script>
+  <script src="/chilterngardenmaintenance-updatedsite/js/seasonal-calendar.js?v=20260719a"></script>
+</body>
+</html>

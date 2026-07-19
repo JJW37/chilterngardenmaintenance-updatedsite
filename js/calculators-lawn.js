@@ -139,24 +139,17 @@
 
     var sunLabel = { 'full-sun': 'full sun', 'partial-shade': 'partial shade', 'full-shade': 'full shade' }[sunExposure];
 
-    // Build the seed mix display - first 3 parts visible, rest blurred
+    // Show the complete seed mix and practical sowing information.
     var mixHtml = '<div class="calc-seed-list">';
-    seedMixParts.forEach(function(part, i) {
-      if (i < 3) {
-        mixHtml += '<div class="calc-seed-item">' +
-          '<span class="calc-seed-percent">' + part.percent + '</span>' +
-          '<span class="calc-seed-name">' + part.name + '</span>' +
-          '</div>';
-      } else {
-        mixHtml += '<div class="calc-seed-item calc-seed-item--blurred">' +
-          '<span class="calc-seed-percent">' + part.percent + '</span>' +
-          '<span class="calc-seed-name">' + part.name + '</span>' +
-          '</div>';
-      }
+    seedMixParts.forEach(function(part) {
+      mixHtml += '<div class="calc-seed-item">' +
+        '<span class="calc-seed-percent">' + part.percent + '</span>' +
+        '<span class="calc-seed-name">' + part.name + '</span>' +
+        '</div>';
     });
     mixHtml += '</div>';
 
-    // Build the method/how-to section - first 3 steps visible, rest blurred
+    // Show the complete method so the result is useful without a follow-up.
     var methodSteps = [
       "Scarify the lawn to remove thatch and dead moss. Use a powered scarifier for lawns over 50 m2.",
       "Aerate using a hollow-tine aerator. This relieves compaction and improves drainage and root growth.",
@@ -172,18 +165,14 @@
     var methodHtml = '<div class="calc-method">' +
       '<h4>How this is done (10-step renovation method)</h4>' +
       '<ol class="calc-method-list">';
-    methodSteps.forEach(function(step, i) {
-      if (i < 3) {
-        methodHtml += '<li>' + step + '</li>';
-      } else {
-        methodHtml += '<li class="calc-method-step--blurred">' + step + '</li>';
-      }
+    methodSteps.forEach(function(step) {
+      methodHtml += '<li>' + step + '</li>';
     });
     methodHtml += '</ol>' +
       '<div class="calc-locked-cta">' +
         '<div class="calc-locked-cta__content">' +
-          '<strong>' + '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:4px;"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>' + ' Want the full method?</strong>' +
-          '<p>The remaining 7 steps, cultivar names, sowing rates and timing are available via a detailed quote or our Lawn Renovation Guide PDF.</p>' +
+          '<strong>' + '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:4px;"><path d="M12 3v18"/><path d="M3 12h18"/></svg>' + ' Want help putting this plan into practice?</strong>' +
+          '<p>The complete blend, cultivar recommendations, sowing rates and renovation steps are shown above. Send us photos if you would like a site-specific lawn plan.</p>' +
         '</div>' +
         '<div class="calc-locked-cta__actions">' +
           '<a class="btn btn-primary" href="/chilterngardenmaintenance-updatedsite/booking/">Get a quote</a>' +
@@ -206,7 +195,6 @@
 
   /* ---- WILDFLOWER SEED SELECTOR ----
      Recommends specific wildflower seed species based on soil, light,
-     look and colour preference. First 3 varieties are shown clearly,
-     the rest are blurred. A "how to" method section shows the first 3
-     steps, then blurs. CTA after blurred content links to quote form.
+     look and colour preference. The complete mix and establishment method
+     are shown, with an optional CTA for site-specific help.
   */

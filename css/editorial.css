@@ -2847,6 +2847,219 @@
   letter-spacing: -0.01em;
 }
 
+/* Category rails for the Gardening Knowledge library. */
+.tip-category-section > .editorial-list {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  gap: 1rem;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: .35rem .25rem 1rem;
+  margin-inline: -.25rem;
+  scroll-snap-type: x proximity;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: var(--gold) rgba(45, 90, 61, .08);
+  cursor: grab;
+  touch-action: pan-y;
+}
+.tip-category-section > .editorial-list.is-dragging {
+  cursor: grabbing;
+  scroll-behavior: auto;
+  user-select: none;
+}
+.tip-category-section > .editorial-list > .tip-card.editorial-row {
+  flex: 0 0 min(31rem, calc((100% - 2rem) / 3));
+  min-width: 280px;
+  min-height: 270px;
+  align-self: stretch;
+  scroll-snap-align: start;
+}
+.tip-category-section > .editorial-list::-webkit-scrollbar { height: 8px; }
+.tip-category-section > .editorial-list::-webkit-scrollbar-track {
+  background: rgba(45, 90, 61, .07);
+  border-radius: 999px;
+}
+.tip-category-section > .editorial-list::-webkit-scrollbar-thumb {
+  background: var(--gold);
+  border-radius: 999px;
+}
+@media (max-width: 1050px) {
+  .tip-category-section > .editorial-list > .tip-card.editorial-row {
+    flex-basis: min(29rem, calc((100% - 1rem) / 2));
+  }
+}
+@media (max-width: 640px) {
+  .tip-category-section > .editorial-list {
+    gap: .75rem;
+    margin-inline: -.75rem;
+    padding-inline: .75rem;
+    scroll-padding-inline: .75rem;
+  }
+  .tip-category-section > .editorial-list > .tip-card.editorial-row {
+    flex-basis: 86vw;
+    min-width: 0;
+  }
+}
+
+/* Homepage knowledge cards: keep the category visible as a proper tag. */
+.article-card-popular {
+  display: flex;
+  flex-direction: column;
+}
+.article-card-popular__meta {
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: .45rem;
+  margin-bottom: .8rem;
+}
+.article-card-popular__tag,
+.article-card-popular__read {
+  display: inline-flex;
+  align-items: center;
+  min-height: 1.55rem;
+  padding: .18rem .55rem;
+  border-radius: 999px;
+  font-family: var(--sans);
+  font-size: .68rem;
+  line-height: 1.25;
+  letter-spacing: .045em;
+  text-transform: uppercase;
+}
+.article-card-popular__tag {
+  color: var(--forest-deep);
+  background: var(--cream-warm);
+  border: 1px solid rgba(184, 146, 67, .24);
+}
+.article-card-popular__read {
+  color: var(--muted);
+  background: rgba(45, 90, 61, .06);
+}
+.article-card-popular h3 { margin-top: 0; }
+.article-card-popular .card-link { margin-top: auto; }
+
+/* Seasonal calendar page */
+.seasonal-calendar-intro {
+  max-width: 760px;
+  margin: 0 auto 2rem;
+  text-align: center;
+}
+.seasonal-calendar-intro h2 {
+  margin: .35rem 0 .75rem;
+  font-family: var(--serif);
+  font-size: clamp(1.8rem, 3vw, 2.7rem);
+  color: var(--forest-dark);
+}
+.seasonal-calendar-intro p { color: var(--muted); line-height: 1.7; }
+.seasonal-calendar-toolbar {
+  display: grid;
+  grid-template-columns: auto minmax(220px, 1fr) auto auto;
+  align-items: center;
+  gap: .75rem;
+  max-width: 900px;
+  margin: 0 auto .6rem;
+  padding: 1rem;
+  background: var(--cream);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius);
+}
+.seasonal-calendar-toolbar label {
+  font-weight: 700;
+  color: var(--forest-dark);
+}
+.seasonal-calendar-toolbar select {
+  min-height: 44px;
+  padding: .65rem .75rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: #fff;
+  color: var(--forest-dark);
+  font: inherit;
+}
+.seasonal-calendar-status {
+  max-width: 900px;
+  margin: 0 auto 1.5rem;
+  color: var(--muted);
+  font-size: .9rem;
+  text-align: center;
+}
+.seasonal-calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+.seasonal-calendar-card {
+  min-height: 190px;
+  padding: 1.35rem;
+  background: #fff;
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius);
+  box-shadow: 0 3px 14px rgba(21, 40, 28, .05);
+  position: relative;
+  overflow: hidden;
+}
+.seasonal-calendar-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 4px;
+  background: linear-gradient(var(--forest), var(--gold));
+}
+.seasonal-calendar-card__month {
+  display: block;
+  margin-bottom: .55rem;
+  color: var(--gold-deep);
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+.seasonal-calendar-card__heading {
+  margin: 0 0 .9rem;
+  color: var(--forest-dark);
+  font-family: var(--serif);
+  font-size: 1.3rem;
+  line-height: 1.2;
+}
+.seasonal-calendar-card__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .4rem;
+}
+.seasonal-calendar-card__tag {
+  padding: .25rem .5rem;
+  border: 1px solid rgba(45, 90, 61, .12);
+  border-radius: 999px;
+  color: var(--forest);
+  background: rgba(45, 90, 61, .06);
+  font-size: .72rem;
+}
+.seasonal-calendar-town-link {
+  grid-column: 1 / -1;
+  justify-self: center;
+  margin: .5rem 0 1rem;
+  color: var(--forest);
+  font-weight: 700;
+  text-decoration: none;
+}
+.seasonal-calendar-town-link:hover { text-decoration: underline; }
+.seasonal-calendar-note { margin-top: 2rem; }
+.seasonal-calendar-note .btn { margin-top: .75rem; }
+@media (max-width: 800px) {
+  .seasonal-calendar-toolbar { grid-template-columns: 1fr 1fr; }
+  .seasonal-calendar-toolbar label { grid-column: 1 / -1; }
+  .seasonal-calendar-toolbar select { grid-column: 1 / -1; }
+  .seasonal-calendar-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 560px) {
+  .seasonal-calendar-grid { grid-template-columns: 1fr; }
+  .seasonal-calendar-toolbar { grid-template-columns: 1fr 1fr; }
+  .seasonal-calendar-toolbar .btn { width: 100%; }
+}
+
 
 /* ===================================================================
    EDITORIAL DESIGN SYSTEM v2.20 - RPRP form premium redesign (2026-07-18)
@@ -3738,4 +3951,3 @@
     font-size: 1.4rem !important;
   }
 }
-

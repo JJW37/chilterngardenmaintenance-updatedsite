@@ -158,10 +158,29 @@
   .coverage-atlas__map .location-map-shell { height: 540px; max-height: 560px; }
 }
 @media (max-width: 699px) {
-  .coverage-atlas__map .location-map-shell { height: 470px; min-height: 430px; max-height: 480px; }
+  /* Keep the 1200x760 canvas close to its natural ratio on phones. The
+     previous fixed 470px box letterboxed the SVG into a small strip. */
+  .coverage-atlas__map .location-map-shell {
+    height: clamp(230px, 62vw, 430px);
+    min-height: 230px;
+    max-height: 430px;
+  }
 }
-.coverage-atlas__map .svg-map { width: 100%; height: 100%; }
-.coverage-atlas__map .svg-map__canvas { width: 100%; height: 100%; display: block; }
+.coverage-atlas__map .svg-map {
+  width: 100%;
+  height: 100%;
+  touch-action: none;
+  overscroll-behavior: contain;
+}
+.coverage-atlas__map .svg-map__canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+#cgmMapViewport { will-change: transform; }
 
 /* Basemap */
 .coverage-atlas__basemap { opacity: 0.82; }
@@ -206,6 +225,12 @@
 .coverage-atlas__town-dot {
   fill: var(--atlas-forest); stroke: var(--atlas-paper); stroke-width: 2;
   transition: r 0.2s ease, fill 0.2s ease;
+}
+.coverage-atlas__town-dot--extended {
+  fill: var(--atlas-gold);
+}
+.coverage-atlas__town--extended .coverage-atlas__town-label {
+  fill: #8f6d2d;
 }
 .coverage-atlas__town:hover .coverage-atlas__town-dot { r: 8; fill: var(--atlas-gold); }
 .coverage-atlas__town.is-selected .coverage-atlas__town-dot {
@@ -346,6 +371,7 @@
   .locations-hero.coverage-atlas { padding: 0 1rem; gap: 12px; }
   .coverage-atlas__cluster-count { font-size: 12px; }
   .coverage-atlas__cluster-label { font-size: 9px; }
+  .coverage-atlas__town-label { font-size: 9px; stroke-width: 2.5px; }
   .coverage-atlas__ctrl-btn { width: 38px; height: 38px; }
   .coverage-atlas__map-status { font-size: 0.65rem; padding: 4px 10px; }
 }
