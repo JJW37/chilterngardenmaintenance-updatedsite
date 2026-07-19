@@ -1,0 +1,1919 @@
+[
+  {
+    "slug": "abingdon",
+    "name": "Abingdon",
+    "county": "Oxfordshire",
+    "x": 503.5,
+    "y": 453.3,
+    "lat": 51.6707,
+    "lng": -1.288,
+    "coverage": "regular",
+    "coordinates": {
+      "latitude": 51.6707,
+      "longitude": -1.288
+    },
+    "soil": {
+      "primaryTexture": "clay",
+      "secondaryTextures": [],
+      "ph": {
+        "min": 6.5,
+        "max": 7.5
+      }
+    },
+    "climate": {
+      "drainage": "fast",
+      "frostRisk": "moderate",
+      "rainfall": {
+        "annualMm": 650
+      }
+    }
+  },
+  {
+    "slug": "amersham",
+    "name": "Amersham",
+    "county": "Buckinghamshire",
+    "x": 833.8,
+    "y": 450.7,
+    "lat": 51.674,
+    "lng": -0.607,
+    "coverage": "regular",
+    "coordinates": {
+      "latitude": 51.674,
+      "longitude": -0.607
+    },
+    "soil": {
+      "primaryTexture": "chalk",
+      "secondaryTextures": [
+        "chalk"
+      ],
+      "ph": {
+        "min": 7.5,
+        "max": 8.0
+      }
+    },
+    "climate": {
+      "drainage": "fast",
+      "frostRisk": "moderate",
+      "rainfall": {
+        "annualMm": 720
+      }
+    }
+  },
+  {
+    "slug": "ascot",
+    "name": "Ascot",
+    "county": "Berkshire",
+    "x": 802,
+    "y": 658.2,
+    "lat": 51.408,
+    "lng": -0.6726,
+    "coverage": "regular",
+    "coordinates": {
+      "latitude": 51.408,
+      "longitude": -0.6726
+    },
+    "soil": {
+      "primaryTexture": "clay",
+      "secondaryTextures": [],
+      "ph": {
+        "min": 5.0,
+        "max": 6.5
+      }
+    },
+    "climate": {
+      "drainage": "fast",
+      "frostRisk": "moderate",
+      "rainfall": {
+        "annualMm": 680
+      }
+    }
+  },
+  {
+    "slug": "aylesbury",
+    "name": "Aylesbury",
+    "county": "Buckinghamshire",
+    "x": 733.1,
+    "y": 339.2,
+    "lat": 51.8163,
+    "lng": -0.8146,
+    "coverage": "regular",
+    "coordinates": {
+      "latitude": 51.8163,
+      "longitude": -0.8146
+    },
+    "soil": {
+      "primaryTexture": "clay",
+      "secondaryTextures": [],
+      "ph": {
+        "min": 7.0,
+        "max": 7.8
+      }
+    },
+    "climate": {
+      "drainage": "fast",
+      "frostRisk": "moderate",
+      "rainfall": {
+        "annualMm": 680
+      }
+    }
+  },
+  {
+    "slug": "banbury",
+    "name": "Banbury",
+    "county": "Oxfordshire",
+    "x": 478.4,
+    "y": 144.7,
+    "lat": 52.0635,
+    "lng": -1.3397,
+    "coverage": "regular",
+    "coordinates": {
+      "latitude": 52.0635,
+      "longitude": -1.3397
+    },
+    "soil": {
+      "primaryTexture": "clay",
+      "secondaryTextures": [],
+      "ph": {
+        "min": 7.0,
+        "max": 7.8
+      }
+    },
+    "climate": {
+      "drainage": "fast",
+      "frostRisk": "moderate",
+      "rainfall": {
+        "annualMm": 660
+      }
+    }
+  },
+  {
+    "slug": "beaconsfield",
+    "name": "Beaconsfield",
+    "county": "Buckinghamshire",
+    "x": 814.6,
+    "y": 499.7,
+    "lat": 51.6113,
+    "lng": -0.6466,
+    "coverage": "regular",
+    "coordinates": {
+      "latitude": 51.6113,
+      "longitude": -0.6466
+    },
+    "soil": {
+      "primaryTexture": "clay",
+      "secondaryTextures": [],
+      "ph": {
+        "min": 6.5,
+        "max": 7.2
+      }
+    },
+    "climate": {
+      "drainage": "fast",
+      "frostRisk": "moderate",
+      "rainfall": {
+        "annualMm": 700
+      }
+    }
+  },
+  {
+    "slug": "berkhamsted",
+    "name": "Berkhamsted",
+    "county": "Buckinghamshire",
+    "x": 854.4,
+    "y": 387.2,
+    "lat": 51.7551,
+    "lng": -0.5646,
+    "coverage": "regular",
+    "coordinates": {
+      "latitude": 51.7551,
+      "longitude": -0.5646
+    },
+    "soil": {
+      "primaryTexture": "chalk",
+      "secondaryTextures": [
+        "chalk"
+      ],
+      "ph": {
+        "min": 7.5,
+        "max": 8.0
+      }
+    },
+    "climate": {
+      "drainage": "fast",
+      "frostRisk": "moderate",
+      "rainfall": {
+        "annualMm": 690
+      }
+    }
+  },
+  {
+    "slug": "bicester",
+    "name": "Bicester",
+    "county": "Oxfordshire",
+    "x": 563.3,
+    "y": 273.4,
+    "lat": 51.9001,
+    "lng": -1.1647,
+    "coverage": "regular",
+    "coordinates": {
+      "latitude": 51.9001,
+      "longitude": -1.1647
+    },
+    "soil": {
+      "primaryTexture": "clay",
+      "secondaryTextures": [],
+      "ph": {
+        "min": 7.0,
+        "max": 7.8
+      }
+    },
+    "climate": {
+      "drainage": "fast",
+      "frostRisk": "moderate",
+      "rainfall": {
+        "annualMm": 640
+      }
+    }
+  },
+  {
+    "slug": "bourne-end",
+    "name": "Bourne End",
+    "county": "Buckinghamshire",
+    "x": 783.9,
+    "y": 524.5,
+    "lat": 51.5796,
+    "lng": -0.71,
+    "coverage": "regular",
+    "coordinates": {
+      "latitude": 51.5796,
+      "longitude": -0.71
+    },
+    "soil": {
+      "primaryTexture": "sand",
+      "secondaryTextures": [],
+      "ph": {
+        "min": 6.5,
+        "max": 7.5
+      }
+    },
+    "climate": {
+      "drainage": "fast",
+      "frostRisk": "moderate",
+      "rainfall": {
+        "annualMm": 680
+      }
+    }
+  },
+  {
+    "slug": "bracknell",
+    "name": "Bracknell",
+    "county": "Berkshire",
+    "x": 762.8,
+    "y": 653.2,
+    "lat": 51.4144,
+    "lng": -0.7535,
+    "coverage": "regular",
+    "coordinates": {
+      "latitude": 51.4144,
+      "longitude": -0.7535
+    },
+    "soil": {
+      "primaryTexture": "sand",
+      "secondaryTextures": [],
+      "ph": {
+        "min": 5.5,
+        "max": 6.5
+      }
+    },
+    "climate": {
+      "drainage": "fast",
+      "frostRisk": "moderate",
+      "rainfall": {
+        "annualMm": 680
+      }
+    }
+  },
+  {
+    "slug": "buckingham",
+    "name": "Buckingham",
+    "county": "Buckinghamshire",
+    "x": 647.5,
+    "y": 178.7,
+    "lat": 52.0203,
+    "lng": -0.9912,
+    "coverage": "regular",
+    "coordinates": {
+      "latitude": 52.0203,
+      "longitude": -0.9912
+    },
+    "soil": {
+      "primaryTexture": "clay",
+      "secondaryTextures": [],
+      "ph": {
+        "min": 7.0,
+        "max": 7.8
+      }
+    },
+    "climate": {
+      "drainage": "fast",
+      "frostRisk": "moderate",
+      "rainfall": {
+        "annualMm": 640
+      }
+    }
+  },
+  {
+    "slug": "carterton",
+    "name": "Carterton",
+    "county": "Oxfordshire",
+    "x": 356.7,
+    "y": 382.6,
+    "lat": 51.7609,
+    "lng": -1.5906,
+    "coverage": "regular",
+    "coordinates": {
+      "latitude": 51.7609,
+      "longitude": -1.5906
+    },
+    "soil": {
+      "primaryTexture": "clay",
+      "secondaryTextures": [],
+      "ph": {
+        "min": 7.0,
+        "max": 7.8
+      }
+    },
+    "climate": {
+      "drainage": "fast",
+      "frostRisk": "moderate",
+      "rainfall": {
+        "annualMm": 660
+      }
+    }
+  },
+  {
+    "slug": "chalfont-st-peter",
+    "name": "Chalfont St Peter",
+    "county": "Buckinghamshire",
+    "x": 857.4,
+    "y": 479.3,
+    "lat": 51.6374,
+    "lng": -0.5585,
+    "coverage": "regular",
+    "coordinates": {
+      "latitude": 51.6374,
+      "longitude": -0.5585
+    },
+    "soil": {
+      "primaryTexture": "clay",
+      "secondaryTextures": [],
+      "ph": {
+        "min": 6.5,
+        "max": 7.2
+      }
+    },
+    "climate": {
+      "drainage": "fast",
+      "frostRisk": "moderate",
+      "rainfall": {
+        "annualMm": 700
+      }
+    }
+  },
+  {
+    "slug": "charlbury",
+    "name": "Charlbury",
+    "county": "Oxfordshire",
+    "x": 409.2,
+    "y": 298.1,
+    "lat": 51.8686,
+    "lng": -1.4822,
+    "coverage": "regular",
+    "coordinates": {
+      "latitude": 51.8686,
+      "longitude": -1.4822
+    },
+    "soil": {
+      "primaryTexture": "loam",
+      "secondaryTextures": [],
+      "ph": {
+        "min": 7.5,
+        "max": 8.2
+      }
+    },
+    "climate": {
+      "drainage": "fast",
+      "frostRisk": "moderate",
+      "rainfall": {
+        "annualMm": 700
+      }
+    }
+  },
+  {
+    "slug": "chesham",
+    "name": "Chesham",
+    "county": "Buckinghamshire",
+    "x": 831.6,
+    "y": 426.8,
+    "lat": 51.7045,
+    "lng": -0.6116,
+    "coverage": "regular",
+    "coordinates": {
+      "latitude": 51.7045,
+      "longitude": -0.6116
+    },
+    "soil": {
+      "primaryTexture": "chalk",
+      "secondaryTextures": [
+        "chalk"
+      ],
+      "ph": {
+        "min": 7.5,
+        "max": 8.0
+      }
+    },
+    "climate": {
+      "drainage": "fast",
+      "frostRisk": "moderate",
+      "rainfall": {
+        "annualMm": 710
+      }
+    }
+  },
+  {
+    "slug": "chinnor",
+    "name": "Chinnor",
+    "county": "Oxfordshire",
+    "x": 686.1,
+    "y": 429.6,
+    "lat": 51.701,
+    "lng": -0.9116,
+    "coverage": "regular",
+    "coordinates": {
+      "latitude": 51.701,
+      "longitude": -0.9116
+    },
+    "soil": {
+      "primaryTexture": "chalk",
+      "secondaryTextures": [
+        "chalk"
+      ],
+      "ph": {
+        "min": 7.5,
+        "max": 8.2
+      }
+    },
+    "climate": {
+      "drainage": "fast",
+      "frostRisk": "moderate",
+      "rainfall": {
+        "annualMm": 710
+      }
+    }
+  },
+  {
+    "slug": "crowthorne",
+    "name": "Crowthorne",
+    "county": "Berkshire",
+    "x": 743.8,
+    "y": 668.1,
+    "lat": 51.3953,
+    "lng": -0.7926,
+    "coverage": "regular",
+    "coordinates": {
+      "latitude": 51.3953,
+      "longitude": -0.7926
+    },
+    "soil": {
+      "primaryTexture": "sand",
+      "secondaryTextures": [],
+      "ph": {
+        "min": 5.0,
+        "max": 6.0
+      }
+    },
+    "climate": {
+      "drainage": "fast",
+      "frostRisk": "moderate",
+      "rainfall": {
+        "annualMm": 700
+      }
+    }
+  },
+  {
+    "slug": "denham",
+    "name": "Denham",
+    "county": "Buckinghamshire",
+    "x": 886.4,
+    "y": 544.8,
+    "lat": 51.5536,
+    "lng": -0.4986,
+    "coverage": "regular",
+    "coordinates": {
+      "latitude": 51.5536,
+      "longitude": -0.4986
+    },
+    "soil": {
+      "primaryTexture": "sand",
+      "secondaryTextures": [],
+      "ph": {
+        "min": 6.0,
+        "max": 7.0
+      }
+    },
+    "climate": {
+      "drainage": "fast",
+      "frostRisk": "moderate",
+      "rainfall": {
+        "annualMm": 660
+      }
+    }
+  },
+  {
+    "slug": "didcot",
+    "name": "Didcot",
+    "county": "Oxfordshire",
+    "x": 524.8,
+    "y": 503.4,
+    "lat": 51.6066,
+    "lng": -1.244,
+    "coverage": "regular",
+    "coordinates": {
+      "latitude": 51.6066,
+      "longitude": -1.244
+    },
+    "soil": {
+      "primaryTexture": "clay",
+      "secondaryTextures": [],
+      "ph": {
+        "min": 7.0,
+        "max": 7.8
+      }
+    },
+    "climate": {
+      "drainage": "fast",
+      "frostRisk": "moderate",
+      "rainfall": {
+        "annualMm": 640
+      }
+    }
+  },
+  {
+    "slug": "eynsham",
+    "name": "Eynsham",
+    "county": "Oxfordshire",
+    "x": 459.5,
+    "y": 366.4,
+    "lat": 51.7816,
+    "lng": -1.3786,
+    "coverage": "regular",
+    "coordinates": {
+      "latitude": 51.7816,
+      "longitude": -1.3786
+    },
+    "soil": {
+      "primaryTexture": "clay",
+      "secondaryTextures": [],
+      "ph": {
+        "min": 7.0,
+        "max": 7.5
+      }
+    },
+    "climate": {
+      "drainage": "fast",
+      "frostRisk": "moderate",
+      "rainfall": {
+        "annualMm": 660
+      }
+    }
+  },
+  {
+    "slug": "faringdon",
+    "name": "Faringdon",
+    "county": "Oxfordshire",
+    "x": 358.6,
+    "y": 465.3,
+    "lat": 51.6553,
+    "lng": -1.5867,
+    "coverage": "regular",
+    "coordinates": {
+      "latitude": 51.6553,
+      "longitude": -1.5867
+    },
+    "soil": {
+      "primaryTexture": "clay",
+      "secondaryTextures": [],
+      "ph": {
+        "min": 7.5,
+        "max": 8.0
+      }
+    },
+    "climate": {
+      "drainage": "fast",
+      "frostRisk": "moderate",
+      "rainfall": {
+        "annualMm": 700
+      }
+    }
+  },
+  {
+    "slug": "farnham-common",
+    "name": "Farnham Common",
+    "county": "Buckinghamshire",
+    "x": 822.1,
+    "y": 532.5,
+    "lat": 51.5693,
+    "lng": -0.6312,
+    "coverage": "regular",
+    "coordinates": {
+      "latitude": 51.5693,
+      "longitude": -0.6312
+    },
+    "soil": {
+      "primaryTexture": "clay",
+      "secondaryTextures": [],
+      "ph": {
+        "min": 6.0,
+        "max": 7.0
+      }
+    },
+    "climate": {
+      "drainage": "fast",
+      "frostRisk": "moderate",
+      "rainfall": {
+        "annualMm": 700
+      }
+    }
+  },
+  {
+    "slug": "farnham-royal",
+    "name": "Farnham Royal",
+    "county": "Buckinghamshire",
+    "x": 824.3,
+    "y": 531.3,
+    "lat": 51.5708,
+    "lng": -0.6266,
+    "coverage": "regular",
+    "coordinates": {
+      "latitude": 51.5708,
+      "longitude": -0.6266
+    },
+    "soil": {
+      "primaryTexture": "clay",
+      "secondaryTextures": [],
+      "ph": {
+        "min": 6.0,
+        "max": 7.0
+      }
+    },
+    "climate": {
+      "drainage": "fast",
+      "frostRisk": "moderate",
+      "rainfall": {
+        "annualMm": 700
+      }
+    }
+  },
+  {
+    "slug": "flackwell-heath",
+    "name": "Flackwell Heath",
+    "county": "Buckinghamshire",
+    "x": 787.5,
+    "y": 548.4,
+    "lat": 51.5489,
+    "lng": -0.7026,
+    "coverage": "regular",
+    "coordinates": {
+      "latitude": 51.5489,
+      "longitude": -0.7026
+    },
+    "soil": {
+      "primaryTexture": "chalk",
+      "secondaryTextures": [
+        "chalk"
+      ],
+      "ph": {
+        "min": 7.5,
+        "max": 8.0
+      }
+    },
+    "climate": {
+      "drainage": "fast",
+      "frostRisk": "moderate",
+      "rainfall": {
+        "annualMm": 690
+      }
+    }
+  },
+  {
+    "slug": "gerrards-cross",
+    "name": "Gerrards Cross",
+    "county": "Buckinghamshire",
+    "x": 859.2,
+    "y": 498.6,
+    "lat": 51.6127,
+    "lng": -0.5547,
+    "coverage": "regular",
+    "coordinates": {
+      "latitude": 51.6127,
+      "longitude": -0.5547
+    },
+    "soil": {
+      "primaryTexture": "clay",
+      "secondaryTextures": [],
+      "ph": {
+        "min": 6.5,
+        "max": 7.2
+      }
+    },
+    "climate": {
+      "drainage": "fast",
+      "frostRisk": "moderate",
+      "rainfall": {
+        "annualMm": 690
+      }
+    }
+  },
+  {
+    "slug": "great-missenden",
+    "name": "Great Missenden",
+    "county": "Buckinghamshire",
+    "x": 784.6,
+    "y": 427.1,
+    "lat": 51.7042,
+    "lng": -0.7086,
+    "coverage": "regular",
+    "coordinates": {
+      "latitude": 51.7042,
+      "longitude": -0.7086
+    },
+    "soil": {
+      "primaryTexture": "chalk",
+      "secondaryTextures": [
+        "chalk"
+      ],
+      "ph": {
+        "min": 7.5,
+        "max": 8.0
+      }
+    },
+    "climate": {
+      "drainage": "fast",
+      "frostRisk": "moderate",
+      "rainfall": {
+        "annualMm": 720
+      }
+    }
+  },
+  {
+    "slug": "grove",
+    "name": "Grove",
+    "county": "Oxfordshire",
+    "x": 350,
+    "y": 504.2,
+    "lat": 51.6056,
+    "lng": -1.6044,
+    "coverage": "regular",
+    "coordinates": {
+      "latitude": 51.6056,
+      "longitude": -1.6044
+    },
+    "soil": {
+      "primaryTexture": "clay",
+      "secondaryTextures": [],
+      "ph": {
+        "min": 7.0,
+        "max": 7.8
+      }
+    },
+    "climate": {
+      "drainage": "fast",
+      "frostRisk": "moderate",
+      "rainfall": {
+        "annualMm": 660
+      }
+    }
+  },
+  {
+    "slug": "haddenham",
+    "name": "Haddenham",
+    "county": "Buckinghamshire",
+    "x": 683.6,
+    "y": 377.9,
+    "lat": 51.7669,
+    "lng": -0.9166,
+    "coverage": "regular",
+    "coordinates": {
+      "latitude": 51.7669,
+      "longitude": -0.9166
+    },
+    "soil": {
+      "primaryTexture": "clay",
+      "secondaryTextures": [],
+      "ph": {
+        "min": 7.0,
+        "max": 7.8
+      }
+    },
+    "climate": {
+      "drainage": "fast",
+      "frostRisk": "moderate",
+      "rainfall": {
+        "annualMm": 640
+      }
+    }
+  },
+  {
+    "slug": "hazlemere",
+    "name": "Hazlemere",
+    "county": "Buckinghamshire",
+    "x": 781.9,
+    "y": 490.8,
+    "lat": 51.6227,
+    "lng": -0.714,
+    "coverage": "regular",
+    "coordinates": {
+      "latitude": 51.6227,
+      "longitude": -0.714
+    },
+    "soil": {
+      "primaryTexture": "clay",
+      "secondaryTextures": [],
+      "ph": {
+        "min": 6.5,
+        "max": 7.2
+      }
+    },
+    "climate": {
+      "drainage": "fast",
+      "frostRisk": "moderate",
+      "rainfall": {
+        "annualMm": 700
+      }
+    }
+  },
+  {
+    "slug": "henley-on-thames",
+    "name": "Henley-on-Thames",
+    "county": "Oxfordshire",
+    "x": 690,
+    "y": 555.4,
+    "lat": 51.54,
+    "lng": -0.9036,
+    "coverage": "regular",
+    "coordinates": {
+      "latitude": 51.54,
+      "longitude": -0.9036
+    },
+    "soil": {
+      "primaryTexture": "chalk",
+      "secondaryTextures": [
+        "chalk"
+      ],
+      "ph": {
+        "min": 7.5,
+        "max": 8.0
+      }
+    },
+    "climate": {
+      "drainage": "fast",
+      "frostRisk": "moderate",
+      "rainfall": {
+        "annualMm": 680
+      }
+    }
+  },
+  {
+    "slug": "high-wycombe",
+    "name": "High Wycombe",
+    "county": "Buckinghamshire",
+    "x": 764.8,
+    "y": 485.8,
+    "lat": 51.6291,
+    "lng": -0.7493,
+    "coverage": "regular",
+    "coordinates": {
+      "latitude": 51.6291,
+      "longitude": -0.7493
+    },
+    "soil": {
+      "primaryTexture": "chalk",
+      "secondaryTextures": [
+        "chalk"
+      ],
+      "ph": {
+        "min": 7.5,
+        "max": 8.2
+      }
+    },
+    "climate": {
+      "drainage": "fast",
+      "frostRisk": "moderate",
+      "rainfall": {
+        "annualMm": 750
+      }
+    }
+  },
+  {
+    "slug": "iver",
+    "name": "Iver",
+    "county": "Buckinghamshire",
+    "x": 868.9,
+    "y": 570.3,
+    "lat": 51.5208,
+    "lng": -0.5347,
+    "coverage": "regular",
+    "coordinates": {
+      "latitude": 51.5208,
+      "longitude": -0.5347
+    },
+    "soil": {
+      "primaryTexture": "clay",
+      "secondaryTextures": [],
+      "ph": {
+        "min": 6.0,
+        "max": 7.0
+      }
+    },
+    "climate": {
+      "drainage": "fast",
+      "frostRisk": "moderate",
+      "rainfall": {
+        "annualMm": 660
+      }
+    }
+  },
+  {
+    "slug": "kidlington",
+    "name": "Kidlington",
+    "county": "Oxfordshire",
+    "x": 503.5,
+    "y": 334.9,
+    "lat": 51.8218,
+    "lng": -1.288,
+    "coverage": "regular",
+    "coordinates": {
+      "latitude": 51.8218,
+      "longitude": -1.288
+    },
+    "soil": {
+      "primaryTexture": "clay",
+      "secondaryTextures": [],
+      "ph": {
+        "min": 7.0,
+        "max": 7.5
+      }
+    },
+    "climate": {
+      "drainage": "fast",
+      "frostRisk": "moderate",
+      "rainfall": {
+        "annualMm": 650
+      }
+    }
+  },
+  {
+    "slug": "leighton-buzzard",
+    "name": "Leighton Buzzard",
+    "county": "Bedfordshire",
+    "x": 806.4,
+    "y": 260.3,
+    "lat": 51.9167,
+    "lng": -0.6635,
+    "coverage": "extended",
+    "coordinates": {
+      "latitude": 51.9167,
+      "longitude": -0.6635
+    },
+    "soil": {
+      "primaryTexture": "clay",
+      "secondaryTextures": [],
+      "ph": {
+        "min": 6.0,
+        "max": 6.8
+      }
+    },
+    "climate": {
+      "drainage": "fast",
+      "frostRisk": "moderate",
+      "rainfall": {
+        "annualMm": 620
+      }
+    }
+  },
+  {
+    "slug": "long-crendon",
+    "name": "Long Crendon",
+    "county": "Buckinghamshire",
+    "x": 657.5,
+    "y": 357.6,
+    "lat": 51.7928,
+    "lng": -0.9704,
+    "coverage": "regular",
+    "coordinates": {
+      "latitude": 51.7928,
+      "longitude": -0.9704
+    },
+    "soil": {
+      "primaryTexture": "clay",
+      "secondaryTextures": [],
+      "ph": {
+        "min": 7.0,
+        "max": 7.5
+      }
+    },
+    "climate": {
+      "drainage": "fast",
+      "frostRisk": "moderate",
+      "rainfall": {
+        "annualMm": 640
+      }
+    }
+  },
+  {
+    "slug": "maidenhead",
+    "name": "Maidenhead",
+    "county": "Berkshire",
+    "x": 778.1,
+    "y": 569.3,
+    "lat": 51.5221,
+    "lng": -0.7219,
+    "coverage": "regular",
+    "coordinates": {
+      "latitude": 51.5221,
+      "longitude": -0.7219
+    },
+    "soil": {
+      "primaryTexture": "clay",
+      "secondaryTextures": [],
+      "ph": {
+        "min": 6.8,
+        "max": 7.5
+      }
+    },
+    "climate": {
+      "drainage": "fast",
+      "frostRisk": "moderate",
+      "rainfall": {
+        "annualMm": 640
+      }
+    }
+  },
+  {
+    "slug": "marlow",
+    "name": "Marlow",
+    "county": "Buckinghamshire",
+    "x": 751.5,
+    "y": 530.5,
+    "lat": 51.5719,
+    "lng": -0.7767,
+    "coverage": "regular",
+    "coordinates": {
+      "latitude": 51.5719,
+      "longitude": -0.7767
+    },
+    "soil": {
+      "primaryTexture": "chalk",
+      "secondaryTextures": [
+        "chalk"
+      ],
+      "ph": {
+        "min": 7.5,
+        "max": 8.0
+      }
+    },
+    "climate": {
+      "drainage": "fast",
+      "frostRisk": "moderate",
+      "rainfall": {
+        "annualMm": 680
+      }
+    }
+  },
+  {
+    "slug": "newbury",
+    "name": "Newbury",
+    "county": "Berkshire",
+    "x": 486.1,
+    "y": 663.3,
+    "lat": 51.4014,
+    "lng": -1.3238,
+    "coverage": "regular",
+    "coordinates": {
+      "latitude": 51.4014,
+      "longitude": -1.3238
+    },
+    "soil": {
+      "primaryTexture": "chalk",
+      "secondaryTextures": [
+        "chalk"
+      ],
+      "ph": {
+        "min": 7.5,
+        "max": 8.0
+      }
+    },
+    "climate": {
+      "drainage": "fast",
+      "frostRisk": "moderate",
+      "rainfall": {
+        "annualMm": 720
+      }
+    }
+  },
+  {
+    "slug": "north-ascot",
+    "name": "North Ascot",
+    "county": "Berkshire",
+    "x": 803.8,
+    "y": 649.6,
+    "lat": 51.419,
+    "lng": -0.669,
+    "coverage": "regular",
+    "coordinates": {
+      "latitude": 51.419,
+      "longitude": -0.669
+    },
+    "soil": {
+      "primaryTexture": "sand",
+      "secondaryTextures": [],
+      "ph": {
+        "min": 5.0,
+        "max": 6.5
+      }
+    },
+    "climate": {
+      "drainage": "fast",
+      "frostRisk": "moderate",
+      "rainfall": {
+        "annualMm": 680
+      }
+    }
+  },
+  {
+    "slug": "old-windsor",
+    "name": "Old Windsor",
+    "county": "Berkshire",
+    "x": 829.5,
+    "y": 605.3,
+    "lat": 51.476,
+    "lng": -0.616,
+    "coverage": "regular",
+    "coordinates": {
+      "latitude": 51.476,
+      "longitude": -0.616
+    },
+    "soil": {
+      "primaryTexture": "sand",
+      "secondaryTextures": [],
+      "ph": {
+        "min": 6.0,
+        "max": 7.0
+      }
+    },
+    "climate": {
+      "drainage": "fast",
+      "frostRisk": "moderate",
+      "rainfall": {
+        "annualMm": 650
+      }
+    }
+  },
+  {
+    "slug": "oxford",
+    "name": "Oxford",
+    "county": "Oxfordshire",
+    "x": 518.2,
+    "y": 389.6,
+    "lat": 51.752,
+    "lng": -1.2577,
+    "coverage": "regular",
+    "coordinates": {
+      "latitude": 51.752,
+      "longitude": -1.2577
+    },
+    "soil": {
+      "primaryTexture": "clay",
+      "secondaryTextures": [],
+      "ph": {
+        "min": 6.5,
+        "max": 7.5
+      }
+    },
+    "climate": {
+      "drainage": "fast",
+      "frostRisk": "moderate",
+      "rainfall": {
+        "annualMm": 650
+      }
+    }
+  },
+  {
+    "slug": "prestwood",
+    "name": "Prestwood",
+    "county": "Buckinghamshire",
+    "x": 773.7,
+    "y": 427.3,
+    "lat": 51.7039,
+    "lng": -0.7309,
+    "coverage": "regular",
+    "coordinates": {
+      "latitude": 51.7039,
+      "longitude": -0.7309
+    },
+    "soil": {
+      "primaryTexture": "clay",
+      "secondaryTextures": [],
+      "ph": {
+        "min": 6.0,
+        "max": 7.0
+      }
+    },
+    "climate": {
+      "drainage": "fast",
+      "frostRisk": "moderate",
+      "rainfall": {
+        "annualMm": 710
+      }
+    }
+  },
+  {
+    "slug": "princes-risborough",
+    "name": "Princes Risborough",
+    "county": "Buckinghamshire",
+    "x": 741.4,
+    "y": 413.1,
+    "lat": 51.722,
+    "lng": -0.7976,
+    "coverage": "regular",
+    "coordinates": {
+      "latitude": 51.722,
+      "longitude": -0.7976
+    },
+    "soil": {
+      "primaryTexture": "chalk",
+      "secondaryTextures": [
+        "chalk"
+      ],
+      "ph": {
+        "min": 7.5,
+        "max": 8.2
+      }
+    },
+    "climate": {
+      "drainage": "fast",
+      "frostRisk": "moderate",
+      "rainfall": {
+        "annualMm": 710
+      }
+    }
+  },
+  {
+    "slug": "reading",
+    "name": "Reading",
+    "county": "Berkshire",
+    "x": 653.8,
+    "y": 622.2,
+    "lat": 51.4543,
+    "lng": -0.9781,
+    "coverage": "regular",
+    "coordinates": {
+      "latitude": 51.4543,
+      "longitude": -0.9781
+    },
+    "soil": {
+      "primaryTexture": "clay",
+      "secondaryTextures": [],
+      "ph": {
+        "min": 6.0,
+        "max": 7.2
+      }
+    },
+    "climate": {
+      "drainage": "fast",
+      "frostRisk": "moderate",
+      "rainfall": {
+        "annualMm": 640
+      }
+    }
+  },
+  {
+    "slug": "sandhurst",
+    "name": "Sandhurst",
+    "county": "Berkshire",
+    "x": 736.2,
+    "y": 703.7,
+    "lat": 51.3494,
+    "lng": -0.8083,
+    "coverage": "regular",
+    "coordinates": {
+      "latitude": 51.3494,
+      "longitude": -0.8083
+    },
+    "soil": {
+      "primaryTexture": "sand",
+      "secondaryTextures": [],
+      "ph": {
+        "min": 5.0,
+        "max": 6.0
+      }
+    },
+    "climate": {
+      "drainage": "fast",
+      "frostRisk": "moderate",
+      "rainfall": {
+        "annualMm": 700
+      }
+    }
+  },
+  {
+    "slug": "slough",
+    "name": "Slough",
+    "county": "Berkshire",
+    "x": 806.7,
+    "y": 578.4,
+    "lat": 51.5105,
+    "lng": -0.6629,
+    "coverage": "regular",
+    "coordinates": {
+      "latitude": 51.5105,
+      "longitude": -0.6629
+    },
+    "soil": {
+      "primaryTexture": "clay",
+      "secondaryTextures": [],
+      "ph": {
+        "min": 6.5,
+        "max": 7.5
+      }
+    },
+    "climate": {
+      "drainage": "fast",
+      "frostRisk": "moderate",
+      "rainfall": {
+        "annualMm": 620
+      }
+    }
+  },
+  {
+    "slug": "stokenchurch",
+    "name": "Stokenchurch",
+    "county": "Buckinghamshire",
+    "x": 690.6,
+    "y": 470.8,
+    "lat": 51.6483,
+    "lng": -0.9022,
+    "coverage": "regular",
+    "coordinates": {
+      "latitude": 51.6483,
+      "longitude": -0.9022
+    },
+    "soil": {
+      "primaryTexture": "chalk",
+      "secondaryTextures": [
+        "chalk"
+      ],
+      "ph": {
+        "min": 7.5,
+        "max": 8.0
+      }
+    },
+    "climate": {
+      "drainage": "fast",
+      "frostRisk": "moderate",
+      "rainfall": {
+        "annualMm": 710
+      }
+    }
+  },
+  {
+    "slug": "sunninghill",
+    "name": "Sunninghill",
+    "county": "Berkshire",
+    "x": 808.8,
+    "y": 666,
+    "lat": 51.398,
+    "lng": -0.6586,
+    "coverage": "regular",
+    "coordinates": {
+      "latitude": 51.398,
+      "longitude": -0.6586
+    },
+    "soil": {
+      "primaryTexture": "clay",
+      "secondaryTextures": [],
+      "ph": {
+        "min": 5.0,
+        "max": 6.5
+      }
+    },
+    "climate": {
+      "drainage": "fast",
+      "frostRisk": "moderate",
+      "rainfall": {
+        "annualMm": 680
+      }
+    }
+  },
+  {
+    "slug": "taplow",
+    "name": "Taplow",
+    "county": "Buckinghamshire",
+    "x": 794.4,
+    "y": 570.2,
+    "lat": 51.521,
+    "lng": -0.6883,
+    "coverage": "regular",
+    "coordinates": {
+      "latitude": 51.521,
+      "longitude": -0.6883
+    },
+    "soil": {
+      "primaryTexture": "sand",
+      "secondaryTextures": [],
+      "ph": {
+        "min": 6.5,
+        "max": 7.5
+      }
+    },
+    "climate": {
+      "drainage": "fast",
+      "frostRisk": "moderate",
+      "rainfall": {
+        "annualMm": 680
+      }
+    }
+  },
+  {
+    "slug": "thame",
+    "name": "Thame",
+    "county": "Oxfordshire",
+    "x": 655.8,
+    "y": 393.3,
+    "lat": 51.7473,
+    "lng": -0.974,
+    "coverage": "regular",
+    "coordinates": {
+      "latitude": 51.7473,
+      "longitude": -0.974
+    },
+    "soil": {
+      "primaryTexture": "clay",
+      "secondaryTextures": [],
+      "ph": {
+        "min": 7.0,
+        "max": 7.8
+      }
+    },
+    "climate": {
+      "drainage": "fast",
+      "frostRisk": "moderate",
+      "rainfall": {
+        "annualMm": 650
+      }
+    }
+  },
+  {
+    "slug": "thatcham",
+    "name": "Thatcham",
+    "county": "Berkshire",
+    "x": 514.8,
+    "y": 661.1,
+    "lat": 51.4043,
+    "lng": -1.2647,
+    "coverage": "regular",
+    "coordinates": {
+      "latitude": 51.4043,
+      "longitude": -1.2647
+    },
+    "soil": {
+      "primaryTexture": "chalk",
+      "secondaryTextures": [
+        "chalk"
+      ],
+      "ph": {
+        "min": 7.5,
+        "max": 8.0
+      }
+    },
+    "climate": {
+      "drainage": "fast",
+      "frostRisk": "moderate",
+      "rainfall": {
+        "annualMm": 710
+      }
+    }
+  },
+  {
+    "slug": "twyford",
+    "name": "Twyford",
+    "county": "Berkshire",
+    "x": 739.7,
+    "y": 606,
+    "lat": 51.475,
+    "lng": -0.801,
+    "coverage": "regular",
+    "coordinates": {
+      "latitude": 51.475,
+      "longitude": -0.801
+    },
+    "soil": {
+      "primaryTexture": "sand",
+      "secondaryTextures": [],
+      "ph": {
+        "min": 6.0,
+        "max": 7.0
+      }
+    },
+    "climate": {
+      "drainage": "fast",
+      "frostRisk": "moderate",
+      "rainfall": {
+        "annualMm": 660
+      }
+    }
+  },
+  {
+    "slug": "waddeston",
+    "name": "Waddesdon",
+    "county": "Buckinghamshire",
+    "x": 678.2,
+    "y": 317.6,
+    "lat": 51.8438,
+    "lng": -0.9279,
+    "coverage": "regular",
+    "coordinates": {
+      "latitude": 51.8438,
+      "longitude": -0.9279
+    },
+    "soil": {
+      "primaryTexture": "clay",
+      "secondaryTextures": [],
+      "ph": {
+        "min": 7.0,
+        "max": 7.8
+      }
+    },
+    "climate": {
+      "drainage": "fast",
+      "frostRisk": "moderate",
+      "rainfall": {
+        "annualMm": 650
+      }
+    }
+  },
+  {
+    "slug": "wallingford",
+    "name": "Wallingford",
+    "county": "Oxfordshire",
+    "x": 582.3,
+    "y": 506.8,
+    "lat": 51.6022,
+    "lng": -1.1255,
+    "coverage": "regular",
+    "coordinates": {
+      "latitude": 51.6022,
+      "longitude": -1.1255
+    },
+    "soil": {
+      "primaryTexture": "sand",
+      "secondaryTextures": [],
+      "ph": {
+        "min": 6.5,
+        "max": 7.5
+      }
+    },
+    "climate": {
+      "drainage": "fast",
+      "frostRisk": "moderate",
+      "rainfall": {
+        "annualMm": 660
+      }
+    }
+  },
+  {
+    "slug": "wantage",
+    "name": "Wantage",
+    "county": "Oxfordshire",
+    "x": 436.4,
+    "y": 518.1,
+    "lat": 51.5878,
+    "lng": -1.4263,
+    "coverage": "regular",
+    "coordinates": {
+      "latitude": 51.5878,
+      "longitude": -1.4263
+    },
+    "soil": {
+      "primaryTexture": "chalk",
+      "secondaryTextures": [
+        "chalk"
+      ],
+      "ph": {
+        "min": 7.0,
+        "max": 7.8
+      }
+    },
+    "climate": {
+      "drainage": "fast",
+      "frostRisk": "moderate",
+      "rainfall": {
+        "annualMm": 670
+      }
+    }
+  },
+  {
+    "slug": "watlington",
+    "name": "Watlington",
+    "county": "Oxfordshire",
+    "x": 644.9,
+    "y": 473.8,
+    "lat": 51.6445,
+    "lng": -0.9965,
+    "coverage": "regular",
+    "coordinates": {
+      "latitude": 51.6445,
+      "longitude": -0.9965
+    },
+    "soil": {
+      "primaryTexture": "chalk",
+      "secondaryTextures": [
+        "chalk"
+      ],
+      "ph": {
+        "min": 7.5,
+        "max": 8.2
+      }
+    },
+    "climate": {
+      "drainage": "fast",
+      "frostRisk": "moderate",
+      "rainfall": {
+        "annualMm": 700
+      }
+    }
+  },
+  {
+    "slug": "wendover",
+    "name": "Wendover",
+    "county": "Buckinghamshire",
+    "x": 767,
+    "y": 378.1,
+    "lat": 51.7667,
+    "lng": -0.7447,
+    "coverage": "regular",
+    "coordinates": {
+      "latitude": 51.7667,
+      "longitude": -0.7447
+    },
+    "soil": {
+      "primaryTexture": "chalk",
+      "secondaryTextures": [
+        "chalk"
+      ],
+      "ph": {
+        "min": 7.5,
+        "max": 8.2
+      }
+    },
+    "climate": {
+      "drainage": "fast",
+      "frostRisk": "moderate",
+      "rainfall": {
+        "annualMm": 720
+      }
+    }
+  },
+  {
+    "slug": "windsor",
+    "name": "Windsor",
+    "county": "Berkshire",
+    "x": 835.1,
+    "y": 599.1,
+    "lat": 51.4839,
+    "lng": -0.6044,
+    "coverage": "regular",
+    "coordinates": {
+      "latitude": 51.4839,
+      "longitude": -0.6044
+    },
+    "soil": {
+      "primaryTexture": "loam",
+      "secondaryTextures": [],
+      "ph": {
+        "min": 6.8,
+        "max": 7.5
+      }
+    },
+    "climate": {
+      "drainage": "fast",
+      "frostRisk": "moderate",
+      "rainfall": {
+        "annualMm": 640
+      }
+    }
+  },
+  {
+    "slug": "winslow",
+    "name": "Winslow",
+    "county": "Buckinghamshire",
+    "x": 699.7,
+    "y": 240.5,
+    "lat": 51.9419,
+    "lng": -0.8835,
+    "coverage": "regular",
+    "coordinates": {
+      "latitude": 51.9419,
+      "longitude": -0.8835
+    },
+    "soil": {
+      "primaryTexture": "clay",
+      "secondaryTextures": [],
+      "ph": {
+        "min": 7.0,
+        "max": 7.5
+      }
+    },
+    "climate": {
+      "drainage": "fast",
+      "frostRisk": "moderate",
+      "rainfall": {
+        "annualMm": 640
+      }
+    }
+  },
+  {
+    "slug": "witney",
+    "name": "Witney",
+    "county": "Oxfordshire",
+    "x": 408.3,
+    "y": 362.5,
+    "lat": 51.7866,
+    "lng": -1.4842,
+    "coverage": "regular",
+    "coordinates": {
+      "latitude": 51.7866,
+      "longitude": -1.4842
+    },
+    "soil": {
+      "primaryTexture": "clay",
+      "secondaryTextures": [],
+      "ph": {
+        "min": 7.0,
+        "max": 7.8
+      }
+    },
+    "climate": {
+      "drainage": "fast",
+      "frostRisk": "moderate",
+      "rainfall": {
+        "annualMm": 670
+      }
+    }
+  },
+  {
+    "slug": "woburn",
+    "name": "Woburn",
+    "county": "Bedfordshire",
+    "x": 827.1,
+    "y": 199.9,
+    "lat": 51.9935,
+    "lng": -0.621,
+    "coverage": "extended",
+    "coordinates": {
+      "latitude": 51.9935,
+      "longitude": -0.621
+    },
+    "soil": {
+      "primaryTexture": "sand",
+      "secondaryTextures": [],
+      "ph": {
+        "min": 6.0,
+        "max": 6.8
+      }
+    },
+    "climate": {
+      "drainage": "fast",
+      "frostRisk": "moderate",
+      "rainfall": {
+        "annualMm": 620
+      }
+    }
+  },
+  {
+    "slug": "wokingham",
+    "name": "Wokingham",
+    "county": "Berkshire",
+    "x": 723.4,
+    "y": 655.2,
+    "lat": 51.4118,
+    "lng": -0.8346,
+    "coverage": "regular",
+    "coordinates": {
+      "latitude": 51.4118,
+      "longitude": -0.8346
+    },
+    "soil": {
+      "primaryTexture": "clay",
+      "secondaryTextures": [],
+      "ph": {
+        "min": 6.0,
+        "max": 7.0
+      }
+    },
+    "climate": {
+      "drainage": "fast",
+      "frostRisk": "moderate",
+      "rainfall": {
+        "annualMm": 660
+      }
+    }
+  },
+  {
+    "slug": "woodley",
+    "name": "Woodley",
+    "county": "Berkshire",
+    "x": 678,
+    "y": 610.3,
+    "lat": 51.4695,
+    "lng": -0.9283,
+    "coverage": "regular",
+    "coordinates": {
+      "latitude": 51.4695,
+      "longitude": -0.9283
+    },
+    "soil": {
+      "primaryTexture": "clay",
+      "secondaryTextures": [],
+      "ph": {
+        "min": 6.0,
+        "max": 7.0
+      }
+    },
+    "climate": {
+      "drainage": "fast",
+      "frostRisk": "moderate",
+      "rainfall": {
+        "annualMm": 640
+      }
+    }
+  },
+  {
+    "slug": "woodstock",
+    "name": "Woodstock",
+    "county": "Oxfordshire",
+    "x": 471,
+    "y": 314.4,
+    "lat": 51.8479,
+    "lng": -1.3549,
+    "coverage": "regular",
+    "coordinates": {
+      "latitude": 51.8479,
+      "longitude": -1.3549
+    },
+    "soil": {
+      "primaryTexture": "loam",
+      "secondaryTextures": [],
+      "ph": {
+        "min": 7.5,
+        "max": 8.2
+      }
+    },
+    "climate": {
+      "drainage": "fast",
+      "frostRisk": "moderate",
+      "rainfall": {
+        "annualMm": 670
+      }
+    }
+  },
+  {
+    "slug": "wraysbury",
+    "name": "Wraysbury",
+    "county": "Berkshire",
+    "x": 860,
+    "y": 617.7,
+    "lat": 51.46,
+    "lng": -0.553,
+    "coverage": "regular",
+    "coordinates": {
+      "latitude": 51.46,
+      "longitude": -0.553
+    },
+    "soil": {
+      "primaryTexture": "sand",
+      "secondaryTextures": [],
+      "ph": {
+        "min": 6.0,
+        "max": 7.0
+      }
+    },
+    "climate": {
+      "drainage": "fast",
+      "frostRisk": "moderate",
+      "rainfall": {
+        "annualMm": 650
+      }
+    }
+  }
+]

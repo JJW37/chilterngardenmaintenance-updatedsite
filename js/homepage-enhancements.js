@@ -54,49 +54,49 @@
     unmanageable: {
       service: 'Garden Clearance - full overgrowth recovery, bramble and ivy removal, waste taken to licensed tip.',
       inspect: 'Access points, waste volume, presence of brambles/ivy/self-seeded trees, soil compaction, hidden structures, drainage.',
-      project: 'Half-acre bramble clearance in Totteridge - three days, waste removed, garden left ready for replanting. <a href="/portfolio/clearance.html" style="color:var(--forest);text-decoration:underline;">See clearance portfolio →</a>',
+      project: 'Half-acre bramble clearance in Totteridge - three days, waste removed, garden left ready for replanting. <a href="/chilterngardenmaintenance-updatedsite/portfolio/clearance.html" style="color:var(--forest);text-decoration:underline;">See clearance portfolio →</a>',
       cost: 'Typically £350–£1,500 depending on size, overgrowth density and waste volume. Most jobs done in 1–3 days.',
       next: 'Has the garden been left for one season, or several? That determines whether we recover or fully clear.'
     },
     lawn: {
       service: 'Lawn Recovery - scarify, aerate, overseed, top dress. Diagnosis of moss, weeds, bare patches, drainage.',
       inspect: 'Soil compaction, thatch depth, moss percentage, weed types, drainage, shade patterns, mowing height history.',
-      project: 'Autumn lawn renovation in Oxford - scarified, aerated, overseeded with shade-tolerant fescue. Eight weeks to full coverage. <a href="/portfolio/lawn-recovery.html" style="color:var(--forest);text-decoration:underline;">See lawn recovery →</a>',
+      project: 'Autumn lawn renovation in Oxford - scarified, aerated, overseeded with shade-tolerant fescue. Eight weeks to full coverage. <a href="/chilterngardenmaintenance-updatedsite/portfolio/lawn-recovery.html" style="color:var(--forest);text-decoration:underline;">See lawn recovery →</a>',
       cost: 'Typically £180–£450 for a standard rear lawn. Larger lawns or those needing full renovation quoted separately.',
       next: 'Is the lawn mostly moss, mostly weeds, or mostly bare patches? Each points to a different cause.'
     },
     privacy: {
       service: 'Privacy Plant Planner + Soft Landscaping - structured screening using the right plants for your soil and exposure.',
       inspect: 'Line of sight to be screened, soil type, light, exposure, root competition, boundary ownership, desired screening height.',
-      project: 'Mixed evergreen hedge in Beaconsfield - Thuja, Cherry Laurel and Photinia layered for year-round screening. <a href="/calculators/privacy-planner.html" style="color:var(--forest);text-decoration:underline;">Try the Privacy Planner →</a>',
+      project: 'Mixed evergreen hedge in Beaconsfield - Thuja, Cherry Laurel and Photinia layered for year-round screening. <a href="/chilterngardenmaintenance-updatedsite/calculators/privacy-planner.html" style="color:var(--forest);text-decoration:underline;">Try the Privacy Planner →</a>',
       cost: 'Plants + planting: £400–£2,500 depending on length, height and plant choices. Mature plants cost more but screen immediately.',
       next: 'Do you need year-round screening, or is summer screening enough? That changes the plant choice completely.'
     },
     redesign: {
       service: 'Garden Design - planting plans, layout, structure. Designed for your conditions, not against them.',
       inspect: 'Existing plants worth keeping, soil, light, drainage, how you use the garden, what you want from it, budget.',
-      project: 'Country garden redesign near Thame - restructured borders, new lawn, mixed herbaceous planting. Six weeks end-to-end. <a href="/portfolio/" style="color:var(--forest);text-decoration:underline;">See portfolio →</a>',
+      project: 'Country garden redesign near Thame - restructured borders, new lawn, mixed herbaceous planting. Six weeks end-to-end. <a href="/chilterngardenmaintenance-updatedsite/portfolio/" style="color:var(--forest);text-decoration:underline;">See portfolio →</a>',
       cost: 'Design: £350–£1,200 depending on garden size. Implementation typically £2,000–£15,000+ phased over seasons.',
       next: 'Is the garden’s structure wrong, or just the planting? Structure is the harder fix.'
     },
     structure: {
       service: 'Fencing - closeboard, featheredge, post and rail. Repair or full replacement.',
       inspect: 'Post condition, panel damage, concrete or timber posts, gate operation, boundary ownership, ground levels.',
-      project: 'Closeboard fence replacement in Aylesbury - 22m run, concrete posts, featheredge boards. Two-day install. <a href="/portfolio/fencing.html" style="color:var(--forest);text-decoration:underline;">See fencing →</a>',
+      project: 'Closeboard fence replacement in Aylesbury - 22m run, concrete posts, featheredge boards. Two-day install. <a href="/chilterngardenmaintenance-updatedsite/portfolio/fencing.html" style="color:var(--forest);text-decoration:underline;">See fencing →</a>',
       cost: '£95–£160 per metre installed depending on style, height and ground conditions. Gates quoted separately.',
       next: 'Are the posts sound, or do they need replacing too? Posts are most of the labour.'
     },
     care: {
       service: 'Regular Garden Maintenance - fortnightly or monthly visits following the CGM Method.',
       inspect: 'Garden size, planting complexity, lawn area, what you want CGM to take responsibility for, access, waste.',
-      project: 'Managed garden in Henley - fortnightly visits, full CGM Method. Year 2: visibly better than year 1. <a href="/about/maintenance.html" style="color:var(--forest);text-decoration:underline;">Read the CGM Method →</a>',
+      project: 'Managed garden in Henley - fortnightly visits, full CGM Method. Year 2: visibly better than year 1. <a href="/chilterngardenmaintenance-updatedsite/about/maintenance.html" style="color:var(--forest);text-decoration:underline;">Read the CGM Method →</a>',
       cost: 'From £35–£55 per visit for a standard rear garden. Larger or more complex gardens quoted per visit.',
       next: 'How often do you realistically want us there - weekly, fortnightly or monthly? That shapes the plan.'
     },
     unsure: {
       service: 'Garden Analysis Report - structured diagnosis of what is actually wrong, before you spend money.',
       inspect: 'Everything: soil, light, drainage, plants, lawn, structures, pests, diseases. A full written report with photos.',
-      project: 'Garden analysis in Marlow - identified drainage as the root cause of three years of lawn failure. Fixed the drainage, lawn recovered. <a href="/services/garden-analysis-report.html" style="color:var(--forest);text-decoration:underline;">Request a report →</a>',
+      project: 'Garden analysis in Marlow - identified drainage as the root cause of three years of lawn failure. Fixed the drainage, lawn recovered. <a href="/chilterngardenmaintenance-updatedsite/services/garden-analysis-report.html" style="color:var(--forest);text-decoration:underline;">Request a report →</a>',
       cost: 'Analysis report: £180–£350 depending on garden size. Fee credited against any subsequent work.',
       next: 'When did the garden last look right? That tells us whether it has declined slowly or suddenly.'
     }

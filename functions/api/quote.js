@@ -153,7 +153,7 @@ export async function onRequestPost({ request, env }) {
       photoCount: photos.length,
       annotatedPhotoCount,
       regularPhotoCount,
-      sourcePage: sourcePage || '/booking/',
+      sourcePage: sourcePage || '/chilterngardenmaintenance-updatedsite/booking/',
       calculatorData: calculatorData || null,
       consent: true,
       consentAt: new Date().toISOString(),
@@ -191,7 +191,7 @@ export async function onRequestPost({ request, env }) {
                 <tr><td style="padding:8px;border:1px solid #ddd;font-weight:bold;">Preferred contact</td><td style="padding:8px;border:1px solid #ddd;">${preferredContact}</td></tr>
                 <tr><td style="padding:8px;border:1px solid #ddd;font-weight:bold;">Photos</td><td style="padding:8px;border:1px solid #ddd;">${photos.length} photo(s) attached${annotatedPhotoCount > 0 ? ` (${annotatedPhotoCount} annotated with labels)` : ''}</td></tr>
                 <tr><td style="padding:8px;border:1px solid #ddd;font-weight:bold;">Lead grade</td><td style="padding:8px;border:1px solid #ddd;">${lead.leadGrade} (score: ${leadScore}/100)</td></tr>
-                <tr><td style="padding:8px;border:1px solid #ddd;font-weight:bold;">Source</td><td style="padding:8px;border:1px solid #ddd;">${sourcePage || '/booking/'}</td></tr>
+                <tr><td style="padding:8px;border:1px solid #ddd;font-weight:bold;">Source</td><td style="padding:8px;border:1px solid #ddd;">${sourcePage || '/chilterngardenmaintenance-updatedsite/booking/'}</td></tr>
               </table>
               <h3>Details</h3>
               <p>${details || 'No additional details provided'}</p>

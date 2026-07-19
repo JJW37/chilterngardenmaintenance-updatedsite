@@ -1,0 +1,3675 @@
+[
+  {
+    "slug": "agapanthus",
+    "name": "Agapanthus (African Lily)",
+    "scientificName": "Agapanthus africanus and hybrids",
+    "plantType": "Herbaceous or evergreen perennial",
+    "tags": [
+      "Herbaceous or evergreen perennial",
+      "Amaryllidaceae",
+      "pollinator",
+      "bee",
+      "wildlife"
+    ],
+    "growingConditions": {
+      "light": [
+        "full-sun"
+      ],
+      "drainage": [
+        "fast"
+      ],
+      "chalkTolerance": "high"
+    },
+    "matureSize": {
+      "sourceText": "60cm to 1m tall in flower, 40cm spread"
+    },
+    "safety": {
+      "toxicity": "moderate"
+    }
+  },
+  {
+    "slug": "ajuga",
+    "name": "Bugle",
+    "scientificName": "Ajuga reptans",
+    "plantType": "Evergreen mat-forming perennial",
+    "tags": [
+      "Evergreen mat-forming perennial",
+      "Lamiaceae",
+      "pollinator",
+      "bee",
+      "wildlife"
+    ],
+    "growingConditions": {
+      "light": [
+        "partial-shade"
+      ],
+      "drainage": [
+        "fast"
+      ],
+      "chalkTolerance": "unknown"
+    },
+    "matureSize": {
+      "sourceText": "10 to 20cm tall in flower. Plant 30cm apart"
+    },
+    "safety": {
+      "toxicity": "unknown"
+    }
+  },
+  {
+    "slug": "alliums",
+    "name": "Alliums (Ornamental Onions)",
+    "scientificName": "Allium species and hybrids",
+    "plantType": "Bulbous perennial",
+    "tags": [
+      "Bulbous perennial",
+      "Amaryllidaceae",
+      "pollinator",
+      "bee",
+      "wildlife"
+    ],
+    "growingConditions": {
+      "light": [
+        "full-sun"
+      ],
+      "drainage": [
+        "fast"
+      ],
+      "chalkTolerance": "high"
+    },
+    "matureSize": {
+      "sourceText": "60cm to 1.5m tall, 20 to 30cm spread"
+    },
+    "safety": {
+      "toxicity": "unknown"
+    }
+  },
+  {
+    "slug": "amelanchier",
+    "name": "Amelanchier (Serviceberry, Juneberry)",
+    "scientificName": "Amelanchier lamarckii, Amelanchier x grandiflora",
+    "plantType": "Deciduous small tree or large shrub",
+    "tags": [
+      "Deciduous small tree or large shrub",
+      "Rosaceae",
+      "pollinator",
+      "bee",
+      "wildlife"
+    ],
+    "growingConditions": {
+      "light": [
+        "full-sun",
+        "partial-shade"
+      ],
+      "drainage": [
+        "fast"
+      ],
+      "chalkTolerance": "unknown"
+    },
+    "matureSize": {
+      "sourceText": "4 to 6m tall, 3 to 4m spread"
+    },
+    "safety": {
+      "toxicity": "unknown"
+    }
+  },
+  {
+    "slug": "anemone",
+    "name": "Anemones (Woodland and Balkan)",
+    "scientificName": "Anemone nemorosa and Anemone blanda",
+    "plantType": "Rhizomatous and tuberous perennials",
+    "tags": [
+      "Rhizomatous and tuberous perennials",
+      "Ranunculaceae",
+      "pollinator",
+      "bee",
+      "wildlife"
+    ],
+    "growingConditions": {
+      "light": [
+        "full-shade"
+      ],
+      "drainage": [
+        "fast"
+      ],
+      "chalkTolerance": "high"
+    },
+    "matureSize": {
+      "sourceText": "10 to 20cm tall. Plant 10cm apart in groups"
+    },
+    "safety": {
+      "toxicity": "moderate"
+    }
+  },
+  {
+    "slug": "apple-tree",
+    "name": "Apple Tree",
+    "scientificName": "Malus domestica",
+    "plantType": "Deciduous fruit tree",
+    "tags": [
+      "Deciduous fruit tree",
+      "Rosaceae",
+      "pollinator",
+      "bee",
+      "wildlife"
+    ],
+    "growingConditions": {
+      "light": [
+        "full-sun"
+      ],
+      "drainage": [
+        "fast"
+      ],
+      "chalkTolerance": "high"
+    },
+    "matureSize": {
+      "sourceText": "2 to 5m depending on rootstock"
+    },
+    "safety": {
+      "toxicity": "unknown"
+    }
+  },
+  {
+    "slug": "aquilegia",
+    "name": "Aquilegia (Columbine)",
+    "scientificName": "Aquilegia vulgaris and hybrids",
+    "plantType": "Herbaceous perennial",
+    "tags": [
+      "Herbaceous perennial",
+      "Ranunculaceae",
+      "pollinator",
+      "bee",
+      "wildlife"
+    ],
+    "growingConditions": {
+      "light": [
+        "partial-shade"
+      ],
+      "drainage": [
+        "fast"
+      ],
+      "chalkTolerance": "high"
+    },
+    "matureSize": {
+      "sourceText": "45 to 75cm tall in flower, 30cm spread"
+    },
+    "safety": {
+      "toxicity": "moderate"
+    }
+  },
+  {
+    "slug": "astilbe",
+    "name": "Astilbe",
+    "scientificName": "Astilbe arendsii and species",
+    "plantType": "Herbaceous perennial",
+    "tags": [
+      "Herbaceous perennial",
+      "Saxifragaceae",
+      "pollinator",
+      "bee",
+      "wildlife"
+    ],
+    "growingConditions": {
+      "light": [
+        "partial-shade"
+      ],
+      "drainage": [
+        "moderate"
+      ],
+      "chalkTolerance": "unknown"
+    },
+    "matureSize": {
+      "sourceText": "45cm to 1m tall in flower, 45cm spread"
+    },
+    "safety": {
+      "toxicity": "unknown"
+    }
+  },
+  {
+    "slug": "bay",
+    "name": "Bay",
+    "scientificName": "Laurus nobilis",
+    "plantType": "Evergreen shrub or small tree",
+    "tags": [
+      "Evergreen shrub or small tree",
+      "Lauraceae",
+      "pollinator",
+      "bee",
+      "wildlife"
+    ],
+    "growingConditions": {
+      "light": [
+        "full-sun",
+        "partial-shade"
+      ],
+      "drainage": [
+        "fast"
+      ],
+      "chalkTolerance": "high"
+    },
+    "matureSize": {
+      "sourceText": "2 to 6m if unpruned. Train as a standard for a small garden"
+    },
+    "safety": {
+      "toxicity": "moderate"
+    }
+  },
+  {
+    "slug": "beech",
+    "name": "Beech",
+    "scientificName": "Fagus sylvatica",
+    "plantType": "Deciduous tree, used as hedging",
+    "tags": [
+      "Deciduous tree, used as hedging",
+      "Fagaceae",
+      "pollinator",
+      "bee",
+      "wildlife"
+    ],
+    "growingConditions": {
+      "light": [
+        "full-sun"
+      ],
+      "drainage": [
+        "moderate"
+      ],
+      "chalkTolerance": "high"
+    },
+    "matureSize": {
+      "sourceText": "1.5 to 4m as a hedge, 20m plus as a tree"
+    },
+    "safety": {
+      "toxicity": "unknown"
+    }
+  },
+  {
+    "slug": "begonia",
+    "name": "Begonias (Tuberous and Fibrous)",
+    "scientificName": "Begonia species and hybrids",
+    "plantType": "Tuberous and fibrous rooted perennials, often grown as annuals",
+    "tags": [
+      "Tuberous and fibrous rooted perennials, often grown as annuals",
+      "Begoniaceae",
+      "pollinator",
+      "bee",
+      "wildlife"
+    ],
+    "growingConditions": {
+      "light": [
+        "full-shade"
+      ],
+      "drainage": [
+        "fast"
+      ],
+      "chalkTolerance": "unknown"
+    },
+    "matureSize": {
+      "sourceText": "15cm to 60cm depending on type. Plant 20 to 30cm apart"
+    },
+    "safety": {
+      "toxicity": "unknown"
+    }
+  },
+  {
+    "slug": "berberis",
+    "name": "Berberis (Barberry)",
+    "scientificName": "Berberis darwinii and other species",
+    "plantType": "Evergreen or deciduous shrub",
+    "tags": [
+      "Evergreen or deciduous shrub",
+      "Berberidaceae",
+      "pollinator",
+      "bee",
+      "wildlife"
+    ],
+    "growingConditions": {
+      "light": [
+        "full-sun",
+        "partial-shade"
+      ],
+      "drainage": [
+        "moderate"
+      ],
+      "chalkTolerance": "high"
+    },
+    "matureSize": {
+      "sourceText": "1 to 2m tall and wide depending on species"
+    },
+    "safety": {
+      "toxicity": "unknown"
+    }
+  },
+  {
+    "slug": "bergenia",
+    "name": "Bergenia (Elephant Ears)",
+    "scientificName": "Bergenia cordifolia and hybrids",
+    "plantType": "Evergreen perennial",
+    "tags": [
+      "Evergreen perennial",
+      "Saxifragaceae",
+      "pollinator",
+      "bee",
+      "wildlife"
+    ],
+    "growingConditions": {
+      "light": [
+        "full-sun",
+        "full-shade"
+      ],
+      "drainage": [
+        "fast"
+      ],
+      "chalkTolerance": "high"
+    },
+    "matureSize": {
+      "sourceText": "40 to 60cm tall and wide"
+    },
+    "safety": {
+      "toxicity": "unknown"
+    }
+  },
+  {
+    "slug": "blackberry",
+    "name": "Blackberry",
+    "scientificName": "Rubus fruticosus",
+    "plantType": "Deciduous fruiting shrub (bramble)",
+    "tags": [
+      "Deciduous fruiting shrub (bramble)",
+      "Rosaceae",
+      "pollinator",
+      "bee",
+      "wildlife"
+    ],
+    "growingConditions": {
+      "light": [
+        "partial-shade"
+      ],
+      "drainage": [
+        "moderate"
+      ],
+      "chalkTolerance": "unknown"
+    },
+    "matureSize": {
+      "sourceText": "2 to 3m wide. Train on wires or a trellis"
+    },
+    "safety": {
+      "toxicity": "unknown"
+    }
+  },
+  {
+    "slug": "blackcurrant",
+    "name": "Blackcurrant",
+    "scientificName": "Ribes nigrum",
+    "plantType": "Deciduous fruiting shrub",
+    "tags": [
+      "Deciduous fruiting shrub",
+      "Grossulariaceae",
+      "pollinator",
+      "bee",
+      "wildlife"
+    ],
+    "growingConditions": {
+      "light": [
+        "full-sun",
+        "partial-shade"
+      ],
+      "drainage": [
+        "fast"
+      ],
+      "chalkTolerance": "unknown"
+    },
+    "matureSize": {
+      "sourceText": "1.5m tall and wide. Plant 1.5m apart"
+    },
+    "safety": {
+      "toxicity": "unknown"
+    }
+  },
+  {
+    "slug": "blackthorn",
+    "name": "Blackthorn",
+    "scientificName": "Prunus spinosa",
+    "plantType": "Deciduous thorny shrub",
+    "tags": [
+      "Deciduous thorny shrub",
+      "Rosaceae",
+      "pollinator",
+      "bee",
+      "wildlife"
+    ],
+    "growingConditions": {
+      "light": [
+        "full-sun"
+      ],
+      "drainage": [
+        "moderate"
+      ],
+      "chalkTolerance": "high"
+    },
+    "matureSize": {
+      "sourceText": "2 to 4m as a hedge, 3 to 5m as a small tree"
+    },
+    "safety": {
+      "toxicity": "unknown"
+    }
+  },
+  {
+    "slug": "blueberry",
+    "name": "Blueberry",
+    "scientificName": "Vaccinium corymbosum",
+    "plantType": "Deciduous fruiting shrub",
+    "tags": [
+      "Deciduous fruiting shrub",
+      "Ericaceae",
+      "pollinator",
+      "bee",
+      "wildlife"
+    ],
+    "growingConditions": {
+      "light": [
+        "full-sun",
+        "partial-shade"
+      ],
+      "drainage": [
+        "fast"
+      ],
+      "chalkTolerance": "high"
+    },
+    "matureSize": {
+      "sourceText": "1 to 1.5m tall and wide"
+    },
+    "safety": {
+      "toxicity": "unknown"
+    }
+  },
+  {
+    "slug": "box",
+    "name": "Box (Common Box)",
+    "scientificName": "Buxus sempervirens",
+    "plantType": "Evergreen shrub",
+    "tags": [
+      "Evergreen shrub",
+      "Buxaceae",
+      "pollinator",
+      "bee",
+      "wildlife"
+    ],
+    "growingConditions": {
+      "light": [
+        "partial-shade"
+      ],
+      "drainage": [
+        "moderate"
+      ],
+      "chalkTolerance": "high"
+    },
+    "matureSize": {
+      "sourceText": "1 to 4m tall and wide if unclipped, but normally kept at 30 to 80cm as a hedge"
+    },
+    "safety": {
+      "toxicity": "moderate"
+    }
+  },
+  {
+    "slug": "brunnera",
+    "name": "Brunnera (Siberian Bugloss)",
+    "scientificName": "Brunnera macrophylla",
+    "plantType": "Herbaceous perennial",
+    "tags": [
+      "Herbaceous perennial",
+      "Boraginaceae",
+      "pollinator",
+      "bee",
+      "wildlife"
+    ],
+    "growingConditions": {
+      "light": [
+        "full-shade"
+      ],
+      "drainage": [
+        "fast"
+      ],
+      "chalkTolerance": "high"
+    },
+    "matureSize": {
+      "sourceText": "30 to 45cm tall and wide"
+    },
+    "safety": {
+      "toxicity": "unknown"
+    }
+  },
+  {
+    "slug": "buxus-alternatives",
+    "name": "Buxus Alternatives (Box Substitutes)",
+    "scientificName": "Ilex crenata, Lonicera nitida, Euonymus japonicus",
+    "plantType": "Evergreen shrubs",
+    "tags": [
+      "Evergreen shrubs",
+      "Various",
+      "pollinator",
+      "bee",
+      "wildlife"
+    ],
+    "growingConditions": {
+      "light": [
+        "partial-shade"
+      ],
+      "drainage": [
+        "fast"
+      ],
+      "chalkTolerance": "unknown"
+    },
+    "matureSize": {
+      "sourceText": "Same as box. 30cm to 1m depending on pruning"
+    },
+    "safety": {
+      "toxicity": "unknown"
+    }
+  },
+  {
+    "slug": "calamagrostis",
+    "name": "Calamagrostis (Feather Reed Grass)",
+    "scientificName": "Calamagrostis x acutiflora",
+    "plantType": "Deciduous ornamental grass",
+    "tags": [
+      "Deciduous ornamental grass",
+      "Poaceae",
+      "pollinator",
+      "bee",
+      "wildlife"
+    ],
+    "growingConditions": {
+      "light": [
+        "full-sun",
+        "partial-shade"
+      ],
+      "drainage": [
+        "moderate"
+      ],
+      "chalkTolerance": "high"
+    },
+    "matureSize": {
+      "sourceText": "1.2 to 1.8m tall in flower, 50cm spread"
+    },
+    "safety": {
+      "toxicity": "unknown"
+    }
+  },
+  {
+    "slug": "camassia",
+    "name": "Camassia",
+    "scientificName": "Camassia quamash and Camassia leichtlinii",
+    "plantType": "Bulbous perennial",
+    "tags": [
+      "Bulbous perennial",
+      "Asparagaceae",
+      "pollinator",
+      "bee",
+      "wildlife"
+    ],
+    "growingConditions": {
+      "light": [
+        "full-sun"
+      ],
+      "drainage": [
+        "fast"
+      ],
+      "chalkTolerance": "unknown"
+    },
+    "matureSize": {
+      "sourceText": "60cm to 1.2m tall. Plant 20cm apart"
+    },
+    "safety": {
+      "toxicity": "unknown"
+    }
+  },
+  {
+    "slug": "camellia",
+    "name": "Camellia",
+    "scientificName": "Camellia japonica and Camellia x williamsii",
+    "plantType": "Evergreen shrub",
+    "tags": [
+      "Evergreen shrub",
+      "Theaceae",
+      "pollinator",
+      "bee",
+      "wildlife"
+    ],
+    "growingConditions": {
+      "light": [
+        "full-shade"
+      ],
+      "drainage": [
+        "fast"
+      ],
+      "chalkTolerance": "high"
+    },
+    "matureSize": {
+      "sourceText": "1.5 to 3m tall and wide"
+    },
+    "safety": {
+      "toxicity": "unknown"
+    }
+  },
+  {
+    "slug": "carex",
+    "name": "Carex (Sedge)",
+    "scientificName": "Carex species and cultivars",
+    "plantType": "Evergreen or semi-evergreen ornamental grass",
+    "tags": [
+      "Evergreen or semi-evergreen ornamental grass",
+      "Cyperaceae",
+      "pollinator",
+      "bee",
+      "wildlife"
+    ],
+    "growingConditions": {
+      "light": [
+        "partial-shade"
+      ],
+      "drainage": [
+        "fast"
+      ],
+      "chalkTolerance": "unknown"
+    },
+    "matureSize": {
+      "sourceText": "30cm to 1m depending on species"
+    },
+    "safety": {
+      "toxicity": "unknown"
+    }
+  },
+  {
+    "slug": "cercis",
+    "name": "Cercis (Redbud, Judas Tree)",
+    "scientificName": "Cercis siliquastrum, Cercis canadensis",
+    "plantType": "Deciduous small tree",
+    "tags": [
+      "Deciduous small tree",
+      "Fabaceae",
+      "pollinator",
+      "bee",
+      "wildlife"
+    ],
+    "growingConditions": {
+      "light": [
+        "full-sun"
+      ],
+      "drainage": [
+        "fast"
+      ],
+      "chalkTolerance": "high"
+    },
+    "matureSize": {
+      "sourceText": "4 to 8m tall and wide"
+    },
+    "safety": {
+      "toxicity": "unknown"
+    }
+  },
+  {
+    "slug": "cherry-tree",
+    "name": "Cherry Tree (Fruiting)",
+    "scientificName": "Prunus avium",
+    "plantType": "Deciduous fruit tree",
+    "tags": [
+      "Deciduous fruit tree",
+      "Rosaceae",
+      "pollinator",
+      "bee",
+      "wildlife"
+    ],
+    "growingConditions": {
+      "light": [
+        "full-sun"
+      ],
+      "drainage": [
+        "fast"
+      ],
+      "chalkTolerance": "high"
+    },
+    "matureSize": {
+      "sourceText": "2.5 to 4m depending on rootstock. Colt and Gisela 5 are common rootstocks"
+    },
+    "safety": {
+      "toxicity": "unknown"
+    }
+  },
+  {
+    "slug": "chives",
+    "name": "Chives",
+    "scientificName": "Allium schoenoprasum",
+    "plantType": "Herbaceous perennial herb",
+    "tags": [
+      "Herbaceous perennial herb",
+      "Amaryllidaceae",
+      "pollinator",
+      "bee",
+      "wildlife"
+    ],
+    "growingConditions": {
+      "light": [
+        "full-sun",
+        "partial-shade"
+      ],
+      "drainage": [
+        "fast"
+      ],
+      "chalkTolerance": "unknown"
+    },
+    "matureSize": {
+      "sourceText": "30cm tall and wide"
+    },
+    "safety": {
+      "toxicity": "unknown"
+    }
+  },
+  {
+    "slug": "choisya",
+    "name": "Mexican Orange Blossom",
+    "scientificName": "Choisya ternata",
+    "plantType": "Evergreen shrub",
+    "tags": [
+      "Evergreen shrub",
+      "Rutaceae",
+      "pollinator",
+      "bee",
+      "wildlife"
+    ],
+    "growingConditions": {
+      "light": [
+        "full-sun",
+        "partial-shade"
+      ],
+      "drainage": [
+        "fast"
+      ],
+      "chalkTolerance": "high"
+    },
+    "matureSize": {
+      "sourceText": "1.2 to 2m tall and wide"
+    },
+    "safety": {
+      "toxicity": "unknown"
+    }
+  },
+  {
+    "slug": "clematis",
+    "name": "Clematis",
+    "scientificName": "Clematis species and hybrids",
+    "plantType": "Deciduous or evergreen climber",
+    "tags": [
+      "Deciduous or evergreen climber",
+      "Ranunculaceae",
+      "pollinator",
+      "bee",
+      "wildlife"
+    ],
+    "growingConditions": {
+      "light": [
+        "full-shade"
+      ],
+      "drainage": [
+        "fast"
+      ],
+      "chalkTolerance": "high"
+    },
+    "matureSize": {
+      "sourceText": "2 to 5m depending on variety"
+    },
+    "safety": {
+      "toxicity": "moderate"
+    }
+  },
+  {
+    "slug": "cornus",
+    "name": "Cornus (Dogwood)",
+    "scientificName": "Cornus alba, Cornus sericea, Cornus sanguinea, Cornus florida, Cornus kousa",
+    "plantType": "Deciduous shrubs and small trees",
+    "tags": [
+      "Deciduous shrubs and small trees",
+      "Cornaceae",
+      "pollinator",
+      "bee",
+      "wildlife"
+    ],
+    "growingConditions": {
+      "light": [
+        "full-sun",
+        "partial-shade"
+      ],
+      "drainage": [
+        "fast"
+      ],
+      "chalkTolerance": "unknown"
+    },
+    "matureSize": {
+      "sourceText": "Shrub cornus 2 to 3m. Tree cornus 3 to 6m"
+    },
+    "safety": {
+      "toxicity": "unknown"
+    }
+  },
+  {
+    "slug": "cotinus",
+    "name": "Cotinus (Smoke Bush)",
+    "scientificName": "Cotinus coggygria, Cotinus x Grace",
+    "plantType": "Deciduous shrub or small tree",
+    "tags": [
+      "Deciduous shrub or small tree",
+      "Anacardiaceae",
+      "pollinator",
+      "bee",
+      "wildlife"
+    ],
+    "growingConditions": {
+      "light": [
+        "full-sun"
+      ],
+      "drainage": [
+        "fast"
+      ],
+      "chalkTolerance": "high"
+    },
+    "matureSize": {
+      "sourceText": "3 to 5m tall and wide"
+    },
+    "safety": {
+      "toxicity": "unknown"
+    }
+  },
+  {
+    "slug": "cotoneaster",
+    "name": "Cotoneaster",
+    "scientificName": "Cotoneaster species",
+    "plantType": "Evergreen or deciduous shrub and ground cover",
+    "tags": [
+      "Evergreen or deciduous shrub and ground cover",
+      "Rosaceae",
+      "pollinator",
+      "bee",
+      "wildlife"
+    ],
+    "growingConditions": {
+      "light": [
+        "partial-shade"
+      ],
+      "drainage": [
+        "moderate"
+      ],
+      "chalkTolerance": "high"
+    },
+    "matureSize": {
+      "sourceText": "Ground cover forms 20cm tall and 2m wide. Shrub forms 2 to 3m"
+    },
+    "safety": {
+      "toxicity": "moderate"
+    }
+  },
+  {
+    "slug": "crocosmia",
+    "name": "Crocosmia (Montbretia)",
+    "scientificName": "Crocosmia x crocosmiiflora and cultivars",
+    "plantType": "Herbaceous perennial (corm)",
+    "tags": [
+      "Herbaceous perennial (corm)",
+      "Iridaceae",
+      "pollinator",
+      "bee",
+      "wildlife"
+    ],
+    "growingConditions": {
+      "light": [
+        "full-sun",
+        "partial-shade"
+      ],
+      "drainage": [
+        "fast"
+      ],
+      "chalkTolerance": "high"
+    },
+    "matureSize": {
+      "sourceText": "60cm to 1.2m tall depending on cultivar, slowly spreading"
+    },
+    "safety": {
+      "toxicity": "unknown"
+    }
+  },
+  {
+    "slug": "crocus",
+    "name": "Crocus",
+    "scientificName": "Crocus species and hybrids",
+    "plantType": "Cormous perennial",
+    "tags": [
+      "Cormous perennial",
+      "Iridaceae",
+      "pollinator",
+      "bee",
+      "wildlife"
+    ],
+    "growingConditions": {
+      "light": [
+        "full-sun"
+      ],
+      "drainage": [
+        "fast"
+      ],
+      "chalkTolerance": "high"
+    },
+    "matureSize": {
+      "sourceText": "5 to 15cm tall. Plant in groups of 10 or more"
+    },
+    "safety": {
+      "toxicity": "unknown"
+    }
+  },
+  {
+    "slug": "cyclamen",
+    "name": "Hardy Cyclamen",
+    "scientificName": "Cyclamen hederifolium and Cyclamen coum",
+    "plantType": "Tuberous perennial",
+    "tags": [
+      "Tuberous perennial",
+      "Primulaceae",
+      "pollinator",
+      "bee",
+      "wildlife"
+    ],
+    "growingConditions": {
+      "light": [
+        "full-shade"
+      ],
+      "drainage": [
+        "fast"
+      ],
+      "chalkTolerance": "high"
+    },
+    "matureSize": {
+      "sourceText": "10 to 15cm tall. Plant in drifts of 20 or more"
+    },
+    "safety": {
+      "toxicity": "moderate"
+    }
+  },
+  {
+    "slug": "daffodils",
+    "name": "Daffodils and Narcissi",
+    "scientificName": "Narcissus species and hybrids",
+    "plantType": "Bulbous perennial",
+    "tags": [
+      "Bulbous perennial",
+      "Amaryllidaceae",
+      "pollinator",
+      "bee",
+      "wildlife"
+    ],
+    "growingConditions": {
+      "light": [
+        "full-sun"
+      ],
+      "drainage": [
+        "fast"
+      ],
+      "chalkTolerance": "high"
+    },
+    "matureSize": {
+      "sourceText": "20 to 45cm tall depending on variety. Plant 10 to 15cm apart"
+    },
+    "safety": {
+      "toxicity": "moderate"
+    }
+  },
+  {
+    "slug": "dahlia",
+    "name": "Dahlias",
+    "scientificName": "Dahlia species and hybrids",
+    "plantType": "Tuberous perennial",
+    "tags": [
+      "Tuberous perennial",
+      "Asteraceae",
+      "pollinator",
+      "bee",
+      "wildlife"
+    ],
+    "growingConditions": {
+      "light": [
+        "full-sun"
+      ],
+      "drainage": [
+        "fast"
+      ],
+      "chalkTolerance": "unknown"
+    },
+    "matureSize": {
+      "sourceText": "40cm to 1.5m tall depending on variety. Plant 40 to 60cm apart"
+    },
+    "safety": {
+      "toxicity": "unknown"
+    }
+  },
+  {
+    "slug": "daphne",
+    "name": "Daphne",
+    "scientificName": "Daphne bholua, Daphne odora, Daphne x burkwoodii",
+    "plantType": "Evergreen, semi-evergreen or deciduous shrub",
+    "tags": [
+      "Evergreen, semi-evergreen or deciduous shrub",
+      "Thymelaeaceae",
+      "pollinator",
+      "bee",
+      "wildlife"
+    ],
+    "growingConditions": {
+      "light": [
+        "partial-shade"
+      ],
+      "drainage": [
+        "fast"
+      ],
+      "chalkTolerance": "unknown"
+    },
+    "matureSize": {
+      "sourceText": "1 to 2m tall and wide depending on species"
+    },
+    "safety": {
+      "toxicity": "moderate"
+    }
+  },
+  {
+    "slug": "delphinium",
+    "name": "Delphinium",
+    "scientificName": "Delphinium elatum and hybrids",
+    "plantType": "Herbaceous perennial",
+    "tags": [
+      "Herbaceous perennial",
+      "Ranunculaceae",
+      "pollinator",
+      "bee",
+      "wildlife"
+    ],
+    "growingConditions": {
+      "light": [
+        "full-sun"
+      ],
+      "drainage": [
+        "fast"
+      ],
+      "chalkTolerance": "high"
+    },
+    "matureSize": {
+      "sourceText": "1.2 to 2m tall in flower, 60cm spread"
+    },
+    "safety": {
+      "toxicity": "moderate"
+    }
+  },
+  {
+    "slug": "deutzia",
+    "name": "Deutzia",
+    "scientificName": "Deutzia species and hybrids",
+    "plantType": "Deciduous shrub",
+    "tags": [
+      "Deciduous shrub",
+      "Hydrangeaceae",
+      "pollinator",
+      "bee",
+      "wildlife"
+    ],
+    "growingConditions": {
+      "light": [
+        "full-sun"
+      ],
+      "drainage": [
+        "moderate"
+      ],
+      "chalkTolerance": "unknown"
+    },
+    "matureSize": {
+      "sourceText": "1 to 2m tall and wide depending on variety"
+    },
+    "safety": {
+      "toxicity": "unknown"
+    }
+  },
+  {
+    "slug": "dianthus",
+    "name": "Dianthus (Pinks and Carnations)",
+    "scientificName": "Dianthus species and hybrids",
+    "plantType": "Herbaceous or evergreen perennial",
+    "tags": [
+      "Herbaceous or evergreen perennial",
+      "Caryophyllaceae",
+      "pollinator",
+      "bee",
+      "wildlife"
+    ],
+    "growingConditions": {
+      "light": [
+        "full-sun"
+      ],
+      "drainage": [
+        "fast"
+      ],
+      "chalkTolerance": "high"
+    },
+    "matureSize": {
+      "sourceText": "15 to 50cm tall and wide depending on type"
+    },
+    "safety": {
+      "toxicity": "unknown"
+    }
+  },
+  {
+    "slug": "dicentra",
+    "name": "Dicentra (Bleeding Heart)",
+    "scientificName": "Lamprocapnos spectabilis (formerly Dicentra spectabilis)",
+    "plantType": "Herbaceous perennial",
+    "tags": [
+      "Herbaceous perennial",
+      "Papaveraceae",
+      "pollinator",
+      "bee",
+      "wildlife"
+    ],
+    "growingConditions": {
+      "light": [
+        "full-shade"
+      ],
+      "drainage": [
+        "fast"
+      ],
+      "chalkTolerance": "high"
+    },
+    "matureSize": {
+      "sourceText": "60 to 90cm tall and wide"
+    },
+    "safety": {
+      "toxicity": "moderate"
+    }
+  },
+  {
+    "slug": "echinacea",
+    "name": "Echinacea (Coneflower)",
+    "scientificName": "Echinacea purpurea and species",
+    "plantType": "Herbaceous perennial",
+    "tags": [
+      "Herbaceous perennial",
+      "Asteraceae",
+      "pollinator",
+      "bee",
+      "wildlife"
+    ],
+    "growingConditions": {
+      "light": [
+        "full-sun"
+      ],
+      "drainage": [
+        "fast"
+      ],
+      "chalkTolerance": "high"
+    },
+    "matureSize": {
+      "sourceText": "60cm to 1.2m tall, 45cm spread"
+    },
+    "safety": {
+      "toxicity": "unknown"
+    }
+  },
+  {
+    "slug": "edgeworthia",
+    "name": "Edgeworthia (Paper Bush)",
+    "scientificName": "Edgeworthia chrysantha",
+    "plantType": "Deciduous shrub",
+    "tags": [
+      "Deciduous shrub",
+      "Thymelaeaceae",
+      "pollinator",
+      "bee",
+      "wildlife"
+    ],
+    "growingConditions": {
+      "light": [
+        "partial-shade"
+      ],
+      "drainage": [
+        "fast"
+      ],
+      "chalkTolerance": "unknown"
+    },
+    "matureSize": {
+      "sourceText": "1.5 to 2.5m tall and wide"
+    },
+    "safety": {
+      "toxicity": "unknown"
+    }
+  },
+  {
+    "slug": "epimedium",
+    "name": "Epimedium (Barrenwort)",
+    "scientificName": "Epimedium species and hybrids",
+    "plantType": "Evergreen or semi-evergreen perennial",
+    "tags": [
+      "Evergreen or semi-evergreen perennial",
+      "Berberidaceae",
+      "pollinator",
+      "bee",
+      "wildlife"
+    ],
+    "growingConditions": {
+      "light": [
+        "full-shade"
+      ],
+      "drainage": [
+        "fast"
+      ],
+      "chalkTolerance": "high"
+    },
+    "matureSize": {
+      "sourceText": "25 to 45cm tall, slowly spreading to 60cm"
+    },
+    "safety": {
+      "toxicity": "unknown"
+    }
+  },
+  {
+    "slug": "escallonia",
+    "name": "Escallonia",
+    "scientificName": "Escallonia species and hybrids",
+    "plantType": "Evergreen shrub",
+    "tags": [
+      "Evergreen shrub",
+      "Escalloniaceae",
+      "pollinator",
+      "bee",
+      "wildlife"
+    ],
+    "growingConditions": {
+      "light": [
+        "full-sun"
+      ],
+      "drainage": [
+        "moderate"
+      ],
+      "chalkTolerance": "high"
+    },
+    "matureSize": {
+      "sourceText": "1.2 to 2.5m tall as a hedge"
+    },
+    "safety": {
+      "toxicity": "unknown"
+    }
+  },
+  {
+    "slug": "euonymus",
+    "name": "Euonymus (Spindle)",
+    "scientificName": "Euonymus fortunei, Euonymus europaeus, Euonymus alatus",
+    "plantType": "Evergreen and deciduous shrubs",
+    "tags": [
+      "Evergreen and deciduous shrubs",
+      "Celastraceae",
+      "pollinator",
+      "bee",
+      "wildlife"
+    ],
+    "growingConditions": {
+      "light": [
+        "full-sun",
+        "full-shade"
+      ],
+      "drainage": [
+        "fast"
+      ],
+      "chalkTolerance": "high"
+    },
+    "matureSize": {
+      "sourceText": "50cm to 4m depending on species"
+    },
+    "safety": {
+      "toxicity": "moderate"
+    }
+  },
+  {
+    "slug": "ferns",
+    "name": "Hardy Garden Ferns",
+    "scientificName": "Dryopteris, Athyrium, Polystichum, Matteuccia species",
+    "plantType": "Herbaceous and evergreen perennials",
+    "tags": [
+      "Herbaceous and evergreen perennials",
+      "Polypodiaceae",
+      "pollinator",
+      "bee",
+      "wildlife"
+    ],
+    "growingConditions": {
+      "light": [
+        "partial-shade"
+      ],
+      "drainage": [
+        "fast"
+      ],
+      "chalkTolerance": "unknown"
+    },
+    "matureSize": {
+      "sourceText": "30cm to 1.2m depending on species"
+    },
+    "safety": {
+      "toxicity": "moderate"
+    }
+  },
+  {
+    "slug": "field-maple",
+    "name": "Field Maple (Acer campestre)",
+    "scientificName": "Acer campestre",
+    "plantType": "Deciduous tree",
+    "tags": [
+      "Deciduous tree",
+      "Sapindaceae",
+      "pollinator",
+      "bee",
+      "wildlife"
+    ],
+    "growingConditions": {
+      "light": [
+        "full-sun",
+        "partial-shade"
+      ],
+      "drainage": [
+        "fast"
+      ],
+      "chalkTolerance": "high"
+    },
+    "matureSize": {
+      "sourceText": "5 to 15m tall depending on whether grown as tree or hedge"
+    },
+    "safety": {
+      "toxicity": "unknown"
+    }
+  },
+  {
+    "slug": "fig",
+    "name": "Fig",
+    "scientificName": "Ficus carica",
+    "plantType": "Deciduous shrub or small tree",
+    "tags": [
+      "Deciduous shrub or small tree",
+      "Moraceae",
+      "pollinator",
+      "bee",
+      "wildlife"
+    ],
+    "growingConditions": {
+      "light": [
+        "full-sun"
+      ],
+      "drainage": [
+        "fast"
+      ],
+      "chalkTolerance": "high"
+    },
+    "matureSize": {
+      "sourceText": "2 to 4m. Keep contained by root restriction"
+    },
+    "safety": {
+      "toxicity": "unknown"
+    }
+  },
+  {
+    "slug": "forsythia",
+    "name": "Forsythia",
+    "scientificName": "Forsythia x intermedia and other species",
+    "plantType": "Deciduous shrub",
+    "tags": [
+      "Deciduous shrub",
+      "Oleaceae",
+      "pollinator",
+      "bee",
+      "wildlife"
+    ],
+    "growingConditions": {
+      "light": [
+        "full-sun"
+      ],
+      "drainage": [
+        "moderate"
+      ],
+      "chalkTolerance": "high"
+    },
+    "matureSize": {
+      "sourceText": "2 to 3m tall and wide"
+    },
+    "safety": {
+      "toxicity": "unknown"
+    }
+  },
+  {
+    "slug": "fothergilla",
+    "name": "Fothergilla (Witch Alder)",
+    "scientificName": "Fothergilla major, Fothergilla gardenii",
+    "plantType": "Deciduous shrub",
+    "tags": [
+      "Deciduous shrub",
+      "Hamamelidaceae",
+      "pollinator",
+      "bee",
+      "wildlife"
+    ],
+    "growingConditions": {
+      "light": [
+        "full-sun",
+        "partial-shade"
+      ],
+      "drainage": [
+        "fast"
+      ],
+      "chalkTolerance": "high"
+    },
+    "matureSize": {
+      "sourceText": "1 to 2.5m depending on species"
+    },
+    "safety": {
+      "toxicity": "unknown"
+    }
+  },
+  {
+    "slug": "foxglove",
+    "name": "Foxglove",
+    "scientificName": "Digitalis purpurea",
+    "plantType": "Biennial or short-lived perennial",
+    "tags": [
+      "Biennial or short-lived perennial",
+      "Plantaginaceae",
+      "pollinator",
+      "bee",
+      "wildlife"
+    ],
+    "growingConditions": {
+      "light": [
+        "full-sun",
+        "partial-shade"
+      ],
+      "drainage": [
+        "fast"
+      ],
+      "chalkTolerance": "unknown"
+    },
+    "matureSize": {
+      "sourceText": "1 to 1.5m tall in flower, 30cm spread"
+    },
+    "safety": {
+      "toxicity": "moderate"
+    }
+  },
+  {
+    "slug": "fritillaria",
+    "name": "Fritillaries (Snake's Head and Crown Imperial)",
+    "scientificName": "Fritillaria meleagris and Fritillaria imperialis",
+    "plantType": "Bulbous perennial",
+    "tags": [
+      "Bulbous perennial",
+      "Liliaceae",
+      "pollinator",
+      "bee",
+      "wildlife"
+    ],
+    "growingConditions": {
+      "light": [
+        "full-sun"
+      ],
+      "drainage": [
+        "fast"
+      ],
+      "chalkTolerance": "unknown"
+    },
+    "matureSize": {
+      "sourceText": "F. meleagris 25cm tall. F. imperialis 1m tall. Plant 15 to 30cm apart"
+    },
+    "safety": {
+      "toxicity": "moderate"
+    }
+  },
+  {
+    "slug": "geranium",
+    "name": "Hardy Geranium (Cranesbill)",
+    "scientificName": "Geranium species and hybrids",
+    "plantType": "Herbaceous perennial",
+    "tags": [
+      "Herbaceous perennial",
+      "Geraniaceae",
+      "pollinator",
+      "bee",
+      "wildlife"
+    ],
+    "growingConditions": {
+      "light": [
+        "partial-shade",
+        "full-shade"
+      ],
+      "drainage": [
+        "moderate"
+      ],
+      "chalkTolerance": "high"
+    },
+    "matureSize": {
+      "sourceText": "30 to 60cm depending on variety"
+    },
+    "safety": {
+      "toxicity": "unknown"
+    }
+  },
+  {
+    "slug": "gladiolus",
+    "name": "Gladioli",
+    "scientificName": "Gladiolus species and hybrids",
+    "plantType": "Cormous perennial",
+    "tags": [
+      "Cormous perennial",
+      "Iridaceae",
+      "pollinator",
+      "bee",
+      "wildlife"
+    ],
+    "growingConditions": {
+      "light": [
+        "full-sun"
+      ],
+      "drainage": [
+        "fast"
+      ],
+      "chalkTolerance": "unknown"
+    },
+    "matureSize": {
+      "sourceText": "60cm to 1.5m tall. Plant 15cm apart"
+    },
+    "safety": {
+      "toxicity": "moderate"
+    }
+  },
+  {
+    "slug": "gooseberry",
+    "name": "Gooseberry",
+    "scientificName": "Ribes uva-crispa",
+    "plantType": "Deciduous fruiting shrub",
+    "tags": [
+      "Deciduous fruiting shrub",
+      "Grossulariaceae",
+      "pollinator",
+      "bee",
+      "wildlife"
+    ],
+    "growingConditions": {
+      "light": [
+        "full-sun",
+        "partial-shade"
+      ],
+      "drainage": [
+        "fast"
+      ],
+      "chalkTolerance": "unknown"
+    },
+    "matureSize": {
+      "sourceText": "1 to 1.5m tall and wide"
+    },
+    "safety": {
+      "toxicity": "unknown"
+    }
+  },
+  {
+    "slug": "hakonechloa",
+    "name": "Hakonechloa (Japanese Forest Grass)",
+    "scientificName": "Hakonechloa macra",
+    "plantType": "Deciduous ornamental grass",
+    "tags": [
+      "Deciduous ornamental grass",
+      "Poaceae",
+      "pollinator",
+      "bee",
+      "wildlife"
+    ],
+    "growingConditions": {
+      "light": [
+        "partial-shade"
+      ],
+      "drainage": [
+        "fast"
+      ],
+      "chalkTolerance": "unknown"
+    },
+    "matureSize": {
+      "sourceText": "30 to 50cm tall, 60cm spread over 5 years"
+    },
+    "safety": {
+      "toxicity": "unknown"
+    }
+  },
+  {
+    "slug": "hamamelis",
+    "name": "Hamamelis (Witch Hazel)",
+    "scientificName": "Hamamelis x intermedia, Hamamelis mollis",
+    "plantType": "Deciduous shrub or small tree",
+    "tags": [
+      "Deciduous shrub or small tree",
+      "Hamamelidaceae",
+      "pollinator",
+      "bee",
+      "wildlife"
+    ],
+    "growingConditions": {
+      "light": [
+        "full-sun",
+        "partial-shade"
+      ],
+      "drainage": [
+        "fast"
+      ],
+      "chalkTolerance": "unknown"
+    },
+    "matureSize": {
+      "sourceText": "3 to 5m tall and wide"
+    },
+    "safety": {
+      "toxicity": "unknown"
+    }
+  },
+  {
+    "slug": "hawthorn",
+    "name": "Hawthorn",
+    "scientificName": "Crataegus monogyna",
+    "plantType": "Deciduous thorny shrub or small tree",
+    "tags": [
+      "Deciduous thorny shrub or small tree",
+      "Rosaceae",
+      "pollinator",
+      "bee",
+      "wildlife"
+    ],
+    "growingConditions": {
+      "light": [
+        "full-sun"
+      ],
+      "drainage": [
+        "moderate"
+      ],
+      "chalkTolerance": "high"
+    },
+    "matureSize": {
+      "sourceText": "2 to 4m as a hedge, 5 to 8m as a tree"
+    },
+    "safety": {
+      "toxicity": "unknown"
+    }
+  },
+  {
+    "slug": "hazel",
+    "name": "Hazel",
+    "scientificName": "Corylus avellana",
+    "plantType": "Deciduous multi-stemmed shrub",
+    "tags": [
+      "Deciduous multi-stemmed shrub",
+      "Betulaceae",
+      "pollinator",
+      "bee",
+      "wildlife"
+    ],
+    "growingConditions": {
+      "light": [
+        "full-shade"
+      ],
+      "drainage": [
+        "moderate"
+      ],
+      "chalkTolerance": "high"
+    },
+    "matureSize": {
+      "sourceText": "3 to 5m as a shrub, 6m if grown as a small tree"
+    },
+    "safety": {
+      "toxicity": "unknown"
+    }
+  },
+  {
+    "slug": "hellebores",
+    "name": "Hellebores (Lenten Rose)",
+    "scientificName": "Helleborus species and hybrids",
+    "plantType": "Evergreen or semi-evergreen perennial",
+    "tags": [
+      "Evergreen or semi-evergreen perennial",
+      "Ranunculaceae",
+      "pollinator",
+      "bee",
+      "wildlife"
+    ],
+    "growingConditions": {
+      "light": [
+        "partial-shade"
+      ],
+      "drainage": [
+        "fast"
+      ],
+      "chalkTolerance": "unknown"
+    },
+    "matureSize": {
+      "sourceText": "30 to 45cm tall and wide"
+    },
+    "safety": {
+      "toxicity": "moderate"
+    }
+  },
+  {
+    "slug": "heuchera",
+    "name": "Heuchera (Coral Bells)",
+    "scientificName": "Heuchera species and hybrids",
+    "plantType": "Evergreen or semi-evergreen perennial",
+    "tags": [
+      "Evergreen or semi-evergreen perennial",
+      "Saxifragaceae",
+      "pollinator",
+      "bee",
+      "wildlife"
+    ],
+    "growingConditions": {
+      "light": [
+        "partial-shade"
+      ],
+      "drainage": [
+        "fast"
+      ],
+      "chalkTolerance": "unknown"
+    },
+    "matureSize": {
+      "sourceText": "30 to 45cm tall and wide"
+    },
+    "safety": {
+      "toxicity": "unknown"
+    }
+  },
+  {
+    "slug": "heucherella",
+    "name": "Heucherella",
+    "scientificName": "x Heucherella (Heuchera x Tiarella hybrid)",
+    "plantType": "Evergreen clump-forming perennial",
+    "tags": [
+      "Evergreen clump-forming perennial",
+      "Saxifragaceae",
+      "pollinator",
+      "bee",
+      "wildlife"
+    ],
+    "growingConditions": {
+      "light": [
+        "full-shade"
+      ],
+      "drainage": [
+        "fast"
+      ],
+      "chalkTolerance": "unknown"
+    },
+    "matureSize": {
+      "sourceText": "20 to 40cm tall in flower. Plant 30cm apart"
+    },
+    "safety": {
+      "toxicity": "unknown"
+    }
+  },
+  {
+    "slug": "holly",
+    "name": "Holly",
+    "scientificName": "Ilex aquifolium",
+    "plantType": "Evergreen tree or shrub",
+    "tags": [
+      "Evergreen tree or shrub",
+      "Aquifoliaceae",
+      "pollinator",
+      "bee",
+      "butterfly",
+      "wildlife"
+    ],
+    "growingConditions": {
+      "light": [
+        "full-shade"
+      ],
+      "drainage": [
+        "moderate"
+      ],
+      "chalkTolerance": "high"
+    },
+    "matureSize": {
+      "sourceText": "1.5 to 4m as a hedge, 10m as a tree"
+    },
+    "safety": {
+      "toxicity": "unknown"
+    }
+  },
+  {
+    "slug": "honeysuckle",
+    "name": "Honeysuckle (Woodbine)",
+    "scientificName": "Lonicera periclymenum and hybrids",
+    "plantType": "Deciduous or semi-evergreen climber",
+    "tags": [
+      "Deciduous or semi-evergreen climber",
+      "Caprifoliaceae",
+      "pollinator",
+      "bee",
+      "wildlife"
+    ],
+    "growingConditions": {
+      "light": [
+        "partial-shade"
+      ],
+      "drainage": [
+        "fast"
+      ],
+      "chalkTolerance": "high"
+    },
+    "matureSize": {
+      "sourceText": "4 to 6m with support"
+    },
+    "safety": {
+      "toxicity": "unknown"
+    }
+  },
+  {
+    "slug": "hornbeam",
+    "name": "Hornbeam",
+    "scientificName": "Carpinus betulus",
+    "plantType": "Deciduous tree, used as hedging",
+    "tags": [
+      "Deciduous tree, used as hedging",
+      "Betulaceae",
+      "pollinator",
+      "bee",
+      "wildlife"
+    ],
+    "growingConditions": {
+      "light": [
+        "full-shade"
+      ],
+      "drainage": [
+        "moderate"
+      ],
+      "chalkTolerance": "high"
+    },
+    "matureSize": {
+      "sourceText": "1.5 to 4m as a hedge, 15 to 20m as a tree"
+    },
+    "safety": {
+      "toxicity": "unknown"
+    }
+  },
+  {
+    "slug": "hostas",
+    "name": "Hosta (Plantain Lily)",
+    "scientificName": "Hosta species and hybrids",
+    "plantType": "Herbaceous perennial",
+    "tags": [
+      "Herbaceous perennial",
+      "Asparagaceae",
+      "pollinator",
+      "bee",
+      "wildlife"
+    ],
+    "growingConditions": {
+      "light": [
+        "full-shade"
+      ],
+      "drainage": [
+        "fast"
+      ],
+      "chalkTolerance": "unknown"
+    },
+    "matureSize": {
+      "sourceText": "30cm to 1m across depending on variety"
+    },
+    "safety": {
+      "toxicity": "unknown"
+    }
+  },
+  {
+    "slug": "hyacinths",
+    "name": "Hyacinths",
+    "scientificName": "Hyacinthus orientalis",
+    "plantType": "Bulbous perennial",
+    "tags": [
+      "Bulbous perennial",
+      "Asparagaceae",
+      "pollinator",
+      "bee",
+      "wildlife"
+    ],
+    "growingConditions": {
+      "light": [
+        "full-sun"
+      ],
+      "drainage": [
+        "fast"
+      ],
+      "chalkTolerance": "unknown"
+    },
+    "matureSize": {
+      "sourceText": "15 to 30cm tall. Plant 15cm apart"
+    },
+    "safety": {
+      "toxicity": "moderate"
+    }
+  },
+  {
+    "slug": "hydrangea",
+    "name": "Hydrangea",
+    "scientificName": "Hydrangea macrophylla, H. paniculata, H. arborescens",
+    "plantType": "Deciduous and evergreen shrubs",
+    "tags": [
+      "Deciduous and evergreen shrubs",
+      "Hydrangeaceae",
+      "pollinator",
+      "bee",
+      "wildlife"
+    ],
+    "growingConditions": {
+      "light": [
+        "full-sun"
+      ],
+      "drainage": [
+        "fast"
+      ],
+      "chalkTolerance": "high"
+    },
+    "matureSize": {
+      "sourceText": "1 to 2m tall and wide depending on variety"
+    },
+    "safety": {
+      "toxicity": "unknown"
+    }
+  },
+  {
+    "slug": "iris",
+    "name": "Iris (Bearded and Siberian)",
+    "scientificName": "Iris germanica and Iris sibirica",
+    "plantType": "Herbaceous perennial, deciduous or evergreen",
+    "tags": [
+      "Herbaceous perennial, deciduous or evergreen",
+      "Iridaceae",
+      "pollinator",
+      "bee",
+      "wildlife"
+    ],
+    "growingConditions": {
+      "light": [
+        "full-sun",
+        "partial-shade"
+      ],
+      "drainage": [
+        "fast"
+      ],
+      "chalkTolerance": "high"
+    },
+    "matureSize": {
+      "sourceText": "60cm to 1m tall in flower, slowly spreading"
+    },
+    "safety": {
+      "toxicity": "unknown"
+    }
+  },
+  {
+    "slug": "japanese-anemone",
+    "name": "Japanese Anemone",
+    "scientificName": "Anemone hupehensis and A. x hybrida",
+    "plantType": "Herbaceous perennial",
+    "tags": [
+      "Herbaceous perennial",
+      "Ranunculaceae",
+      "pollinator",
+      "bee",
+      "wildlife"
+    ],
+    "growingConditions": {
+      "light": [
+        "partial-shade"
+      ],
+      "drainage": [
+        "fast"
+      ],
+      "chalkTolerance": "high"
+    },
+    "matureSize": {
+      "sourceText": "90cm to 1.2m tall in flower, 50 to 80cm spread"
+    },
+    "safety": {
+      "toxicity": "moderate"
+    }
+  },
+  {
+    "slug": "japanese-maple",
+    "name": "Japanese Maple (Acer palmatum)",
+    "scientificName": "Acer palmatum and cultivars",
+    "plantType": "Deciduous small tree or shrub",
+    "tags": [
+      "Deciduous small tree or shrub",
+      "Sapindaceae",
+      "pollinator",
+      "bee",
+      "wildlife"
+    ],
+    "growingConditions": {
+      "light": [
+        "partial-shade"
+      ],
+      "drainage": [
+        "fast"
+      ],
+      "chalkTolerance": "unknown"
+    },
+    "matureSize": {
+      "sourceText": "1.5 to 6m depending on cultivar"
+    },
+    "safety": {
+      "toxicity": "unknown"
+    }
+  },
+  {
+    "slug": "laburnum",
+    "name": "Laburnum (Golden Rain)",
+    "scientificName": "Laburnum x watereri, Laburnum anagyroides",
+    "plantType": "Deciduous small tree",
+    "tags": [
+      "Deciduous small tree",
+      "Fabaceae",
+      "pollinator",
+      "bee",
+      "wildlife"
+    ],
+    "growingConditions": {
+      "light": [
+        "full-sun"
+      ],
+      "drainage": [
+        "fast"
+      ],
+      "chalkTolerance": "high"
+    },
+    "matureSize": {
+      "sourceText": "4 to 7m tall, 3 to 5m spread"
+    },
+    "safety": {
+      "toxicity": "high"
+    }
+  },
+  {
+    "slug": "laurel",
+    "name": "Cherry Laurel",
+    "scientificName": "Prunus laurocerasus",
+    "plantType": "Large evergreen shrub",
+    "tags": [
+      "Large evergreen shrub",
+      "Rosaceae",
+      "pollinator",
+      "bee",
+      "wildlife"
+    ],
+    "growingConditions": {
+      "light": [
+        "partial-shade"
+      ],
+      "drainage": [
+        "moderate"
+      ],
+      "chalkTolerance": "unknown"
+    },
+    "matureSize": {
+      "sourceText": "4 to 6m unclipped, normally kept at 1.8 to 3m"
+    },
+    "safety": {
+      "toxicity": "moderate"
+    }
+  },
+  {
+    "slug": "lavender",
+    "name": "Lavender",
+    "scientificName": "Lavandula angustifolia",
+    "plantType": "Evergreen subshrub",
+    "tags": [
+      "Evergreen subshrub",
+      "Lamiaceae",
+      "pollinator",
+      "bee",
+      "wildlife"
+    ],
+    "growingConditions": {
+      "light": [
+        "full-sun"
+      ],
+      "drainage": [
+        "fast"
+      ],
+      "chalkTolerance": "high"
+    },
+    "matureSize": {
+      "sourceText": "60 to 80cm tall and wide at maturity"
+    },
+    "safety": {
+      "toxicity": "unknown"
+    }
+  },
+  {
+    "slug": "lemon-balm",
+    "name": "Lemon Balm",
+    "scientificName": "Melissa officinalis",
+    "plantType": "Herbaceous perennial herb",
+    "tags": [
+      "Herbaceous perennial herb",
+      "Lamiaceae",
+      "pollinator",
+      "bee",
+      "wildlife"
+    ],
+    "growingConditions": {
+      "light": [
+        "partial-shade"
+      ],
+      "drainage": [
+        "fast"
+      ],
+      "chalkTolerance": "unknown"
+    },
+    "matureSize": {
+      "sourceText": "50 to 80cm tall, will spread if not contained"
+    },
+    "safety": {
+      "toxicity": "unknown"
+    }
+  },
+  {
+    "slug": "leylandii",
+    "name": "Leyland Cypress",
+    "scientificName": "x Hesperotropsis leylandii (syn. Cupressus leylandii)",
+    "plantType": "Fast growing conifer",
+    "tags": [
+      "Fast growing conifer",
+      "Cupressaceae",
+      "pollinator",
+      "bee",
+      "wildlife"
+    ],
+    "growingConditions": {
+      "light": [
+        "partial-shade"
+      ],
+      "drainage": [
+        "moderate"
+      ],
+      "chalkTolerance": "unknown"
+    },
+    "matureSize": {
+      "sourceText": "15 to 25m unclipped if not kept in check. Normally kept at 2 to 4m"
+    },
+    "safety": {
+      "toxicity": "unknown"
+    }
+  },
+  {
+    "slug": "lily",
+    "name": "Lilies",
+    "scientificName": "Lilium species and hybrids",
+    "plantType": "Bulbous perennial",
+    "tags": [
+      "Bulbous perennial",
+      "Liliaceae",
+      "pollinator",
+      "bee",
+      "wildlife"
+    ],
+    "growingConditions": {
+      "light": [
+        "full-sun"
+      ],
+      "drainage": [
+        "fast"
+      ],
+      "chalkTolerance": "unknown"
+    },
+    "matureSize": {
+      "sourceText": "60cm to 2m tall depending on variety. Plant 25cm apart"
+    },
+    "safety": {
+      "toxicity": "moderate"
+    }
+  },
+  {
+    "slug": "liriope",
+    "name": "Lily Turf",
+    "scientificName": "Liriope muscari and Liriope spicata",
+    "plantType": "Evergreen clump-forming perennial",
+    "tags": [
+      "Evergreen clump-forming perennial",
+      "Asparagaceae",
+      "pollinator",
+      "bee",
+      "wildlife"
+    ],
+    "growingConditions": {
+      "light": [
+        "full-shade"
+      ],
+      "drainage": [
+        "fast"
+      ],
+      "chalkTolerance": "high"
+    },
+    "matureSize": {
+      "sourceText": "30 to 45cm tall and wide. Plant 30cm apart for ground cover"
+    },
+    "safety": {
+      "toxicity": "unknown"
+    }
+  },
+  {
+    "slug": "lupin",
+    "name": "Lupin",
+    "scientificName": "Lupinus polyphyllus and hybrids",
+    "plantType": "Herbaceous perennial",
+    "tags": [
+      "Herbaceous perennial",
+      "Fabaceae",
+      "pollinator",
+      "bee",
+      "wildlife"
+    ],
+    "growingConditions": {
+      "light": [
+        "full-sun",
+        "partial-shade"
+      ],
+      "drainage": [
+        "fast"
+      ],
+      "chalkTolerance": "high"
+    },
+    "matureSize": {
+      "sourceText": "90cm to 1.5m tall in flower, 60cm spread"
+    },
+    "safety": {
+      "toxicity": "moderate"
+    }
+  },
+  {
+    "slug": "magnolia",
+    "name": "Magnolia",
+    "scientificName": "Magnolia stellata, Magnolia x soulangeana, Magnolia kobus",
+    "plantType": "Deciduous shrub and small tree",
+    "tags": [
+      "Deciduous shrub and small tree",
+      "Magnoliaceae",
+      "pollinator",
+      "bee",
+      "wildlife"
+    ],
+    "growingConditions": {
+      "light": [
+        "full-sun",
+        "partial-shade"
+      ],
+      "drainage": [
+        "fast"
+      ],
+      "chalkTolerance": "high"
+    },
+    "matureSize": {
+      "sourceText": "M. stellata 2.5 to 4m. M. x soulangeana 5 to 8m. M. kobus eventually 10m"
+    },
+    "safety": {
+      "toxicity": "unknown"
+    }
+  },
+  {
+    "slug": "mahonia",
+    "name": "Mahonia",
+    "scientificName": "Mahonia aquifolium and Mahonia x media",
+    "plantType": "Evergreen shrub",
+    "tags": [
+      "Evergreen shrub",
+      "Berberidaceae",
+      "pollinator",
+      "bee",
+      "wildlife"
+    ],
+    "growingConditions": {
+      "light": [
+        "partial-shade"
+      ],
+      "drainage": [
+        "moderate"
+      ],
+      "chalkTolerance": "high"
+    },
+    "matureSize": {
+      "sourceText": "1.5 to 3m tall depending on species. M. aquifolium is lower, around 60cm"
+    },
+    "safety": {
+      "toxicity": "unknown"
+    }
+  },
+  {
+    "slug": "malus",
+    "name": "Malus (Ornamental Crab Apple)",
+    "scientificName": "Malus species and cultivars",
+    "plantType": "Deciduous small tree",
+    "tags": [
+      "Deciduous small tree",
+      "Rosaceae",
+      "pollinator",
+      "bee",
+      "wildlife"
+    ],
+    "growingConditions": {
+      "light": [
+        "full-sun"
+      ],
+      "drainage": [
+        "fast"
+      ],
+      "chalkTolerance": "high"
+    },
+    "matureSize": {
+      "sourceText": "4 to 8m tall depending on cultivar"
+    },
+    "safety": {
+      "toxicity": "unknown"
+    }
+  },
+  {
+    "slug": "mint",
+    "name": "Mint",
+    "scientificName": "Mentha species (Mentha spicata, Mentha piperita)",
+    "plantType": "Herbaceous perennial herb",
+    "tags": [
+      "Herbaceous perennial herb",
+      "Lamiaceae",
+      "pollinator",
+      "bee",
+      "wildlife"
+    ],
+    "growingConditions": {
+      "light": [
+        "partial-shade"
+      ],
+      "drainage": [
+        "fast"
+      ],
+      "chalkTolerance": "unknown"
+    },
+    "matureSize": {
+      "sourceText": "30 to 60cm tall, will spread indefinitely if not contained"
+    },
+    "safety": {
+      "toxicity": "unknown"
+    }
+  },
+  {
+    "slug": "miscanthus",
+    "name": "Miscanthus (Chinese Silver Grass)",
+    "scientificName": "Miscanthus sinensis",
+    "plantType": "Deciduous ornamental grass",
+    "tags": [
+      "Deciduous ornamental grass",
+      "Poaceae",
+      "pollinator",
+      "bee",
+      "wildlife"
+    ],
+    "growingConditions": {
+      "light": [
+        "full-sun"
+      ],
+      "drainage": [
+        "fast"
+      ],
+      "chalkTolerance": "high"
+    },
+    "matureSize": {
+      "sourceText": "1.5 to 2.5m tall, 1 to 1.5m spread"
+    },
+    "safety": {
+      "toxicity": "unknown"
+    }
+  },
+  {
+    "slug": "muscari",
+    "name": "Grape Hyacinth",
+    "scientificName": "Muscari armeniacum and Muscari species",
+    "plantType": "Bulbous perennial",
+    "tags": [
+      "Bulbous perennial",
+      "Asparagaceae",
+      "pollinator",
+      "bee",
+      "wildlife"
+    ],
+    "growingConditions": {
+      "light": [
+        "full-sun"
+      ],
+      "drainage": [
+        "fast"
+      ],
+      "chalkTolerance": "unknown"
+    },
+    "matureSize": {
+      "sourceText": "10 to 20cm tall. Plant in drifts of 25 or more"
+    },
+    "safety": {
+      "toxicity": "unknown"
+    }
+  },
+  {
+    "slug": "nepeta",
+    "name": "Catmint",
+    "scientificName": "Nepeta racemosa and Nepeta faassenii",
+    "plantType": "Herbaceous perennial",
+    "tags": [
+      "Herbaceous perennial",
+      "Lamiaceae",
+      "pollinator",
+      "bee",
+      "wildlife"
+    ],
+    "growingConditions": {
+      "light": [
+        "full-sun"
+      ],
+      "drainage": [
+        "moderate"
+      ],
+      "chalkTolerance": "high"
+    },
+    "matureSize": {
+      "sourceText": "40 to 60cm tall and wide"
+    },
+    "safety": {
+      "toxicity": "unknown"
+    }
+  },
+  {
+    "slug": "oregano",
+    "name": "Oregano",
+    "scientificName": "Origanum vulgare",
+    "plantType": "Herbaceous perennial herb",
+    "tags": [
+      "Herbaceous perennial herb",
+      "Lamiaceae",
+      "pollinator",
+      "bee",
+      "wildlife"
+    ],
+    "growingConditions": {
+      "light": [
+        "full-sun"
+      ],
+      "drainage": [
+        "fast"
+      ],
+      "chalkTolerance": "high"
+    },
+    "matureSize": {
+      "sourceText": "30 to 60cm tall in flower, 30cm spread"
+    },
+    "safety": {
+      "toxicity": "unknown"
+    }
+  },
+  {
+    "slug": "pachysandra",
+    "name": "Japanese Spurge",
+    "scientificName": "Pachysandra terminalis",
+    "plantType": "Evergreen mat-forming perennial",
+    "tags": [
+      "Evergreen mat-forming perennial",
+      "Buxaceae",
+      "pollinator",
+      "bee",
+      "wildlife"
+    ],
+    "growingConditions": {
+      "light": [
+        "full-shade"
+      ],
+      "drainage": [
+        "fast"
+      ],
+      "chalkTolerance": "unknown"
+    },
+    "matureSize": {
+      "sourceText": "15 to 20cm tall. Plant 25 to 30cm apart for ground cover"
+    },
+    "safety": {
+      "toxicity": "unknown"
+    }
+  },
+  {
+    "slug": "parsley",
+    "name": "Parsley",
+    "scientificName": "Petroselinum crispum",
+    "plantType": "Biennial herb, grown as annual",
+    "tags": [
+      "Biennial herb, grown as annual",
+      "Apiaceae",
+      "pollinator",
+      "bee",
+      "wildlife"
+    ],
+    "growingConditions": {
+      "light": [
+        "full-sun",
+        "partial-shade"
+      ],
+      "drainage": [
+        "fast"
+      ],
+      "chalkTolerance": "unknown"
+    },
+    "matureSize": {
+      "sourceText": "30cm tall and wide"
+    },
+    "safety": {
+      "toxicity": "unknown"
+    }
+  },
+  {
+    "slug": "pear-tree",
+    "name": "Pear Tree",
+    "scientificName": "Pyrus communis",
+    "plantType": "Deciduous fruit tree",
+    "tags": [
+      "Deciduous fruit tree",
+      "Rosaceae",
+      "pollinator",
+      "bee",
+      "wildlife"
+    ],
+    "growingConditions": {
+      "light": [
+        "full-sun"
+      ],
+      "drainage": [
+        "fast"
+      ],
+      "chalkTolerance": "unknown"
+    },
+    "matureSize": {
+      "sourceText": "3 to 5m depending on rootstock"
+    },
+    "safety": {
+      "toxicity": "unknown"
+    }
+  },
+  {
+    "slug": "pennisetum",
+    "name": "Pennisetum (Fountain Grass)",
+    "scientificName": "Pennisetum alopecuroides and hybrids",
+    "plantType": "Deciduous ornamental grass",
+    "tags": [
+      "Deciduous ornamental grass",
+      "Poaceae",
+      "pollinator",
+      "bee",
+      "wildlife"
+    ],
+    "growingConditions": {
+      "light": [
+        "full-sun"
+      ],
+      "drainage": [
+        "fast"
+      ],
+      "chalkTolerance": "high"
+    },
+    "matureSize": {
+      "sourceText": "60cm to 1m tall and wide"
+    },
+    "safety": {
+      "toxicity": "unknown"
+    }
+  },
+  {
+    "slug": "peony",
+    "name": "Peony",
+    "scientificName": "Paeonia species (herbaceous and tree)",
+    "plantType": "Herbaceous perennial and deciduous shrub",
+    "tags": [
+      "Herbaceous perennial and deciduous shrub",
+      "Paeoniaceae",
+      "pollinator",
+      "bee",
+      "wildlife"
+    ],
+    "growingConditions": {
+      "light": [
+        "full-sun",
+        "partial-shade"
+      ],
+      "drainage": [
+        "fast"
+      ],
+      "chalkTolerance": "high"
+    },
+    "matureSize": {
+      "sourceText": "60cm to 1.2m tall and wide depending on type"
+    },
+    "safety": {
+      "toxicity": "unknown"
+    }
+  },
+  {
+    "slug": "philadelphus",
+    "name": "Philadelphus (Mock Orange)",
+    "scientificName": "Philadelphus species and hybrids",
+    "plantType": "Deciduous shrub",
+    "tags": [
+      "Deciduous shrub",
+      "Hydrangeaceae",
+      "pollinator",
+      "bee",
+      "wildlife"
+    ],
+    "growingConditions": {
+      "light": [
+        "full-sun"
+      ],
+      "drainage": [
+        "moderate"
+      ],
+      "chalkTolerance": "high"
+    },
+    "matureSize": {
+      "sourceText": "1.5 to 3m tall and wide depending on variety"
+    },
+    "safety": {
+      "toxicity": "unknown"
+    }
+  },
+  {
+    "slug": "photinia",
+    "name": "Photinia (Red Robin)",
+    "scientificName": "Photinia x fraseri Red Robin",
+    "plantType": "Evergreen shrub",
+    "tags": [
+      "Evergreen shrub",
+      "Rosaceae",
+      "pollinator",
+      "bee",
+      "wildlife"
+    ],
+    "growingConditions": {
+      "light": [
+        "full-sun",
+        "partial-shade"
+      ],
+      "drainage": [
+        "fast"
+      ],
+      "chalkTolerance": "high"
+    },
+    "matureSize": {
+      "sourceText": "2 to 4m if unpruned"
+    },
+    "safety": {
+      "toxicity": "unknown"
+    }
+  },
+  {
+    "slug": "pieris",
+    "name": "Pieris (Lily of the Valley Bush)",
+    "scientificName": "Pieris japonica, Pieris formosa, Pieris x Forrestii",
+    "plantType": "Evergreen shrub",
+    "tags": [
+      "Evergreen shrub",
+      "Ericaceae",
+      "pollinator",
+      "bee",
+      "wildlife"
+    ],
+    "growingConditions": {
+      "light": [
+        "partial-shade"
+      ],
+      "drainage": [
+        "fast"
+      ],
+      "chalkTolerance": "low"
+    },
+    "matureSize": {
+      "sourceText": "1 to 3m tall depending on cultivar"
+    },
+    "safety": {
+      "toxicity": "moderate"
+    }
+  },
+  {
+    "slug": "pittosporum",
+    "name": "Pittosporum",
+    "scientificName": "Pittosporum tenuifolium",
+    "plantType": "Evergreen shrub",
+    "tags": [
+      "Evergreen shrub",
+      "Pittosporaceae",
+      "pollinator",
+      "bee",
+      "wildlife"
+    ],
+    "growingConditions": {
+      "light": [
+        "full-sun",
+        "partial-shade"
+      ],
+      "drainage": [
+        "fast"
+      ],
+      "chalkTolerance": "high"
+    },
+    "matureSize": {
+      "sourceText": "2 to 4m depending on variety"
+    },
+    "safety": {
+      "toxicity": "unknown"
+    }
+  },
+  {
+    "slug": "plum-tree",
+    "name": "Plum Tree",
+    "scientificName": "Prunus domestica",
+    "plantType": "Deciduous fruit tree",
+    "tags": [
+      "Deciduous fruit tree",
+      "Rosaceae",
+      "pollinator",
+      "bee",
+      "wildlife"
+    ],
+    "growingConditions": {
+      "light": [
+        "full-sun"
+      ],
+      "drainage": [
+        "fast"
+      ],
+      "chalkTolerance": "unknown"
+    },
+    "matureSize": {
+      "sourceText": "3 to 5m depending on rootstock. Pixy is dwarfing at 2.5 to 3m"
+    },
+    "safety": {
+      "toxicity": "unknown"
+    }
+  },
+  {
+    "slug": "poppies",
+    "name": "Poppies (Oriental and Field)",
+    "scientificName": "Papaver orientale and Papaver rhoeas",
+    "plantType": "Herbaceous perennial and annual",
+    "tags": [
+      "Herbaceous perennial and annual",
+      "Papaveraceae",
+      "pollinator",
+      "bee",
+      "wildlife"
+    ],
+    "growingConditions": {
+      "light": [
+        "full-sun"
+      ],
+      "drainage": [
+        "fast"
+      ],
+      "chalkTolerance": "high"
+    },
+    "matureSize": {
+      "sourceText": "60cm to 1m tall and wide"
+    },
+    "safety": {
+      "toxicity": "unknown"
+    }
+  },
+  {
+    "slug": "privet",
+    "name": "Privet",
+    "scientificName": "Ligustrum ovalifolium",
+    "plantType": "Semi-evergreen shrub",
+    "tags": [
+      "Semi-evergreen shrub",
+      "Oleaceae",
+      "pollinator",
+      "bee",
+      "wildlife"
+    ],
+    "growingConditions": {
+      "light": [
+        "full-shade"
+      ],
+      "drainage": [
+        "moderate"
+      ],
+      "chalkTolerance": "high"
+    },
+    "matureSize": {
+      "sourceText": "1.5 to 3m if unclipped, normally kept at 1 to 1.8m as a hedge"
+    },
+    "safety": {
+      "toxicity": "moderate"
+    }
+  },
+  {
+    "slug": "prunus",
+    "name": "Prunus (Flowering Cherry)",
+    "scientificName": "Prunus serrulata, Prunus x yedoensis, Prunus subhirtella, Prunus serrula",
+    "plantType": "Deciduous tree",
+    "tags": [
+      "Deciduous tree",
+      "Rosaceae",
+      "pollinator",
+      "bee",
+      "wildlife"
+    ],
+    "growingConditions": {
+      "light": [
+        "full-sun"
+      ],
+      "drainage": [
+        "fast"
+      ],
+      "chalkTolerance": "high"
+    },
+    "matureSize": {
+      "sourceText": "4 to 10m tall depending on cultivar"
+    },
+    "safety": {
+      "toxicity": "unknown"
+    }
+  },
+  {
+    "slug": "pulmonaria",
+    "name": "Pulmonaria (Lungwort)",
+    "scientificName": "Pulmonaria officinalis and hybrids",
+    "plantType": "Herbaceous perennial",
+    "tags": [
+      "Herbaceous perennial",
+      "Boraginaceae",
+      "pollinator",
+      "bee",
+      "wildlife"
+    ],
+    "growingConditions": {
+      "light": [
+        "full-shade"
+      ],
+      "drainage": [
+        "fast"
+      ],
+      "chalkTolerance": "high"
+    },
+    "matureSize": {
+      "sourceText": "25 to 40cm tall, 45cm spread"
+    },
+    "safety": {
+      "toxicity": "unknown"
+    }
+  },
+  {
+    "slug": "pyracantha",
+    "name": "Pyracantha (Firethorn)",
+    "scientificName": "Pyracantha species and hybrids",
+    "plantType": "Evergreen shrub",
+    "tags": [
+      "Evergreen shrub",
+      "Rosaceae",
+      "pollinator",
+      "bee",
+      "wildlife"
+    ],
+    "growingConditions": {
+      "light": [
+        "full-sun",
+        "partial-shade"
+      ],
+      "drainage": [
+        "moderate"
+      ],
+      "chalkTolerance": "unknown"
+    },
+    "matureSize": {
+      "sourceText": "2 to 3m tall and wide if untrained"
+    },
+    "safety": {
+      "toxicity": "unknown"
+    }
+  },
+  {
+    "slug": "raspberry",
+    "name": "Raspberry",
+    "scientificName": "Rubus idaeus",
+    "plantType": "Deciduous fruiting cane",
+    "tags": [
+      "Deciduous fruiting cane",
+      "Rosaceae",
+      "pollinator",
+      "bee",
+      "wildlife"
+    ],
+    "growingConditions": {
+      "light": [
+        "full-sun",
+        "partial-shade"
+      ],
+      "drainage": [
+        "fast"
+      ],
+      "chalkTolerance": "unknown"
+    },
+    "matureSize": {
+      "sourceText": "Plant 45cm apart in rows 1.5m apart"
+    },
+    "safety": {
+      "toxicity": "unknown"
+    }
+  },
+  {
+    "slug": "redcurrant",
+    "name": "Redcurrant",
+    "scientificName": "Ribes rubrum",
+    "plantType": "Deciduous fruiting shrub",
+    "tags": [
+      "Deciduous fruiting shrub",
+      "Grossulariaceae",
+      "pollinator",
+      "bee",
+      "wildlife"
+    ],
+    "growingConditions": {
+      "light": [
+        "full-sun",
+        "partial-shade"
+      ],
+      "drainage": [
+        "fast"
+      ],
+      "chalkTolerance": "unknown"
+    },
+    "matureSize": {
+      "sourceText": "1.5m tall and wide"
+    },
+    "safety": {
+      "toxicity": "unknown"
+    }
+  },
+  {
+    "slug": "rhododendron",
+    "name": "Rhododendron",
+    "scientificName": "Rhododendron species and hybrids",
+    "plantType": "Evergreen and deciduous shrubs",
+    "tags": [
+      "Evergreen and deciduous shrubs",
+      "Ericaceae",
+      "pollinator",
+      "bee",
+      "wildlife"
+    ],
+    "growingConditions": {
+      "light": [
+        "partial-shade"
+      ],
+      "drainage": [
+        "fast"
+      ],
+      "chalkTolerance": "high"
+    },
+    "matureSize": {
+      "sourceText": "1 to 5m depending on variety. Dwarf alpine varieties stay compact"
+    },
+    "safety": {
+      "toxicity": "moderate"
+    }
+  },
+  {
+    "slug": "rosemary",
+    "name": "Rosemary",
+    "scientificName": "Salvia rosmarinus (formerly Rosmarinus officinalis)",
+    "plantType": "Evergreen shrub",
+    "tags": [
+      "Evergreen shrub",
+      "Lamiaceae",
+      "pollinator",
+      "bee",
+      "butterfly",
+      "wildlife"
+    ],
+    "growingConditions": {
+      "light": [
+        "full-sun"
+      ],
+      "drainage": [
+        "fast"
+      ],
+      "chalkTolerance": "high"
+    },
+    "matureSize": {
+      "sourceText": "Upright forms reach 1.2 to 1.5m. Trailing forms spread 60cm high and 1m wide"
+    },
+    "safety": {
+      "toxicity": "unknown"
+    }
+  },
+  {
+    "slug": "roses",
+    "name": "Roses",
+    "scientificName": "Rosa species and hybrids",
+    "plantType": "Deciduous shrub and climber",
+    "tags": [
+      "Deciduous shrub and climber",
+      "Rosaceae",
+      "pollinator",
+      "bee",
+      "wildlife"
+    ],
+    "growingConditions": {
+      "light": [
+        "full-sun"
+      ],
+      "drainage": [
+        "fast"
+      ],
+      "chalkTolerance": "high"
+    },
+    "matureSize": {
+      "sourceText": "60cm to 3m depending on type. Climbers and ramblers reach 3 to 5m"
+    },
+    "safety": {
+      "toxicity": "unknown"
+    }
+  },
+  {
+    "slug": "rudbeckia",
+    "name": "Rudbeckia (Black-eyed Susan)",
+    "scientificName": "Rudbeckia fulgida and R. hirta",
+    "plantType": "Herbaceous perennial or biennial",
+    "tags": [
+      "Herbaceous perennial or biennial",
+      "Asteraceae",
+      "pollinator",
+      "bee",
+      "wildlife"
+    ],
+    "growingConditions": {
+      "light": [
+        "full-sun"
+      ],
+      "drainage": [
+        "fast"
+      ],
+      "chalkTolerance": "high"
+    },
+    "matureSize": {
+      "sourceText": "60cm to 1m tall and wide depending on species"
+    },
+    "safety": {
+      "toxicity": "unknown"
+    }
+  },
+  {
+    "slug": "sage",
+    "name": "Sage",
+    "scientificName": "Salvia officinalis",
+    "plantType": "Evergreen subshrub",
+    "tags": [
+      "Evergreen subshrub",
+      "Lamiaceae",
+      "pollinator",
+      "bee",
+      "wildlife"
+    ],
+    "growingConditions": {
+      "light": [
+        "full-sun"
+      ],
+      "drainage": [
+        "fast"
+      ],
+      "chalkTolerance": "high"
+    },
+    "matureSize": {
+      "sourceText": "60cm tall and wide"
+    },
+    "safety": {
+      "toxicity": "unknown"
+    }
+  },
+  {
+    "slug": "salvia",
+    "name": "Salvia (Perennial Sage)",
+    "scientificName": "Salvia nemorosa and hybrids",
+    "plantType": "Herbaceous perennial",
+    "tags": [
+      "Herbaceous perennial",
+      "Lamiaceae",
+      "pollinator",
+      "bee",
+      "wildlife"
+    ],
+    "growingConditions": {
+      "light": [
+        "full-sun"
+      ],
+      "drainage": [
+        "moderate"
+      ],
+      "chalkTolerance": "high"
+    },
+    "matureSize": {
+      "sourceText": "50 to 80cm tall, 40 to 60cm spread"
+    },
+    "safety": {
+      "toxicity": "unknown"
+    }
+  },
+  {
+    "slug": "sarcococca",
+    "name": "Sarcococca (Sweet Box)",
+    "scientificName": "Sarcococca confusa, Sarcococca hookeriana, Sarcococca ruscifolia",
+    "plantType": "Evergreen shrub",
+    "tags": [
+      "Evergreen shrub",
+      "Buxaceae",
+      "pollinator",
+      "bee",
+      "wildlife"
+    ],
+    "growingConditions": {
+      "light": [
+        "partial-shade",
+        "full-shade"
+      ],
+      "drainage": [
+        "fast"
+      ],
+      "chalkTolerance": "high"
+    },
+    "matureSize": {
+      "sourceText": "50cm to 1.5m depending on species"
+    },
+    "safety": {
+      "toxicity": "unknown"
+    }
+  },
+  {
+    "slug": "skimmia",
+    "name": "Skimmia",
+    "scientificName": "Skimmia japonica, Skimmia reevesiana",
+    "plantType": "Evergreen shrub",
+    "tags": [
+      "Evergreen shrub",
+      "Rutaceae",
+      "pollinator",
+      "bee",
+      "wildlife"
+    ],
+    "growingConditions": {
+      "light": [
+        "full-shade"
+      ],
+      "drainage": [
+        "fast"
+      ],
+      "chalkTolerance": "low"
+    },
+    "matureSize": {
+      "sourceText": "60cm to 1.2m tall and wide"
+    },
+    "safety": {
+      "toxicity": "moderate"
+    }
+  },
+  {
+    "slug": "snowdrops",
+    "name": "Snowdrops",
+    "scientificName": "Galanthus nivalis and Galanthus species",
+    "plantType": "Bulbous perennial",
+    "tags": [
+      "Bulbous perennial",
+      "Amaryllidaceae",
+      "pollinator",
+      "bee",
+      "wildlife"
+    ],
+    "growingConditions": {
+      "light": [
+        "full-sun"
+      ],
+      "drainage": [
+        "fast"
+      ],
+      "chalkTolerance": "high"
+    },
+    "matureSize": {
+      "sourceText": "10 to 20cm tall. Plant in drifts of 25 or more for impact"
+    },
+    "safety": {
+      "toxicity": "moderate"
+    }
+  },
+  {
+    "slug": "sorbus",
+    "name": "Sorbus (Rowan and Whitebeam)",
+    "scientificName": "Sorbus aucuparia, Sorbus aria, Sorbus commixta, Sorbus x thuringiaca",
+    "plantType": "Deciduous tree",
+    "tags": [
+      "Deciduous tree",
+      "Rosaceae",
+      "pollinator",
+      "bee",
+      "wildlife"
+    ],
+    "growingConditions": {
+      "light": [
+        "full-sun",
+        "partial-shade"
+      ],
+      "drainage": [
+        "fast"
+      ],
+      "chalkTolerance": "high"
+    },
+    "matureSize": {
+      "sourceText": "5 to 10m tall depending on species"
+    },
+    "safety": {
+      "toxicity": "unknown"
+    }
+  },
+  {
+    "slug": "star-jasmine",
+    "name": "Star Jasmine",
+    "scientificName": "Trachelospermum jasminoides",
+    "plantType": "Evergreen climber",
+    "tags": [
+      "Evergreen climber",
+      "Apocynaceae",
+      "pollinator",
+      "bee",
+      "wildlife"
+    ],
+    "growingConditions": {
+      "light": [
+        "full-sun",
+        "partial-shade"
+      ],
+      "drainage": [
+        "fast"
+      ],
+      "chalkTolerance": "high"
+    },
+    "matureSize": {
+      "sourceText": "3 to 5m tall with support"
+    },
+    "safety": {
+      "toxicity": "unknown"
+    }
+  },
+  {
+    "slug": "stipa",
+    "name": "Stipa (Feather Grass)",
+    "scientificName": "Stipa tenuissima and Stipa gigantea",
+    "plantType": "Ornamental grass",
+    "tags": [
+      "Ornamental grass",
+      "Poaceae",
+      "pollinator",
+      "bee",
+      "wildlife"
+    ],
+    "growingConditions": {
+      "light": [
+        "full-sun"
+      ],
+      "drainage": [
+        "fast"
+      ],
+      "chalkTolerance": "high"
+    },
+    "matureSize": {
+      "sourceText": "S. tenuissima: 50cm tall and wide. S. gigantea: 1.8m tall with flower spikes, 60cm wide"
+    },
+    "safety": {
+      "toxicity": "unknown"
+    }
+  },
+  {
+    "slug": "strawberry",
+    "name": "Strawberry",
+    "scientificName": "Fragaria x ananassa",
+    "plantType": "Herbaceous perennial",
+    "tags": [
+      "Herbaceous perennial",
+      "Rosaceae",
+      "pollinator",
+      "bee",
+      "wildlife"
+    ],
+    "growingConditions": {
+      "light": [
+        "full-sun"
+      ],
+      "drainage": [
+        "fast"
+      ],
+      "chalkTolerance": "unknown"
+    },
+    "matureSize": {
+      "sourceText": "Plant 40cm apart in rows 75cm apart"
+    },
+    "safety": {
+      "toxicity": "unknown"
+    }
+  },
+  {
+    "slug": "syringa",
+    "name": "Syringa (Lilac)",
+    "scientificName": "Syringa vulgaris, Syringa x hyacinthiflora",
+    "plantType": "Deciduous shrub or small tree",
+    "tags": [
+      "Deciduous shrub or small tree",
+      "Oleaceae",
+      "pollinator",
+      "bee",
+      "wildlife"
+    ],
+    "growingConditions": {
+      "light": [
+        "full-sun"
+      ],
+      "drainage": [
+        "fast"
+      ],
+      "chalkTolerance": "high"
+    },
+    "matureSize": {
+      "sourceText": "3 to 5m tall and wide"
+    },
+    "safety": {
+      "toxicity": "unknown"
+    }
+  },
+  {
+    "slug": "thyme",
+    "name": "Thyme",
+    "scientificName": "Thymus vulgaris",
+    "plantType": "Evergreen subshrub",
+    "tags": [
+      "Evergreen subshrub",
+      "Lamiaceae",
+      "pollinator",
+      "bee",
+      "wildlife"
+    ],
+    "growingConditions": {
+      "light": [
+        "full-sun"
+      ],
+      "drainage": [
+        "fast"
+      ],
+      "chalkTolerance": "high"
+    },
+    "matureSize": {
+      "sourceText": "20 to 30cm tall, 30cm spread"
+    },
+    "safety": {
+      "toxicity": "unknown"
+    }
+  },
+  {
+    "slug": "tiarella",
+    "name": "Foamflower",
+    "scientificName": "Tiarella cordifolia and Tiarella hybrids",
+    "plantType": "Semi-evergreen clump-forming perennial",
+    "tags": [
+      "Semi-evergreen clump-forming perennial",
+      "Saxifragaceae",
+      "pollinator",
+      "bee",
+      "wildlife"
+    ],
+    "growingConditions": {
+      "light": [
+        "full-shade"
+      ],
+      "drainage": [
+        "fast"
+      ],
+      "chalkTolerance": "unknown"
+    },
+    "matureSize": {
+      "sourceText": "20 to 30cm tall in flower. Plant 30cm apart"
+    },
+    "safety": {
+      "toxicity": "unknown"
+    }
+  },
+  {
+    "slug": "tulips",
+    "name": "Tulips",
+    "scientificName": "Tulipa species and hybrids",
+    "plantType": "Bulbous perennial",
+    "tags": [
+      "Bulbous perennial",
+      "Liliaceae",
+      "pollinator",
+      "bee",
+      "wildlife"
+    ],
+    "growingConditions": {
+      "light": [
+        "full-sun"
+      ],
+      "drainage": [
+        "fast"
+      ],
+      "chalkTolerance": "high"
+    },
+    "matureSize": {
+      "sourceText": "20 to 60cm tall depending on variety. Plant 10 to 15cm apart"
+    },
+    "safety": {
+      "toxicity": "moderate"
+    }
+  },
+  {
+    "slug": "verbena-bonariensis",
+    "name": "Verbena bonariensis",
+    "scientificName": "Verbena bonariensis",
+    "plantType": "Tall herbaceous perennial",
+    "tags": [
+      "Tall herbaceous perennial",
+      "Verbenaceae",
+      "pollinator",
+      "bee",
+      "wildlife"
+    ],
+    "growingConditions": {
+      "light": [
+        "full-sun"
+      ],
+      "drainage": [
+        "moderate"
+      ],
+      "chalkTolerance": "high"
+    },
+    "matureSize": {
+      "sourceText": "1.2 to 1.8m tall, only 30 to 45cm spread"
+    },
+    "safety": {
+      "toxicity": "unknown"
+    }
+  },
+  {
+    "slug": "viburnum",
+    "name": "Viburnum",
+    "scientificName": "Viburnum tinus and Viburnum opulus",
+    "plantType": "Evergreen and deciduous shrub",
+    "tags": [
+      "Evergreen and deciduous shrub",
+      "Viburnaceae",
+      "pollinator",
+      "bee",
+      "wildlife"
+    ],
+    "growingConditions": {
+      "light": [
+        "partial-shade"
+      ],
+      "drainage": [
+        "moderate"
+      ],
+      "chalkTolerance": "high"
+    },
+    "matureSize": {
+      "sourceText": "2 to 4m tall and wide depending on species"
+    },
+    "safety": {
+      "toxicity": "unknown"
+    }
+  },
+  {
+    "slug": "vinca",
+    "name": "Periwinkle",
+    "scientificName": "Vinca major and Vinca minor",
+    "plantType": "Evergreen mat-forming perennial",
+    "tags": [
+      "Evergreen mat-forming perennial",
+      "Apocynaceae",
+      "pollinator",
+      "bee",
+      "wildlife"
+    ],
+    "growingConditions": {
+      "light": [
+        "full-shade"
+      ],
+      "drainage": [
+        "fast"
+      ],
+      "chalkTolerance": "high"
+    },
+    "matureSize": {
+      "sourceText": "Vinca minor 10 to 15cm tall. Vinca major 30 to 45cm tall. Plant 40cm apart"
+    },
+    "safety": {
+      "toxicity": "moderate"
+    }
+  },
+  {
+    "slug": "weigela",
+    "name": "Weigela",
+    "scientificName": "Weigela florida and hybrids",
+    "plantType": "Deciduous shrub",
+    "tags": [
+      "Deciduous shrub",
+      "Caprifoliaceae",
+      "pollinator",
+      "bee",
+      "wildlife"
+    ],
+    "growingConditions": {
+      "light": [
+        "full-sun"
+      ],
+      "drainage": [
+        "moderate"
+      ],
+      "chalkTolerance": "high"
+    },
+    "matureSize": {
+      "sourceText": "1.5 to 2.5m tall and wide"
+    },
+    "safety": {
+      "toxicity": "unknown"
+    }
+  },
+  {
+    "slug": "wildflower-mixes",
+    "name": "Wildflower Meadow Mixes",
+    "scientificName": "Various native UK species",
+    "plantType": "Annual and perennial mixes",
+    "tags": [
+      "Annual and perennial mixes",
+      "Various",
+      "pollinator",
+      "bee",
+      "wildlife"
+    ],
+    "growingConditions": {
+      "light": [
+        "full-sun"
+      ],
+      "drainage": [
+        "moderate"
+      ],
+      "chalkTolerance": "high"
+    },
+    "matureSize": {
+      "sourceText": "Variable. Plant at 2 to 5g per square metre"
+    },
+    "safety": {
+      "toxicity": "unknown"
+    }
+  },
+  {
+    "slug": "wisteria",
+    "name": "Wisteria",
+    "scientificName": "Wisteria sinensis and Wisteria floribunda",
+    "plantType": "Deciduous woody climber",
+    "tags": [
+      "Deciduous woody climber",
+      "Fabaceae",
+      "pollinator",
+      "bee",
+      "wildlife"
+    ],
+    "growingConditions": {
+      "light": [
+        "full-sun"
+      ],
+      "drainage": [
+        "fast"
+      ],
+      "chalkTolerance": "high"
+    },
+    "matureSize": {
+      "sourceText": "Can reach 9m or more with support"
+    },
+    "safety": {
+      "toxicity": "moderate"
+    }
+  },
+  {
+    "slug": "yew",
+    "name": "Yew (English Yew)",
+    "scientificName": "Taxus baccata",
+    "plantType": "Evergreen conifer",
+    "tags": [
+      "Evergreen conifer",
+      "Taxaceae",
+      "pollinator",
+      "bee",
+      "wildlife"
+    ],
+    "growingConditions": {
+      "light": [
+        "full-shade"
+      ],
+      "drainage": [
+        "fast"
+      ],
+      "chalkTolerance": "high"
+    },
+    "matureSize": {
+      "sourceText": "2 to 4m if left unpruned. Hedges can be kept at 1m"
+    },
+    "safety": {
+      "toxicity": "moderate"
+    }
+  }
+]

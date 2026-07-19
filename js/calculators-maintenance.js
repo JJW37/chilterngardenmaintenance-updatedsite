@@ -113,7 +113,7 @@
       "<strong>Responsibility:</strong> " + responsibility.replace('self', 'self-maintained').replace('some', 'some work needed').replace('occasional', 'occasional care').replace('regular', 'regular gardener').replace('full', 'full CGM responsibility') + "<br>" +
       "<strong>Desired outcome:</strong> " + outcome.replace('controlled', 'controlled and presentable').replace('consistent', 'consistently cared for').replace('detailed', 'detailed care').replace('managed', 'fully managed') + "<br>" +
       "<strong>Improvement intent:</strong> " + improve.replace('maintain', 'just maintain').replace('some', 'some improvements').replace('identify', 'identify improvements').replace('actively', 'actively develop') + "<br><br>" +
-      "<strong>Best next step:</strong> <a href='/booking/'>Get a quote</a> or read about <a href='/about/maintenance.html'>The CGM Method</a>.";
+      "<strong>Best next step:</strong> <a href='/chilterngardenmaintenance-updatedsite/booking/'>Get a quote</a> or read about <a href='/chilterngardenmaintenance-updatedsite/about/maintenance.html'>The CGM Method</a>.";
 
     showResult('maintenance', level.toUpperCase() + "<br>" + levelName.toUpperCase(), summary);
   };

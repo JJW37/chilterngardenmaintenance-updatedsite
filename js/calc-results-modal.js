@@ -33,9 +33,9 @@
         '</div>' +
         '<div class="calc-result-modal__body" id="calcModalBody"></div>' +
         '<div class="calc-result-modal__footer">' +
-          '<a class="btn btn-primary" href="/booking/">Get a Quote</a>' +
+          '<a class="btn btn-primary" href="/chilterngardenmaintenance-updatedsite/booking/">Get a Quote</a>' +
           '<a class="btn btn-whatsapp" href="https://wa.me/447467657459" target="_blank" rel="noopener">WhatsApp</a>' +
-          '<a class="btn btn-ghost" href="/guides/" style="border:2px solid var(--gold);color:var(--gold-deep);">PDF guides</a>' +
+          '<a class="btn btn-ghost" href="/chilterngardenmaintenance-updatedsite/guides/" style="border:2px solid var(--gold);color:var(--gold-deep);">PDF guides</a>' +
         '</div>' +
       '</div>';
     

@@ -568,8 +568,8 @@ window.calcPrivacyPlanner = function () {
 
   // CTAs
   var ctaHtml = '<div class="pp-ctas">' +
-    '<a class="btn btn-primary btn-lg" href="/booking/">Request a Privacy Planting Visit</a>' +
-    '<a class="btn btn-ghost btn-lg" href="/plants/">View Plant Library</a>' +
+    '<a class="btn btn-primary btn-lg" href="/chilterngardenmaintenance-updatedsite/booking/">Request a Privacy Planting Visit</a>' +
+    '<a class="btn btn-ghost btn-lg" href="/chilterngardenmaintenance-updatedsite/plants/">View Plant Library</a>' +
   '</div>';
 
   // Assemble full result

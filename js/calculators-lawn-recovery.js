@@ -314,8 +314,8 @@ window.calcLawnRecovery = function () {
 
   // CTAs
   var ctaHtml = '<div class="lr-ctas">' +
-    '<a class="btn btn-primary btn-lg" href="/booking/">Request a Lawn Assessment</a>' +
-    '<a class="btn btn-ghost btn-lg" href="/tips/lawn-care-and-lawn-repair.html">View Lawn Care Advice</a>' +
+    '<a class="btn btn-primary btn-lg" href="/chilterngardenmaintenance-updatedsite/booking/">Request a Lawn Assessment</a>' +
+    '<a class="btn btn-ghost btn-lg" href="/chilterngardenmaintenance-updatedsite/tips/returf-or-reseed-lawn.html">View Lawn Care Advice</a>' +
   '</div>';
 
   // --- ASSEMBLE SECTIONS ---
@@ -366,4 +366,3 @@ window.calcLawnRecovery = function () {
 
   showResult('lawn-recovery', resultHeading, fullSummary);
 };
-})();

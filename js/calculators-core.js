@@ -25,12 +25,12 @@
       'urgency and site complexity all affect what is really involved. ' +
       '<strong>The level shown may move up or down once we assess the site.</strong> ' +
       '<strong>For an accurate, fixed price, contact us via our ' +
-      '<a href="/booking/" style="color:var(--gold-light);text-decoration:underline;">quote form</a>.</strong>' +
+      '<a href="/chilterngardenmaintenance-updatedsite/booking/" style="color:var(--gold-light);text-decoration:underline;">quote form</a>.</strong>' +
       '</div>' +
       '<div style="margin-top:.8rem;display:flex;flex-direction:column;gap:.5rem;">' +
-      '<a class="btn btn-primary" href="/booking/" style="width:100%;justify-content:center;">Get an accurate quote</a>' +
+      '<a class="btn btn-primary" href="/chilterngardenmaintenance-updatedsite/booking/" style="width:100%;justify-content:center;">Get an accurate quote</a>' +
       '<a class="btn btn-whatsapp" href="https://wa.me/447467657459" target="_blank" rel="noopener" style="width:100%;justify-content:center;">WhatsApp</a>' +
-      '<a class="btn btn-primary" href="/portfolio/" style="width:100%;justify-content:center;">See our portfolio</a>' +
+      '<a class="btn btn-primary" href="/chilterngardenmaintenance-updatedsite/portfolio/" style="width:100%;justify-content:center;">See our portfolio</a>' +
       '</div>';
   }
 

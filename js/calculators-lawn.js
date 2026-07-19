@@ -186,8 +186,8 @@
           '<p>The remaining 7 steps, cultivar names, sowing rates and timing are available via a detailed quote or our Lawn Renovation Guide PDF.</p>' +
         '</div>' +
         '<div class="calc-locked-cta__actions">' +
-          '<a class="btn btn-primary" href="/booking/">Get a quote</a>' +
-          '<a class="btn btn-ghost" href="/guides/">View guides</a>' +
+          '<a class="btn btn-primary" href="/chilterngardenmaintenance-updatedsite/booking/">Get a quote</a>' +
+          '<a class="btn btn-ghost" href="/chilterngardenmaintenance-updatedsite/guides/">View guides</a>' +
         '</div>' +
       '</div>' +
       '</div>';

@@ -197,7 +197,7 @@
 
     // Basemap
     var basemap = el("image", {
-      href: "/images/maps/cgm-coverage-basemap.webp",
+      href: "/chilterngardenmaintenance-updatedsite/images/maps/cgm-coverage-basemap.webp",
       x: 0, y: 0, width: OW, height: OH,
       preserveAspectRatio: "none",
       class: "coverage-atlas__basemap",

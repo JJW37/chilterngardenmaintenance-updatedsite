@@ -66,11 +66,11 @@
       actionsR.className = "coverage-result__actions";
       if (detail.nearestTown && detail.nearestTown.slug) {
         actionsR.appendChild(link("coverage-result__link coverage-result__link--secondary",
-          "/locations/" + detail.nearestTown.slug + ".html",
+          "/chilterngardenmaintenance-updatedsite/locations/" + detail.nearestTown.slug + ".html",
           "View " + nearestName + " garden information"));
       }
       actionsR.appendChild(link("coverage-result__link coverage-result__link--primary",
-        "/booking/", "Request a quotation"));
+        "/chilterngardenmaintenance-updatedsite/booking/", "Request a quotation"));
       resultEl.appendChild(actionsR);
     } else if (coverage === "extended") {
       resultEl.appendChild(text("p", "coverage-result__status",
@@ -83,11 +83,11 @@
       actionsE.className = "coverage-result__actions";
       if (detail.nearestTown && detail.nearestTown.slug) {
         actionsE.appendChild(link("coverage-result__link coverage-result__link--secondary",
-          "/locations/" + detail.nearestTown.slug + ".html",
+          "/chilterngardenmaintenance-updatedsite/locations/" + detail.nearestTown.slug + ".html",
           "View local information"));
       }
       actionsE.appendChild(link("coverage-result__link coverage-result__link--primary",
-        "/booking/", "Request a quotation"));
+        "/chilterngardenmaintenance-updatedsite/booking/", "Request a quotation"));
       resultEl.appendChild(actionsE);
     } else {
       resultEl.appendChild(text("p", "coverage-result__status",
@@ -99,7 +99,7 @@
       var actionsO = document.createElement("div");
       actionsO.className = "coverage-result__actions";
       actionsO.appendChild(link("coverage-result__link coverage-result__link--primary",
-        "/booking/", "Send us your project details"));
+        "/chilterngardenmaintenance-updatedsite/booking/", "Send us your project details"));
       resultEl.appendChild(actionsO);
     }
   }
@@ -167,11 +167,11 @@
 
     if (t.slug) {
       dynamicEl.appendChild(link("coverage-atlas__dynamic-cta",
-        "/locations/" + t.slug + ".html",
+        "/chilterngardenmaintenance-updatedsite/locations/" + t.slug + ".html",
         "View " + t.name + " garden information"));
     }
     dynamicEl.appendChild(link("coverage-atlas__dynamic-cta coverage-atlas__dynamic-cta--ghost",
-      "/booking/", "Request a quotation"));
+      "/chilterngardenmaintenance-updatedsite/booking/", "Request a quotation"));
   }
 
   function renderLocation(detail) {
@@ -192,11 +192,11 @@
 
     if (nt && nt.slug) {
       dynamicEl.appendChild(link("coverage-atlas__dynamic-cta",
-        "/locations/" + nt.slug + ".html",
+        "/chilterngardenmaintenance-updatedsite/locations/" + nt.slug + ".html",
         "View local information"));
     }
     dynamicEl.appendChild(link("coverage-atlas__dynamic-cta coverage-atlas__dynamic-cta--ghost",
-      "/booking/", "Request a quotation"));
+      "/chilterngardenmaintenance-updatedsite/booking/", "Request a quotation"));
   }
 
   function renderMapState(detail) {

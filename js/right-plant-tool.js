@@ -55,7 +55,7 @@
   }
 
   function loadPlants() {
-    fetch('/_private-data/plants.json')
+    fetch('/chilterngardenmaintenance-updatedsite/_private-data/plants.json')
       .then(function(r) { return r.json(); })
       .then(function(data) {
         PLANTS = data;
@@ -66,7 +66,7 @@
   }
 
   function loadTowns() {
-    fetch('/_private-data/towns.json')
+    fetch('/chilterngardenmaintenance-updatedsite/_private-data/towns.json')
       .then(function(r) { return r.json(); })
       .then(function(data) {
         TOWN_DATA = Array.isArray(data) ? data : Object.values(data);
@@ -459,7 +459,7 @@
 
     if (matches.length === 0) {
       results.hidden = false;
-      intro.innerHTML = '<strong>No plants matched your exact conditions.</strong> Try relaxing one or two filters - most Chiltern gardens have at least 30 suitable plants from our library. <a href="/plants/" style="color:var(--forest);text-decoration:underline;">Browse all 130 plants</a> or <a href="/booking/" style="color:var(--forest);text-decoration:underline;">ask us to recommend plants for your garden</a>.';
+      intro.innerHTML = '<strong>No plants matched your exact conditions.</strong> Try relaxing one or two filters - most Chiltern gardens have at least 30 suitable plants from our library. <a href="/chilterngardenmaintenance-updatedsite/plants/" style="color:var(--forest);text-decoration:underline;">Browse all 130 plants</a> or <a href="/chilterngardenmaintenance-updatedsite/booking/" style="color:var(--forest);text-decoration:underline;">ask us to recommend plants for your garden</a>.';
       list.innerHTML = '';
       return;
     }
@@ -481,7 +481,7 @@
       }).join('');
       var rank = String(idx + 1).padStart(2, '0');
 
-      return '<a class="rprp-result" href="/plants/' + slug + '.html">' +
+      return '<a class="rprp-result" href="/chilterngardenmaintenance-updatedsite/plants/' + slug + '.html">' +
         '<div class="rprp-result__rank">' + rank + '</div>' +
         '<div class="rprp-result__body">' +
           '<div class="rprp-result__header">' +
