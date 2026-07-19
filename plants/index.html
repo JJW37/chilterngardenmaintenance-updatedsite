@@ -20,7 +20,7 @@
   <meta property="og:site_name" content="Chiltern Garden Maintenance">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:image" content="https://www.chilterngardenmaintenance.com/images/hero-garden.jpg">
-  <!-- Google Analytics 4 - stub loaded from analytics.js, full library loaded after cookie consent -->
+  <!-- Google Analytics 4, stub loaded from analytics.js, full library loaded after cookie consent -->
   <script src="/chilterngardenmaintenance-updatedsite/js/analytics.js?v=20260713a"></script>
   
 </head>
@@ -131,7 +131,7 @@
             placeholder="Search 130 plants by name, type or condition..."
             data-suggestions='["Try: lavender","Try: shade-loving plants","Try: rosemary","Try: drought tolerant","Try: hellebores","Try: low maintenance","Try: ornamental grasses","Try: spring bulbs","Try: hedging plants","Try: pollinator friendly"]'
             autocomplete="off"
-            aria-label="Search plants by common or Latin name">
+            aria-label="Search plants by common or Latin name" data-predictive-search="plants">
           <button id="plantSearchClear" class="plant-search-premium__clear" type="button" aria-label="Clear search" hidden>&times;</button>
         </div>
         <p id="plantSearchStatus" class="plant-search-premium__status" role="status" aria-live="polite"></p>
@@ -2122,7 +2122,7 @@
         if (target) {
           // Offset for the sticky header
           var headerHeight = 80;
-          var targetPosition = target.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+          var targetPosition = target.getBoundingClientRect().top + window.pageYOffset, headerHeight;
           window.scrollTo({ top: targetPosition, behavior: 'smooth' });
         }
         // On mobile, collapse the chip list after selecting
@@ -2175,7 +2175,7 @@
   <section class="cta-band-compact">
     <div class="container">
       <h2>Need help choosing or planting? Contact us on WhatsApp.</h2>
-      <p>Contact us on WhatsApp and we will aim to respond within one day.</p>
+      <p>Contact us on WhatsApp and we will aim to respond within 12 to 36 hours, Monday to Sunday.</p>
       <div class="cta-band-compact-actions">
         <a class="btn btn-primary" href="/chilterngardenmaintenance-updatedsite/booking/">Get a Quote</a>
         <a class="btn btn-whatsapp" href="https://wa.me/447467657459" target="_blank" rel="noopener">WhatsApp</a>
@@ -2270,7 +2270,7 @@
     </div>
   </div>
 
-  <!-- Reading progress bar - appears on the right edge of the viewport
+  <!-- Reading progress bar, appears on the right edge of the viewport
        on article and plant pages. Fills from bottom to top as the user
        scrolls through the article. -->
   <div class="reading-progress" id="readingProgress" hidden>
@@ -2279,5 +2279,9 @@
 
   <script src="/chilterngardenmaintenance-updatedsite/js/main.js?v=20260713a"></script>
   <script src="/chilterngardenmaintenance-updatedsite/js/right-plant-tool.js?v=20260802a"></script>
+<script src="/chilterngardenmaintenance-updatedsite/js/card-tilt.js?v=20260719b"></script>
+  <script src="/chilterngardenmaintenance-updatedsite/js/custom-scrollbar.js?v=20260719b"></script>
+  <script src="/chilterngardenmaintenance-updatedsite/js/predictive-search.js?v=20260719b"></script>
+  <script src="/chilterngardenmaintenance-updatedsite/js/mobile-dock.js?v=20260719b"></script>
 </body>
 </html>

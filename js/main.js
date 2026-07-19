@@ -20,6 +20,8 @@ document.addEventListener("DOMContentLoaded", function () {
         isOpen ? "Close navigation menu" : "Open navigation menu"
       );
       document.documentElement.classList.toggle("mobile-menu-open", isOpen);
+      var icon = menuToggle.querySelector("span");
+      if (icon) icon.textContent = isOpen ? "×" : "☰";
     };
 
     menuToggle.addEventListener("click", function (event) {

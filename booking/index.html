@@ -20,7 +20,7 @@
   <meta property="og:site_name" content="Chiltern Garden Maintenance">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:image" content="https://www.chilterngardenmaintenance.com/images/hero-garden.jpg">
-  <!-- Google Analytics 4 - stub loaded from analytics.js, full library loaded after cookie consent -->
+  <!-- Google Analytics 4, stub loaded from analytics.js, full library loaded after cookie consent -->
   <script src="/chilterngardenmaintenance-updatedsite/js/analytics.js?v=20260713a"></script>
   
 </head>
@@ -102,7 +102,7 @@
     <div class="quote-hero-bg"><img src="/chilterngardenmaintenance-updatedsite/images/hero-garden.jpg" alt="Beautiful Chiltern garden"></div>
     <div class="container">
       <h1>Get a Quote</h1>
-      <p>Tell us about your problem, and what solution you need. We will try to respond within one working day. You can get in contact either by WhatsApp or by using the quote form below.</p>
+      <p>Tell us about your problem, and what solution you need. We will try to respond within 12 to 36 hours, Monday to Sunday. You can get in contact either by WhatsApp or by using the quote form below.</p>
       <div class="hero-actions" style="margin-top:1.5rem;">
         <a class="btn btn-whatsapp btn-lg" href="https://wa.me/447467657459" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 21 1.9-5.7a8.5 8.5 0 1 1 3.8 3.8z"/></svg> WhatsApp Now</a>
       </div>
@@ -114,7 +114,7 @@
       <div class="article-layout">
         <article class="article-body">
           <h2>Quote Request Form</h2>
-          <p>Fill in the quote form below and we will aim to get back to you within one working day. Thank you and we look forward to speaking with you.</p>
+          <p>Fill in the quote form below and we will aim to get back to you within 12 to 36 hours, Monday to Sunday. Thank you and we look forward to speaking with you.</p>
 
           <form id="quoteForm" enctype="multipart/form-data">
             <div class="calc-step">
@@ -318,7 +318,7 @@
                 document.getElementById('errorMessage').hidden = false;
               }
             } catch (error) {
-              // Network error fallback - offer WhatsApp
+              // Network error fallback, offer WhatsApp
               document.getElementById('errorList').innerHTML = '<li>Could not connect to the server. Please try again, or contact us via WhatsApp.</li>';
               document.getElementById('errorMessage').hidden = false;
             }
@@ -330,7 +330,7 @@
 
           <h2>What Happens After You Contact Us</h2>
           <ol>
-            <li><strong>Initial response:</strong> we typically respond to your message within one working day, finding out more about the problem you face.</li>
+            <li><strong>Initial response:</strong> we typically respond within 12 to 36 hours, Monday to Sunday, to find out more about the problem you face.</li>
             <li><strong>Photos:</strong> if you have not already sent them, we ask for a few photos of the garden to survey the problems in greater detail.</li>
             <li><strong>Site visit:</strong> we will arrange a free in person visit to confirm the work.</li>
             <li><strong>Quotation:</strong> we will get back in touch, and send to you a free in depth quote listing out our proposal for the work.</li>
@@ -459,7 +459,7 @@
     </div>
   </div>
 
-  <!-- Reading progress bar - appears on the right edge of the viewport
+  <!-- Reading progress bar, appears on the right edge of the viewport
        on article and plant pages. Fills from bottom to top as the user
        scrolls through the article. -->
   <div class="reading-progress" id="readingProgress" hidden>
@@ -468,5 +468,9 @@
 
   <script src="/chilterngardenmaintenance-updatedsite/js/main.js?v=20260713a"></script>
   <script src="/chilterngardenmaintenance-updatedsite/js/photo-markup.js?v=20260806a"></script>
+<script src="/chilterngardenmaintenance-updatedsite/js/card-tilt.js?v=20260719b"></script>
+  <script src="/chilterngardenmaintenance-updatedsite/js/custom-scrollbar.js?v=20260719b"></script>
+  <script src="/chilterngardenmaintenance-updatedsite/js/predictive-search.js?v=20260719b"></script>
+  <script src="/chilterngardenmaintenance-updatedsite/js/mobile-dock.js?v=20260719b"></script>
 </body>
 </html>

@@ -1897,6 +1897,550 @@
   }
 }
 
+/* ===================================================================
+   CGM premium refinement layer, July 2026
+   Deliberately appended so it wins over the generated component rules.
+   =================================================================== */
+
+html,
+body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: clip;
+}
+
+body {
+  overscroll-behavior-x: none;
+}
+
+/* The mobile utility dock is compact, square-edged, and icon-free. */
+@media (max-width: 768px) {
+  .swipe-row {
+    margin: .15rem -1rem 0;
+    padding: 0 1rem .55rem;
+    border: 0;
+    background: transparent;
+    overflow-x: auto;
+    scroll-snap-type: x proximity;
+    scroll-padding-inline: 1rem;
+  }
+  .swipe-row__hint {
+    margin: 0 0 .4rem;
+    padding-left: 0;
+    font-size: .66rem;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+  }
+  .swipe-row__inner {
+    gap: .5rem;
+    width: max-content;
+    padding: 0;
+  }
+  .swipe-row__item {
+    position: relative;
+    min-height: 42px;
+    min-width: 92px;
+    justify-content: center;
+    padding: .65rem .85rem;
+    border: 1px solid rgba(30, 58, 42, .18);
+    border-radius: 0;
+    background: linear-gradient(135deg, #fff 0%, var(--cream) 100%);
+    box-shadow: 0 5px 14px rgba(30, 58, 42, .08);
+    scroll-snap-align: start;
+    transition: transform .25s ease, box-shadow .25s ease, background .25s ease;
+  }
+  .swipe-row__item::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(115deg, transparent 28%, rgba(255,255,255,.72) 50%, transparent 72%);
+    transform: translateX(-120%);
+    transition: transform .55s ease;
+    pointer-events: none;
+  }
+  .swipe-row__item:active,
+  .swipe-row__item:focus-visible {
+    background: var(--forest-dark);
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(30, 58, 42, .2);
+  }
+  .swipe-row__item:active::after,
+  .swipe-row__item:focus-visible::after { transform: translateX(120%); }
+  .swipe-row__item svg { display: none !important; }
+}
+
+@supports (animation-timeline: scroll()) {
+  @media (max-width: 768px) {
+    .cgm-scroll-dock .swipe-row__item {
+      animation-name: cgm-dock-scale, cgm-dock-blur;
+      animation-fill-mode: both;
+      animation-timing-function: ease-in-out;
+      animation-direction: normal, reverse;
+      animation-timeline: view(inline), view(inline);
+      animation-range: entry 0% entry 150%, exit -50% exit 100%;
+    }
+    @keyframes cgm-dock-scale {
+      0% { scale: .84; }
+    }
+    @keyframes cgm-dock-blur {
+      0% { scale: .84; filter: blur(1px); }
+    }
+  }
+}
+
+/* Keep the intelligence cards premium and make descriptive copy stay copy,
+   rather than looking like a second underlined link. */
+.editorial-card-grid__cell,
+.editorial-card-grid__cell:hover,
+.editorial-card-grid__cell:focus-visible {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(30, 58, 42, .16);
+  border-radius: 0;
+  text-decoration: none !important;
+  box-shadow: 0 10px 28px rgba(30, 58, 42, .07);
+  transform: translateZ(0);
+}
+.editorial-card-grid__cell::before {
+  content: "";
+  position: absolute;
+  width: 10rem;
+  height: 10rem;
+  top: -5rem;
+  right: -4rem;
+  border-radius: 50%;
+  background: rgba(184, 146, 67, .13);
+  pointer-events: none;
+}
+.editorial-card-grid__cell p,
+.editorial-card-grid__cell p:hover,
+.editorial-card-grid__cell p:focus-visible {
+  text-decoration: none !important;
+}
+.editorial-card-grid__cell:hover {
+  border-color: rgba(184, 146, 67, .75);
+  box-shadow: 0 16px 36px rgba(30, 58, 42, .14);
+}
+.method-title-premium {
+  display: grid;
+  gap: .08em;
+  letter-spacing: -.02em;
+}
+.editorial-feature--reverse .editorial-feature__text {
+  padding: clamp(1.25rem, 3vw, 2.5rem);
+  border: 1px solid rgba(30, 58, 42, .16);
+  border-left: 4px solid var(--gold);
+  background: linear-gradient(145deg, #fff, var(--cream));
+  box-shadow: 0 16px 34px rgba(30, 58, 42, .08);
+}
+.editorial-feature--reverse .editorial-feature__text .editorial-body { max-width: 44rem; }
+.method-title-premium span:nth-child(2) { color: var(--forest-light); }
+.method-title-premium span:nth-child(3),
+.method-title-premium span:nth-child(4) { color: var(--gold-deep); }
+.photo-interlude__title { max-width: 24ch; }
+.editorial-feature--text-only { grid-template-columns: minmax(0, 54rem); justify-content: center; }
+
+/* Diagnosis result: useful editorial resource cards in place of price claims. */
+.diagnosis-resource {
+  display: grid;
+  grid-template-columns: 7.5rem 1fr;
+  min-height: 7.5rem;
+  gap: 0;
+  overflow: hidden;
+  border: 1px solid rgba(30, 58, 42, .16);
+  background: #fff;
+  color: var(--forest-dark);
+  text-decoration: none;
+  box-shadow: 0 8px 22px rgba(30, 58, 42, .1);
+}
+.diagnosis-resource img { width: 100%; height: 100%; min-height: 7.5rem; object-fit: cover; }
+.diagnosis-resource span { display: flex; flex-direction: column; gap: .35rem; padding: .85rem .95rem; }
+.diagnosis-resource strong { font-family: var(--serif); font-size: 1.05rem; font-weight: 500; line-height: 1.2; }
+.diagnosis-resource small { font-family: var(--sans); font-size: .78rem; line-height: 1.4; color: var(--muted); }
+.diagnosis-resource em { margin-top: auto; font-family: var(--sans); font-size: .7rem; font-style: normal; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--gold-deep); }
+.diagnosis-resource:hover { border-color: var(--gold); box-shadow: 0 14px 30px rgba(30, 58, 42, .16); }
+@media (max-width: 600px) {
+  .diagnosis-resource { grid-template-columns: 5.7rem 1fr; min-height: 6.2rem; }
+  .diagnosis-resource img { min-height: 6.2rem; }
+  .diagnosis-resource span { padding: .7rem .75rem; }
+}
+
+/* Mobile service list: three visible cards, then an intentional reveal. */
+@media (max-width: 768px) {
+  .service-list-mobile-more {
+    margin-top: .15rem;
+    border: 1px solid rgba(30, 58, 42, .16);
+    background: linear-gradient(135deg, #fff, var(--cream));
+  }
+  .service-list-mobile-more > summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: .95rem 1.1rem;
+    color: var(--forest-dark);
+    font-family: var(--sans);
+    font-weight: 700;
+    cursor: pointer;
+    list-style: none;
+  }
+  .service-list-mobile-more > summary::-webkit-details-marker { display: none; }
+  .service-list-mobile-more[open] > summary { border-bottom: 1px solid var(--border-soft); color: var(--gold-deep); }
+  .service-list-mobile-more__items { display: flex; flex-direction: column; gap: .7rem; padding: .7rem; }
+  .service-list-mobile-more__items .service-card-mobile { margin: 0; }
+}
+
+/* A tighter two-column mobile rhythm for the rotating Popular right now cards. */
+@media (max-width: 600px) {
+  .editorial-card-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: .5rem;
+    background: transparent;
+    border: 0;
+    overflow: visible;
+  }
+  .editorial-card-grid__cell {
+    min-height: 10rem;
+    padding: .95rem;
+    border: 1px solid rgba(30, 58, 42, .16);
+  }
+  .editorial-card-grid__cell h3 { font-size: 1rem; }
+  .editorial-card-grid__cell p { font-size: .75rem; line-height: 1.35; }
+  .editorial-card-grid__cell .editorial-card-grid__arrow { font-size: .64rem; }
+
+  #popular-articles { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .7rem; }
+  #popular-articles > p { grid-column: 1 / -1; }
+  .article-card-popular { min-height: 0; padding: .85rem; border-radius: 0; }
+.article-card-popular h3 { font-size: 1rem; line-height: 1.2; }
+  .article-card-popular p { display: none; }
+  .article-card-popular .card-link { font-size: .72rem; }
+}
+
+.article-card-popular__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .35rem .45rem;
+}
+.article-card-popular__level {
+  display: inline-flex;
+  align-items: center;
+  padding: .2rem .42rem;
+  border: 1px solid rgba(30, 58, 42, .16);
+  border-radius: 0;
+  color: var(--forest-dark);
+  font-family: var(--sans);
+  font-size: .66rem;
+  font-weight: 700;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
+.article-card-popular__level--easy-read { background: #e6f0e3; }
+.article-card-popular__level--intermediate-read { background: #f4ecd4; }
+.article-card-popular__level--hard-read { background: #eee1d8; }
+
+@media (max-width: 768px) {
+  #problem-diagnosis .problem-diagnosis-accordion { overflow: visible; }
+  #problem-diagnosis .problem-diagnosis__result {
+    position: sticky;
+    top: 4.8rem;
+    z-index: 6;
+    scroll-margin-top: 5.5rem;
+    box-shadow: 0 16px 34px rgba(30, 58, 42, .16);
+  }
+}
+
+/* Shared 3D parallax surface. The JavaScript only changes variables, so the
+   effect remains low-cost and can be disabled by prefers-reduced-motion. */
+.cgm-tilt {
+  --tilt-x: 0deg;
+  --tilt-y: 0deg;
+  --tilt-glow-x: 50%;
+  --tilt-glow-y: 50%;
+  transform: perspective(900px) rotateX(var(--tilt-y)) rotateY(var(--tilt-x)) translateZ(0);
+  transform-style: preserve-3d;
+  transition: transform .28s ease, box-shadow .28s ease;
+}
+.cgm-tilt::after {
+  background: radial-gradient(circle at var(--tilt-glow-x) var(--tilt-glow-y), rgba(255,255,255,.22), transparent 34%);
+  opacity: 0;
+  transition: opacity .28s ease;
+  pointer-events: none;
+}
+.cgm-tilt:hover::after,
+.cgm-tilt:focus-within::after { opacity: 1; }
+@media (prefers-reduced-motion: reduce) {
+  .cgm-tilt { transform: none !important; transition: none !important; }
+}
+
+/* Predictive search menu shared by plant and gardening knowledge pages. */
+.plant-search-premium__wrap,
+.search-wrap { position: relative; }
+.cgm-predictive-menu {
+  position: absolute;
+  z-index: 30;
+  top: calc(100% + .5rem);
+  left: 0;
+  right: 0;
+  overflow: hidden;
+  border: 1px solid rgba(30, 58, 42, .18);
+  background: rgba(255, 255, 255, .98);
+  box-shadow: 0 16px 34px rgba(30, 58, 42, .16);
+  backdrop-filter: blur(12px);
+}
+.cgm-predictive-menu__item {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  width: 100%;
+  gap: 1rem;
+  padding: .75rem .9rem;
+  border: 0;
+  border-bottom: 1px solid var(--border-soft);
+  background: transparent;
+  color: var(--forest-dark);
+  text-align: left;
+  cursor: pointer;
+}
+.cgm-predictive-menu__item:last-child { border-bottom: 0; }
+.cgm-predictive-menu__item span { color: var(--muted); font-size: .72rem; }
+.cgm-predictive-menu__item:hover,
+.cgm-predictive-menu__item.is-active { background: var(--cream); }
+
+/* Plant library: keep the good search/filter behavior, but reduce dead space
+   and use disciplined square category controls. */
+.plants-page .callout.plants-callout { margin-bottom: 1.35rem; }
+.plant-cat-chips { margin: 1.1rem 0 1rem; }
+.plant-cat-chip,
+.plant-cat-chips__toggle { border-radius: 0 !important; }
+.plant-category-section { margin-top: 1.75rem !important; }
+.plant-grid-premium { gap: .85rem !important; }
+.plant-category-progress {
+  display: none;
+  align-items: center;
+  gap: .75rem;
+  margin: .35rem 0 1rem;
+  padding: .55rem .75rem;
+  border-left: 2px solid var(--gold);
+  background: var(--cream);
+  color: var(--muted);
+  font-family: var(--sans);
+  font-size: .7rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+.plant-category-progress__track { flex: 1; height: 3px; overflow: hidden; background: rgba(30,58,42,.14); }
+.plant-category-progress__track i { display: block; width: 8%; height: 100%; background: var(--gold); transition: width .35s ease; }
+@media (max-width: 768px) {
+  .plant-category-progress { display: flex; position: sticky; top: 62px; z-index: 15; }
+  .plant-category-section { margin-top: 1.25rem !important; }
+}
+
+/* Plant pages: square ranking badges and a strong relationships section. */
+.plant-rank {
+  display: inline-block;
+  margin: 0 .25rem;
+  padding: .22rem .45rem;
+  border: 1px solid rgba(70, 119, 76, .35);
+  border-radius: 0;
+  background: #dcebd7;
+  color: #285b35;
+  font-family: var(--sans);
+  font-size: .75rem;
+  font-weight: 800;
+  letter-spacing: .04em;
+  white-space: nowrap;
+}
+.plant-rank-note { color: inherit; }
+.plant-relationships {
+  margin: 3rem 0 2.5rem;
+  padding: clamp(1.35rem, 3vw, 2.7rem);
+  border: 1px solid rgba(30, 58, 42, .22);
+  border-top: 4px solid var(--gold);
+  background: linear-gradient(135deg, var(--forest-dark), #294f39);
+  color: rgba(255,255,255,.88);
+  box-shadow: 0 18px 40px rgba(30, 58, 42, .17);
+}
+.plant-relationships h2,
+.plant-relationships h3 { color: #fff; }
+.plant-relationships h2 { margin-top: 0 !important; font-size: clamp(1.6rem, 3vw, 2.35rem); }
+.plant-relationships h3 { margin-top: 1.8rem; color: var(--gold-light); }
+.plant-relationships p,
+.plant-relationships li { color: rgba(255,255,255,.82); }
+.plant-relationships a { color: var(--gold-light); }
+.plant-relationships ul { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .55rem 1.4rem; padding-left: 1.1rem; }
+.plant-relationships li { padding: .35rem 0; }
+@media (max-width: 650px) {
+  .plant-relationships { margin-inline: -.6rem; padding: 1.25rem; }
+  .plant-relationships ul { grid-template-columns: 1fr; }
+}
+.plant-calendar {
+  margin: 2.2rem 0;
+  padding: clamp(1.2rem, 3vw, 2rem);
+  border: 1px solid var(--border-soft);
+  background: linear-gradient(145deg, #fff, var(--cream));
+}
+.plant-calendar h2 { margin: .35rem 0 .5rem; }
+.plant-calendar > p { max-width: 58rem; color: var(--muted); }
+.plant-calendar__grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .65rem; margin-top: 1.25rem; }
+.plant-calendar__month { min-height: 8.6rem; padding: .8rem; border-left: 2px solid var(--gold); background: rgba(255,255,255,.68); }
+.plant-calendar__month strong { display: block; margin-bottom: .35rem; color: var(--forest-dark); font-family: var(--serif); font-size: 1.03rem; }
+.plant-calendar__month span { display: block; color: var(--muted); font-family: var(--sans); font-size: .76rem; line-height: 1.4; }
+@media (max-width: 700px) { .plant-calendar__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
+/* Article and service resource blocks. */
+.article-tool-links,
+.service-resource-panel {
+  margin: 2.8rem 0;
+  padding: clamp(1.2rem, 3vw, 2.3rem);
+  border: 1px solid rgba(30,58,42,.18);
+  border-top: 4px solid var(--gold);
+  background: linear-gradient(135deg, var(--cream), #fff);
+}
+.article-tool-links__intro,
+.service-resource-panel__intro { max-width: 50rem; margin-bottom: 1.25rem; }
+.article-tool-links h2,
+.service-resource-panel h2 { margin: .35rem 0 .5rem; }
+.article-tool-links p,
+.service-resource-panel p { color: var(--muted); }
+.article-tool-links__grid,
+.service-resource-panel__grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .75rem; margin: 1.25rem 0 1.35rem; }
+.article-tool-links__card,
+.service-resource-card {
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+  min-height: 9rem;
+  padding: 1rem;
+  border: 1px solid rgba(30,58,42,.18);
+  border-radius: 0;
+  background: #fff;
+  color: var(--forest-dark);
+  text-decoration: none;
+}
+.article-tool-links__card:hover,
+.service-resource-card:hover { border-color: var(--gold); box-shadow: 0 12px 28px rgba(30,58,42,.12); }
+.article-tool-links__label,
+.service-resource-card strong { font-family: var(--serif); font-size: 1.05rem; line-height: 1.25; }
+.article-tool-links__arrow,
+.service-resource-card > span:last-child { margin-top: auto; color: var(--gold-deep); font-family: var(--sans); font-size: .75rem; font-weight: 700; letter-spacing: .04em; }
+.service-resource-card__eyebrow { color: var(--forest-light); font-family: var(--sans); font-size: .68rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
+@media (max-width: 800px) {
+  .article-tool-links__grid,
+  .service-resource-panel__grid { grid-template-columns: 1fr; }
+  .article-tool-links__card,
+  .service-resource-card { min-height: 6.5rem; }
+}
+
+/* Menu treatment: close the empty upper gap and give the overlay a warmer,
+   more confident visual hierarchy on both desktop and mobile. */
+.site-nav__menu,
+.nav-menu,
+header nav[aria-label] {
+  background: linear-gradient(145deg, rgba(255,255,255,.98), rgba(246,242,232,.98));
+}
+@media (max-width: 900px) {
+  .mobile-menu {
+    gap: .15rem;
+    border-top: 1px solid rgba(184,146,67,.3);
+    background: linear-gradient(145deg, rgba(255,255,255,.99), rgba(246,242,232,.99));
+    box-shadow: 0 18px 42px rgba(30,58,42,.16);
+  }
+  .site-nav__menu,
+  .nav-menu,
+  header nav[aria-label] { top: 60px !important; padding-top: .35rem !important; }
+  .mobile-menu a,
+  .mobile-gk-toggle {
+    min-height: 48px;
+    padding: .8rem .2rem;
+    border-bottom-color: rgba(184,146,67,.25) !important;
+    color: var(--forest-dark) !important;
+    font-weight: 600;
+  }
+  .mobile-gk-items { padding: 0 .7rem; background: rgba(255,255,255,.45); }
+  .site-nav__menu a,
+  .nav-menu a,
+  header nav[aria-label] a { border-bottom-color: rgba(184,146,67,.25) !important; }
+}
+
+/* Mobile custom scroll rail, in CGM green and gold. */
+.cgm-page-scrollbar { display: none; }
+@media (max-width: 768px) {
+  html.has-curved-scrollbar { scrollbar-width: none; }
+  html.has-curved-scrollbar::-webkit-scrollbar { display: none; }
+  .cgm-page-scrollbar {
+    display: block;
+    position: fixed;
+    z-index: 10010;
+    top: 5.3rem;
+    right: .28rem;
+    bottom: 5.2rem;
+    width: 5px;
+    border-radius: 999px;
+    background: rgba(30,58,42,.12);
+    pointer-events: auto;
+  }
+  .cgm-page-scrollbar__thumb {
+    display: block;
+    width: 5px;
+    min-height: 42px;
+    border-radius: 999px;
+    background: linear-gradient(180deg, var(--gold), var(--forest-light));
+    box-shadow: 0 0 0 2px rgba(255,255,255,.65), 0 4px 12px rgba(30,58,42,.24);
+  }
+}
+
+/* Location atlas: larger names and smooth, deliberate horizontal movement. */
+.town-swiper,
+#townSwiper { scroll-behavior: smooth; scroll-snap-type: x mandatory; }
+.town-card { scroll-snap-align: center; }
+@media (max-width: 768px) {
+  .town-card__name { font-size: clamp(1.3rem, 5.5vw, 1.8rem) !important; line-height: 1.05; }
+  .town-card__county,
+  .town-card__region { font-size: .78rem; }
+  .town-card__intro { font-size: .9rem; line-height: 1.45; }
+  .town-card { min-height: 28rem; }
+}
+.coverage-village-note {
+  margin: 1rem 0 1.3rem;
+  padding: .9rem 1rem;
+  border-left: 3px solid var(--gold);
+  background: var(--cream);
+  color: var(--forest);
+  font-family: var(--sans);
+  font-size: .88rem;
+  line-height: 1.5;
+}
+
+/* Garden Passport plaque image. */
+.passport-plaque-visual { overflow: hidden; border: 1px solid rgba(184,146,67,.42); background: var(--forest-dark); }
+.passport-plaque-visual img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; }
+.passport-plaque-visual__label { margin: 0; padding: .75rem 1rem; color: var(--gold-light); font-family: var(--sans); font-size: .78rem; letter-spacing: .04em; }
+
+.editorial-row__pill--hard,
+.article-meta-bar__pill--hard {
+  background: rgba(184, 92, 56, .12);
+  color: var(--rust);
+}
+
+/* Calculator results sit on a clear grid line with the action beneath the
+   questions, and the same result card is used inside the modal. */
+.calc-form,
+.calc-result,
+.calc-result-modal__inner { border-radius: 0; }
+.calc-form { border-top: 3px solid var(--gold); }
+.calc-result { margin-top: .25rem; }
+.calc-result-modal__inner { border: 1px solid rgba(184,146,67,.4); box-shadow: 0 24px 60px rgba(0,0,0,.28); }
+.calc-result-modal__body .calc-result { position: static; margin: 0; box-shadow: none; }
+@media (max-width: 700px) {
+  .calc-layout { gap: 1.2rem; padding-top: 1.25rem; }
+  .calc-form { padding: 1.2rem; }
+  .calc-result { padding: 1.25rem; }
+  .calc-result-modal { padding: .65rem; }
+  .calc-result-modal__body { padding: .75rem; }
+  .calc-result-modal__footer { padding: .8rem; }
+}
+
 
 /* ===================================================================
    EDITORIAL DESIGN SYSTEM v2.11 - Photo Markup Tool (2026-07-18)

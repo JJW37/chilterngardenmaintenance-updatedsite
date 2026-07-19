@@ -20,7 +20,7 @@
   <meta property="og:site_name" content="Chiltern Garden Maintenance">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:image" content="https://www.chilterngardenmaintenance.com/images/hero-garden.jpg">
-  <!-- Google Analytics 4 - stub loaded from analytics.js, full library loaded after cookie consent -->
+  <!-- Google Analytics 4, stub loaded from analytics.js, full library loaded after cookie consent -->
   <script src="/chilterngardenmaintenance-updatedsite/js/analytics.js?v=20260713a"></script>
   
 </head>
@@ -156,10 +156,10 @@
   // Wire up expand/collapse for every TOC group that has sub-items.
   //
   // Behaviour:
-  //   - Click the H2 title OR the chevron arrow -> toggle expand/collapse.
+  //  , Click the H2 title OR the chevron arrow -> toggle expand/collapse.
   //     Neither ever navigates. The user explores the sub-items first.
-  //   - Click a sub-item (H3)                   -> navigate to that sub-section.
-  //   - H2 titles WITHOUT sub-items (no arrow)  -> navigate normally (default).
+  //  , Click a sub-item (H3)                   -> navigate to that sub-section.
+  //  , H2 titles WITHOUT sub-items (no arrow)  -> navigate normally (default).
   var tocGroups = document.querySelectorAll('.toc-group');
   tocGroups.forEach(function(group) {
     var toggle = group.querySelector('.toc-toggle');
@@ -218,8 +218,8 @@
           <h2 id="wildlife-and-biodiversity">Wildlife and biodiversity</h2>
           <p><strong>Pollinators:</strong> Bees visit the flowers <sup class="cite"><a href="#ref-3" class="cite-link">[3]</a><a href="#ref-4" class="cite-link">[4]</a><a href="#ref-5" class="cite-link">[5]</a></sup></p>
           <p><strong>Pollinator ranking:</strong> <span class="pollinator-rank"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 16.5A4.5 4.5 0 1 1 7.5 12 4.5 4.5 0 1 1 16.5 12a4.5 4.5 0 1 1-4.5 4.5"/><path d="M12 7.5V9"/><path d="M7.5 12H9"/><path d="M16.5 12H15"/><path d="M12 16.5V15"/><path d="m8 8 1 1"/><path d="m15 15 1 1"/><path d="m16 8-1 1"/><path d="m9 15-1 1"/></svg> 3 out of 10</span> <span style="font-size:.85rem;color:var(--muted);">(10 means a lot of pollinators, 1 means little)</span> <sup class="cite"><a href="#ref-4" class="cite-link">[4]</a><a href="#ref-5" class="cite-link">[5]</a></sup></p>
-          <p><strong>Biodiversity value:</strong> High. Native species, important for pollinators and birds <sup class="cite"><a href="#ref-3" class="cite-link">[3]</a><a href="#ref-4" class="cite-link">[4]</a><a href="#ref-5" class="cite-link">[5]</a><a href="#ref-13" class="cite-link">[13]</a></sup></p>
-          <p><strong>Seasonal highlight:</strong> White flowers in May and June. Fruit August to September <sup class="cite"><a href="#ref-3" class="cite-link">[3]</a><a href="#ref-4" class="cite-link">[4]</a></sup></p>
+          <p><strong>Biodiversity value:</strong> <span class="plant-rank">8 out of 10</span> <span class="plant-rank-note">High. Native species, important for pollinators and birds</span><sup class="cite"><a href="#ref-3" class="cite-link">[3]</a><a href="#ref-4" class="cite-link">[4]</a><a href="#ref-5" class="cite-link">[5]</a><a href="#ref-13" class="cite-link">[13]</a></sup></p>
+          <p><strong>Seasonal highlight:</strong> <span class="plant-rank">7 out of 10</span> <span class="plant-rank-note">White flowers in May and June. Fruit August to September</span><sup class="cite"><a href="#ref-3" class="cite-link">[3]</a><a href="#ref-4" class="cite-link">[4]</a></sup></p>
 
           <h2 id="companion-planting-and-pests">Companion planting and pests</h2>
           <p><strong>Companion planting:</strong> Grow with other soft fruits. Underplant with comfrey</p>
@@ -253,8 +253,9 @@
           </ul>
 
           
-                <h2 id="plant-relationships" style="margin-top:2.5rem;">Plant relationships - Blackberry</h2>
-      <p style="font-size:1rem;line-height:1.6;color:var(--forest);max-width:38em;">How Blackberry fits with other plants in a real Chiltern garden - what it works well with, what to avoid, and what to use instead in tricky spots.</p>
+                <section class="plant-relationships">
+                <h2 id="plant-relationships" style="margin-top:2.5rem;">Plant relationships, Blackberry</h2>
+      <p style="font-size:1rem;line-height:1.6;color:var(--forest);max-width:38em;">How Blackberry fits with other plants in a real Chiltern garden, what it works well with, what to avoid, and what to use instead in tricky spots.</p>
 
       <h3>Better choice for exposed sites</h3>
       <ul>
@@ -302,6 +303,10 @@
       </ul>
       <h3>Local projects using this plant</h3>
       <p style="font-size:.92rem;color:var(--muted);margin-bottom:.5rem;">See our <a href="/chilterngardenmaintenance-updatedsite/portfolio/">portfolio</a> for real gardens where we've used Blackberry.</p>
+
+                </section>
+
+<section class="plant-calendar" aria-labelledby="plant-calendar-heading"><span class="editorial-kicker">Chiltern growing year</span><h2 id="plant-calendar-heading">12-month care calendar</h2><p>Use this as a seasonal prompt for this plant. Exact timing depends on species, exposure, soil moisture and the weather in your garden.</p><div class="plant-calendar__grid"><div class="plant-calendar__month"><strong>January</strong><span>Check winter damage and protect vulnerable new growth.</span></div><div class="plant-calendar__month"><strong>February</strong><span>Prune only where the plant and weather allow; plan spring work.</span></div><div class="plant-calendar__month"><strong>March</strong><span>Remove winter debris, weed carefully and begin feeding where appropriate.</span></div><div class="plant-calendar__month"><strong>April</strong><span>Plant in workable soil and water new plants during dry spells.</span></div><div class="plant-calendar__month"><strong>May</strong><span>Mulch before the ground dries and watch for pests and new disease.</span></div><div class="plant-calendar__month"><strong>June</strong><span>Keep new planting watered, stake soft growth and deadhead where useful.</span></div><div class="plant-calendar__month"><strong>July</strong><span>Water deeply during dry Chiltern weather and inspect stressed foliage.</span></div><div class="plant-calendar__month"><strong>August</strong><span>Maintain moisture, remove damaged growth and prune only after flowering when suitable.</span></div><div class="plant-calendar__month"><strong>September</strong><span>A good month for planting, dividing and preparing soil for autumn work.</span></div><div class="plant-calendar__month"><strong>October</strong><span>Plant hardy stock, clear diseased material and add a measured mulch.</span></div><div class="plant-calendar__month"><strong>November</strong><span>Finish planting before hard frost and check ties, stakes and drainage.</span></div><div class="plant-calendar__month"><strong>December</strong><span>Review the year, protect exposed plants and plan the next season.</span></div></div></section>
 
           <h2 id="references-and-justification">References and justification</h2>
           <p class="plant-refs-intro">The values above for Blackberry are
@@ -480,7 +485,7 @@
     </div>
   </div>
 
-  <!-- Reading progress bar - appears on the right edge of the viewport
+  <!-- Reading progress bar, appears on the right edge of the viewport
        on article and plant pages. Fills from bottom to top as the user
        scrolls through the article. -->
   <div class="reading-progress" id="readingProgress" hidden>
@@ -490,5 +495,9 @@
   <script src="/chilterngardenmaintenance-updatedsite/js/main.js?v=20260713a"></script>
   <script src="/chilterngardenmaintenance-updatedsite/js/editorial-enhancements.js?v=20260723a"></script>
   <script src="/chilterngardenmaintenance-updatedsite/js/article-analytics.js?v=20260802a"></script>
+<script src="/chilterngardenmaintenance-updatedsite/js/card-tilt.js?v=20260719b"></script>
+  <script src="/chilterngardenmaintenance-updatedsite/js/custom-scrollbar.js?v=20260719b"></script>
+  <script src="/chilterngardenmaintenance-updatedsite/js/predictive-search.js?v=20260719b"></script>
+  <script src="/chilterngardenmaintenance-updatedsite/js/mobile-dock.js?v=20260719b"></script>
 </body>
 </html>
