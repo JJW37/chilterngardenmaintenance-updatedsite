@@ -9097,3 +9097,326 @@ article li {
     transition-duration: 0.01ms !important;
   }
 }
+/* ==========================================================================
+   CGM v6 Update Stylesheet — Round-2 amendments
+   Appended to styles.css. Additive only — does not override existing logic
+   except where explicitly corrected (the swipe-row first-item-hidden bug,
+   spacing corrupt above Garden Clearance, before/after slider, card hover
+   enlarge, and the new Cotswolds hedge photo).
+   ========================================================================== */
+
+/* ==========================================================================
+   ISSUE 1 & 1.2 — Thin out the swipe-row + fix first-item-hidden bug
+   Root cause: editorial.css line 4512 has `padding: .35rem 42% .55rem;` on
+   .swipe-row__inner, which pushes the first item off-screen left.
+   ========================================================================== */
+@media (max-width: 768px) {
+  /* Thinner, slicker swipe-row container */
+  .cgm-scroll-dock.swipe-row,
+  .swipe-row {
+    margin: .05rem -1rem .25rem !important;
+    padding: .35rem 1rem .45rem !important;
+    scroll-padding-inline: 1rem !important;
+  }
+
+  /* Fix the first-item-hidden bug: use small left padding instead of 42% */
+  .cgm-scroll-dock .swipe-row__inner,
+  .swipe-row__inner {
+    gap: .42rem !important;
+    padding: .15rem .15rem .25rem !important;
+    width: max-content;
+  }
+
+  /* Slim, premium item style */
+  .cgm-scroll-dock .swipe-row__item,
+  .swipe-row__item {
+    min-width: 0 !important;
+    min-height: 38px !important;
+    padding: .42rem .7rem !important;
+    font-size: .82rem !important;
+    font-weight: 600 !important;
+    letter-spacing: .01em;
+    border-radius: 3px !important;
+    --dock-scale: .92 !important;
+    --dock-opacity: .85 !important;
+    --dock-blur: 0px !important;
+  }
+
+  /* Focused (centered) item still gets the strong treatment but slimmer */
+  .cgm-scroll-dock .swipe-row__item.is-dock-focus {
+    --dock-scale: 1 !important;
+    --dock-opacity: 1 !important;
+  }
+
+  /* Tighter hint, removed by default in v5 but make sure it's hidden */
+  .swipe-row__hint { display: none !important; }
+
+  /* The 5px visible scrollbar from v5 stays, but slimmer */
+  .swipe-row::-webkit-scrollbar { height: 4px !important; }
+}
+
+/* ==========================================================================
+   ISSUE 2 — Before/After draggable slider (mobile touch + desktop mouse)
+   Replaces the two-panel .before-after with a single layered .ba-slider
+   ========================================================================== */
+.ba-slider {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border-radius: 6px;
+  background: #15281c;
+  box-shadow: 0 8px 24px rgba(21, 40, 28, 0.18), inset 0 0 0 1px rgba(184, 146, 67, 0.3);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: pan-y; /* allow vertical page scroll, capture horizontal drag */
+  cursor: ew-resize;
+}
+.ba-slider__img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  pointer-events: none;
+  -webkit-user-drag: none;
+}
+/* AFTER image is the base layer (right side, revealed as you drag right) */
+.ba-slider__img--after {
+  z-index: 1;
+}
+/* BEFORE image is clipped to the left of the handle */
+.ba-slider__img--before {
+  z-index: 2;
+  clip-path: inset(0 50% 0 0);
+  transition: clip-path 0.05s linear;
+}
+.ba-slider__label {
+  position: absolute;
+  top: 0.7rem;
+  z-index: 5;
+  font-family: var(--sans, system-ui, sans-serif);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.3rem 0.65rem;
+  border-radius: 3px;
+  background: rgba(21, 40, 28, 0.78);
+  color: #fff;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  pointer-events: none;
+  border: 1px solid rgba(184, 146, 67, 0.45);
+}
+.ba-slider__label--before { left: 0.7rem; }
+.ba-slider__label--after  { right: 0.7rem; background: rgba(184, 146, 67, 0.88); color: #15281c; border-color: #fff; }
+
+/* The draggable handle (vertical line + circle) */
+.ba-slider__handle {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  z-index: 4;
+  width: 3px;
+  background: linear-gradient(180deg, var(--gold, #b89243), #fff, var(--gold, #b89243));
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.4);
+  transform: translateX(-50%);
+  cursor: ew-resize;
+}
+.ba-slider__handle-knob {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35), 0 0 0 2px var(--gold, #b89243);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--forest, #1e3a2a);
+  font-size: 1.2rem;
+  font-weight: 700;
+  pointer-events: none; /* the parent .ba-slider handles pointer events */
+}
+.ba-slider__handle-knob svg {
+  width: 22px;
+  height: 22px;
+}
+
+/* Hint chip below the slider */
+.ba-slider__hint {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  font-family: var(--sans, system-ui, sans-serif);
+  font-size: 0.74rem;
+  color: var(--muted);
+  margin-top: 0.55rem;
+  letter-spacing: 0.05em;
+}
+.ba-slider__hint svg { width: 14px; height: 14px; color: var(--gold, #b89243); }
+
+/* On focus/hover, highlight the handle knob */
+.ba-slider:focus-visible,
+.ba-slider:hover {
+  box-shadow: 0 12px 32px rgba(21, 40, 28, 0.28), inset 0 0 0 2px var(--gold, #b89243);
+}
+.ba-slider:hover .ba-slider__handle-knob,
+.ba-slider:active .ba-slider__handle-knob {
+  transform: translate(-50%, -50%) scale(1.08);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4), 0 0 0 3px var(--gold, #b89243);
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+/* Mobile sizing tweaks */
+@media (max-width: 768px) {
+  .ba-slider { aspect-ratio: 4 / 3; border-radius: 4px; }
+  .ba-slider__label { font-size: 0.65rem; padding: 0.22rem 0.5rem; top: 0.5rem; }
+  .ba-slider__label--before { left: 0.5rem; }
+  .ba-slider__label--after  { right: 0.5rem; }
+  .ba-slider__handle-knob { width: 38px; height: 38px; }
+  .ba-slider__handle-knob svg { width: 18px; height: 18px; }
+  .ba-slider__hint { font-size: 0.68rem; }
+}
+
+/* ==========================================================================
+   ISSUE 3 — Cards enlarge on hover/click ready for transfer
+   Applied to homepage editorial-card-grid + editorial-service-grid cells
+   ========================================================================== */
+.editorial-card-grid__cell,
+.editorial-service-grid__cell {
+  position: relative;
+  transition: transform 0.32s cubic-bezier(.2,.7,.3,1),
+              box-shadow 0.32s ease,
+              border-color 0.32s ease,
+              background 0.32s ease !important;
+  will-change: transform;
+}
+.editorial-card-grid__cell:hover,
+.editorial-card-grid__cell:focus-visible,
+.editorial-service-grid__cell:hover,
+.editorial-service-grid__cell:focus-visible {
+  transform: translateY(-6px) scale(1.035) !important;
+  box-shadow: 0 18px 36px rgba(21, 40, 28, 0.22), 0 0 0 2px var(--gold, #b89243) !important;
+  border-color: var(--gold, #b89243) !important;
+  z-index: 5;
+}
+/* Active (click-hold) — feels like the card is being "lifted into the page" */
+.editorial-card-grid__cell:active,
+.editorial-service-grid__cell:active {
+  transform: translateY(-3px) scale(0.99) !important;
+  box-shadow: 0 8px 18px rgba(21, 40, 28, 0.28) !important;
+  transition-duration: 0.08s !important;
+}
+/* The arrow nudges right on hover, signalling the transfer */
+.editorial-card-grid__cell:hover .editorial-card-grid__arrow,
+.editorial-service-grid__cell:hover .editorial-service-grid__arrow,
+.editorial-card-grid__cell:focus-visible .editorial-card-grid__arrow,
+.editorial-service-grid__cell:focus-visible .editorial-service-grid__arrow {
+  transform: translateX(6px);
+  color: var(--gold, #b89243) !important;
+}
+.editorial-card-grid__arrow,
+.editorial-service-grid__arrow {
+  transition: transform 0.32s ease, color 0.32s ease;
+  display: inline-block;
+}
+/* Subtle "ready to transfer" pulse on the gold top stripe when hovered */
+.editorial-service-grid__cell::after {
+  transform-origin: left;
+}
+.editorial-service-grid__cell:hover::after,
+.editorial-service-grid__cell:focus-visible::after {
+  transform: scaleX(1) !important;
+}
+
+/* Mobile: tap-to-enlarge (active state) */
+@media (max-width: 768px) {
+  .editorial-card-grid__cell:active,
+  .editorial-service-grid__cell:active {
+    transform: translateY(-2px) scale(1.02) !important;
+    box-shadow: 0 10px 22px rgba(21, 40, 28, 0.22), 0 0 0 2px var(--gold, #b89243) !important;
+  }
+}
+
+/* Reduced motion: still enlarge, just no transition */
+@media (prefers-reduced-motion: reduce) {
+  .editorial-card-grid__cell,
+  .editorial-service-grid__cell { transition: none !important; }
+}
+
+/* ==========================================================================
+   ISSUE 4 — Fix corrupt spacing above 'Garden Clearance' / 'Garden Maintenance'
+   The section-editorial-loose + section-tinted transition was creating a
+   double-margin stack with the editorial-feature--reverse block. Collapse
+   the dead space.
+   ========================================================================== */
+.section-editorial-loose + .section-editorial,
+.section-editorial-loose + .section-tinted,
+.section-editorial-loose + .section-editorial.section-tinted {
+  margin-top: 0 !important;
+  padding-top: 2rem !important;
+}
+.section-editorial-loose {
+  padding-bottom: 2rem !important;
+}
+.editorial-feature--reverse {
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
+}
+.editorial-feature--reverse + .section-editorial,
+.editorial-feature--reverse + section {
+  margin-top: 0 !important;
+}
+/* Ensure the photo-interlude (dark band) and the following section don't
+   stack extra padding on top of each other. */
+.photo-interlude + .section-editorial-loose {
+  padding-top: 2rem !important;
+  margin-top: 0 !important;
+}
+.photo-interlude {
+  margin-bottom: 0 !important;
+}
+/* Make sure the editorial-feature__media (the hedge image) doesn't have
+   a stray min-height creating dead space below it. */
+.editorial-feature--reverse .editorial-feature__media {
+  margin-bottom: 0 !important;
+}
+.editorial-feature--reverse .editorial-feature__media img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 480px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+.editorial-feature--reverse .editorial-feature__caption {
+  margin-top: 0.5rem !important;
+  margin-bottom: 0 !important;
+}
+
+/* ==========================================================================
+   ISSUE 5 — Cotswolds hedge photo (new image already in /images/project/)
+   Just bump the cache-buster on the homepage so the new image is fetched.
+   ========================================================================== */
+/* (no CSS needed — handled by replacing the src in index.html) */
+
+/* ==========================================================================
+   Reduce vertical dead space across all top-of-page editorial sections so
+   the homepage reads tighter overall (per Issue 1 "thinned out, slicker").
+   ========================================================================== */
+.section-editorial { padding-top: 2.5rem; padding-bottom: 2.5rem; }
+.section-editorial-tight { padding-top: 1.25rem; padding-bottom: 1.25rem; }
+.section-editorial-loose { padding-top: 2.5rem; padding-bottom: 2.5rem; }
+@media (max-width: 768px) {
+  .section-editorial { padding-top: 1.5rem; padding-bottom: 1.5rem; }
+  .section-editorial-tight { padding-top: 0.9rem; padding-bottom: 0.9rem; }
+  .section-editorial-loose { padding-top: 1.5rem; padding-bottom: 1.5rem; }
+}

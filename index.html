@@ -7,7 +7,7 @@
   <meta name="description" content="Professional garden and grounds maintenance, garden clearance, soft landscaping, pressure washing and lawn recovery across Oxfordshire, Buckinghamshire,...">
   <meta name="theme-color" content="#1e3a2a">
   <link rel="canonical" href="https://www.chilterngardenmaintenance.com/">
-  <link rel="stylesheet" href="/chilterngardenmaintenance-updatedsite/css/styles.css?v=20260724a-v5">
+  <link rel="stylesheet" href="/chilterngardenmaintenance-updatedsite/css/styles.css?v=20260724a-v6">
   <link rel="stylesheet" href="/chilterngardenmaintenance-updatedsite/css/editorial.css?v=20260807a">
   <link rel="icon" type="image/png" sizes="32x32" href="/chilterngardenmaintenance-updatedsite/images/favicon-32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/chilterngardenmaintenance-updatedsite/images/favicon-16.png">
@@ -204,18 +204,21 @@
     <div class="container">
       <div class="editorial-feature">
         <div class="editorial-feature__media">
-          <div class="before-after">
-            <div class="before-after__panel">
-              <span class="before-after__tag before-after__tag--before">Before</span>
-              <img src="/chilterngardenmaintenance-updatedsite/images/project/before-overgrown.webp" alt="Overgrown neglected back garden before CGM clearance" loading="lazy" decoding="async">
-              <div class="before-after__caption">Brambles had taken the fence line. The lawn was 60% moss. Two seasons of growth, no maintenance.</div>
-            </div>
-            <div class="before-after__panel">
-              <span class="before-after__tag before-after__tag--after">After</span>
-              <img src="/chilterngardenmaintenance-updatedsite/images/project/after-restored.webp" alt="Same garden restored after CGM clearance and lawn recovery" loading="lazy" decoding="async">
-              <div class="before-after__caption">Cleared, replanted, lawn reseeded. Six weeks of structured work. Now on a fortnightly visit.</div>
+          <div class="ba-slider" id="baSlider" role="slider" aria-label="Before and after garden clearance comparison. Drag to reveal." aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" tabindex="0">
+            <img class="ba-slider__img ba-slider__img--after" src="/chilterngardenmaintenance-updatedsite/images/project/after-realistic.webp" alt="Same building after CGM clearance, lawn restored, fence repaired" loading="lazy" decoding="async">
+            <img class="ba-slider__img ba-slider__img--before" id="baSliderBefore" src="/chilterngardenmaintenance-updatedsite/images/project/before-realistic.webp" alt="Overgrown neglected garden beside the building before CGM clearance" loading="lazy" decoding="async">
+            <span class="ba-slider__label ba-slider__label--before">Before</span>
+            <span class="ba-slider__label ba-slider__label--after">After</span>
+            <div class="ba-slider__handle" id="baSliderHandle">
+              <div class="ba-slider__handle-knob">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 7-5 5 5 5"/><path d="m15 7 5 5-5 5"/></svg>
+              </div>
             </div>
           </div>
+          <p class="ba-slider__hint">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 7-5 5 5 5"/><path d="m15 7 5 5-5 5"/></svg>
+            Drag the handle to compare before and after
+          </p>
           <p class="editorial-feature__caption">Real project near Thame, Oxfordshire. Cleared, replanted and put on a maintenance plan in spring 2025.</p>
         </div>
         <div class="editorial-feature__text">
@@ -376,8 +379,8 @@
     <div class="container">
       <div class="editorial-feature editorial-feature--reverse">
         <div class="editorial-feature__media">
-          <img src="/chilterngardenmaintenance-updatedsite/images/project/pruned-hedge-no-person.webp" alt="A neatly pruned hedge in a Chiltern garden" loading="lazy" decoding="async">
-          <p class="editorial-feature__caption">Yew hedge, hand-pruned. Side profile, mid-winter. Working quietly is part of the job.</p>
+          <img src="/chilterngardenmaintenance-updatedsite/images/project/cotswolds-yew-hedge-real.webp" alt="A neatly hand-pruned yew hedge beside a Cotswold stone wall in an Oxfordshire garden" loading="lazy" decoding="async">
+          <p class="editorial-feature__caption">Yew hedge, hand-pruned. Cotswold stone, mid-winter light. Working quietly is part of the job.</p>
         </div>
         <div class="editorial-feature__text">
           <span class="editorial-kicker">How we actually work</span>
@@ -996,5 +999,6 @@
   <script src="/chilterngardenmaintenance-updatedsite/js/predictive-search.js?v=20260719b"></script>
   <script src="/chilterngardenmaintenance-updatedsite/js/mobile-dock.js?v=20260719b"></script>
   <script src="/chilterngardenmaintenance-updatedsite/js/cgm-v5-enhancements.js?v=20260724a"></script>
+  <script src="/chilterngardenmaintenance-updatedsite/js/cgm-ba-slider.js?v=20260724b"></script>
 </body>
 </html>
