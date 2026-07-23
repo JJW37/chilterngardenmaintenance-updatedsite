@@ -7,8 +7,8 @@
   <meta name="description" content="Request a quote for garden maintenance, clearance, soft landscaping, pressure washing, hedge cutting, fencing, garden design, border restoration or lawn...">
   <meta name="theme-color" content="#1e3a2a">
   <link rel="canonical" href="https://www.chilterngardenmaintenance.com/booking/">
-  <link rel="stylesheet" href="/chilterngardenmaintenance-updatedsite/css/styles.css?v=20260807a">
-  <link rel="stylesheet" href="/chilterngardenmaintenance-updatedsite/css/editorial.css?v=20260807a">
+  <link rel="stylesheet" href="/chilterngardenmaintenance-updatedsite/css/styles.css?v=20260724a-v5">
+  <link rel="stylesheet" href="/chilterngardenmaintenance-updatedsite/css/editorial.css?v=20260723r2">
   <link rel="icon" type="image/png" sizes="32x32" href="/chilterngardenmaintenance-updatedsite/images/favicon-32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/chilterngardenmaintenance-updatedsite/images/favicon-16.png">
   <link rel="apple-touch-icon" href="/chilterngardenmaintenance-updatedsite/images/cgm-logo-square.png">
@@ -24,7 +24,7 @@
   <script src="/chilterngardenmaintenance-updatedsite/js/analytics.js?v=20260713a"></script>
   
 </head>
-<body>
+<body class="booking-page">
 
 <style>
 .skip-link{position:absolute;left:-9999px;top:0;z-index:9999;padding:.75rem 1.25rem;background:var(--forest,#1e3a2a);color:#fff;text-decoration:none;border-radius:0 0 8px 0;font-size:.9rem;font-family:var(--sans,system-ui,sans-serif);}
@@ -184,6 +184,9 @@
                 <input type="file" id="photos" name="photos" accept="image/*" multiple>
               </label>
               <div class="quote-photo-preview-list" id="photoList" aria-live="polite"></div>
+              <button class="btn btn-ghost quote-photo-edit-button" id="openPhotoEditor" type="button" hidden>
+                Draw or add labels to these photos
+              </button>
             </div>
             <div class="calc-step">
               <details class="quote-advanced" id="quoteAdvanced">
@@ -226,7 +229,9 @@
           document.getElementById('photos').addEventListener('change', function(e) {
             var files = e.target.files;
             var list = document.getElementById('photoList');
+            var editorButton = document.getElementById('openPhotoEditor');
             list.innerHTML = '';
+            editorButton.hidden = files.length === 0;
             if (files.length === 0) return;
             for (var i = 0; i < files.length; i++) {
               var file = files[i];
@@ -242,6 +247,17 @@
               preview.appendChild(caption);
               list.appendChild(preview);
             }
+            if (window.cgmPhotoMarkup && typeof window.cgmPhotoMarkup.loadFiles === 'function') {
+              window.cgmPhotoMarkup.loadFiles(files);
+            }
+          });
+
+          document.getElementById('openPhotoEditor').addEventListener('click', function() {
+            var advanced = document.getElementById('quoteAdvanced');
+            advanced.open = true;
+            window.requestAnimationFrame(function() {
+              advanced.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
           });
 
           // Form submission
@@ -494,8 +510,9 @@
   </div>
 
   <script src="/chilterngardenmaintenance-updatedsite/js/main.js?v=20260713a"></script>
-  <script src="/chilterngardenmaintenance-updatedsite/js/photo-markup.js?v=20260806a"></script>
+  <script src="/chilterngardenmaintenance-updatedsite/js/photo-markup.js?v=20260723r2"></script>
 <script src="/chilterngardenmaintenance-updatedsite/js/card-tilt.js?v=20260719b"></script>
+  <script src="/chilterngardenmaintenance-updatedsite/js/cgm-v5-enhancements.js?v=20260724a"></script>
   <script src="/chilterngardenmaintenance-updatedsite/js/custom-scrollbar.js?v=20260719b"></script>
   <script src="/chilterngardenmaintenance-updatedsite/js/predictive-search.js?v=20260719b"></script>
   <script src="/chilterngardenmaintenance-updatedsite/js/mobile-dock.js?v=20260719b"></script>

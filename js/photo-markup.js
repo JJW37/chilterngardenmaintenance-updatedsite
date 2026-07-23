@@ -502,6 +502,25 @@
 
   // ---- Public API ----
   window.cgmPhotoMarkup = {
+    loadFiles: function(fileList) {
+      var root = document.getElementById('photoMarkupTool');
+      if (!root || !fileList) return 0;
+      var files = Array.prototype.slice.call(fileList)
+        .filter(function(file) {
+          return file && (!file.type || file.type.indexOf('image/') === 0);
+        })
+        .slice(0, MAX_PHOTOS);
+
+      // Keep the main quote upload and the drawing workspace in sync.
+      // Re-selecting photos deliberately starts with clean marks.
+      slots.forEach(function(slot, idx) {
+        if (slot.image || slot.canvas) clearSlot(idx);
+      });
+      files.forEach(function(file, idx) {
+        loadImageToSlot(file, idx);
+      });
+      return files.length;
+    },
     getAnnotatedImages: function() {
       var results = [];
       slots.forEach(function(slot, idx) {

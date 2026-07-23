@@ -8194,3 +8194,906 @@ img.leaflet-tile.leaflet-tile-loaded {
   font-family: var(--sans);
   line-height: 1.4;
 }
+/* ==========================================================================
+   CGM v5 Update Stylesheet — Instructions website.txt implementation
+   Appended to styles.css to keep prior rules intact (additive layer).
+   ========================================================================== */
+
+/* ----- INSTR #20: Close large empty gap above mobile menu categories ----- */
+@media (max-width: 1024px) {
+  .mobile-menu:not([hidden]) {
+    padding: 0.25rem 1.25rem 1.25rem !important;
+    gap: 0 !important;
+  }
+  .mobile-menu > a,
+  .mobile-menu > .mobile-gk-section,
+  .mobile-menu > .mobile-gk-toggle {
+    margin-top: 0 !important;
+  }
+  .mobile-menu a,
+  .mobile-gk-toggle {
+    padding: 0.85rem 0.25rem !important;
+  }
+  .mobile-menu a:first-child {
+    padding-top: 0.6rem !important;
+  }
+}
+
+/* ----- USER REQUEST: Visible scroller on mobile menu bar ----- */
+@media (max-width: 1024px) {
+  .mobile-menu:not([hidden]) {
+    scrollbar-width: thin;
+    scrollbar-color: var(--forest) rgba(30, 58, 42, 0.12);
+  }
+  .mobile-menu:not([hidden])::-webkit-scrollbar {
+    width: 6px;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+  .mobile-menu:not([hidden])::-webkit-scrollbar-track {
+    background: rgba(30, 58, 42, 0.06);
+    border-radius: 3px;
+  }
+  .mobile-menu:not([hidden])::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, var(--forest), var(--forest-dark, #143524));
+    border-radius: 3px;
+    border: 1px solid rgba(184, 146, 67, 0.35);
+  }
+  .mobile-menu:not([hidden])::-webkit-scrollbar-thumb:hover {
+    background: var(--gold, #b89243);
+  }
+  /* Also expose the scrollbar on the swipe-row at the top of the homepage */
+  .swipe-row {
+    scrollbar-width: thin !important;
+    scrollbar-color: var(--forest) transparent !important;
+  }
+  .swipe-row::-webkit-scrollbar {
+    display: block !important;
+    height: 5px;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+  .swipe-row::-webkit-scrollbar-track {
+    background: rgba(30, 58, 42, 0.06);
+    border-radius: 3px;
+    margin: 0 1rem;
+  }
+  .swipe-row::-webkit-scrollbar-thumb {
+    background: linear-gradient(90deg, var(--forest), var(--gold, #b89243));
+    border-radius: 3px;
+  }
+  .swipe-row__hint { display: none !important; }
+}
+
+/* ----- INSTR #21: Premium mobile menu redesign ----- */
+@media (max-width: 1024px) {
+  .mobile-menu:not([hidden]) {
+    background: linear-gradient(180deg, #fdfbf6 0%, #f6efe2 100%) !important;
+    box-shadow: inset 0 1px 0 rgba(184, 146, 67, 0.25);
+    border-top: 2px solid var(--gold, #b89243) !important;
+  }
+  .mobile-menu a {
+    font-family: var(--serif, Georgia, serif) !important;
+    font-size: 1.05rem !important;
+    font-weight: 500 !important;
+    color: var(--forest-deep, #143524) !important;
+    border-bottom: 1px solid rgba(30, 58, 42, 0.08) !important;
+    padding: 0.9rem 0.5rem !important;
+    position: relative;
+    transition: background 0.18s ease, color 0.18s ease, padding-left 0.18s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+  }
+  .mobile-menu a::before {
+    content: "";
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--gold, #b89243);
+    opacity: 0.5;
+    transition: opacity 0.18s ease, transform 0.18s ease;
+    flex-shrink: 0;
+  }
+  .mobile-menu a:hover,
+  .mobile-menu a:active,
+  .mobile-menu a:focus-visible {
+    background: rgba(184, 146, 67, 0.08) !important;
+    padding-left: 0.85rem !important;
+    color: var(--forest, #1e3a2a) !important;
+  }
+  .mobile-menu a:hover::before,
+  .mobile-menu a:active::before {
+    opacity: 1;
+    transform: scale(1.4);
+  }
+  .mobile-gk-toggle {
+    font-family: var(--serif, Georgia, serif) !important;
+    font-size: 1.05rem !important;
+    font-weight: 500 !important;
+    color: var(--forest-deep, #143524) !important;
+    padding: 0.9rem 0.5rem !important;
+    position: relative;
+  }
+  .mobile-gk-toggle::before {
+    content: "";
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--gold, #b89243);
+    opacity: 0.5;
+    margin-right: 0.55rem;
+    flex-shrink: 0;
+  }
+  .mobile-gk-items a {
+    font-size: 0.92rem !important;
+    font-family: var(--sans, system-ui, sans-serif) !important;
+    font-weight: 500 !important;
+    color: var(--forest, #1e3a2a) !important;
+    padding: 0.7rem 1.4rem !important;
+    background: rgba(255, 255, 255, 0.55);
+    border-bottom: 1px dashed rgba(30, 58, 42, 0.12) !important;
+  }
+  .mobile-gk-items a::before {
+    content: ">";
+    color: var(--gold, #b89243);
+    font-size: 1rem;
+    opacity: 0.8;
+  }
+  .mobile-menu-toggle {
+    background: linear-gradient(135deg, var(--forest, #1e3a2a), var(--forest-dark, #143524)) !important;
+    border: 1px solid var(--gold, #b89243) !important;
+    box-shadow: 0 2px 6px rgba(30, 58, 42, 0.25) !important;
+  }
+}
+
+/* ----- INSTR #21 (cont): Premium desktop nav redesign ----- */
+@media (min-width: 1025px) {
+  .nav {
+    padding: 0.5rem 0 !important;
+    border-bottom: 2px solid transparent;
+    background: linear-gradient(180deg, rgba(253, 251, 246, 1), rgba(253, 251, 246, 0.92));
+    transition: border-bottom-color 0.25s ease, box-shadow 0.25s ease;
+  }
+  .nav:hover {
+    border-bottom-color: var(--gold, #b89243);
+  }
+  .nav-links a {
+    position: relative;
+    transition: color 0.2s ease;
+  }
+  .nav-links a::after {
+    content: "";
+    position: absolute;
+    bottom: -4px;
+    left: 50%;
+    transform: translateX(-50%) scaleX(0);
+    width: 70%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold, #b89243), transparent);
+    transition: transform 0.25s ease;
+  }
+  .nav-links a:hover::after,
+  .nav-links a:focus-visible::after,
+  .nav-links a[aria-current="page"]::after {
+    transform: translateX(-50%) scaleX(1);
+  }
+  .nav-dropdown-menu {
+    border-top: 2px solid var(--gold, #b89243) !important;
+    box-shadow: 0 14px 36px rgba(30, 58, 42, 0.18) !important;
+    border-radius: 0 0 8px 8px !important;
+    overflow: hidden;
+  }
+  .nav-dropdown-menu a {
+    transition: background 0.18s ease, padding-left 0.18s ease, color 0.18s ease;
+  }
+  .nav-dropdown-menu a:hover {
+    background: linear-gradient(90deg, rgba(184, 146, 67, 0.14), transparent) !important;
+    padding-left: 1.4rem !important;
+    color: var(--forest, #1e3a2a) !important;
+  }
+  .nav-cta .btn-primary {
+    background: linear-gradient(135deg, var(--forest, #1e3a2a), var(--forest-dark, #143524)) !important;
+    border: 1px solid var(--gold, #b89243) !important;
+    box-shadow: 0 4px 12px rgba(30, 58, 42, 0.25) !important;
+    transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+  }
+  .nav-cta .btn-primary:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 8px 20px rgba(30, 58, 42, 0.32) !important;
+  }
+}
+
+/* ----- INSTR #2: Gardening fork icon styling ----- */
+.hero-proof span img.fork-icon,
+.hero-proof span svg.fork-icon {
+  vertical-align: middle;
+}
+
+/* ----- INSTR #3: Premium mobile swipe-row boxes ----- */
+@media (max-width: 768px) {
+  .cgm-scroll-dock.swipe-row,
+  .swipe-row {
+    padding-top: 0.4rem !important;
+    padding-bottom: 0.7rem !important;
+  }
+  .swipe-row__item {
+    background: linear-gradient(135deg, #ffffff 0%, #f8f3e8 100%) !important;
+    border: 1px solid rgba(184, 146, 67, 0.28) !important;
+    border-radius: 4px !important;
+    box-shadow: 0 4px 14px rgba(30, 58, 42, 0.10), inset 0 1px 0 rgba(255,255,255,0.8) !important;
+    font-weight: 600 !important;
+    color: var(--forest-deep, #143524) !important;
+    letter-spacing: 0.01em;
+    transition: transform 0.25s cubic-bezier(.2,.7,.3,1), box-shadow 0.25s ease, background 0.25s ease !important;
+  }
+  .swipe-row__item:active,
+  .swipe-row__item:focus-visible {
+    background: linear-gradient(135deg, var(--forest, #1e3a2a), var(--forest-dark, #143524)) !important;
+    color: #fff !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 10px 22px rgba(30, 58, 42, 0.28), 0 0 0 2px var(--gold, #b89243) !important;
+  }
+  .swipe-row__item::after {
+    background: linear-gradient(115deg, transparent 28%, rgba(184, 146, 67, 0.35) 50%, transparent 72%) !important;
+  }
+}
+
+/* ----- INSTR #4: Mobile horizontal whitespace fix ----- */
+html, body {
+  overflow-x: clip;
+  max-width: 100vw;
+}
+body { width: 100%; }
+img, video, svg, iframe, table, pre {
+  max-width: 100%;
+}
+section, header, footer, main, aside, nav, .container, .editorial-feature,
+.editorial-card-grid, .editorial-service-grid, .proof-strip, .hero {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+@media (max-width: 768px) {
+  .container { padding-left: 1rem; padding-right: 1rem; }
+  .editorial-feature__media img,
+  .photo-interlude__img,
+  .editorial-service-grid__cell img,
+  .before-after img {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+/* ----- INSTR #9: Lawn care / PRINCIPLED METHOD colour punch ----- */
+.photo-interlude__kicker {
+  color: var(--gold, #b89243) !important;
+  letter-spacing: 0.18em !important;
+  font-weight: 700 !important;
+  text-shadow: 0 1px 0 rgba(0,0,0,0.3);
+}
+.photo-interlude__title {
+  color: #ffffff !important;
+  text-shadow: 0 2px 12px rgba(0,0,0,0.45);
+}
+.photo-interlude__caption {
+  color: rgba(255, 255, 255, 0.9) !important;
+  font-weight: 500;
+}
+.photo-interlude::before {
+  background: linear-gradient(180deg, rgba(20, 53, 36, 0.72) 0%, rgba(30, 58, 42, 0.55) 60%, rgba(184, 146, 67, 0.32) 100%) !important;
+}
+
+/* ----- INSTR #12: Premium style for "Right plant, right place" section ----- */
+.method-title-premium {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 0.6rem;
+  font-family: var(--serif, Georgia, serif);
+  font-weight: 600;
+  line-height: 1.1;
+}
+.method-title-premium span {
+  display: inline-block;
+  padding: 0.15rem 0.55rem;
+  background: linear-gradient(135deg, rgba(184, 146, 67, 0.18), rgba(184, 146, 67, 0.06));
+  border-left: 3px solid var(--gold, #b89243);
+  border-radius: 2px;
+  color: var(--forest-deep, #143524);
+  letter-spacing: -0.01em;
+}
+@media (max-width: 768px) {
+  .method-title-premium span {
+    font-size: 1.4rem;
+    padding: 0.25rem 0.65rem;
+  }
+}
+
+/* ----- INSTR #13.5: Mobile gardening-intelligence boxes — 2-column ----- */
+@media (max-width: 768px) {
+  .editorial-card-grid {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 0.6rem !important;
+  }
+  .editorial-card-grid__cell {
+    padding: 0.9rem 0.95rem !important;
+    min-height: 0;
+    border: 1px solid rgba(184, 146, 67, 0.35) !important;
+    border-radius: 4px !important;
+    background: linear-gradient(180deg, #ffffff, #faf5e9) !important;
+    box-shadow: 0 4px 12px rgba(30, 58, 42, 0.08), inset 0 1px 0 rgba(255,255,255,0.8);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    overflow: hidden;
+    position: relative;
+  }
+  .editorial-card-grid__cell::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--gold, #b89243), transparent 80%);
+  }
+  .editorial-card-grid__cell:active,
+  .editorial-card-grid__cell:focus-visible {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(30, 58, 42, 0.18), 0 0 0 2px var(--gold, #b89243);
+  }
+  .editorial-card-grid__cell h3 {
+    font-size: 0.95rem !important;
+    font-weight: 700 !important;
+    color: var(--forest-deep, #143524) !important;
+    margin-bottom: 0.35rem !important;
+    line-height: 1.2;
+  }
+  .editorial-card-grid__cell p {
+    font-size: 0.78rem !important;
+    line-height: 1.4 !important;
+    color: var(--muted, #5a6b5e) !important;
+    margin-bottom: 0.4rem !important;
+    text-decoration: none !important;
+    border-bottom: none !important;
+  }
+  .editorial-card-grid__arrow {
+    font-size: 0.7rem !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.05em;
+    color: var(--gold, #b89243) !important;
+    text-transform: uppercase;
+    border-bottom: none !important;
+    text-decoration: none !important;
+  }
+  .editorial-card-grid__cell:hover .editorial-card-grid__arrow,
+  .editorial-card-grid__cell:active .editorial-card-grid__arrow {
+    text-decoration: underline !important;
+  }
+  .editorial-card-grid__cell p:hover,
+  .editorial-card-grid__cell p:active {
+    text-decoration: none !important;
+    border-bottom: none !important;
+  }
+}
+
+/* ----- INSTR #14: What is happening — premium restyle ----- */
+.problem-diagnosis {
+  background: linear-gradient(180deg, #ffffff 0%, #faf5e9 100%) !important;
+  border: 1px solid rgba(184, 146, 67, 0.3) !important;
+  border-radius: 8px !important;
+  padding: 1rem !important;
+  box-shadow: 0 6px 22px rgba(30, 58, 42, 0.10) !important;
+}
+.problem-diagnosis__option {
+  border: 1px solid rgba(30, 58, 42, 0.15) !important;
+  border-radius: 6px !important;
+  background: linear-gradient(135deg, #ffffff, #fcf8ef) !important;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease !important;
+  font-family: var(--serif, Georgia, serif) !important;
+  font-weight: 500 !important;
+}
+.problem-diagnosis__option:hover,
+.problem-diagnosis__option:focus-visible,
+.problem-diagnosis__option[aria-pressed="true"],
+.problem-diagnosis__option.is-active {
+  transform: translateY(-1px);
+  border-color: var(--gold, #b89243) !important;
+  box-shadow: 0 8px 18px rgba(30, 58, 42, 0.15) !important;
+  background: linear-gradient(135deg, var(--forest-deep, #143524), var(--forest, #1e3a2a)) !important;
+  color: #fff !important;
+}
+.problem-diagnosis__option[aria-pressed="true"] .problem-diagnosis__option-num,
+.problem-diagnosis__option.is-active .problem-diagnosis__option-num {
+  color: var(--gold, #b89243) !important;
+}
+.problem-diagnosis-accordion__summary {
+  background: linear-gradient(135deg, var(--forest-deep, #143524), var(--forest, #1e3a2a)) !important;
+  color: #fff !important;
+  border-radius: 6px !important;
+  padding: 0.85rem 1.1rem !important;
+  font-family: var(--serif, Georgia, serif) !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.02em;
+}
+.problem-diagnosis-accordion__chevron {
+  color: var(--gold, #b89243) !important;
+}
+.problem-diagnosis-accordion[open] .problem-diagnosis-accordion__summary {
+  border-bottom: 2px solid var(--gold, #b89243) !important;
+}
+
+/* ----- INSTR #14.2: Mobile diagnosis — keep result in view ----- */
+@media (max-width: 768px) {
+  .problem-diagnosis {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+  .problem-diagnosis__options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.4rem;
+  }
+  .problem-diagnosis__option {
+    padding: 0.6rem 0.5rem !important;
+    font-size: 0.85rem !important;
+    flex-direction: column !important;
+    text-align: center;
+  }
+  .problem-diagnosis__option-num {
+    font-size: 0.7rem !important;
+    margin-bottom: 0.2rem;
+  }
+  .problem-diagnosis__result {
+    position: sticky;
+    bottom: 0;
+    background: linear-gradient(180deg, rgba(253, 251, 246, 0.4) 0%, #fdfbf6 30%);
+    padding: 0.85rem !important;
+    border: 1px solid var(--gold, #b89243) !important;
+    border-radius: 6px;
+    box-shadow: 0 -4px 16px rgba(30, 58, 42, 0.12);
+    z-index: 5;
+  }
+}
+
+/* ----- INSTR #15: Nine services premium ----- */
+.editorial-service-grid__cell {
+  transition: transform 0.3s cubic-bezier(.2,.7,.3,1), box-shadow 0.3s ease, border-color 0.3s ease !important;
+  border: 1px solid rgba(184, 146, 67, 0.25);
+  position: relative;
+  overflow: hidden;
+}
+.editorial-service-grid__cell::after {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--gold, #b89243), transparent 90%);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.35s ease;
+}
+.editorial-service-grid__cell:hover,
+.editorial-service-grid__cell:focus-visible {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px rgba(30, 58, 42, 0.18) !important;
+  border-color: var(--gold, #b89243) !important;
+}
+.editorial-service-grid__cell:hover::after,
+.editorial-service-grid__cell:focus-visible::after {
+  transform: scaleX(1);
+}
+.editorial-service-grid__num {
+  color: var(--gold, #b89243) !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.06em !important;
+}
+
+/* ----- INSTR #18: Mobile — Nine services show 3 then scroll ----- */
+@media (max-width: 768px) {
+  .editorial-service-grid {
+    display: flex !important;
+    flex-direction: column;
+    gap: 0.6rem;
+    max-height: 360px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-width: thin;
+    scrollbar-color: var(--gold, #b89243) rgba(30, 58, 42, 0.08);
+    padding-right: 0.25rem;
+    border: 1px solid rgba(184, 146, 67, 0.25);
+    border-radius: 6px;
+    padding: 0.5rem;
+    background: linear-gradient(180deg, #faf5e9, #fdfbf6);
+  }
+  .editorial-service-grid::-webkit-scrollbar { width: 5px; }
+  .editorial-service-grid::-webkit-scrollbar-track { background: rgba(30, 58, 42, 0.06); border-radius: 3px; }
+  .editorial-service-grid::-webkit-scrollbar-thumb { background: var(--gold, #b89243); border-radius: 3px; }
+  .editorial-service-grid::after {
+    content: "Scroll for more";
+    position: sticky;
+    bottom: 0;
+    left: 0; right: 0;
+    text-align: center;
+    font-family: var(--sans, system-ui, sans-serif);
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    color: var(--gold, #b89243);
+    background: linear-gradient(180deg, transparent, #fdfbf6 60%);
+    padding: 0.4rem 0 0.1rem;
+    pointer-events: none;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+  .editorial-service-grid__cell {
+    flex-shrink: 0;
+  }
+}
+
+/* ----- INSTR #19: Mobile — Popular right now side-by-side ----- */
+@media (max-width: 768px) {
+  .article-card-popular-grid,
+  .popular-articles-grid,
+  .article-card-grid {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 0.5rem !important;
+  }
+  .article-card-popular,
+  .tip-card {
+    padding: 0.7rem !important;
+    font-size: 0.85rem !important;
+    border: 1px solid rgba(184, 146, 67, 0.22) !important;
+    border-radius: 4px !important;
+    background: linear-gradient(180deg, #ffffff, #faf5e9) !important;
+    box-shadow: 0 3px 10px rgba(30, 58, 42, 0.08) !important;
+  }
+  .article-card-popular h3,
+  .tip-card h3,
+  .article-card-popular .tip-card__title {
+    font-size: 0.92rem !important;
+    line-height: 1.2 !important;
+  }
+  .article-card-popular img,
+  .tip-card img {
+    height: 80px !important;
+    object-fit: cover !important;
+    border-radius: 3px !important;
+  }
+}
+
+/* ----- INSTR #24: Custom curved scrollbar refinement ----- */
+.cgm-page-scrollbar {
+  width: 8px !important;
+  background: linear-gradient(180deg, rgba(30, 58, 42, 0.05), rgba(184, 146, 67, 0.05)) !important;
+  border-radius: 8px !important;
+  box-shadow: inset 0 0 4px rgba(30, 58, 42, 0.12) !important;
+}
+.cgm-page-scrollbar__thumb {
+  background: linear-gradient(180deg, var(--forest, #1e3a2a), var(--gold, #b89243)) !important;
+  border-radius: 8px !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  box-shadow: 0 2px 8px rgba(30, 58, 42, 0.25) !important;
+}
+
+/* ----- INSTR #27: Service page — first details box NOT open by default ----- */
+.service-accordion > details:first-child summary {
+  border-bottom: 1px solid var(--border-soft);
+}
+
+/* ----- INSTR #31: Plant library — tighter section spacing + square category boxes ----- */
+.plant-library-section,
+.plants-index-section {
+  padding-top: 1.5rem !important;
+  padding-bottom: 1.5rem !important;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+.plant-category-card,
+.plant-cat-card,
+.plants-cat-card {
+  border-radius: 4px !important;
+  border: 1px solid rgba(184, 146, 67, 0.3) !important;
+  background: linear-gradient(135deg, #ffffff, #faf5e9) !important;
+  box-shadow: 0 4px 14px rgba(30, 58, 42, 0.10), inset 0 1px 0 rgba(255,255,255,0.8) !important;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease !important;
+  overflow: hidden;
+  position: relative;
+}
+.plant-category-card:hover,
+.plant-cat-card:hover,
+.plants-cat-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--gold, #b89243) !important;
+  box-shadow: 0 10px 22px rgba(30, 58, 42, 0.18) !important;
+}
+
+/* ----- INSTR #32: Plant row scroll progress bar ----- */
+.plant-row-progress {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  height: 4px;
+  width: 100%;
+  background: rgba(30, 58, 42, 0.08);
+  border-radius: 2px;
+  overflow: hidden;
+}
+.plant-row-progress__fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--forest, #1e3a2a), var(--gold, #b89243));
+  border-radius: 2px;
+  transition: width 0.15s ease-out;
+}
+
+/* ----- INSTR #35: Biodiversity / Seasonal / Pollinator — square ranking boxes ----- */
+.plant-rank-box,
+.plant-score-box,
+.rank-box,
+.pollinator-rank,
+.biodiversity-value,
+.seasonal-highlight {
+  border-radius: 4px !important;
+  border: 1px solid rgba(30, 58, 42, 0.18) !important;
+  background: linear-gradient(135deg, #ffffff, #f3f7f0) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.7), 0 2px 6px rgba(30, 58, 42, 0.08) !important;
+  padding: 0.7rem 0.85rem !important;
+  font-family: var(--sans, system-ui, sans-serif) !important;
+}
+.plant-rank-box__bar,
+.rank-box__bar,
+.pollinator-rank__bar {
+  background: linear-gradient(90deg, var(--forest-light, #4a6b58), var(--forest, #1e3a2a)) !important;
+  border-radius: 2px !important;
+  height: 6px !important;
+  overflow: hidden;
+}
+.plant-rank-box__label,
+.rank-box__label {
+  font-size: 0.72rem !important;
+  letter-spacing: 0.08em !important;
+  text-transform: uppercase !important;
+  color: var(--forest-deep, #143524) !important;
+  font-weight: 700 !important;
+  margin-bottom: 0.3rem !important;
+}
+.plant-rank-box__score,
+.rank-box__score {
+  font-size: 1.05rem !important;
+  font-weight: 700 !important;
+  color: var(--forest, #1e3a2a) !important;
+}
+
+/* ----- INSTR #36: Plant relationships — premium highlight ----- */
+.plant-relationships,
+.plant-relations,
+.plant-companions {
+  background: linear-gradient(135deg, rgba(184, 146, 67, 0.08), rgba(30, 58, 42, 0.05)) !important;
+  border: 1px solid var(--gold, #b89243) !important;
+  border-left: 5px solid var(--gold, #b89243) !important;
+  border-radius: 6px !important;
+  padding: 1.4rem 1.5rem !important;
+  box-shadow: 0 8px 24px rgba(30, 58, 42, 0.12) !important;
+  position: relative;
+  overflow: hidden;
+}
+.plant-relationships::before,
+.plant-relations::before,
+.plant-companions::before {
+  content: "";
+  position: absolute;
+  top: 0; right: 0;
+  width: 120px;
+  height: 120px;
+  background: radial-gradient(circle at top right, rgba(184, 146, 67, 0.18), transparent 70%);
+  pointer-events: none;
+}
+.plant-relationships h2,
+.plant-relationships h3,
+.plant-relations h2,
+.plant-relations h3,
+.plant-companions h2,
+.plant-companions h3 {
+  color: var(--forest-deep, #143524) !important;
+  font-family: var(--serif, Georgia, serif) !important;
+  font-weight: 700 !important;
+  position: relative;
+}
+.plant-relationships h2::after,
+.plant-relations h2::after,
+.plant-companions h2::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--gold, #b89243), transparent);
+  margin-top: 0.4rem;
+  border-radius: 2px;
+}
+
+/* ----- INSTR #38: Locations — town chips enlarged ----- */
+@media (max-width: 768px) {
+  .towns-grid,
+  .towns-list,
+  .locations-towns {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 0.5rem !important;
+  }
+  .town-card,
+  .town-chip,
+  .locations-town-card {
+    min-height: 80px !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+    padding: 0.7rem !important;
+    border-radius: 4px !important;
+    border: 1px solid rgba(184, 146, 67, 0.3) !important;
+    background: linear-gradient(135deg, #ffffff, #faf5e9) !important;
+    color: var(--forest-deep, #143524) !important;
+    box-shadow: 0 3px 10px rgba(30, 58, 42, 0.10) !important;
+  }
+  .town-card:hover,
+  .town-chip:hover {
+    border-color: var(--gold, #b89243) !important;
+    transform: translateY(-1px);
+  }
+}
+
+/* ----- INSTR #41: Garden passport — clean card refinement ----- */
+.editorial-calc-card {
+  border: 1px solid rgba(184, 146, 67, 0.3) !important;
+  border-radius: 6px !important;
+  box-shadow: 0 6px 18px rgba(30, 58, 42, 0.10) !important;
+}
+
+/* ----- INSTR #28: Article byline refinement ----- */
+.article-byline-block {
+  border-left: 3px solid var(--gold, #b89243);
+  padding-left: 0.85rem;
+  margin: 1rem 0;
+}
+.article-byline-block p {
+  margin-bottom: 0.4rem;
+}
+
+/* ----- INSTR #30: Article premium uplift ----- */
+.article-body,
+article p,
+.editorial-body {
+  font-family: var(--serif, Georgia, serif);
+  line-height: 1.7;
+  color: #2a3a30;
+}
+article h2,
+article h3 {
+  font-family: var(--serif, Georgia, serif);
+  color: var(--forest-deep, #143524);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin-top: 2rem;
+  margin-bottom: 0.7rem;
+  position: relative;
+}
+article h2 {
+  border-bottom: 2px solid rgba(184, 146, 67, 0.3);
+  padding-bottom: 0.3rem;
+}
+article h3 {
+  border-left: 3px solid var(--gold, #b89243);
+  padding-left: 0.6rem;
+}
+article blockquote {
+  border-left: 4px solid var(--gold, #b89243);
+  background: linear-gradient(90deg, rgba(184, 146, 67, 0.08), transparent);
+  padding: 0.7rem 1rem;
+  margin: 1rem 0;
+  font-style: italic;
+  color: var(--forest-deep, #143524);
+  border-radius: 0 4px 4px 0;
+}
+article ul,
+article ol {
+  background: rgba(184, 146, 67, 0.04);
+  padding: 0.8rem 1rem 0.8rem 2.2rem;
+  border-radius: 4px;
+  border-left: 3px solid rgba(184, 146, 67, 0.4);
+}
+article li {
+  margin-bottom: 0.35rem;
+}
+
+/* ----- INSTR #16: Predictive search dropdown premium ----- */
+.predictive-results,
+.cgm-predictive-results {
+  border: 1px solid rgba(184, 146, 67, 0.3) !important;
+  border-radius: 6px !important;
+  box-shadow: 0 12px 30px rgba(30, 58, 42, 0.15) !important;
+  background: #fff !important;
+  overflow: hidden;
+}
+.predictive-results__item,
+.cgm-predictive-results__item {
+  padding: 0.6rem 0.9rem !important;
+  border-bottom: 1px solid rgba(30, 58, 42, 0.06) !important;
+  font-family: var(--sans, system-ui, sans-serif) !important;
+  transition: background 0.15s ease, padding-left 0.15s ease !important;
+}
+.predictive-results__item:hover,
+.predictive-results__item.is-active,
+.cgm-predictive-results__item:hover,
+.cgm-predictive-results__item.is-active {
+  background: linear-gradient(90deg, rgba(184, 146, 67, 0.12), transparent) !important;
+  padding-left: 1.2rem !important;
+}
+.predictive-results__item--matched,
+.cgm-predictive-results__item--matched {
+  color: var(--gold, #b89243) !important;
+  font-weight: 700 !important;
+}
+
+/* ----- Misc: touch up service-list-mobile ----- */
+@media (max-width: 768px) {
+  .service-card-mobile,
+  .service-list-mobile .service-card-mobile {
+    border-radius: 4px !important;
+    border: 1px solid rgba(184, 146, 67, 0.25) !important;
+    background: linear-gradient(135deg, #ffffff, #faf5e9) !important;
+    box-shadow: 0 4px 12px rgba(30, 58, 42, 0.10) !important;
+    transition: transform 0.25s ease, box-shadow 0.25s ease !important;
+  }
+  .service-card-mobile:active {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 22px rgba(30, 58, 42, 0.18) !important;
+  }
+}
+
+/* ----- INSTR #37: Estimator popup consistency ----- */
+.calc-result-modal,
+.calc-results-modal,
+.estimator-result-modal {
+  border: 1px solid rgba(184, 146, 67, 0.4) !important;
+  border-radius: 8px !important;
+  box-shadow: 0 20px 50px rgba(30, 58, 42, 0.25) !important;
+  background: linear-gradient(180deg, #ffffff, #fdfbf6) !important;
+}
+.calc-result-modal__title,
+.calc-results-modal__title {
+  color: var(--forest-deep, #143524) !important;
+  font-family: var(--serif, Georgia, serif) !important;
+  font-weight: 700 !important;
+  border-bottom: 2px solid var(--gold, #b89243) !important;
+  padding-bottom: 0.5rem;
+}
+
+/* ----- INSTR #34: Plant pages — premium polish ----- */
+.plant-page-hero,
+.plant-hero {
+  border-bottom: 3px solid var(--gold, #b89243);
+}
+
+/* ----- INSTR #23: Locations carousel — premium refinements ----- */
+.carousel__item {
+  border-radius: 8px !important;
+}
+.carousel__nav button {
+  background: linear-gradient(135deg, var(--forest, #1e3a2a), var(--forest-dark, #143524)) !important;
+  color: #fff !important;
+  border: 1px solid var(--gold, #b89243) !important;
+  border-radius: 30px !important;
+  padding: 0.6em 1.2em !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.04em !important;
+  box-shadow: 0 4px 12px rgba(30, 58, 42, 0.2) !important;
+  transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+}
+.carousel__nav button:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 18px rgba(30, 58, 42, 0.28) !important;
+}
+
+/* ----- Reduced motion safety ----- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

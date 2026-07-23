@@ -9,9 +9,9 @@
   <link rel="canonical" href="https://www.chilterngardenmaintenance.com/locations/">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="/chilterngardenmaintenance-updatedsite/css/styles.css?v=20260807a">
+  <link rel="stylesheet" href="/chilterngardenmaintenance-updatedsite/css/styles.css?v=20260724a-v5">
   <link rel="stylesheet" href="/chilterngardenmaintenance-updatedsite/css/coverage-map.css?v=20260723o">
-  <link rel="stylesheet" href="/chilterngardenmaintenance-updatedsite/css/editorial.css?v=20260807a">
+  <link rel="stylesheet" href="/chilterngardenmaintenance-updatedsite/css/editorial.css?v=20260723r2">
   <link rel="preload" as="image" href="/chilterngardenmaintenance-updatedsite/images/maps/cgm-coverage-basemap.webp" type="image/webp">
   <link rel="icon" type="image/png" sizes="32x32" href="/chilterngardenmaintenance-updatedsite/images/favicon-32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/chilterngardenmaintenance-updatedsite/images/favicon-16.png">
@@ -2792,6 +2792,9 @@
       var startX, scrollLeft, startTime;
       var DRAG_THRESHOLD = 5; // px - clicks that move less than this are not drags
       swiper.addEventListener('pointerdown', function(e) {
+        // Touchscreens use native momentum scrolling. The custom drag layer
+        // is only for a desktop mouse, otherwise it steals finger swipes.
+        if (e.pointerType !== 'mouse' || e.button !== 0) return;
         if (e.target.closest('a, button')) return;
         isDown = true;
         isDragging = false;
@@ -3382,6 +3385,7 @@
   <script defer src="/chilterngardenmaintenance-updatedsite/js/cgm-map.js?v=20260723d"></script>
   <script src="/chilterngardenmaintenance-updatedsite/js/editorial-enhancements.js?v=20260723a"></script>
 <script src="/chilterngardenmaintenance-updatedsite/js/card-tilt.js?v=20260719b"></script>
+  <script src="/chilterngardenmaintenance-updatedsite/js/cgm-v5-enhancements.js?v=20260724a"></script>
   <script src="/chilterngardenmaintenance-updatedsite/js/custom-scrollbar.js?v=20260719b"></script>
   <script src="/chilterngardenmaintenance-updatedsite/js/predictive-search.js?v=20260719b"></script>
   <script src="/chilterngardenmaintenance-updatedsite/js/mobile-dock.js?v=20260719b"></script>
