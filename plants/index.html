@@ -2122,7 +2122,7 @@
         if (target) {
           // Offset for the sticky header
           var headerHeight = 80;
-          var targetPosition = target.getBoundingClientRect().top + window.pageYOffset, headerHeight;
+          var targetPosition = target.getBoundingClientRect().top + window.pageYOffset - headerHeight;
           window.scrollTo({ top: targetPosition, behavior: 'smooth' });
         }
         // On mobile, collapse the chip list after selecting

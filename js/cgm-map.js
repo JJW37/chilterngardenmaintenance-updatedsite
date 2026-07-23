@@ -99,7 +99,9 @@
       "translate(" + (OW/2 + state.panX) + "," + (OH/2 + state.panY) + ") " +
       "scale(" + state.zoom + ") " +
       "translate(" + (-OW/2) + "," + (-OH/2) + ")");
-    var invScale = 1 / state.zoom;
+    // Let town dots and names grow with the map, but at a restrained rate so
+    // they remain legible instead of overwhelming neighbouring towns.
+    var invScale = 1 / Math.sqrt(state.zoom);
     viewport.querySelectorAll(".coverage-atlas__cluster, .coverage-atlas__town, .coverage-atlas__user-loc").forEach(function(g) {
       var t = g.getAttribute("data-transform") || g.getAttribute("transform") || "";
       var match = t.match(/translate\(([^,]+),([^)]+)\)/);
@@ -336,7 +338,9 @@
     backBtn.hidden = false;
     if (infoName) infoName.textContent = cluster.name;
     if (infoCount) infoCount.textContent = cluster.count + " towns";
-    if (infoPanel) infoPanel.hidden = false;
+    // Town data is shown in the dedicated Town Intelligence panel. Keeping
+    // this overlay hidden leaves the map usable after every selection.
+    if (infoPanel) infoPanel.hidden = true;
     if (mapStatusText) mapStatusText.textContent = "Viewing " + cluster.name + " area";
     emitMapState("cluster", { clusterData: cluster });
   }
@@ -440,7 +444,7 @@
       focusCluster(target.getAttribute("data-cluster"));
     } else if (target.classList.contains("coverage-atlas__town")) {
       var slug = target.getAttribute("data-slug");
-      if (typeof selectTown === "function") selectTown(slug, "map");
+      if (typeof window.CGMSelectTown === "function") window.CGMSelectTown(slug, "map");
       else focusTown(slug);
     }
   }
@@ -454,7 +458,7 @@
       focusCluster(target.getAttribute("data-cluster"));
     } else if (target.classList.contains("coverage-atlas__town")) {
       var slug = target.getAttribute("data-slug");
-      if (typeof selectTown === "function") selectTown(slug, "map");
+      if (typeof window.CGMSelectTown === "function") window.CGMSelectTown(slug, "map");
       else focusTown(slug);
     }
   }

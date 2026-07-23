@@ -548,7 +548,30 @@
         </div>
       </div>
       <div class="grid grid-3" id="popular-articles">
-        <p style="text-align:center;color:var(--muted);grid-column:1/-1;">Loading articles...</p>
+        <article class="card article-card-popular">
+          <div class="article-card-popular__meta"><span class="article-card-popular__tag">Seasonal garden jobs</span><span class="article-card-popular__level article-card-popular__level--easy-read">Easy read</span></div>
+          <h3>Garden tidy-up checklist before summer</h3>
+          <p>A practical order for getting a garden ready for the growing season.</p>
+          <a class="card-link" href="/chilterngardenmaintenance-updatedsite/tips/garden-tidy-checklist-summer.html">Read the guide</a>
+        </article>
+        <article class="card article-card-popular">
+          <div class="article-card-popular__meta"><span class="article-card-popular__tag">Planting ideas</span><span class="article-card-popular__level article-card-popular__level--intermediate-read">Intermediate read</span></div>
+          <h3>Best low-maintenance plants for Chiltern gardens</h3>
+          <p>Plant choices that suit chalk, dry ground and changing light.</p>
+          <a class="card-link" href="/chilterngardenmaintenance-updatedsite/tips/low-maintenance-plants-chilterns.html">Read the guide</a>
+        </article>
+        <article class="card article-card-popular">
+          <div class="article-card-popular__meta"><span class="article-card-popular__tag">Garden care</span><span class="article-card-popular__level article-card-popular__level--easy-read">Easy read</span></div>
+          <h3>How often should a gardener visit?</h3>
+          <p>How regular visits keep a garden in step with the season.</p>
+          <a class="card-link" href="/chilterngardenmaintenance-updatedsite/tips/how-often-should-gardener-visit.html">Read the guide</a>
+        </article>
+        <article class="card article-card-popular">
+          <div class="article-card-popular__meta"><span class="article-card-popular__tag">Garden problems</span><span class="article-card-popular__level article-card-popular__level--hard-read">Hard read</span></div>
+          <h3>How to restore an overgrown garden</h3>
+          <p>A structured approach to taking back a neglected garden.</p>
+          <a class="card-link" href="/chilterngardenmaintenance-updatedsite/tips/restore-overgrown-garden.html">Read the guide</a>
+        </article>
       </div>
     </div>
   </section>
@@ -714,12 +737,12 @@
 
     function seededRandom(seed) {
       var x = Math.sin(seed) * 10000;
-      return x, Math.floor(x);
+      return x - Math.floor(x);
     }
 
     function pickRandomArticles(pool, count, seed) {
       var shuffled = pool.slice();
-      for (var i = shuffled.length, 1; i > 0; i--) {
+      for (var i = shuffled.length - 1; i > 0; i--) {
         var j = Math.floor(seededRandom(seed + i) * (i + 1));
         var temp = shuffled[i];
         shuffled[i] = shuffled[j];
@@ -769,6 +792,17 @@
     var seed = getSeed();
     var selected = pickRandomArticles(articlePool, 4, seed);
     renderArticles(selected);
+
+    // Keep a long-open page fresh when a twelve-hour window changes.
+    var refreshEvery = 12 * 60 * 60 * 1000;
+    var untilNextWindow = refreshEvery - (Date.now() % refreshEvery) + 250;
+    window.setTimeout(function() {
+      function refreshPopularArticles() {
+        renderArticles(pickRandomArticles(articlePool, 4, getSeed()));
+      }
+      refreshPopularArticles();
+      window.setInterval(refreshPopularArticles, refreshEvery);
+    }, untilNextWindow);
   })();
   </script>
 

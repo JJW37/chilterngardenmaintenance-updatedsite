@@ -3039,7 +3039,7 @@
 
   <script>
   (function() {
-    // Rich search index, one entry per article. Each entry has a "haystack"
+    // Rich search index - one entry per article. Each entry has a "haystack"
     // field containing all the terms that article should match against.
     var searchIndex = null; // loaded async from tips-search-index.json on first focus
     var searchIndexLoading = false;
@@ -3118,11 +3118,11 @@
       });
       slider.addEventListener('pointermove', function(e) {
         if (!dragging) return;
-        var distance = e.clientX, startX;
+        var distance = e.clientX - startX;
         if (Math.abs(distance) > 5) moved = true;
         if (moved) {
           e.preventDefault();
-          slider.scrollLeft = startScroll, distance;
+          slider.scrollLeft = startScroll - distance;
         }
       });
       function stopDragging(e) {
@@ -3297,7 +3297,7 @@
         var target = document.getElementById(targetId);
         if (target) {
           var headerHeight = 80;
-          var targetPosition = target.getBoundingClientRect().top + window.pageYOffset, headerHeight;
+          var targetPosition = target.getBoundingClientRect().top + window.pageYOffset - headerHeight;
           window.scrollTo({ top: targetPosition, behavior: 'smooth' });
         }
         if (window.innerWidth <= 768 && catToggle) {

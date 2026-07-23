@@ -80,6 +80,7 @@
           '<div class="photo-markup-tool__slot-toolbar">' +
             '<span class="photo-markup-tool__slot-label-count" data-slot="' + i + '">0 marks</span>' +
             '<button type="button" class="photo-markup-tool__slot-clear-labels" data-slot="' + i + '">Clear marks</button>' +
+            '<button type="button" class="photo-markup-tool__slot-expand" data-slot="' + i + '">Full-screen edit</button>' +
             '<button type="button" class="photo-markup-tool__slot-clear" data-slot="' + i + '">Remove photo</button>' +
           '</div>' +
           '<div class="photo-markup-tool__canvas-wrap">' +
@@ -164,17 +165,23 @@
 
     // Clear buttons
     root.addEventListener('click', function(e) {
-      if (e.target.classList.contains('photo-markup-tool__slot-clear')) {
-        clearSlot(parseInt(e.target.getAttribute('data-slot'), 10));
-      } else if (e.target.classList.contains('photo-markup-tool__slot-clear-labels')) {
-        clearLabels(parseInt(e.target.getAttribute('data-slot'), 10));
-      } else if (e.target.classList.contains('photo-markup-tool__tool')) {
-        setTool(e.target.getAttribute('data-tool'));
-      } else if (e.target.classList.contains('photo-markup-tool__color')) {
-        setPenColor(e.target.getAttribute('data-color'));
-      } else if (e.target.classList.contains('photo-markup-tool__preset')) {
-        setCurrentLabel(e.target.getAttribute('data-label'));
-      } else if (e.target.id === 'customLabelSet') {
+      var target = e.target.closest('button');
+      if (!target || !root.contains(target)) return;
+      if (target.classList.contains('photo-markup-tool__slot-clear')) {
+        clearSlot(parseInt(target.getAttribute('data-slot'), 10));
+      } else if (target.classList.contains('photo-markup-tool__slot-clear-labels')) {
+        clearLabels(parseInt(target.getAttribute('data-slot'), 10));
+      } else if (target.classList.contains('photo-markup-tool__slot-expand')) {
+        document.dispatchEvent(new CustomEvent('cgm:photo-markup-open', {
+          detail: { slot: parseInt(target.getAttribute('data-slot'), 10) }
+        }));
+      } else if (target.classList.contains('photo-markup-tool__tool')) {
+        setTool(target.getAttribute('data-tool'));
+      } else if (target.classList.contains('photo-markup-tool__color')) {
+        setPenColor(target.getAttribute('data-color'));
+      } else if (target.classList.contains('photo-markup-tool__preset')) {
+        setCurrentLabel(target.getAttribute('data-label'));
+      } else if (target.id === 'customLabelSet') {
         var input = document.getElementById('customLabelText');
         if (input && input.value.trim()) {
           setCurrentLabel(input.value.trim());
@@ -271,7 +278,9 @@
     var isDrawing = false;
 
     function handleStart(e) {
+      if (e.pointerType === 'mouse' && e.button !== 0) return;
       e.preventDefault();
+      try { canvas.setPointerCapture(e.pointerId); } catch (err) {}
       var pos = getPos(e);
       if (currentTool === 'pen') {
         isDrawing = true;
@@ -322,15 +331,13 @@
         updateLabelCount(slotIdx);
       }
       slot.currentStroke = null;
+      try { canvas.releasePointerCapture(e.pointerId); } catch (err) {}
     }
 
-    canvas.addEventListener('mousedown', handleStart);
-    canvas.addEventListener('mousemove', handleMove);
-    canvas.addEventListener('mouseup', handleEnd);
-    canvas.addEventListener('mouseleave', handleEnd);
-    canvas.addEventListener('touchstart', handleStart, { passive: false });
-    canvas.addEventListener('touchmove', handleMove, { passive: false });
-    canvas.addEventListener('touchend', handleEnd);
+    canvas.addEventListener('pointerdown', handleStart, { passive: false });
+    canvas.addEventListener('pointermove', handleMove, { passive: false });
+    canvas.addEventListener('pointerup', handleEnd);
+    canvas.addEventListener('pointercancel', handleEnd);
   }
 
   function findLabelAt(slot, x, y) {
@@ -418,7 +425,9 @@
     var canvas = slot.canvas;
     var ctx = slot.ctx;
     var img = slot.image;
-    var maxW = 600;
+    // Keep enough bitmap detail for a full-screen mobile edit without making
+    // the in-form preview sluggish.
+    var maxW = 1200;
     var scale = Math.min(1, maxW / img.width);
     canvas.width = img.width * scale;
     canvas.height = img.height * scale;
@@ -512,6 +521,19 @@
     },
     hasImages: function() {
       return slots.some(function(s) { return s.canvas && s.image; });
+    },
+    // Kept private to this component in normal use. The full-screen editor
+    // reads it through this small bridge so it shares exactly the same marks.
+    _editorState: {
+      slots: slots,
+      getTool: function() { return currentTool; },
+      getPenColor: function() { return currentPenColor; },
+      getLabel: function() { return currentLabel; },
+      flashHint: flashHint,
+      findLabelAt: findLabelAt,
+      findStrokeAt: findStrokeAt,
+      renderSlot: renderSlot,
+      updateLabelCount: updateLabelCount
     }
   };
 
@@ -535,6 +557,11 @@
 // ---- Modal popup system (v3.1) ----
 // Click on a photo slot → opens large modal with full-size canvas → draw → save → close
 (function() {
+  var markup = window.cgmPhotoMarkup;
+  if (!markup || !markup._editorState) return;
+  var editorState = markup._editorState;
+  var slots = editorState.slots;
+
   function createModal() {
     var modal = document.createElement('div');
     modal.className = 'photo-markup-modal';
@@ -589,8 +616,9 @@
     
     modalCtx = modalCanvas.getContext('2d');
     
-    // Draw at larger size (up to 800px wide)
-    var maxW = 800;
+    // Draw at a useful editing resolution. CSS then fits it into the phone
+    // viewport without reducing the detail of the marks.
+    var maxW = 1400;
     var scale = Math.min(1, maxW / slot.image.width);
     modalCanvas.width = slot.image.width * scale;
     modalCanvas.height = slot.image.height * scale;
@@ -630,25 +658,27 @@
     }
     
     function handleStart(e) {
+      if (e.pointerType === 'mouse' && e.button !== 0) return;
       e.preventDefault();
+      try { modalCanvas.setPointerCapture(e.pointerId); } catch (err) {}
       var pos = getPos(e);
-      if (currentTool === 'pen') {
+      if (editorState.getTool() === 'pen') {
         isDrawing = true;
-        currentStroke = { points: [pos], color: currentPenColor, width: 3 };
-      } else if (currentTool === 'label') {
-        if (!currentLabel) { flashHint('Pick a label above first'); return; }
-        slot.labels.push({ text: currentLabel, x: pos.x, y: pos.y });
+        currentStroke = { points: [pos], color: editorState.getPenColor(), width: 3 };
+      } else if (editorState.getTool() === 'label') {
+        if (!editorState.getLabel()) { editorState.flashHint('Pick a label above first'); return; }
+        slot.labels.push({ text: editorState.getLabel(), x: pos.x, y: pos.y });
         renderModal(slotIdx);
-      } else if (currentTool === 'eraser') {
-        var labelIdx = findLabelAt(slot, pos.x, pos.y);
+      } else if (editorState.getTool() === 'eraser') {
+        var labelIdx = editorState.findLabelAt(slot, pos.x, pos.y);
         if (labelIdx !== -1) { slot.labels.splice(labelIdx, 1); renderModal(slotIdx); return; }
-        var strokeIdx = findStrokeAt(slot, pos.x, pos.y);
+        var strokeIdx = editorState.findStrokeAt(slot, pos.x, pos.y);
         if (strokeIdx !== -1) { slot.strokes.splice(strokeIdx, 1); renderModal(slotIdx); }
       }
     }
     
     function handleMove(e) {
-      if (!isDrawing || currentTool !== 'pen') return;
+      if (!isDrawing || editorState.getTool() !== 'pen') return;
       e.preventDefault();
       var pos = getPos(e);
       currentStroke.points.push(pos);
@@ -662,15 +692,13 @@
         slot.strokes.push(currentStroke);
       }
       currentStroke = null;
+      try { modalCanvas.releasePointerCapture(e.pointerId); } catch (err) {}
     }
     
-    modalCanvas.addEventListener('mousedown', handleStart);
-    modalCanvas.addEventListener('mousemove', handleMove);
-    modalCanvas.addEventListener('mouseup', handleEnd);
-    modalCanvas.addEventListener('mouseleave', handleEnd);
-    modalCanvas.addEventListener('touchstart', handleStart, { passive: false });
-    modalCanvas.addEventListener('touchmove', handleMove, { passive: false });
-    modalCanvas.addEventListener('touchend', handleEnd);
+    modalCanvas.addEventListener('pointerdown', handleStart, { passive: false });
+    modalCanvas.addEventListener('pointermove', handleMove, { passive: false });
+    modalCanvas.addEventListener('pointerup', handleEnd);
+    modalCanvas.addEventListener('pointercancel', handleEnd);
     
     function renderModal(idx) {
       var s = slots[idx];
@@ -742,8 +770,8 @@
   function saveAndClose() {
     // Render back to the small slot canvas
     if (currentModalSlot !== null) {
-      renderSlot(currentModalSlot);
-      updateLabelCount(currentModalSlot);
+      editorState.renderSlot(currentModalSlot);
+      editorState.updateLabelCount(currentModalSlot);
     }
     closeModal();
   }
@@ -751,18 +779,12 @@
   // Wire up: click on slot canvas → open modal
   // Wait for DOM ready, then add click handlers to slot canvases
   function wireModalOpeners() {
-    var root = document.getElementById('photoMarkupTool');
-    if (!root) return;
-    
-    root.addEventListener('click', function(e) {
-      // If clicking on a canvas inside a slot, open the modal
-      if (e.target.classList.contains('photo-markup-tool__canvas')) {
-        var slot = e.target.closest('.photo-markup-tool__slot');
-        if (slot) {
-          var slotIdx = parseInt(slot.getAttribute('data-slot'), 10);
-          openModal(slotIdx);
-        }
-      }
+    document.addEventListener('cgm:photo-markup-open', function(e) {
+      var slotIdx = e.detail && e.detail.slot;
+      if (typeof slotIdx === 'number') openModal(slotIdx);
+    });
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && currentModalSlot !== null) closeModal();
     });
   }
   

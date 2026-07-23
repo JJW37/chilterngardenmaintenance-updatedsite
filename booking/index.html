@@ -116,6 +116,12 @@
           <h2>Quote Request Form</h2>
           <p>Fill in the quote form below and we will aim to get back to you within 12 to 36 hours, Monday to Sunday. Thank you and we look forward to speaking with you.</p>
 
+          <details class="quote-form-disclosure" id="quoteFormDisclosure">
+            <summary class="quote-form-disclosure__summary">
+              <span class="quote-form-disclosure__label">Expand quote form</span>
+              <span class="quote-form-disclosure__hint">Takes about two minutes</span>
+            </summary>
+            <div class="quote-form-disclosure__body">
           <form id="quoteForm" enctype="multipart/form-data">
             <div class="calc-step">
               <label for="name">Your name</label>
@@ -171,15 +177,24 @@
             </div>
             <div class="calc-step">
               <label for="photos">Attach photos <span class="hint">(optional, but helps us give a more accurate quote)</span></label>
-              <label class="file-upload" for="photos">
+              <label class="file-upload quote-photo-upload" for="photos">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg>
                 <span>Choose photos of your garden</span>
+                <small>Use the full width of your screen. You can add several photos.</small>
                 <input type="file" id="photos" name="photos" accept="image/*" multiple>
               </label>
-              <p style="font-size:.82rem;color:var(--muted);margin-top:.4rem;" id="photoList"></p>
+              <div class="quote-photo-preview-list" id="photoList" aria-live="polite"></div>
             </div>
             <div class="calc-step">
-              <div id="photoMarkupTool"></div>
+              <details class="quote-advanced" id="quoteAdvanced">
+                <summary class="quote-advanced__summary">
+                  <span>Expand Advanced (optional)</span>
+                  <span>Mark up photos with a pen or labels</span>
+                </summary>
+                <div class="quote-advanced__body">
+                  <div id="photoMarkupTool"></div>
+                </div>
+              </details>
             </div>
             <div class="calc-step">
               <label style="display:flex;align-items:flex-start;gap:.5rem;cursor:pointer;">
@@ -192,6 +207,8 @@
               <span id="formStatus" style="font-size:.85rem;color:var(--muted);"></span>
             </div>
           </form>
+            </div>
+          </details>
 
           <div id="successMessage" hidden style="padding:1.5rem;background:var(--cream);border-radius:10px;border-left:4px solid var(--forest);margin:1rem 0;">
             <h3 style="color:var(--forest-dark);margin-bottom:.5rem;">✓ Enquiry received</h3>
@@ -209,12 +226,22 @@
           document.getElementById('photos').addEventListener('change', function(e) {
             var files = e.target.files;
             var list = document.getElementById('photoList');
-            if (files.length === 0) { list.textContent = ''; return; }
-            var names = [];
+            list.innerHTML = '';
+            if (files.length === 0) return;
             for (var i = 0; i < files.length; i++) {
-              names.push(files[i].name + ' (' + (files[i].size / 1024 / 1024).toFixed(1) + 'MB)');
+              var file = files[i];
+              var preview = document.createElement('figure');
+              preview.className = 'quote-photo-preview';
+              var image = document.createElement('img');
+              image.src = URL.createObjectURL(file);
+              image.alt = 'Selected garden photo ' + (i + 1);
+              image.onload = function() { URL.revokeObjectURL(this.src); };
+              var caption = document.createElement('figcaption');
+              caption.textContent = file.name + ' · ' + (file.size / 1024 / 1024).toFixed(1) + 'MB';
+              preview.appendChild(image);
+              preview.appendChild(caption);
+              list.appendChild(preview);
             }
-            list.textContent = names.join(', ');
           });
 
           // Form submission
@@ -256,7 +283,7 @@
                 window.open('https://wa.me/447467657459?text=' + encodeURIComponent(whatsappText), '_blank', 'noopener');
                 document.getElementById('successText').textContent = 'Your enquiry has been prepared in WhatsApp. Please attach any garden photos there and send the message.';
                 document.getElementById('successMessage').hidden = false;
-                document.getElementById('quoteForm').hidden = true;
+                document.getElementById('quoteFormDisclosure').hidden = true;
                 submitBtn.disabled = false;
                 submitBtn.textContent = 'Submit enquiry';
                 return;
@@ -287,7 +314,7 @@
                 // Show success message
                 document.getElementById('successText').textContent = result.message + ' ' + result.nextSteps;
                 document.getElementById('successMessage').hidden = false;
-                document.getElementById('quoteForm').hidden = true;
+                document.getElementById('quoteFormDisclosure').hidden = true;
 
                 // Scroll to success message
                 document.getElementById('successMessage').scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -318,7 +345,7 @@
                 document.getElementById('errorMessage').hidden = false;
               }
             } catch (error) {
-              // Network error fallback, offer WhatsApp
+              // Network error fallback - offer WhatsApp
               document.getElementById('errorList').innerHTML = '<li>Could not connect to the server. Please try again, or contact us via WhatsApp.</li>';
               document.getElementById('errorMessage').hidden = false;
             }

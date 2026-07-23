@@ -1,32 +1,58 @@
-/* Mobile quick-link dock. Uses CSS view-timeline where available and GSAP's
-   ScrollTrigger fallback when the browser does not expose that API. */
+/* CGM mobile quick-link dock.
+   Native scroll-position effects, with no third-party import required. */
 (function () {
   'use strict';
-  function init() {
-    var dock = document.querySelector('.swipe-row');
-    var scroller = dock;
-    var items = scroller ? scroller.querySelectorAll('.swipe-row__item') : [];
-    if (!dock || !scroller || !items.length || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  function initDock(dock) {
+    if (!dock || dock.dataset.dockReady === 'true') return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    var items = Array.prototype.slice.call(dock.querySelectorAll('.swipe-row__item'));
+    if (!items.length) return;
+    dock.dataset.dockReady = 'true';
     dock.classList.add('cgm-scroll-dock');
-    if (CSS.supports && CSS.supports('animation-timeline: scroll()')) return;
-    // Keep the progressive enhancement optional: if a visitor is offline or
-    // blocks module imports, the dock remains a normal native scroller.
-    import('https://esm.sh/gsap@3.12.0').then(function (gsapModule) {
-      return import('https://esm.sh/gsap@3.12.0/ScrollTrigger').then(function (pluginModule) {
-        var gsap = gsapModule.default || gsapModule.gsap || gsapModule;
-        var ScrollTrigger = pluginModule.default || pluginModule.ScrollTrigger || pluginModule;
-        if (!gsap || !ScrollTrigger) return;
-        gsap.registerPlugin(ScrollTrigger);
-        Array.prototype.forEach.call(items, function (item) {
-          gsap.timeline().fromTo(item, { scale: 1, '--dock-blur': 0 }, {
-            scale: 0.86, '--dock-blur': 1, ease: 'power1.inOut', scrollTrigger: {
-              trigger: item, scroller: scroller, horizontal: true, start: 'left 1.5rem', end: 'right 0', scrub: 0.2
-            }
-          });
-        });
+    var frame = null;
+
+    function update() {
+      frame = null;
+      var box = dock.getBoundingClientRect();
+      var centre = box.left + box.width / 2;
+      items.forEach(function (item) {
+        var rect = item.getBoundingClientRect();
+        var itemCentre = rect.left + rect.width / 2;
+        var distance = Math.min(1, Math.abs(itemCentre - centre) / Math.max(box.width * 0.52, 1));
+        var focus = 1 - distance;
+        var scale = 0.82 + (focus * 0.24);
+        var lift = Math.round(focus * -7);
+        item.style.setProperty('--dock-scale', scale.toFixed(3));
+        item.style.setProperty('--dock-lift', lift + 'px');
+        item.style.setProperty('--dock-blur', (distance * 1.1).toFixed(2) + 'px');
+        item.style.setProperty('--dock-opacity', (0.62 + focus * 0.38).toFixed(2));
+        item.classList.toggle('is-dock-focus', focus > 0.78);
       });
-    }).catch(function () {});
+    }
+
+    function requestUpdate() {
+      if (frame !== null) return;
+      frame = window.requestAnimationFrame(update);
+    }
+
+    dock.addEventListener('scroll', requestUpdate, { passive: true });
+    dock.addEventListener('pointerdown', requestUpdate, { passive: true });
+    dock.addEventListener('focusin', function (event) {
+      var item = event.target.closest('.swipe-row__item');
+      if (!item) return;
+      var offset = item.offsetLeft - (dock.clientWidth - item.offsetWidth) / 2;
+      dock.scrollTo({ left: Math.max(0, offset), behavior: 'smooth' });
+    });
+    window.addEventListener('resize', requestUpdate, { passive: true });
+    requestUpdate();
   }
+
+  function init() {
+    document.querySelectorAll('.swipe-row').forEach(initDock);
+  }
+
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
   else init();
 })();

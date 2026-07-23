@@ -204,10 +204,10 @@
   // Wire up expand/collapse for every TOC group that has sub-items.
   //
   // Behaviour:
-  //  , Click the H2 title OR the chevron arrow -> toggle expand/collapse.
+  //   - Click the H2 title OR the chevron arrow -> toggle expand/collapse.
   //     Neither ever navigates. The user explores the sub-items first.
-  //  , Click a sub-item (H3)                   -> navigate to that sub-section.
-  //  , H2 titles WITHOUT sub-items (no arrow)  -> navigate normally (default).
+  //   - Click a sub-item (H3)                   -> navigate to that sub-section.
+  //   - H2 titles WITHOUT sub-items (no arrow)  -> navigate normally (default).
   var tocGroups = document.querySelectorAll('.toc-group');
   tocGroups.forEach(function(group) {
     var toggle = group.querySelector('.toc-toggle');
