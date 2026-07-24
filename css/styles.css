@@ -10989,3 +10989,932 @@ article li {
     transition-duration: 0.01ms !important;
   }
 }
+/* ==========================================================================
+   CGM v9 Update Stylesheet — Round-5 amendments (9 issues)
+   Appended to styles.css. Additive only.
+   ========================================================================== */
+
+/* ==========================================================================
+   ISSUE 1 — Unified photo upload + editor at top of form
+   Replaces the two-step upload + advanced disclosure with a single upload
+   zone that auto-opens the full-screen editor on file selection.
+   The editor has a side toolbar (pen / label / erase) always visible.
+   ========================================================================== */
+
+/* Hide the old advanced disclosure and edit button */
+.quote-advanced,
+.quote-photo-edit-button {
+  display: none !important;
+}
+
+/* New unified upload zone at the top of the form */
+.quote-photo-upload-zone {
+  background: linear-gradient(135deg, var(--forest-dark, #143524), var(--forest, #1e3a2a)) !important;
+  border: 2px dashed var(--gold, #b89243) !important;
+  border-radius: 8px !important;
+  padding: 1.5rem 1.2rem !important;
+  text-align: center !important;
+  cursor: pointer !important;
+  transition: border-color 0.2s ease, background 0.2s ease !important;
+  position: relative !important;
+  overflow: hidden !important;
+  margin-bottom: 1rem !important;
+  color: #fff !important;
+}
+.quote-photo-upload-zone:hover {
+  border-color: #fff !important;
+  background: linear-gradient(135deg, var(--forest, #1e3a2a), #2a4a36) !important;
+}
+.quote-photo-upload-zone svg {
+  color: var(--gold, #b89243) !important;
+  width: 36px !important;
+  height: 36px !important;
+  margin-bottom: 0.5rem !important;
+}
+.quote-photo-upload-zone__title {
+  font-family: var(--serif, Georgia, serif) !important;
+  font-size: 1.1rem !important;
+  font-weight: 600 !important;
+  color: #fff !important;
+  margin: 0 0 0.3rem 0 !important;
+}
+.quote-photo-upload-zone__hint {
+  font-family: var(--sans, system-ui, sans-serif) !important;
+  font-size: 0.78rem !important;
+  color: rgba(245, 233, 200, 0.75) !important;
+  margin: 0 !important;
+}
+.quote-photo-upload-zone input[type="file"] {
+  position: absolute !important;
+  inset: 0 !important;
+  opacity: 0 !important;
+  cursor: pointer !important;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* Photo thumbnails row (compact, above the form) */
+.quote-photo-thumbs {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 0.5rem !important;
+  margin-bottom: 1rem !important;
+}
+.quote-photo-thumb {
+  position: relative !important;
+  width: 80px !important;
+  height: 80px !important;
+  border-radius: 4px !important;
+  overflow: hidden !important;
+  border: 2px solid rgba(184, 146, 67, 0.3) !important;
+  cursor: pointer !important;
+  transition: border-color 0.2s ease, transform 0.2s ease !important;
+}
+.quote-photo-thumb:hover {
+  border-color: var(--gold, #b89243) !important;
+  transform: scale(1.05) !important;
+}
+.quote-photo-thumb img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+}
+.quote-photo-thumb__edit-badge {
+  position: absolute !important;
+  top: 2px !important;
+  right: 2px !important;
+  background: var(--gold, #b89243) !important;
+  color: var(--forest-dark, #143524) !important;
+  font-size: 0.6rem !important;
+  font-weight: 700 !important;
+  padding: 0.1rem 0.3rem !important;
+  border-radius: 2px !important;
+  display: none !important;
+}
+.quote-photo-thumb--edited .quote-photo-thumb__edit-badge {
+  display: block !important;
+}
+.quote-photo-thumb__remove {
+  position: absolute !important;
+  bottom: 2px !important;
+  right: 2px !important;
+  background: rgba(139, 30, 30, 0.85) !important;
+  color: #fff !important;
+  border: none !important;
+  width: 20px !important;
+  height: 20px !important;
+  border-radius: 50% !important;
+  font-size: 0.7rem !important;
+  cursor: pointer !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 0 !important;
+  line-height: 1 !important;
+}
+
+/* Full-screen editor modal (unified, opens on upload) */
+.photo-editor-modal {
+  position: fixed !important;
+  inset: 0 !important;
+  z-index: 100000 !important;
+  background: rgba(0, 0, 0, 0.92) !important;
+  display: flex !important;
+  flex-direction: column !important;
+  backdrop-filter: blur(8px) !important;
+  -webkit-backdrop-filter: blur(8px) !important;
+}
+.photo-editor-modal[hidden] { display: none !important; }
+.photo-editor-modal__header {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  padding: 0.75rem 1rem !important;
+  background: linear-gradient(180deg, var(--forest-dark, #143524), var(--forest, #1e3a2a)) !important;
+  border-bottom: 1px solid var(--gold, #b89243) !important;
+  color: #fff !important;
+  flex-shrink: 0 !important;
+}
+.photo-editor-modal__title {
+  font-family: var(--serif, Georgia, serif) !important;
+  font-size: 1rem !important;
+  font-weight: 600 !important;
+  color: #fff !important;
+  margin: 0 !important;
+}
+.photo-editor-modal__counter {
+  font-family: var(--sans, system-ui, sans-serif) !important;
+  font-size: 0.75rem !important;
+  color: var(--gold, #b89243) !important;
+  font-weight: 600 !important;
+}
+.photo-editor-modal__close {
+  background: rgba(255, 255, 255, 0.15) !important;
+  border: 1px solid rgba(184, 146, 67, 0.4) !important;
+  color: #fff !important;
+  width: 36px !important;
+  height: 36px !important;
+  border-radius: 4px !important;
+  font-size: 1.3rem !important;
+  cursor: pointer !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: background 0.2s ease !important;
+}
+.photo-editor-modal__close:hover {
+  background: rgba(184, 146, 67, 0.3) !important;
+}
+
+.photo-editor-modal__body {
+  flex: 1 1 auto !important;
+  display: flex !important;
+  flex-direction: row !important;
+  overflow: hidden !important;
+  position: relative !important;
+}
+
+/* Canvas area */
+.photo-editor-modal__canvas-wrap {
+  flex: 1 1 auto !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 1rem !important;
+  overflow: hidden !important;
+  position: relative !important;
+}
+.photo-editor-modal__canvas-wrap canvas {
+  max-width: 100% !important;
+  max-height: 100% !important;
+  object-fit: contain !important;
+  cursor: crosshair !important;
+  border-radius: 4px !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5) !important;
+}
+
+/* Side toolbar (desktop: right side, mobile: bottom) */
+.photo-editor-modal__toolbar {
+  flex-shrink: 0 !important;
+  background: linear-gradient(180deg, var(--forest-dark, #143524), var(--forest, #1e3a2a)) !important;
+  border-left: 1px solid rgba(184, 146, 67, 0.3) !important;
+  padding: 1rem 0.75rem !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 0.5rem !important;
+  width: 64px !important;
+  align-items: center !important;
+}
+.photo-editor-modal__tool {
+  width: 44px !important;
+  height: 44px !important;
+  border-radius: 6px !important;
+  border: 1px solid rgba(184, 146, 67, 0.25) !important;
+  background: rgba(255, 255, 255, 0.06) !important;
+  color: rgba(245, 233, 200, 0.7) !important;
+  cursor: pointer !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: all 0.2s ease !important;
+  position: relative !important;
+}
+.photo-editor-modal__tool:hover {
+  border-color: var(--gold, #b89243) !important;
+  color: #fff !important;
+  background: rgba(184, 146, 67, 0.12) !important;
+}
+.photo-editor-modal__tool.is-active {
+  background: var(--gold, #b89243) !important;
+  color: var(--forest-dark, #143524) !important;
+  border-color: #fff !important;
+  box-shadow: 0 0 0 2px rgba(184, 146, 67, 0.4) !important;
+}
+.photo-editor-modal__tool svg {
+  width: 20px !important;
+  height: 20px !important;
+}
+.photo-editor-modal__tool-label {
+  position: absolute !important;
+  right: 100% !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  margin-right: 8px !important;
+  background: var(--forest-dark, #143524) !important;
+  color: #fff !important;
+  font-size: 0.72rem !important;
+  font-family: var(--sans, system-ui, sans-serif) !important;
+  padding: 0.25rem 0.5rem !important;
+  border-radius: 3px !important;
+  white-space: nowrap !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  transition: opacity 0.15s ease !important;
+  border: 1px solid rgba(184, 146, 67, 0.3) !important;
+}
+.photo-editor-modal__tool:hover .photo-editor-modal__tool-label {
+  opacity: 1 !important;
+}
+.photo-editor-modal__tool-divider {
+  width: 70% !important;
+  height: 1px !important;
+  background: rgba(184, 146, 67, 0.2) !important;
+  margin: 0.2rem 0 !important;
+}
+.photo-editor-modal__color-picker {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 0.3rem !important;
+  align-items: center !important;
+}
+.photo-editor-modal__color {
+  width: 22px !important;
+  height: 22px !important;
+  border-radius: 50% !important;
+  border: 2px solid rgba(255, 255, 255, 0.2) !important;
+  cursor: pointer !important;
+  transition: transform 0.15s ease, border-color 0.15s ease !important;
+}
+.photo-editor-modal__color:hover {
+  transform: scale(1.15) !important;
+}
+.photo-editor-modal__color.is-active {
+  border-color: #fff !important;
+  transform: scale(1.15) !important;
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.3) !important;
+}
+
+/* Mobile: toolbar moves to bottom, horizontal */
+@media (max-width: 768px) {
+  .photo-editor-modal__body {
+    flex-direction: column !important;
+  }
+  .photo-editor-modal__toolbar {
+    flex-direction: row !important;
+    width: 100% !important;
+    border-left: none !important;
+    border-top: 1px solid rgba(184, 146, 67, 0.3) !important;
+    padding: 0.5rem 0.75rem !important;
+    gap: 0.4rem !important;
+    overflow-x: auto !important;
+    justify-content: flex-start !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+  .photo-editor-modal__tool {
+    flex-shrink: 0 !important;
+    width: 40px !important;
+    height: 40px !important;
+  }
+  .photo-editor-modal__tool-label {
+    display: none !important;
+  }
+  .photo-editor-modal__tool-divider {
+    width: 1px !important;
+    height: 70% !important;
+    margin: 0 0.2rem !important;
+  }
+  .photo-editor-modal__color-picker {
+    flex-direction: row !important;
+  }
+  .photo-editor-modal__canvas-wrap {
+    padding: 0.5rem !important;
+  }
+}
+
+/* Photo navigation (prev/next) for multiple photos */
+.photo-editor-modal__nav {
+  position: absolute !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  background: rgba(21, 40, 28, 0.8) !important;
+  border: 1px solid rgba(184, 146, 67, 0.4) !important;
+  color: #fff !important;
+  width: 40px !important;
+  height: 40px !important;
+  border-radius: 50% !important;
+  cursor: pointer !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  z-index: 5 !important;
+  transition: background 0.2s ease !important;
+}
+.photo-editor-modal__nav:hover {
+  background: var(--gold, #b89243) !important;
+  color: var(--forest-dark, #143524) !important;
+}
+.photo-editor-modal__nav--prev { left: 0.5rem !important; }
+.photo-editor-modal__nav--next { right: 0.5rem !important; }
+.photo-editor-modal__nav svg {
+  width: 20px !important;
+  height: 20px !important;
+}
+
+/* ==========================================================================
+   ISSUE 2 — Bottom WhatsApp section: compact, professional
+   Replace the bulky sidebar cards with a slim, inline strip.
+   ========================================================================== */
+.quote-bottom-cta {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 0.6rem !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 1rem 1.2rem !important;
+  background: linear-gradient(135deg, var(--forest-dark, #143524), var(--forest, #1e3a2a)) !important;
+  border-radius: 6px !important;
+  border: 1px solid rgba(184, 146, 67, 0.3) !important;
+  margin: 1.5rem 0 !important;
+}
+.quote-bottom-cta__label {
+  font-family: var(--sans, system-ui, sans-serif) !important;
+  font-size: 0.78rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.06em !important;
+  text-transform: uppercase !important;
+  color: var(--gold, #b89243) !important;
+  margin-right: 0.5rem !important;
+}
+.quote-bottom-cta__btn {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 0.35rem !important;
+  padding: 0.45rem 0.85rem !important;
+  border-radius: 3px !important;
+  font-family: var(--sans, system-ui, sans-serif) !important;
+  font-size: 0.78rem !important;
+  font-weight: 600 !important;
+  text-decoration: none !important;
+  transition: all 0.2s ease !important;
+  border: 1px solid rgba(184, 146, 67, 0.4) !important;
+  background: transparent !important;
+  color: #fff !important;
+}
+.quote-bottom-cta__btn:hover {
+  background: var(--gold, #b89243) !important;
+  color: var(--forest-dark, #143524) !important;
+  border-color: #fff !important;
+  transform: translateY(-1px) !important;
+}
+.quote-bottom-cta__btn--primary {
+  background: var(--gold, #b89243) !important;
+  color: var(--forest-dark, #143524) !important;
+  border-color: #fff !important;
+}
+.quote-bottom-cta__btn--primary:hover {
+  background: #fff !important;
+}
+.quote-bottom-cta__btn svg {
+  width: 14px !important;
+  height: 14px !important;
+}
+
+/* Hide the old bulky sidebar on the quote page */
+.quote-page .sidebar,
+.booking-page .sidebar {
+  display: none !important;
+}
+/* Make the article full-width since sidebar is hidden */
+.quote-page .article-layout,
+.booking-page .article-layout {
+  display: block !important;
+}
+.quote-page .article-body,
+.booking-page .article-body {
+  max-width: 100% !important;
+}
+
+/* ==========================================================================
+   ISSUE 3 — Service page "everything we do" cards premium upgrade
+   ========================================================================== */
+.svc-grid-card {
+  background: linear-gradient(160deg, var(--forest-dark, #143524) 0%, var(--forest, #1e3a2a) 100%) !important;
+  color: #fff !important;
+  border: 1px solid rgba(184, 146, 67, 0.3) !important;
+  border-radius: 6px !important;
+  padding: 1.4rem 1.3rem !important;
+  text-decoration: none !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 0.6rem !important;
+  min-height: 200px !important;
+  position: relative !important;
+  overflow: hidden !important;
+  transition: transform 0.3s cubic-bezier(.2,.7,.3,1), box-shadow 0.3s ease, border-color 0.3s ease !important;
+}
+.svc-grid-card::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--gold, #b89243), transparent 80%);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.35s ease;
+}
+.svc-grid-card:hover::before {
+  transform: scaleX(1);
+}
+.svc-grid-card:hover {
+  transform: translateY(-4px) !important;
+  box-shadow: 0 14px 30px rgba(21, 40, 28, 0.22) !important;
+  border-color: var(--gold, #b89243) !important;
+}
+.svc-grid-card__icon {
+  background: rgba(184, 146, 67, 0.12) !important;
+  border: 1px solid rgba(184, 146, 67, 0.3) !important;
+  border-radius: 4px !important;
+  width: 44px !important;
+  height: 44px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  color: var(--gold, #b89243) !important;
+}
+.svc-grid-card__icon svg {
+  width: 22px !important;
+  height: 22px !important;
+}
+.svc-grid-card h3 {
+  color: #fff !important;
+  font-family: var(--serif, Georgia, serif) !important;
+  font-size: 1.2rem !important;
+  font-weight: 600 !important;
+  margin: 0 !important;
+  line-height: 1.2 !important;
+}
+.svc-grid-card p {
+  color: rgba(245, 233, 200, 0.78) !important;
+  font-family: var(--sans, system-ui, sans-serif) !important;
+  font-size: 0.85rem !important;
+  line-height: 1.45 !important;
+  margin: 0 !important;
+}
+.svc-grid-card__link {
+  color: var(--gold, #b89243) !important;
+  font-family: var(--sans, system-ui, sans-serif) !important;
+  font-size: 0.78rem !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.06em !important;
+  margin-top: auto !important;
+  padding-top: 0.5rem !important;
+  border-top: 1px solid rgba(184, 146, 67, 0.2) !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 0.3rem !important;
+}
+.svc-grid-card__link svg {
+  width: 14px !important;
+  height: 14px !important;
+  transition: transform 0.2s ease !important;
+}
+.svc-grid-card:hover .svc-grid-card__link svg {
+  transform: translateX(4px) !important;
+}
+
+/* ==========================================================================
+   ISSUE 4 — Gardening Knowledge desktop arrows: larger, visible, fix hover
+   Current: tiny arrows at bottom, cards "stick" on hover preventing scroll.
+   Fix: large floating arrows on left/right edges, disable pointer-events
+   on card hover tilt to prevent scroll-jam.
+   ========================================================================== */
+
+/* Fix: remove the pointermove tilt handler that causes scroll-jam */
+.tip-card.editorial-row.cgm-tilt {
+  will-change: auto !important;
+}
+.tip-card.editorial-row {
+  pointer-events: auto !important;
+}
+
+/* Replace the small bottom nav with large floating side arrows */
+.tip-category-nav {
+  position: sticky !important;
+  top: 60px !important;
+  z-index: 50 !important;
+  background: linear-gradient(180deg, rgba(253, 251, 246, 0.98), rgba(253, 251, 246, 0.92)) !important;
+  backdrop-filter: blur(8px) !important;
+  -webkit-backdrop-filter: blur(8px) !important;
+  padding: 0.6rem 0 !important;
+  margin-bottom: 1rem !important;
+  border-bottom: 1px solid rgba(184, 146, 67, 0.2) !important;
+}
+.tip-category-nav__btn {
+  background: linear-gradient(135deg, var(--forest-dark, #143524), var(--forest, #1e3a2a)) !important;
+  color: #fff !important;
+  border: 1px solid var(--gold, #b89243) !important;
+  border-radius: 30px !important;
+  padding: 0.6rem 1.2rem !important;
+  font-family: var(--sans, system-ui, sans-serif) !important;
+  font-size: 0.85rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.05em !important;
+  text-transform: uppercase !important;
+  cursor: pointer !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 0.45rem !important;
+  transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+  box-shadow: 0 4px 12px rgba(21, 40, 28, 0.2) !important;
+}
+.tip-category-nav__btn:hover:not(:disabled) {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 18px rgba(21, 40, 28, 0.28) !important;
+}
+.tip-category-nav__btn:disabled {
+  opacity: 0.35 !important;
+  cursor: not-allowed !important;
+}
+.tip-category-nav__btn svg {
+  width: 18px !important;
+  height: 18px !important;
+}
+.tip-category-nav__label {
+  font-family: var(--serif, Georgia, serif) !important;
+  font-size: 1rem !important;
+  font-weight: 600 !important;
+  color: var(--forest-deep, #143524) !important;
+}
+
+/* Large floating side arrows (desktop) */
+.tip-floating-nav {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 45;
+  display: none;
+}
+@media (min-width: 769px) {
+  .tip-floating-nav {
+    display: flex;
+  }
+}
+.tip-floating-nav--left {
+  left: 0.5rem;
+}
+.tip-floating-nav--right {
+  right: 0.5rem;
+}
+.tip-floating-nav__btn {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--forest-dark, #143524), var(--forest, #1e3a2a));
+  border: 2px solid var(--gold, #b89243);
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 14px rgba(21, 40, 28, 0.25);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+  opacity: 0.7;
+}
+.tip-floating-nav__btn:hover {
+  opacity: 1;
+  transform: scale(1.1);
+  box-shadow: 0 8px 22px rgba(21, 40, 28, 0.35);
+}
+.tip-floating-nav__btn:disabled {
+  opacity: 0.2;
+  cursor: not-allowed;
+  transform: none;
+}
+.tip-floating-nav__btn svg {
+  width: 24px;
+  height: 24px;
+}
+
+/* ==========================================================================
+   ISSUE 5 — Featured / Newest / Most popular: sideways scroll + condense
+   Make these sections horizontally scrollable like the category sections.
+   ========================================================================== */
+.tip-featured-section .editorial-list,
+.tip-popular-section .editorial-list,
+.tip-newest-section .editorial-list {
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
+  scroll-snap-type: x mandatory !important;
+  -webkit-overflow-scrolling: touch !important;
+  gap: 0.75rem !important;
+  padding: 0.35rem 0.5rem 1rem !important;
+  margin-inline: -0.5rem !important;
+  scrollbar-width: thin !important;
+  scrollbar-color: var(--gold, #b89243) rgba(30, 58, 42, 0.08) !important;
+}
+.tip-featured-section .editorial-list::-webkit-scrollbar,
+.tip-popular-section .editorial-list::-webkit-scrollbar,
+.tip-newest-section .editorial-list::-webkit-scrollbar {
+  height: 5px;
+  -webkit-appearance: none;
+}
+.tip-featured-section .editorial-list::-webkit-scrollbar-track,
+.tip-popular-section .editorial-list::-webkit-scrollbar-track,
+.tip-newest-section .editorial-list::-webkit-scrollbar-track {
+  background: rgba(30, 58, 42, 0.06);
+  border-radius: 3px;
+}
+.tip-featured-section .editorial-list::-webkit-scrollbar-thumb,
+.tip-popular-section .editorial-list::-webkit-scrollbar-thumb,
+.tip-newest-section .editorial-list::-webkit-scrollbar-thumb {
+  background: var(--gold, #b89243);
+  border-radius: 3px;
+}
+.tip-featured-section .tip-card.editorial-row,
+.tip-popular-section .tip-card.editorial-row,
+.tip-newest-section .tip-card.editorial-row {
+  flex: 0 0 min(78vw, 340px) !important;
+  width: min(78vw, 340px) !important;
+  min-width: 0 !important;
+  max-width: 340px !important;
+  scroll-snap-align: start !important;
+  scroll-snap-stop: normal !important;
+}
+@media (min-width: 769px) {
+  .tip-featured-section .tip-card.editorial-row,
+  .tip-popular-section .tip-card.editorial-row,
+  .tip-newest-section .tip-card.editorial-row {
+    flex: 0 0 min(45vw, 380px) !important;
+    width: min(45vw, 380px) !important;
+    max-width: 380px !important;
+  }
+}
+
+/* ==========================================================================
+   ISSUE 6 — Mobile menu: Garden Knowledge alignment fix
+   The word is slightly right of other items. Fix: ensure consistent padding.
+   ========================================================================== */
+@media (max-width: 1024px) {
+  .mobile-gk-toggle {
+    padding-left: 0.5rem !important;
+    padding-right: 0.5rem !important;
+    margin-left: 0 !important;
+    text-indent: 0 !important;
+  }
+  .mobile-gk-toggle::before {
+    margin-right: 0.55rem !important;
+    width: 4px !important;
+    min-width: 4px !important;
+  }
+  /* Ensure the toggle text aligns with the link text */
+  .mobile-menu > a,
+  .mobile-gk-toggle {
+    padding-left: 0.5rem !important;
+  }
+}
+
+/* ==========================================================================
+   ISSUE 7 — Plant passport cards: fix unreadable text on dark background
+   The v8 .editorial-calc-card upgrade made cards dark forest, but inline
+   styles on cards 1 and 3 use color:var(--forest-dark) for price text,
+   which is dark on dark = unreadable.
+   Fix: override inline styles for price/value text to use gold or white.
+   ========================================================================== */
+.editorial-calc-card p[style*="forest-dark"] {
+  color: var(--gold, #b89243) !important;
+}
+.editorial-calc-card p[style*="color:var(--forest-dark)"] {
+  color: var(--gold, #b89243) !important;
+}
+.editorial-calc-card p[style*="font-size:0.82rem"] {
+  color: rgba(245, 233, 200, 0.8) !important;
+}
+.editorial-calc-card ul {
+  color: rgba(245, 233, 200, 0.85) !important;
+}
+.editorial-calc-card ul li {
+  color: rgba(245, 233, 200, 0.85) !important;
+}
+.editorial-calc-card ul li::marker {
+  color: var(--gold, #b89243) !important;
+}
+
+/* ==========================================================================
+   ISSUE 8 — Town intelligence 12-month calendar: fix month header visibility
+   The cal-cell__month uses cream background + dark text, but v8 made the
+   town-data-card dark. The cal-cell itself has cream bg so it should work,
+   but the month text is too small and the contrast with the inactive bars
+   is poor.
+   Fix: make month header bold gold on dark, increase size.
+   ========================================================================== */
+.town-data-card--widget .cal-cell__month {
+  background: var(--gold, #b89243) !important;
+  color: var(--forest-dark, #143524) !important;
+  font-size: 0.72rem !important;
+  font-weight: 800 !important;
+  height: 18px !important;
+  border-bottom: none !important;
+}
+.town-data-card--widget .cal-cell--data {
+  background: rgba(255, 255, 255, 0.92) !important;
+  border: 1px solid rgba(184, 146, 67, 0.3) !important;
+}
+.town-data-card--widget .cal-cell__bars {
+  background: #fff !important;
+}
+.town-data-card--widget .cal-cell__bar {
+  background: #e0d9c8 !important;
+}
+.town-data-card--widget .cal-legend__item {
+  color: rgba(245, 233, 200, 0.85) !important;
+  font-size: 0.68rem !important;
+}
+.town-data-card--widget .town-data-card__label {
+  margin-bottom: 0.5rem !important;
+}
+
+/* ==========================================================================
+   ISSUE 9 — Compare modal on mobile: fix white box takeover
+   Root cause: the compare-drawer (bottom bar) renders correctly, but when
+   the user clicks "Compare" in the drawer, showCompareModal() opens a
+   full-screen white modal. The user wants the bottom bar only on mobile,
+   and the full comparison table should render as a bottom sheet, not a
+   full-screen white box.
+   Fix: make the compare-modal a bottom sheet on mobile (not full-screen
+   white), and ensure the drawer stays as a slim bar.
+   Also: the v8 rule `body.compare-modal-open .compare-drawer` was supposed
+   to hide the drawer when modal opens, but the MutationObserver may not
+   be firing. Use a CSS-only approach: hide drawer when modal is visible
+   using :has() or adjacent sibling.
+   ========================================================================== */
+@media (max-width: 768px) {
+  /* Compare drawer: slim floating bar, NOT full-width */
+  .compare-drawer {
+    position: fixed !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    z-index: 998 !important;
+    background: transparent !important;
+    padding: 0 !important;
+    pointer-events: none !important;
+  }
+  .compare-drawer__bar {
+    margin: 0 0.5rem 0.5rem !important;
+    padding: 0.6rem 0.85rem !important;
+    background: linear-gradient(135deg, var(--forest-dark, #143524), var(--forest, #1e3a2a)) !important;
+    border: 1px solid var(--gold, #b89243) !important;
+    border-radius: 8px !important;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.3) !important;
+    color: #fff !important;
+    pointer-events: auto !important;
+    flex-wrap: wrap !important;
+    gap: 0.4rem !important;
+  }
+  .compare-drawer__count {
+    color: var(--gold, #b89243) !important;
+    font-weight: 700 !important;
+    font-size: 1rem !important;
+  }
+  .compare-drawer__label {
+    color: rgba(255, 255, 255, 0.85) !important;
+    font-size: 0.72rem !important;
+  }
+  .compare-drawer__chips {
+    flex: 1 1 100% !important;
+    order: 3 !important;
+  }
+  .compare-drawer__actions {
+    flex: 1 1 100% !important;
+    order: 4 !important;
+    display: flex !important;
+    gap: 0.4rem !important;
+  }
+  .compare-drawer__btn {
+    flex: 1 !important;
+    padding: 0.5rem 0.6rem !important;
+    font-size: 0.75rem !important;
+    border-radius: 4px !important;
+    border: none !important;
+    font-weight: 600 !important;
+  }
+  .compare-drawer__btn--view {
+    background: var(--gold, #b89243) !important;
+    color: var(--forest-dark, #143524) !important;
+  }
+  .compare-drawer__btn--clear {
+    background: rgba(255, 255, 255, 0.1) !important;
+    color: rgba(255, 255, 255, 0.8) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  }
+  .compare-drawer__btn--close {
+    background: rgba(255, 255, 255, 0.1) !important;
+    color: rgba(255, 255, 255, 0.8) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    flex: 0 0 36px !important;
+  }
+
+  /* Compare modal: bottom sheet, NOT full-screen white */
+  .compare-modal {
+    padding: 0 !important;
+    align-items: flex-end !important;
+    justify-content: center !important;
+  }
+  .compare-modal__overlay {
+    background: rgba(0, 0, 0, 0.6) !important;
+    backdrop-filter: blur(4px) !important;
+  }
+  .compare-modal__panel {
+    max-width: 100% !important;
+    width: 100% !important;
+    max-height: 85vh !important;
+    height: auto !important;
+    border-radius: 12px 12px 0 0 !important;
+    border: none !important;
+    border-top: 2px solid var(--gold, #b89243) !important;
+    background: linear-gradient(180deg, #fdfbf6, #f6efe2) !important;
+    animation: bottomSheetSlide 0.3s ease !important;
+  }
+  @keyframes bottomSheetSlide {
+    from { transform: translateY(100%); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+  }
+  .compare-modal__header {
+    padding: 0.85rem 1rem !important;
+    background: linear-gradient(135deg, var(--forest-dark, #143524), var(--forest, #1e3a2a)) !important;
+    color: #fff !important;
+    border-radius: 12px 12px 0 0 !important;
+    border-bottom: 2px solid var(--gold, #b89243) !important;
+  }
+  .compare-modal__title {
+    color: #fff !important;
+    font-size: 1.05rem !important;
+  }
+  .compare-modal__close {
+    background: rgba(255, 255, 255, 0.15) !important;
+    color: #fff !important;
+    width: 32px !important;
+    height: 32px !important;
+    border-radius: 4px !important;
+  }
+  .compare-modal__body {
+    padding: 1rem !important;
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    background: linear-gradient(180deg, #fdfbf6, #f6efe2) !important;
+  }
+
+  /* Hide the drawer when the modal is open (CSS-only, no JS needed) */
+  .compare-modal:not([hidden]) {
+    z-index: 1000 !important;
+  }
+  /* When modal is open, push drawer behind it */
+  body.compare-modal-open .compare-drawer {
+    z-index: 997 !important;
+    opacity: 0.3 !important;
+    pointer-events: none !important;
+  }
+}
+
+/* ==========================================================================
+   Reduced motion safety
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
