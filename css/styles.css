@@ -10068,3 +10068,924 @@ article li {
     transition-duration: 0.01ms !important;
   }
 }
+/* ==========================================================================
+   CGM v8 Update Stylesheet — Round-4 amendments (10 issues)
+   Appended to styles.css. Additive only.
+   ========================================================================== */
+
+/* ==========================================================================
+   ISSUE 4 — Compare modal on mobile: fix white box taking over screen
+   Root cause: the compare-drawer (sticky bottom bar) and the compare-modal
+   were both rendering with white backgrounds that filled the screen on
+   mobile. The modal was already full-screen but the drawer was appearing
+   ON TOP of it, creating a "white box" effect.
+   Fix: hide the compare-drawer when the modal is open, and make the modal
+   scroll properly with a max-height on the body.
+   ========================================================================== */
+@media (max-width: 640px) {
+  /* When modal is open, hide the drawer so it doesn't overlay */
+  .compare-modal:not([hidden]) ~ .compare-drawer,
+  body.compare-modal-open .compare-drawer {
+    display: none !important;
+  }
+  /* Modal panel: full screen but scrollable body */
+  .compare-modal__panel {
+    max-height: 100dvh !important;
+    height: 100dvh !important;
+    display: flex !important;
+    flex-direction: column !important;
+  }
+  .compare-modal__header {
+    flex-shrink: 0 !important;
+  }
+  .compare-modal__body {
+    flex: 1 1 auto !important;
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    padding: 1rem !important;
+    background: linear-gradient(180deg, #fdfbf6, #f6efe2) !important;
+  }
+  /* Compare drawer: make it a clean floating bar, not full-width white */
+  .compare-drawer {
+    position: fixed !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    z-index: 998 !important;
+    background: linear-gradient(180deg, var(--forest-dark, #143524), var(--forest, #1e3a2a)) !important;
+    color: #fff !important;
+    box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.2) !important;
+    padding: 0 !important;
+  }
+  .compare-drawer__bar {
+    background: transparent !important;
+    color: #fff !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0.65rem 0.85rem !important;
+    gap: 0.4rem !important;
+  }
+  .compare-drawer__count {
+    color: var(--gold, #b89243) !important;
+    font-weight: 700 !important;
+    font-size: 1.1rem !important;
+  }
+  .compare-drawer__label {
+    color: rgba(255, 255, 255, 0.85) !important;
+    font-size: 0.78rem !important;
+  }
+  .compare-drawer__btn {
+    background: var(--gold, #b89243) !important;
+    color: var(--forest-dark, #143524) !important;
+    border: none !important;
+    font-weight: 600 !important;
+    padding: 0.5rem 0.85rem !important;
+    border-radius: 3px !important;
+  }
+  .compare-drawer__btn:disabled {
+    background: rgba(255, 255, 255, 0.15) !important;
+    color: rgba(255, 255, 255, 0.5) !important;
+  }
+  .compare-drawer__btn--clear {
+    background: transparent !important;
+    color: rgba(255, 255, 255, 0.7) !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  }
+  .compare-drawer__btn--close {
+    background: transparent !important;
+    color: rgba(255, 255, 255, 0.7) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  }
+}
+
+/* ==========================================================================
+   ISSUE 5 — "Four counties" cards: premium upgrade (match homepage cards)
+   Current: plain cards with just text. Apply the dark forest + gold theme.
+   ========================================================================== */
+.county-browser-grid {
+  display: grid !important;
+  grid-template-columns: repeat(4, 1fr) !important;
+  gap: 1rem !important;
+  margin-top: 2rem !important;
+}
+@media (max-width: 900px) {
+  .county-browser-grid {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 0.6rem !important;
+  }
+}
+.loc-county-card {
+  background: linear-gradient(160deg, var(--forest-dark, #143524) 0%, var(--forest, #1e3a2a) 100%) !important;
+  color: #fff !important;
+  border: 1px solid rgba(184, 146, 67, 0.3) !important;
+  border-radius: 6px !important;
+  padding: 1.4rem 1.2rem !important;
+  position: relative !important;
+  overflow: hidden !important;
+  transition: transform 0.3s cubic-bezier(.2,.7,.3,1), box-shadow 0.3s ease, border-color 0.3s ease !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 0.5rem !important;
+  min-height: 180px !important;
+}
+.loc-county-card::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--gold, #b89243), transparent 80%);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.35s ease;
+}
+.loc-county-card:hover::before {
+  transform: scaleX(1);
+}
+.loc-county-card:hover {
+  transform: translateY(-4px) !important;
+  box-shadow: 0 14px 30px rgba(21, 40, 28, 0.22) !important;
+  border-color: var(--gold, #b89243) !important;
+}
+.loc-county-card h3 {
+  color: #fff !important;
+  font-family: var(--serif, Georgia, serif) !important;
+  font-size: 1.3rem !important;
+  font-weight: 600 !important;
+  margin: 0 !important;
+  letter-spacing: -0.01em;
+}
+.loc-county-card__count {
+  color: var(--gold, #b89243) !important;
+  font-family: var(--serif, Georgia, serif) !important;
+  font-size: 2.2rem !important;
+  font-weight: 700 !important;
+  line-height: 1 !important;
+  margin-top: 0.3rem !important;
+}
+.loc-county-card__label {
+  color: rgba(245, 233, 200, 0.75) !important;
+  font-size: 0.78rem !important;
+  font-family: var(--sans, system-ui, sans-serif) !important;
+  letter-spacing: 0.04em !important;
+  text-transform: uppercase !important;
+}
+.loc-county-card__link {
+  color: var(--gold, #b89243) !important;
+  font-family: var(--sans, system-ui, sans-serif) !important;
+  font-size: 0.78rem !important;
+  font-weight: 600 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.06em !important;
+  text-decoration: none !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 0.3rem !important;
+  margin-top: auto !important;
+  padding-top: 0.5rem !important;
+  border-top: 1px solid rgba(184, 146, 67, 0.2) !important;
+  transition: gap 0.2s ease !important;
+}
+.loc-county-card__link:hover {
+  gap: 0.55rem !important;
+  color: #fff !important;
+}
+.loc-county-card__link svg {
+  width: 14px !important;
+  height: 14px !important;
+}
+
+/* ==========================================================================
+   ISSUE 6 — Town intelligence section: premium style upgrade
+   Current: plain white panel. Apply premium dark forest + gold theme.
+   Also applies to individual town pages (covered by .town-data-card rules).
+   ========================================================================== */
+.town-intel-section {
+  background: linear-gradient(180deg, #fdfbf6 0%, #f6efe2 100%) !important;
+  padding: 3rem 0 !important;
+  border-top: 2px solid var(--gold, #b89243) !important;
+}
+.town-intel-section .section-title-center h2 {
+  font-family: var(--serif, Georgia, serif) !important;
+  color: var(--forest-deep, #143524) !important;
+  font-weight: 700 !important;
+}
+.town-intel-section .section-kicker {
+  color: var(--gold, #b89243) !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.1em !important;
+  text-transform: uppercase !important;
+}
+
+.town-data-panel {
+  background: linear-gradient(160deg, var(--forest-dark, #143524) 0%, var(--forest, #1e3a2a) 100%) !important;
+  border: 1px solid rgba(184, 146, 67, 0.35) !important;
+  border-radius: 8px !important;
+  overflow: hidden !important;
+  box-shadow: 0 12px 32px rgba(21, 40, 28, 0.18) !important;
+}
+.town-data-panel__summary {
+  background: linear-gradient(135deg, rgba(184, 146, 67, 0.12), rgba(184, 146, 67, 0.04)) !important;
+  padding: 1.5rem 1.75rem !important;
+  border-bottom: 1px solid rgba(184, 146, 67, 0.25) !important;
+  position: relative !important;
+}
+.town-data-panel__summary::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 4px;
+  height: 100%;
+  background: var(--gold, #b89243);
+}
+.town-data-panel__summary h3 {
+  color: #fff !important;
+  font-family: var(--serif, Georgia, serif) !important;
+  font-size: 1.8rem !important;
+  font-weight: 700 !important;
+  margin: 0 0 0.4rem 0 !important;
+  letter-spacing: -0.01em;
+}
+.town-data-panel__summary p {
+  color: rgba(245, 233, 200, 0.85) !important;
+  font-family: var(--sans, system-ui, sans-serif) !important;
+  font-size: 0.88rem !important;
+  line-height: 1.5 !important;
+  margin: 0 0 0.8rem 0 !important;
+}
+.town-data-panel__link {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 0.4rem !important;
+  color: var(--gold, #b89243) !important;
+  font-family: var(--sans, system-ui, sans-serif) !important;
+  font-size: 0.82rem !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.06em !important;
+  text-decoration: none !important;
+  padding: 0.5rem 0.85rem !important;
+  border: 1px solid var(--gold, #b89243) !important;
+  border-radius: 3px !important;
+  background: rgba(184, 146, 67, 0.08) !important;
+  transition: background 0.2s ease, color 0.2s ease !important;
+}
+.town-data-panel__link:hover {
+  background: var(--gold, #b89243) !important;
+  color: var(--forest-dark, #143524) !important;
+}
+
+.town-data-grid {
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr) !important;
+  gap: 1px !important;
+  background: rgba(184, 146, 67, 0.15) !important;
+}
+@media (max-width: 768px) {
+  .town-data-grid {
+    grid-template-columns: 1fr 1fr !important;
+  }
+}
+@media (max-width: 480px) {
+  .town-data-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+.town-data-card {
+  background: rgba(255, 255, 255, 0.04) !important;
+  padding: 1rem 1.1rem !important;
+  border: none !important;
+  position: relative !important;
+  transition: background 0.2s ease !important;
+}
+.town-data-card:hover {
+  background: rgba(184, 146, 67, 0.08) !important;
+}
+.town-data-card--empty {
+  grid-column: 1 / -1 !important;
+  padding: 2.5rem 1.5rem !important;
+  text-align: center !important;
+  color: rgba(245, 233, 200, 0.6) !important;
+  font-family: var(--sans, system-ui, sans-serif) !important;
+  font-size: 0.9rem !important;
+}
+.town-data-card h4,
+.town-data-card__label,
+.town-data-card strong {
+  color: var(--gold, #b89243) !important;
+  font-family: var(--sans, system-ui, sans-serif) !important;
+  font-size: 0.7rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.08em !important;
+  text-transform: uppercase !important;
+  margin: 0 0 0.4rem 0 !important;
+  display: block !important;
+}
+.town-data-card p,
+.town-data-card__value,
+.town-data-card span {
+  color: rgba(245, 233, 200, 0.9) !important;
+  font-family: var(--sans, system-ui, sans-serif) !important;
+  font-size: 0.85rem !important;
+  line-height: 1.45 !important;
+}
+.town-data-card--ph .ph-bar {
+  background: rgba(255, 255, 255, 0.1) !important;
+}
+.town-data-card--ph .ph-marker {
+  background: var(--gold, #b89243) !important;
+}
+
+.town-intel-disclaimer {
+  color: var(--muted, #5a6b5e) !important;
+  font-size: 0.78rem !important;
+  font-style: italic !important;
+  margin-top: 1.5rem !important;
+  padding: 0.85rem 1rem !important;
+  border-left: 3px solid rgba(184, 146, 67, 0.4) !important;
+  background: rgba(184, 146, 67, 0.04) !important;
+  border-radius: 0 4px 4px 0 !important;
+}
+
+/* Individual town pages premium upgrade */
+.town-page .town-hero,
+.town-page .town-data-card,
+.locations-page .town-data-card {
+  /* covered by rules above */
+}
+
+/* ==========================================================================
+   ISSUE 7 — Gardening Knowledge: article cards premium upgrade
+   Current: .tip-card with plain styling. Apply premium theme.
+   ========================================================================== */
+.tip-card.editorial-row {
+  background: linear-gradient(160deg, #ffffff 0%, #faf5e9 100%) !important;
+  border: 1px solid rgba(184, 146, 67, 0.25) !important;
+  border-radius: 6px !important;
+  padding: 1rem 1.1rem !important;
+  transition: transform 0.3s cubic-bezier(.2,.7,.3,1), box-shadow 0.3s ease, border-color 0.3s ease !important;
+  position: relative !important;
+  overflow: hidden !important;
+  margin-bottom: 0.7rem !important;
+}
+.tip-card.editorial-row::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--gold, #b89243), transparent 80%);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.35s ease;
+}
+.tip-card.editorial-row:hover::before {
+  transform: scaleX(1);
+}
+.tip-card.editorial-row:hover {
+  transform: translateY(-3px) !important;
+  box-shadow: 0 12px 28px rgba(21, 40, 28, 0.16) !important;
+  border-color: var(--gold, #b89243) !important;
+}
+.tip-card.editorial-row .editorial-row__title {
+  font-family: var(--serif, Georgia, serif) !important;
+  color: var(--forest-deep, #143524) !important;
+  font-weight: 600 !important;
+  font-size: 1.05rem !important;
+  line-height: 1.25 !important;
+}
+.tip-card.editorial-row .editorial-row__intro {
+  color: var(--muted, #5a6b5e) !important;
+  font-size: 0.88rem !important;
+  line-height: 1.45 !important;
+}
+.tip-card.editorial-row .editorial-row__pill {
+  font-family: var(--sans, system-ui, sans-serif) !important;
+  font-size: 0.7rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.04em !important;
+  padding: 0.2rem 0.5rem !important;
+  border-radius: 3px !important;
+  border: 1px solid rgba(184, 146, 67, 0.3) !important;
+  background: rgba(184, 146, 67, 0.06) !important;
+  color: var(--forest-deep, #143524) !important;
+}
+.tip-card.editorial-row .editorial-row__pill--easy {
+  background: rgba(74, 119, 76, 0.1) !important;
+  border-color: rgba(74, 119, 76, 0.4) !important;
+  color: #2e5a36 !important;
+}
+.tip-card.editorial-row .editorial-row__pill--intermediate {
+  background: rgba(184, 146, 67, 0.15) !important;
+  border-color: var(--gold, #b89243) !important;
+  color: #8a6a2a !important;
+}
+.tip-card.editorial-row .editorial-row__pill--hard {
+  background: rgba(139, 30, 30, 0.1) !important;
+  border-color: rgba(139, 30, 30, 0.4) !important;
+  color: #6b1818 !important;
+}
+.tip-card.editorial-row .editorial-row__tag {
+  font-size: 0.7rem !important;
+  color: var(--forest, #1e3a2a) !important;
+  background: rgba(30, 58, 42, 0.06) !important;
+  padding: 0.15rem 0.45rem !important;
+  border-radius: 3px !important;
+  border: 1px solid rgba(30, 58, 42, 0.12) !important;
+}
+.tip-card.editorial-row .editorial-row__cta {
+  font-family: var(--sans, system-ui, sans-serif) !important;
+  font-size: 0.78rem !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.06em !important;
+  color: var(--gold, #b89243) !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.35rem !important;
+}
+.tip-card.editorial-row .editorial-row__cta svg {
+  width: 14px !important;
+  height: 14px !important;
+  transition: transform 0.2s ease !important;
+}
+.tip-card.editorial-row:hover .editorial-row__cta svg {
+  transform: translateX(4px) !important;
+}
+.tip-card.editorial-row .editorial-row__visual-icon {
+  background: linear-gradient(135deg, var(--forest-dark, #143524), var(--forest, #1e3a2a)) !important;
+  color: var(--gold, #b89243) !important;
+  border-radius: 4px !important;
+}
+
+/* Category navigation buttons (desktop) */
+.tip-category-nav {
+  display: none;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.6rem;
+  gap: 0.5rem;
+}
+@media (min-width: 769px) {
+  .tip-category-nav {
+    display: flex;
+  }
+}
+.tip-category-nav__btn {
+  background: linear-gradient(135deg, var(--forest-dark, #143524), var(--forest, #1e3a2a)) !important;
+  color: #fff !important;
+  border: 1px solid var(--gold, #b89243) !important;
+  border-radius: 30px !important;
+  padding: 0.45rem 1rem !important;
+  font-family: var(--sans, system-ui, sans-serif) !important;
+  font-size: 0.78rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.05em !important;
+  text-transform: uppercase !important;
+  cursor: pointer !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 0.35rem !important;
+  transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+  box-shadow: 0 2px 6px rgba(21, 40, 28, 0.15) !important;
+}
+.tip-category-nav__btn:hover:not(:disabled) {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 6px 14px rgba(21, 40, 28, 0.22) !important;
+}
+.tip-category-nav__btn:disabled {
+  opacity: 0.4 !important;
+  cursor: not-allowed !important;
+}
+.tip-category-nav__btn svg {
+  width: 14px !important;
+  height: 14px !important;
+}
+.tip-category-nav__label {
+  font-family: var(--sans, system-ui, sans-serif) !important;
+  font-size: 0.78rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.06em !important;
+  text-transform: uppercase !important;
+  color: var(--forest-deep, #143524) !important;
+}
+
+/* ==========================================================================
+   ISSUE 8 — Garden tools and planners: cards premium upgrade
+   Current: .editorial-calc-card plain. Apply premium dark theme.
+   ========================================================================== */
+.editorial-calc-grid {
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr) !important;
+  gap: 1rem !important;
+  margin-top: 2rem !important;
+}
+@media (max-width: 900px) {
+  .editorial-calc-grid {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 0.7rem !important;
+  }
+}
+@media (max-width: 600px) {
+  .editorial-calc-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+.editorial-calc-card {
+  background: linear-gradient(160deg, var(--forest-dark, #143524) 0%, var(--forest, #1e3a2a) 100%) !important;
+  color: #fff !important;
+  border: 1px solid rgba(184, 146, 67, 0.3) !important;
+  border-radius: 6px !important;
+  padding: 1.4rem 1.3rem !important;
+  text-decoration: none !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 0.5rem !important;
+  min-height: 200px !important;
+  position: relative !important;
+  overflow: hidden !important;
+  transition: transform 0.3s cubic-bezier(.2,.7,.3,1), box-shadow 0.3s ease, border-color 0.3s ease !important;
+}
+.editorial-calc-card::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--gold, #b89243), transparent 80%);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.35s ease;
+}
+.editorial-calc-card:hover::before {
+  transform: scaleX(1);
+}
+.editorial-calc-card:hover {
+  transform: translateY(-4px) !important;
+  box-shadow: 0 14px 30px rgba(21, 40, 28, 0.22) !important;
+  border-color: var(--gold, #b89243) !important;
+}
+.editorial-calc-card__num {
+  color: var(--gold, #b89243) !important;
+  font-family: var(--sans, system-ui, sans-serif) !important;
+  font-size: 0.72rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.1em !important;
+  text-transform: uppercase !important;
+}
+.editorial-calc-card__title {
+  color: #fff !important;
+  font-family: var(--serif, Georgia, serif) !important;
+  font-size: 1.25rem !important;
+  font-weight: 600 !important;
+  margin: 0 !important;
+  line-height: 1.2 !important;
+  letter-spacing: -0.01em;
+}
+.editorial-calc-card__body {
+  color: rgba(245, 233, 200, 0.78) !important;
+  font-family: var(--sans, system-ui, sans-serif) !important;
+  font-size: 0.85rem !important;
+  line-height: 1.45 !important;
+  margin: 0 !important;
+}
+.editorial-calc-card__cta {
+  color: var(--gold, #b89243) !important;
+  font-family: var(--sans, system-ui, sans-serif) !important;
+  font-size: 0.78rem !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.06em !important;
+  margin-top: auto !important;
+  padding-top: 0.5rem !important;
+  border-top: 1px solid rgba(184, 146, 67, 0.2) !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 0.3rem !important;
+}
+.editorial-calc-card:hover .editorial-calc-card__cta {
+  color: #fff !important;
+}
+
+/* ==========================================================================
+   ISSUE 9 — Nine services mobile: restore to original (only show .service-
+   list-mobile on mobile, hide .editorial-service-grid).
+   v7 broke this by forcing .editorial-service-grid to display:flex on mobile.
+   ========================================================================== */
+@media (max-width: 768px) {
+  /* Hide the desktop grid on mobile — use the original mobile-only list */
+  .editorial-service-grid {
+    display: none !important;
+  }
+  /* Show the mobile-only list (was set to display:none inline) */
+  .service-list-mobile {
+    display: flex !important;
+    flex-direction: column;
+    gap: 0.6rem !important;
+  }
+  /* Restore the premium card styling for mobile service cards */
+  .service-card-mobile {
+    background: linear-gradient(135deg, #ffffff, #faf5e9) !important;
+    border: 1px solid rgba(184, 146, 67, 0.25) !important;
+    border-radius: 4px !important;
+    padding: 0.9rem 1rem !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 0.6rem !important;
+    text-decoration: none !important;
+    color: var(--forest-deep, #143524) !important;
+    box-shadow: 0 2px 8px rgba(21, 40, 28, 0.06) !important;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease !important;
+  }
+  .service-card-mobile:active {
+    transform: translateY(-2px) scale(0.99) !important;
+    border-color: var(--gold, #b89243) !important;
+    box-shadow: 0 8px 18px rgba(21, 40, 28, 0.18) !important;
+  }
+  .service-card-mobile__title {
+    font-family: var(--serif, Georgia, serif) !important;
+    font-size: 1rem !important;
+    font-weight: 600 !important;
+    color: var(--forest-deep, #143524) !important;
+  }
+  .service-card-mobile__sub {
+    font-family: var(--sans, system-ui, sans-serif) !important;
+    font-size: 0.78rem !important;
+    color: var(--muted, #5a6b5e) !important;
+    margin-top: 0.15rem !important;
+  }
+  .service-card-mobile__arrow {
+    color: var(--gold, #b89243) !important;
+    flex-shrink: 0 !important;
+  }
+  .service-card-mobile__arrow svg {
+    width: 18px !important;
+    height: 18px !important;
+  }
+  /* The "View six more services" disclosure */
+  .service-list-mobile-more > summary {
+    background: linear-gradient(135deg, var(--forest-dark, #143524), var(--forest, #1e3a2a)) !important;
+    color: var(--gold, #b89243) !important;
+    padding: 0.7rem 1rem !important;
+    border-radius: 4px !important;
+    font-family: var(--sans, system-ui, sans-serif) !important;
+    font-size: 0.82rem !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.06em !important;
+    text-transform: uppercase !important;
+    text-align: center !important;
+    cursor: pointer !important;
+    list-style: none !important;
+    border: 1px solid var(--gold, #b89243) !important;
+  }
+  .service-list-mobile-more > summary::-webkit-details-marker {
+    display: none !important;
+  }
+  .service-list-mobile-more[open] > summary {
+    border-bottom: 1px solid var(--gold, #b89243) !important;
+  }
+  .service-list-mobile-more__items {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0.6rem !important;
+    padding: 0.7rem 0 0 0 !important;
+  }
+}
+
+/* ==========================================================================
+   ISSUE 10 — "What do you need?" multi-select with numbered ordering
+   Replace radio buttons with checkboxes + numbered badges.
+   ========================================================================== */
+.calc-options--multi {
+  display: grid !important;
+  grid-template-columns: repeat(2, 1fr) !important;
+  gap: 0.5rem !important;
+}
+@media (max-width: 600px) {
+  .calc-options--multi {
+    grid-template-columns: 1fr !important;
+  }
+}
+.calc-options--multi input[type="checkbox"] {
+  position: absolute !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+.calc-options--multi label {
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.6rem !important;
+  padding: 0.7rem 0.9rem !important;
+  background: linear-gradient(135deg, #ffffff, #faf5e9) !important;
+  border: 1px solid rgba(184, 146, 67, 0.25) !important;
+  border-radius: 4px !important;
+  cursor: pointer !important;
+  font-family: var(--sans, system-ui, sans-serif) !important;
+  font-size: 0.88rem !important;
+  font-weight: 500 !important;
+  color: var(--forest-deep, #143524) !important;
+  transition: all 0.2s ease !important;
+  position: relative !important;
+  user-select: none !important;
+  -webkit-user-select: none !important;
+}
+.calc-options--multi label::before {
+  content: "";
+  width: 18px !important;
+  height: 18px !important;
+  border: 2px solid rgba(184, 146, 67, 0.4) !important;
+  border-radius: 3px !important;
+  background: #fff !important;
+  flex-shrink: 0 !important;
+  transition: all 0.2s ease !important;
+  display: inline-block !important;
+}
+.calc-options--multi label::after {
+  content: "";
+  position: absolute !important;
+  left: 0.9rem !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  width: 18px !important;
+  height: 18px !important;
+  background: var(--gold, #b89243) !important;
+  border-radius: 3px !important;
+  opacity: 0 !important;
+  transition: opacity 0.2s ease !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+.calc-options--multi label .order-badge {
+  margin-left: auto !important;
+  background: var(--gold, #b89243) !important;
+  color: var(--forest-dark, #143524) !important;
+  font-weight: 700 !important;
+  font-size: 0.72rem !important;
+  padding: 0.15rem 0.45rem !important;
+  border-radius: 12px !important;
+  min-width: 22px !important;
+  text-align: center !important;
+  display: none !important;
+}
+.calc-options--multi input[type="checkbox"]:checked + label {
+  background: linear-gradient(135deg, var(--forest-dark, #143524), var(--forest, #1e3a2a)) !important;
+  color: #fff !important;
+  border-color: var(--gold, #b89243) !important;
+  box-shadow: 0 4px 12px rgba(21, 40, 28, 0.18) !important;
+}
+.calc-options--multi input[type="checkbox"]:checked + label::before {
+  border-color: var(--gold, #b89243) !important;
+  background: var(--gold, #b89243) !important;
+}
+.calc-options--multi input[type="checkbox"]:checked + label::after {
+  opacity: 1 !important;
+  background: transparent !important;
+}
+.calc-options--multi input[type="checkbox"]:checked + label::after {
+  /* Checkmark */
+  content: "✓" !important;
+  color: var(--forest-dark, #143524) !important;
+  font-weight: 700 !important;
+  font-size: 0.85rem !important;
+  background: var(--gold, #b89243) !important;
+  opacity: 1 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+.calc-options--multi input[type="checkbox"]:checked + label .order-badge {
+  display: inline-block !important;
+}
+.calc-options--multi label:hover {
+  border-color: var(--gold, #b89243) !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 4px 10px rgba(21, 40, 28, 0.1) !important;
+}
+
+/* Summary chip showing selected services in order */
+.service-multi-summary {
+  background: rgba(184, 146, 67, 0.06) !important;
+  border: 1px solid rgba(184, 146, 67, 0.3) !important;
+  border-radius: 4px !important;
+  padding: 0.7rem 0.9rem !important;
+  margin-top: 0.6rem !important;
+  font-family: var(--sans, system-ui, sans-serif) !important;
+  font-size: 0.82rem !important;
+  color: var(--forest-deep, #143524) !important;
+  display: none;
+}
+.service-multi-summary:not(:empty) {
+  display: block;
+}
+.service-multi-summary__label {
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.06em !important;
+  color: var(--gold, #b89243) !important;
+  font-size: 0.72rem !important;
+  display: block !important;
+  margin-bottom: 0.3rem !important;
+}
+.service-multi-summary__list {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 0.3rem !important;
+}
+.service-multi-summary__chip {
+  background: linear-gradient(135deg, var(--forest-dark, #143524), var(--forest, #1e3a2a)) !important;
+  color: #fff !important;
+  padding: 0.25rem 0.55rem !important;
+  border-radius: 12px !important;
+  font-size: 0.75rem !important;
+  font-weight: 500 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 0.3rem !important;
+}
+.service-multi-summary__chip-num {
+  background: var(--gold, #b89243) !important;
+  color: var(--forest-dark, #143524) !important;
+  font-weight: 700 !important;
+  padding: 0 0.35rem !important;
+  border-radius: 8px !important;
+  font-size: 0.68rem !important;
+  min-width: 16px !important;
+  text-align: center !important;
+}
+
+/* ==========================================================================
+   ISSUE 3 — Town search popup box ("Select town" button)
+   ========================================================================== */
+.town-search-popup {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  background: linear-gradient(160deg, var(--forest-dark, #143524), var(--forest, #1e3a2a)) !important;
+  border: 1px solid var(--gold, #b89243) !important;
+  border-radius: 6px !important;
+  box-shadow: 0 14px 30px rgba(21, 40, 28, 0.25) !important;
+  padding: 1rem !important;
+  margin-top: 0.5rem !important;
+  display: none;
+}
+.town-search-popup:not([hidden]) {
+  display: block;
+}
+.town-search-popup__name {
+  color: #fff !important;
+  font-family: var(--serif, Georgia, serif) !important;
+  font-size: 1.3rem !important;
+  font-weight: 700 !important;
+  margin: 0 0 0.2rem 0 !important;
+}
+.town-search-popup__county {
+  color: var(--gold, #b89243) !important;
+  font-family: var(--sans, system-ui, sans-serif) !important;
+  font-size: 0.78rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.05em !important;
+  text-transform: uppercase !important;
+  margin: 0 0 0.7rem 0 !important;
+}
+.town-search-popup__intro {
+  color: rgba(245, 233, 200, 0.85) !important;
+  font-family: var(--sans, system-ui, sans-serif) !important;
+  font-size: 0.85rem !important;
+  line-height: 1.45 !important;
+  margin: 0 0 0.8rem 0 !important;
+}
+.town-search-popup__btn {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 0.4rem !important;
+  background: var(--gold, #b89243) !important;
+  color: var(--forest-dark, #143524) !important;
+  border: none !important;
+  padding: 0.55rem 1rem !important;
+  border-radius: 3px !important;
+  font-family: var(--sans, system-ui, sans-serif) !important;
+  font-size: 0.82rem !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.06em !important;
+  cursor: pointer !important;
+  transition: background 0.2s ease, transform 0.2s ease !important;
+}
+.town-search-popup__btn:hover {
+  background: #fff !important;
+  transform: translateY(-1px) !important;
+}
+
+/* ==========================================================================
+   Reduced motion safety
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
