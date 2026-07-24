@@ -9421,1003 +9421,197 @@ article li {
   .section-editorial-loose { padding-top: 1.5rem; padding-bottom: 1.5rem; }
 }
 /* ==========================================================================
-   CGM v7 Update Stylesheet — Round-3 amendments (10 issues)
-   Appended to styles.css. Additive only.
+   CGM v10 Consolidated Update Stylesheet
+   Addresses all 10 issues from the latest feedback. This is the FIRST
+   version that properly appends to styles.css (v7/v8/v9 CSS were never
+   appended — this file consolidates and supersedes them).
    ========================================================================== */
 
 /* ==========================================================================
-   ISSUE 1 — Shorten gap between hero title and top of page
-   Root cause: inline style on .hero has min-height:78vh + padding:6rem top.
-   The 6rem top padding creates a huge gap above the title.
+   ISSUE 1 — Seasonal calendar: restore bar colors + white month letters
+   The v9 override accidentally broke the bar colors. Restore original
+   active colors (frost=blue, sow=green, flower=gold, prune=purple) and
+   ensure month letters are white and readable.
    ========================================================================== */
-.hero {
-  min-height: 56vh !important;
-  padding: 0 !important;
-}
-.hero .container {
-  padding: 2.5rem 1.5rem 3rem !important;
-}
-@media (max-width: 768px) {
-  .hero {
-    min-height: 52vh !important;
-  }
-  .hero .container {
-    padding: 1.5rem 1rem 2rem !important;
-  }
-  .hero h1.editorial-h1 {
-    margin-top: 0.5rem !important;
-  }
-  .hero-actions {
-    margin-top: 1.2rem !important;
-  }
-  .hero-proof {
-    margin-top: 1rem !important;
-  }
-}
-
-/* ==========================================================================
-   ISSUE 2 — Swipe-row button colors to fit theme + shorten gap to CGM EST.
-   Current: cream/white buttons that clash with the dark hero above.
-   Fix: forest-dark background with gold accents, matching the site theme.
-   Also reduce the gap between swipe-row and the "CGM · Est. Chilterns" section.
-   ========================================================================== */
-@media (max-width: 768px) {
-  .cgm-scroll-dock.swipe-row,
-  .swipe-row {
-    background: linear-gradient(180deg, var(--forest-dark, #143524) 0%, var(--forest, #1e3a2a) 100%) !important;
-    padding: .35rem .5rem .45rem !important;
-    margin: 0 -1rem .1rem !important;
-    border-bottom: 1px solid rgba(184, 146, 67, 0.3);
-  }
-  .swipe-row__item,
-  .cgm-scroll-dock .swipe-row__item {
-    background: rgba(255, 255, 255, 0.08) !important;
-    border: 1px solid rgba(184, 146, 67, 0.35) !important;
-    color: #f5e9c8 !important;
-    box-shadow: none !important;
-    backdrop-filter: blur(4px);
-    -webkit-backdrop-filter: blur(4px);
-  }
-  .swipe-row__item:active,
-  .swipe-row__item:focus-visible,
-  .cgm-scroll-dock .swipe-row__item.is-dock-focus {
-    background: linear-gradient(135deg, var(--gold, #b89243), #d4a85a) !important;
-    color: var(--forest-dark, #143524) !important;
-    border-color: #fff !important;
-  }
-  /* Scrollbar matches the dark theme */
-  .swipe-row::-webkit-scrollbar-track {
-    background: rgba(255, 255, 255, 0.06) !important;
-  }
-  .swipe-row::-webkit-scrollbar-thumb {
-    background: var(--gold, #b89243) !important;
-  }
-}
-
-/* Shorten the gap between swipe-row and "CGM · Est. Chilterns" */
-.section-editorial {
-  padding-top: 1.5rem !important;
-  padding-bottom: 1.5rem !important;
-}
-@media (max-width: 768px) {
-  .section-editorial {
-    padding-top: 1rem !important;
-    padding-bottom: 1rem !important;
-  }
-}
-
-/* ==========================================================================
-   ISSUE 3 — "Six tools" cards: change to premium forest/gold theme
-   Current: cream background that doesn't blend with the page.
-   Fix: dark forest gradient with gold accents, matching the premium theme.
-   Also applies to all similar cards site-wide.
-   ========================================================================== */
-.editorial-card-grid {
-  background: var(--forest-dark, #143524) !important;
+.town-data-card--widget .cal-cell--data {
+  background: #fff !important;
   border: 1px solid rgba(184, 146, 67, 0.3) !important;
-  border-radius: 6px !important;
-  gap: 1px !important;
-}
-.editorial-card-grid__cell {
-  background: linear-gradient(160deg, var(--forest-dark, #143524) 0%, var(--forest, #1e3a2a) 100%) !important;
-  color: #f5e9c8 !important;
-  border: 1px solid rgba(184, 146, 67, 0.2) !important;
-  position: relative;
-  overflow: hidden;
-}
-.editorial-card-grid__cell::before {
-  content: "";
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 3px;
-  background: linear-gradient(90deg, var(--gold, #b89243), transparent 80%);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.35s ease;
-}
-.editorial-card-grid__cell:hover::before {
-  transform: scaleX(1);
-}
-.editorial-card-grid__cell h3 {
-  color: #fff !important;
-  font-family: var(--serif, Georgia, serif) !important;
-  font-weight: 600 !important;
-}
-.editorial-card-grid__cell p {
-  color: rgba(245, 233, 200, 0.78) !important;
-}
-.editorial-card-grid__arrow {
-  color: var(--gold, #b89243) !important;
-}
-.editorial-card-grid__cell:hover {
-  background: linear-gradient(160deg, var(--forest, #1e3a2a) 0%, #2a4a36 100%) !important;
-}
-/* The plant passport card was already dark — keep it but align styling */
-.editorial-card-grid__cell[style*="forest-dark"] {
-  background: linear-gradient(160deg, #0d2818, var(--forest-dark, #143524)) !important;
-  border: 1px solid var(--gold, #b89243) !important;
-}
-
-/* Mobile: keep 2-col but with the premium dark theme */
-@media (max-width: 768px) {
-  .editorial-card-grid__cell {
-    padding: .85rem .9rem !important;
-    background: linear-gradient(160deg, var(--forest-dark, #143524) 0%, var(--forest, #1e3a2a) 100%) !important;
-    border: 1px solid rgba(184, 146, 67, 0.25) !important;
-    border-radius: 4px !important;
-  }
-  .editorial-card-grid__cell h3 {
-    font-size: .92rem !important;
-    color: #fff !important;
-  }
-  .editorial-card-grid__cell p {
-    font-size: .76rem !important;
-    color: rgba(245, 233, 200, 0.72) !important;
-  }
-}
-
-/* ==========================================================================
-   ISSUE 4 — Nine services: fix broken links, scroll-for-more text bleed, lag
-   Root causes:
-   a) The ::after "Scroll for more" pseudo-element bleeds through cards.
-   b) card-tilt.js + v6 hover transform conflict causes render lag.
-   c) Links may appear broken due to the lag delaying navigation.
-   Fix: remove the ::after pseudo, remove tilt from service cards, simplify
-   the hover transform to a single lightweight property.
-   ========================================================================== */
-
-/* Remove the "Scroll for more" pseudo-element that bleeds through cards */
-.editorial-service-grid::after {
-  content: none !important;
-  display: none !important;
-}
-
-/* Add a clean "Scroll for more" hint BELOW the grid, not inside it */
-.editorial-service-grid-wrap {
-  position: relative;
-}
-.editorial-service-grid-wrap__hint {
-  display: none;
-  text-align: center;
-  font-family: var(--sans, system-ui, sans-serif);
-  font-size: 0.72rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--gold, #b89243);
-  font-weight: 700;
-  margin-top: 0.5rem;
-}
-@media (max-width: 768px) {
-  .editorial-service-grid-wrap__hint {
-    display: block;
-  }
-}
-
-/* Fix card lag: remove the heavy transform + box-shadow on hover.
-   Use only border-color + background change for a snappy, lag-free response.
-   Also disable the 3D tilt on these cards via will-change override. */
-.editorial-service-grid__cell {
-  transition: border-color 0.15s ease, background 0.15s ease !important;
-  will-change: auto !important;
-  transform: none !important;
-}
-.editorial-service-grid__cell:hover,
-.editorial-service-grid__cell:focus-visible,
-.editorial-service-grid__cell:active {
-  transform: none !important;
-  border-color: var(--gold, #b89243) !important;
-  background: linear-gradient(160deg, var(--forest-dark, #143524) 0%, var(--forest, #1e3a2a) 100%) !important;
-  color: #fff !important;
-  box-shadow: 0 4px 12px rgba(21, 40, 28, 0.15) !important;
-}
-.editorial-service-grid__cell:hover h3,
-.editorial-service-grid__cell:hover p,
-.editorial-service-grid__cell:active h3,
-.editorial-service-grid__cell:active p {
-  color: #fff !important;
-}
-.editorial-service-grid__cell:hover .editorial-service-grid__arrow,
-.editorial-service-grid__cell:active .editorial-service-grid__arrow {
-  color: var(--gold, #b89243) !important;
-  transform: none !important;
-}
-/* Remove the gold top-stripe animation that causes layout thrashing */
-.editorial-service-grid__cell::after {
-  transform: none !important;
-  display: none !important;
-}
-
-/* Make sure links work — ensure cards have pointer cursor and no overlay */
-.editorial-service-grid__cell {
-  pointer-events: auto !important;
-  cursor: pointer !important;
-  -webkit-tap-highlight-color: rgba(184, 146, 67, 0.2);
-}
-
-/* Mobile: remove the max-height scroll container that was causing issues.
-   Instead, show all 9 cards in a simple list. */
-@media (max-width: 768px) {
-  .editorial-service-grid {
-    max-height: none !important;
-    overflow: visible !important;
-    display: flex !important;
-    flex-direction: column;
-    gap: 0.5rem !important;
-    padding: 0.5rem !important;
-    background: transparent !important;
-    border: none !important;
-    border-radius: 0 !important;
-  }
-  .editorial-service-grid__cell {
-    flex-shrink: 1 !important;
-    padding: 0.8rem 1rem !important;
-    background: linear-gradient(135deg, #ffffff, #faf5e9) !important;
-    border: 1px solid rgba(184, 146, 67, 0.25) !important;
-    border-radius: 4px !important;
-    box-shadow: 0 2px 8px rgba(21, 40, 28, 0.06) !important;
-  }
-  .editorial-service-grid__cell:hover,
-  .editorial-service-grid__cell:active {
-    background: linear-gradient(160deg, var(--forest-dark, #143524), var(--forest, #1e3a2a)) !important;
-  }
-  .editorial-service-grid__cell:hover h3,
-  .editorial-service-grid__cell:active h3,
-  .editorial-service-grid__cell:hover p,
-  .editorial-service-grid__cell:active p {
-    color: #fff !important;
-  }
-  /* Featured cell with image */
-  .editorial-service-grid__cell--featured {
-    padding: 0 !important;
-    overflow: hidden !important;
-  }
-  .editorial-service-grid__cell--featured img {
-    width: 100% !important;
-    height: 120px !important;
-    object-fit: cover !important;
-  }
-  .editorial-service-grid__cell--featured .editorial-service-grid__content {
-    padding: 0.8rem 1rem !important;
-  }
-}
-
-/* ==========================================================================
-   ISSUE 5 — Popular right now cards: fix mobile proportions
-   Current: cards are 240px tall, too long for the text content.
-   Fix: auto height based on content, tighter padding.
-   ========================================================================== */
-@media (max-width: 768px) {
-  .article-card-popular {
-    height: auto !important;
-    min-height: 0 !important;
-    padding: 0.65rem 0.7rem !important;
-    font-size: 0.82rem !important;
-    border: 1px solid rgba(184, 146, 67, 0.2) !important;
-    border-radius: 4px !important;
-    background: linear-gradient(180deg, #ffffff, #faf5e9) !important;
-    box-shadow: 0 2px 8px rgba(21, 40, 28, 0.06) !important;
-  }
-  .article-card-popular h3 {
-    font-size: 0.88rem !important;
-    line-height: 1.2 !important;
-    -webkit-line-clamp: 2 !important;
-    line-clamp: 2 !important;
-    margin: 0 0 0.3rem 0 !important;
-  }
-  .article-card-popular p {
-    font-size: 0.75rem !important;
-    line-height: 1.35 !important;
-    -webkit-line-clamp: 2 !important;
-    line-clamp: 2 !important;
-    margin: 0 0 0.35rem 0 !important;
-  }
-  .article-card-popular .card-link {
-    font-size: 0.72rem !important;
-    margin-top: 0.3rem !important;
-  }
-  .article-card-popular__meta {
-    gap: 0.3rem !important;
-    margin-bottom: 0.3rem !important;
-  }
-  .article-card-popular__tag,
-  .article-card-popular__level {
-    font-size: 0.6rem !important;
-    padding: 0.15rem 0.4rem !important;
-  }
-  /* Grid: 2 columns on mobile */
-  #popular-articles.grid.grid-3 {
-    grid-template-columns: 1fr 1fr !important;
-    gap: 0.5rem !important;
-  }
-}
-
-/* ==========================================================================
-   ISSUE 6 — Menu: ALL sections in CAPITAL LETTERS (mobile + desktop)
-   ========================================================================== */
-/* Desktop nav */
-.nav-links a,
-.nav-dropdown-toggle {
-  text-transform: uppercase !important;
-  letter-spacing: 0.06em !important;
-  font-weight: 600 !important;
-}
-.nav-dropdown-menu a {
-  text-transform: uppercase !important;
-  letter-spacing: 0.05em !important;
-  font-weight: 500 !important;
-  font-size: 0.78rem !important;
-}
-/* Mobile menu */
-.mobile-menu a,
-.mobile-gk-toggle {
-  text-transform: uppercase !important;
-  letter-spacing: 0.06em !important;
-  font-weight: 600 !important;
-}
-.mobile-gk-items a {
-  text-transform: uppercase !important;
-  letter-spacing: 0.05em !important;
-  font-weight: 500 !important;
-  font-size: 0.82rem !important;
-}
-
-/* ==========================================================================
-   ISSUE 7 — Mobile menu: scrollable with visible scrollbar even when content
-   fits. The menu should always allow finger-scrolling.
-   ========================================================================== */
-@media (max-width: 1024px) {
-  .mobile-menu:not([hidden]) {
-    overflow-y: auto !important;
-    -webkit-overflow-scrolling: touch !important;
-    scroll-behavior: smooth;
-    /* Always show scrollbar (even when content fits) */
-    scrollbar-width: thin !important;
-    scrollbar-color: var(--gold, #b89243) rgba(30, 58, 42, 0.12) !important;
-    /* Force the scrollbar to always be present */
-    overflow-y: scroll !important;
-  }
-  .mobile-menu:not([hidden])::-webkit-scrollbar {
-    width: 6px !important;
-    -webkit-appearance: none !important;
-    appearance: none !important;
-  }
-  .mobile-menu:not([hidden])::-webkit-scrollbar-track {
-    background: rgba(30, 58, 42, 0.06) !important;
-    border-radius: 3px !important;
-  }
-  .mobile-menu:not([hidden])::-webkit-scrollbar-thumb {
-    background: linear-gradient(180deg, var(--forest, #1e3a2a), var(--gold, #b89243)) !important;
-    border-radius: 3px !important;
-    min-height: 40px !important;
-  }
-  .mobile-menu:not([hidden])::-webkit-scrollbar-thumb:hover {
-    background: var(--gold, #b89243) !important;
-  }
-}
-
-/* ==========================================================================
-   ISSUE 8 — Garden Knowledge: left-aligned + remove '>' from expanded items
-   ========================================================================== */
-@media (max-width: 1024px) {
-  .mobile-gk-toggle {
-    justify-content: flex-start !important;
-    gap: 0.55rem !important;
-    text-align: left !important;
-  }
-  .mobile-gk-toggle .mobile-gk-chevron {
-    margin-left: auto !important;
-  }
-  /* Remove the '>' content from sub-items */
-  .mobile-gk-items a::before {
-    content: "" !important;
-    width: 0 !important;
-    height: 0 !important;
-    margin-right: 0 !important;
-    background: transparent !important;
-  }
-  /* Keep the dot indicator consistent with main items */
-  .mobile-gk-items a {
-    padding-left: 1.2rem !important;
-    position: relative !important;
-  }
-  .mobile-gk-items a::after {
-    content: "" !important;
-    position: absolute !important;
-    left: 0.5rem !important;
-    top: 50% !important;
-    transform: translateY(-50%) !important;
-    width: 4px !important;
-    height: 4px !important;
-    border-radius: 50% !important;
-    background: var(--gold, #b89243) !important;
-    opacity: 0.4 !important;
-  }
-}
-
-/* ==========================================================================
-   ISSUE 9 (CRITICAL) — Fix large empty gap at top of mobile menu showing the
-   page behind it when opened after scrolling.
-   Root cause: menu is position:fixed; top:60px but the header height on
-   mobile is ~50px, leaving a 10px gap. Also, the menu's opaque background
-   doesn't extend above top:60px.
-   Fix: make the menu cover the FULL viewport (top:0; bottom:0) with
-   padding-top equal to the header height. Set z-index BELOW the header so
-   the header (with close button) stays visible and clickable on top.
-   ========================================================================== */
-@media (max-width: 1024px) {
-  /* Header stays on top of the menu */
-  .header {
-    z-index: 10001 !important;
-    background: #fdfbf6 !important;
-    -webkit-backdrop-filter: none !important;
-    backdrop-filter: none !important;
-  }
-
-  /* Menu covers full viewport, below the header */
-  .mobile-menu:not([hidden]) {
-    position: fixed !important;
-    top: 0 !important;
-    left: 0 !important;
-    right: 0 !important;
-    bottom: 0 !important;
-    z-index: 10000 !important;
-    padding-top: 56px !important; /* header height on mobile */
-    padding-left: 1.25rem !important;
-    padding-right: 1.25rem !important;
-    padding-bottom: 2rem !important;
-    background: linear-gradient(180deg, #fdfbf6 0%, #f6efe2 100%) !important;
-    overflow-y: auto !important;
-    -webkit-overflow-scrolling: touch !important;
-  }
-
-  /* When menu is open, lock body scroll */
-  html.mobile-menu-open body {
-    overflow: hidden !important;
-    position: fixed !important;
-    width: 100% !important;
-  }
-}
-
-/* ==========================================================================
-   ISSUE 10 — Locations compare modal: fix mobile display
-   Current: on mobile the compare table overflows, modal appears as empty
-   white box.
-   Fix: make the modal full-screen on mobile with a scrollable body, and
-   render the comparison as stacked cards instead of a wide table.
-   ========================================================================== */
-@media (max-width: 640px) {
-  .compare-modal {
-    padding: 0 !important;
-  }
-  .compare-modal__panel {
-    max-width: 100% !important;
-    width: 100% !important;
-    max-height: 100vh !important;
-    height: 100vh !important;
-    border-radius: 0 !important;
-    border: none !important;
-  }
-  .compare-modal__header {
-    padding: 0.85rem 1rem !important;
-    border-bottom: 2px solid var(--gold, #b89243) !important;
-    background: linear-gradient(135deg, var(--forest-dark, #143524), var(--forest, #1e3a2a)) !important;
-    color: #fff !important;
-  }
-  .compare-modal__title {
-    color: #fff !important;
-    font-size: 1.1rem !important;
-  }
-  .compare-modal__close {
-    background: rgba(255, 255, 255, 0.15) !important;
-    color: #fff !important;
-    width: 32px !important;
-    height: 32px !important;
-  }
-  .compare-modal__body {
-    padding: 1rem !important;
-    overflow-y: auto !important;
-    -webkit-overflow-scrolling: touch !important;
-  }
-  /* Convert the wide table to stacked cards on mobile */
-  .compare-table-wrap {
-    overflow-x: visible !important;
-    -webkit-overflow-scrolling: auto !important;
-  }
-  .compare-table {
-    display: block !important;
-  }
-  .compare-table thead {
-    display: none !important;
-  }
-  .compare-table tbody {
-    display: block !important;
-  }
-  .compare-table tr {
-    display: block !important;
-    margin-bottom: 1rem !important;
-    border: 1px solid rgba(184, 146, 67, 0.3) !important;
-    border-radius: 6px !important;
-    overflow: hidden !important;
-    background: #fff !important;
-  }
-  .compare-table td {
-    display: block !important;
-    padding: 0.6rem 0.85rem !important;
-    border-bottom: 1px solid rgba(30, 58, 42, 0.08) !important;
-    font-size: 0.85rem !important;
-    text-align: left !important;
-  }
-  .compare-table td:first-child {
-    background: linear-gradient(135deg, var(--forest-dark, #143524), var(--forest, #1e3a2a)) !important;
-    color: #fff !important;
-    font-weight: 700 !important;
-    font-family: var(--serif, Georgia, serif) !important;
-    font-size: 1rem !important;
-    text-transform: uppercase !important;
-    letter-spacing: 0.04em !important;
-  }
-  .compare-table td:not(:first-child) {
-    position: relative !important;
-    padding-left: 0.85rem !important;
-  }
-  .compare-table td:not(:first-child)::before {
-    content: attr(data-label) ": ";
-    font-weight: 600 !important;
-    color: var(--gold, #b89243) !important;
-    font-size: 0.72rem !important;
-    text-transform: uppercase !important;
-    letter-spacing: 0.05em !important;
-    display: block !important;
-    margin-bottom: 0.15rem !important;
-  }
-  /* The compare drawer bar at the bottom should also be more mobile-friendly */
-  .compare-drawer {
-    left: 0 !important;
-    right: 0 !important;
-    margin: 0 !important;
-  }
-  .compare-drawer__bar {
-    flex-wrap: wrap !important;
-    padding: 0.6rem 0.85rem !important;
-    gap: 0.4rem !important;
-  }
-  .compare-drawer__chips {
-    flex: 1 1 100% !important;
-    order: 3 !important;
-  }
-  .compare-drawer__actions {
-    flex: 1 1 100% !important;
-    order: 4 !important;
-    display: flex !important;
-    justify-content: stretch !important;
-    gap: 0.4rem !important;
-  }
-  .compare-drawer__btn {
-    flex: 1 !important;
-    padding: 0.55rem 0.5rem !important;
-    font-size: 0.78rem !important;
-  }
-}
-
-/* ==========================================================================
-   General premium polish for the editorial-service-grid cells to match the
-   new dark card theme from Issue 3.
-   ========================================================================== */
-.editorial-service-grid__cell {
-  background: linear-gradient(135deg, #ffffff, #faf5e9) !important;
-  border: 1px solid rgba(184, 146, 67, 0.25) !important;
-  border-radius: 4px !important;
-}
-.editorial-service-grid__num {
-  color: var(--gold, #b89243) !important;
-  font-weight: 700 !important;
-}
-.editorial-service-grid__arrow {
-  color: var(--forest, #1e3a2a) !important;
-  font-weight: 600 !important;
-  text-transform: uppercase !important;
-  letter-spacing: 0.05em !important;
-  font-size: 0.75rem !important;
-}
-
-/* Featured service cell (with image) — premium treatment */
-.editorial-service-grid__cell--featured {
-  border: 1px solid var(--gold, #b89243) !important;
-  overflow: hidden !important;
-}
-.editorial-service-grid__cell--featured .editorial-service-grid__content {
-  background: linear-gradient(160deg, rgba(20, 53, 36, 0.92), rgba(30, 58, 42, 0.88)) !important;
-  padding: 1.2rem 1.4rem !important;
-}
-.editorial-service-grid__cell--featured h3 {
-  color: #fff !important;
-}
-.editorial-service-grid__cell--featured p {
-  color: rgba(245, 233, 200, 0.85) !important;
-}
-.editorial-service-grid__cell--featured .editorial-service-grid__num {
-  color: var(--gold, #b89243) !important;
-}
-
-/* ==========================================================================
-   Reduced motion safety
-   ========================================================================== */
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation-duration: 0.01ms !important;
-    transition-duration: 0.01ms !important;
-  }
-}
-/* ==========================================================================
-   CGM v8 Update Stylesheet — Round-4 amendments (10 issues)
-   Appended to styles.css. Additive only.
-   ========================================================================== */
-
-/* ==========================================================================
-   ISSUE 4 — Compare modal on mobile: fix white box taking over screen
-   Root cause: the compare-drawer (sticky bottom bar) and the compare-modal
-   were both rendering with white backgrounds that filled the screen on
-   mobile. The modal was already full-screen but the drawer was appearing
-   ON TOP of it, creating a "white box" effect.
-   Fix: hide the compare-drawer when the modal is open, and make the modal
-   scroll properly with a max-height on the body.
-   ========================================================================== */
-@media (max-width: 640px) {
-  /* When modal is open, hide the drawer so it doesn't overlay */
-  .compare-modal:not([hidden]) ~ .compare-drawer,
-  body.compare-modal-open .compare-drawer {
-    display: none !important;
-  }
-  /* Modal panel: full screen but scrollable body */
-  .compare-modal__panel {
-    max-height: 100dvh !important;
-    height: 100dvh !important;
-    display: flex !important;
-    flex-direction: column !important;
-  }
-  .compare-modal__header {
-    flex-shrink: 0 !important;
-  }
-  .compare-modal__body {
-    flex: 1 1 auto !important;
-    overflow-y: auto !important;
-    -webkit-overflow-scrolling: touch !important;
-    padding: 1rem !important;
-    background: linear-gradient(180deg, #fdfbf6, #f6efe2) !important;
-  }
-  /* Compare drawer: make it a clean floating bar, not full-width white */
-  .compare-drawer {
-    position: fixed !important;
-    bottom: 0 !important;
-    left: 0 !important;
-    right: 0 !important;
-    z-index: 998 !important;
-    background: linear-gradient(180deg, var(--forest-dark, #143524), var(--forest, #1e3a2a)) !important;
-    color: #fff !important;
-    box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.2) !important;
-    padding: 0 !important;
-  }
-  .compare-drawer__bar {
-    background: transparent !important;
-    color: #fff !important;
-    border: none !important;
-    box-shadow: none !important;
-    padding: 0.65rem 0.85rem !important;
-    gap: 0.4rem !important;
-  }
-  .compare-drawer__count {
-    color: var(--gold, #b89243) !important;
-    font-weight: 700 !important;
-    font-size: 1.1rem !important;
-  }
-  .compare-drawer__label {
-    color: rgba(255, 255, 255, 0.85) !important;
-    font-size: 0.78rem !important;
-  }
-  .compare-drawer__btn {
-    background: var(--gold, #b89243) !important;
-    color: var(--forest-dark, #143524) !important;
-    border: none !important;
-    font-weight: 600 !important;
-    padding: 0.5rem 0.85rem !important;
-    border-radius: 3px !important;
-  }
-  .compare-drawer__btn:disabled {
-    background: rgba(255, 255, 255, 0.15) !important;
-    color: rgba(255, 255, 255, 0.5) !important;
-  }
-  .compare-drawer__btn--clear {
-    background: transparent !important;
-    color: rgba(255, 255, 255, 0.7) !important;
-    border: 1px solid rgba(255, 255, 255, 0.3) !important;
-  }
-  .compare-drawer__btn--close {
-    background: transparent !important;
-    color: rgba(255, 255, 255, 0.7) !important;
-    border: 1px solid rgba(255, 255, 255, 0.2) !important;
-  }
-}
-
-/* ==========================================================================
-   ISSUE 5 — "Four counties" cards: premium upgrade (match homepage cards)
-   Current: plain cards with just text. Apply the dark forest + gold theme.
-   ========================================================================== */
-.county-browser-grid {
-  display: grid !important;
-  grid-template-columns: repeat(4, 1fr) !important;
-  gap: 1rem !important;
-  margin-top: 2rem !important;
-}
-@media (max-width: 900px) {
-  .county-browser-grid {
-    grid-template-columns: 1fr 1fr !important;
-    gap: 0.6rem !important;
-  }
-}
-.loc-county-card {
-  background: linear-gradient(160deg, var(--forest-dark, #143524) 0%, var(--forest, #1e3a2a) 100%) !important;
-  color: #fff !important;
-  border: 1px solid rgba(184, 146, 67, 0.3) !important;
-  border-radius: 6px !important;
-  padding: 1.4rem 1.2rem !important;
-  position: relative !important;
-  overflow: hidden !important;
-  transition: transform 0.3s cubic-bezier(.2,.7,.3,1), box-shadow 0.3s ease, border-color 0.3s ease !important;
-  display: flex !important;
-  flex-direction: column !important;
-  gap: 0.5rem !important;
-  min-height: 180px !important;
-}
-.loc-county-card::before {
-  content: "";
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 3px;
-  background: linear-gradient(90deg, var(--gold, #b89243), transparent 80%);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.35s ease;
-}
-.loc-county-card:hover::before {
-  transform: scaleX(1);
-}
-.loc-county-card:hover {
-  transform: translateY(-4px) !important;
-  box-shadow: 0 14px 30px rgba(21, 40, 28, 0.22) !important;
-  border-color: var(--gold, #b89243) !important;
-}
-.loc-county-card h3 {
-  color: #fff !important;
-  font-family: var(--serif, Georgia, serif) !important;
-  font-size: 1.3rem !important;
-  font-weight: 600 !important;
-  margin: 0 !important;
-  letter-spacing: -0.01em;
-}
-.loc-county-card__count {
-  color: var(--gold, #b89243) !important;
-  font-family: var(--serif, Georgia, serif) !important;
-  font-size: 2.2rem !important;
-  font-weight: 700 !important;
-  line-height: 1 !important;
-  margin-top: 0.3rem !important;
-}
-.loc-county-card__label {
-  color: rgba(245, 233, 200, 0.75) !important;
-  font-size: 0.78rem !important;
-  font-family: var(--sans, system-ui, sans-serif) !important;
-  letter-spacing: 0.04em !important;
-  text-transform: uppercase !important;
-}
-.loc-county-card__link {
-  color: var(--gold, #b89243) !important;
-  font-family: var(--sans, system-ui, sans-serif) !important;
-  font-size: 0.78rem !important;
-  font-weight: 600 !important;
-  text-transform: uppercase !important;
-  letter-spacing: 0.06em !important;
-  text-decoration: none !important;
-  display: inline-flex !important;
-  align-items: center !important;
-  gap: 0.3rem !important;
-  margin-top: auto !important;
-  padding-top: 0.5rem !important;
-  border-top: 1px solid rgba(184, 146, 67, 0.2) !important;
-  transition: gap 0.2s ease !important;
-}
-.loc-county-card__link:hover {
-  gap: 0.55rem !important;
-  color: #fff !important;
-}
-.loc-county-card__link svg {
-  width: 14px !important;
-  height: 14px !important;
-}
-
-/* ==========================================================================
-   ISSUE 6 — Town intelligence section: premium style upgrade
-   Current: plain white panel. Apply premium dark forest + gold theme.
-   Also applies to individual town pages (covered by .town-data-card rules).
-   ========================================================================== */
-.town-intel-section {
-  background: linear-gradient(180deg, #fdfbf6 0%, #f6efe2 100%) !important;
-  padding: 3rem 0 !important;
-  border-top: 2px solid var(--gold, #b89243) !important;
-}
-.town-intel-section .section-title-center h2 {
-  font-family: var(--serif, Georgia, serif) !important;
-  color: var(--forest-deep, #143524) !important;
-  font-weight: 700 !important;
-}
-.town-intel-section .section-kicker {
-  color: var(--gold, #b89243) !important;
-  font-weight: 700 !important;
-  letter-spacing: 0.1em !important;
-  text-transform: uppercase !important;
-}
-
-.town-data-panel {
-  background: linear-gradient(160deg, var(--forest-dark, #143524) 0%, var(--forest, #1e3a2a) 100%) !important;
-  border: 1px solid rgba(184, 146, 67, 0.35) !important;
-  border-radius: 8px !important;
-  overflow: hidden !important;
-  box-shadow: 0 12px 32px rgba(21, 40, 28, 0.18) !important;
-}
-.town-data-panel__summary {
-  background: linear-gradient(135deg, rgba(184, 146, 67, 0.12), rgba(184, 146, 67, 0.04)) !important;
-  padding: 1.5rem 1.75rem !important;
-  border-bottom: 1px solid rgba(184, 146, 67, 0.25) !important;
-  position: relative !important;
-}
-.town-data-panel__summary::before {
-  content: "";
-  position: absolute;
-  top: 0; left: 0;
-  width: 4px;
-  height: 100%;
-  background: var(--gold, #b89243);
-}
-.town-data-panel__summary h3 {
-  color: #fff !important;
-  font-family: var(--serif, Georgia, serif) !important;
-  font-size: 1.8rem !important;
-  font-weight: 700 !important;
-  margin: 0 0 0.4rem 0 !important;
-  letter-spacing: -0.01em;
-}
-.town-data-panel__summary p {
-  color: rgba(245, 233, 200, 0.85) !important;
-  font-family: var(--sans, system-ui, sans-serif) !important;
-  font-size: 0.88rem !important;
-  line-height: 1.5 !important;
-  margin: 0 0 0.8rem 0 !important;
-}
-.town-data-panel__link {
-  display: inline-flex !important;
-  align-items: center !important;
-  gap: 0.4rem !important;
-  color: var(--gold, #b89243) !important;
-  font-family: var(--sans, system-ui, sans-serif) !important;
-  font-size: 0.82rem !important;
-  font-weight: 700 !important;
-  text-transform: uppercase !important;
-  letter-spacing: 0.06em !important;
-  text-decoration: none !important;
-  padding: 0.5rem 0.85rem !important;
-  border: 1px solid var(--gold, #b89243) !important;
   border-radius: 3px !important;
-  background: rgba(184, 146, 67, 0.08) !important;
-  transition: background 0.2s ease, color 0.2s ease !important;
+  overflow: hidden !important;
 }
-.town-data-panel__link:hover {
-  background: var(--gold, #b89243) !important;
-  color: var(--forest-dark, #143524) !important;
-}
-
-.town-data-grid {
-  display: grid !important;
-  grid-template-columns: repeat(3, 1fr) !important;
-  gap: 1px !important;
-  background: rgba(184, 146, 67, 0.15) !important;
-}
-@media (max-width: 768px) {
-  .town-data-grid {
-    grid-template-columns: 1fr 1fr !important;
-  }
-}
-@media (max-width: 480px) {
-  .town-data-grid {
-    grid-template-columns: 1fr !important;
-  }
-}
-
-.town-data-card {
-  background: rgba(255, 255, 255, 0.04) !important;
-  padding: 1rem 1.1rem !important;
-  border: none !important;
-  position: relative !important;
-  transition: background 0.2s ease !important;
-}
-.town-data-card:hover {
-  background: rgba(184, 146, 67, 0.08) !important;
-}
-.town-data-card--empty {
-  grid-column: 1 / -1 !important;
-  padding: 2.5rem 1.5rem !important;
-  text-align: center !important;
-  color: rgba(245, 233, 200, 0.6) !important;
-  font-family: var(--sans, system-ui, sans-serif) !important;
-  font-size: 0.9rem !important;
-}
-.town-data-card h4,
-.town-data-card__label,
-.town-data-card strong {
-  color: var(--gold, #b89243) !important;
-  font-family: var(--sans, system-ui, sans-serif) !important;
+.town-data-card--widget .cal-cell__month {
+  background: var(--forest-dark, #143524) !important;
+  color: #fff !important;
   font-size: 0.7rem !important;
-  font-weight: 700 !important;
-  letter-spacing: 0.08em !important;
-  text-transform: uppercase !important;
-  margin: 0 0 0.4rem 0 !important;
-  display: block !important;
+  font-weight: 800 !important;
+  height: 18px !important;
+  border-bottom: none !important;
+  letter-spacing: 0.02em;
 }
-.town-data-card p,
-.town-data-card__value,
-.town-data-card span {
-  color: rgba(245, 233, 200, 0.9) !important;
-  font-family: var(--sans, system-ui, sans-serif) !important;
-  font-size: 0.85rem !important;
-  line-height: 1.45 !important;
+.town-data-card--widget .cal-cell__bars {
+  background: #fff !important;
+  padding: 2px !important;
 }
-.town-data-card--ph .ph-bar {
-  background: rgba(255, 255, 255, 0.1) !important;
+.town-data-card--widget .cal-cell__bar {
+  background: #e8e4d6 !important;
+  border-radius: 1px !important;
+  min-height: 6px !important;
 }
-.town-data-card--ph .ph-marker {
-  background: var(--gold, #b89243) !important;
+/* Restore original active colors */
+.town-data-card--widget .cal-cell__bar--frost.is-active {
+  background: #3a7fb5 !important;
 }
-
-.town-intel-disclaimer {
-  color: var(--muted, #5a6b5e) !important;
-  font-size: 0.78rem !important;
-  font-style: italic !important;
-  margin-top: 1.5rem !important;
-  padding: 0.85rem 1rem !important;
-  border-left: 3px solid rgba(184, 146, 67, 0.4) !important;
-  background: rgba(184, 146, 67, 0.04) !important;
-  border-radius: 0 4px 4px 0 !important;
+.town-data-card--widget .cal-cell__bar--sow.is-active {
+  background: #5a9a3e !important;
 }
-
-/* Individual town pages premium upgrade */
-.town-page .town-hero,
-.town-page .town-data-card,
-.locations-page .town-data-card {
-  /* covered by rules above */
+.town-data-card--widget .cal-cell__bar--flower.is-active {
+  background: #d9941f !important;
+}
+.town-data-card--widget .cal-cell__bar--prune.is-active {
+  background: #8e5fa8 !important;
+}
+.town-data-card--widget .cal-legend__item {
+  color: rgba(245, 233, 200, 0.85) !important;
+  font-size: 0.68rem !important;
+}
+.town-data-card--widget .cal-dot {
+  border-radius: 2px !important;
 }
 
 /* ==========================================================================
-   ISSUE 7 — Gardening Knowledge: article cards premium upgrade
-   Current: .tip-card with plain styling. Apply premium theme.
+   ISSUE 2 + 5 — Featured / Newest / Most popular: same sideways scroller
+   as category sections (Garden Prices & Costs etc).
+   Also applies to ISSUE 5: sideways scroll for these sections.
    ========================================================================== */
+.tip-featured-section .editorial-list,
+.tip-newest-section .editorial-list,
+.tip-popular-section .editorial-list,
+.tip-featured-section > .editorial-list,
+.tip-newest-section > .editorial-list,
+.tip-popular-section > .editorial-list {
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
+  scroll-snap-type: x mandatory !important;
+  -webkit-overflow-scrolling: touch !important;
+  gap: 0.75rem !important;
+  padding: 0.35rem 0.5rem 1rem !important;
+  margin-inline: -0.5rem !important;
+  scrollbar-width: thin !important;
+  scrollbar-color: var(--gold, #b89243) rgba(30, 58, 42, 0.08) !important;
+  width: auto !important;
+  max-width: none !important;
+}
+.tip-featured-section .editorial-list::-webkit-scrollbar,
+.tip-newest-section .editorial-list::-webkit-scrollbar,
+.tip-popular-section .editorial-list::-webkit-scrollbar {
+  height: 5px !important;
+  -webkit-appearance: none !important;
+  appearance: none !important;
+}
+.tip-featured-section .editorial-list::-webkit-scrollbar-track,
+.tip-newest-section .editorial-list::-webkit-scrollbar-track,
+.tip-popular-section .editorial-list::-webkit-scrollbar-track {
+  background: rgba(30, 58, 42, 0.06) !important;
+  border-radius: 3px !important;
+}
+.tip-featured-section .editorial-list::-webkit-scrollbar-thumb,
+.tip-newest-section .editorial-list::-webkit-scrollbar-thumb,
+.tip-popular-section .editorial-list::-webkit-scrollbar-thumb {
+  background: var(--gold, #b89243) !important;
+  border-radius: 3px !important;
+}
+.tip-featured-section .tip-card.editorial-row,
+.tip-newest-section .tip-card.editorial-row,
+.tip-popular-section .tip-card.editorial-row {
+  flex: 0 0 min(78vw, 340px) !important;
+  width: min(78vw, 340px) !important;
+  min-width: 0 !important;
+  max-width: 340px !important;
+  scroll-snap-align: start !important;
+  scroll-snap-stop: normal !important;
+}
+@media (min-width: 769px) {
+  .tip-featured-section .tip-card.editorial-row,
+  .tip-newest-section .tip-card.editorial-row,
+  .tip-popular-section .tip-card.editorial-row {
+    flex: 0 0 min(45vw, 380px) !important;
+    width: min(45vw, 380px) !important;
+    max-width: 380px !important;
+  }
+}
+
+/* ==========================================================================
+   ISSUE 3 — Article sideways scroll arrows (desktop)
+   Add left/right scroll arrows ON EACH section that has a horizontal
+   scroller (Featured, Newest, Most popular, and each category section).
+   These arrows scroll the articles sideways within that section.
+   They are NOT category-skip arrows.
+   ========================================================================== */
+.editorial-list-scroll-wrap {
+  position: relative;
+}
+.editorial-list-scroll-wrap__arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--forest-dark, #143524), var(--forest, #1e3a2a));
+  border: 2px solid var(--gold, #b89243);
+  color: #fff;
+  cursor: pointer;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 14px rgba(21, 40, 28, 0.25);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+  opacity: 0.7;
+}
+.editorial-list-scroll-wrap__arrow:hover {
+  opacity: 1;
+  transform: translateY(-50%) scale(1.1);
+  box-shadow: 0 8px 22px rgba(21, 40, 28, 0.35);
+}
+.editorial-list-scroll-wrap__arrow:disabled {
+  opacity: 0.2;
+  cursor: not-allowed;
+  transform: translateY(-50%) !important;
+}
+.editorial-list-scroll-wrap__arrow svg {
+  width: 20px;
+  height: 20px;
+}
+.editorial-list-scroll-wrap__arrow--prev {
+  left: -8px;
+}
+.editorial-list-scroll-wrap__arrow--next {
+  right: -8px;
+}
+@media (min-width: 769px) {
+  .editorial-list-scroll-wrap__arrow {
+    display: flex;
+  }
+}
+
+/* Remove the old category-skip floating nav and sticky nav (Issue 3) */
+.tip-floating-nav,
+.tip-category-nav {
+  display: none !important;
+}
+
+/* Fix hover scroll-jam: remove tilt from tip cards */
+.tip-card.editorial-row.cgm-tilt {
+  will-change: auto !important;
+}
+.tip-card.editorial-row {
+  pointer-events: auto !important;
+}
+
+/* Premium tip card styling */
 .tip-card.editorial-row {
   background: linear-gradient(160deg, #ffffff 0%, #faf5e9 100%) !important;
   border: 1px solid rgba(184, 146, 67, 0.25) !important;
@@ -10426,7 +9620,7 @@ article li {
   transition: transform 0.3s cubic-bezier(.2,.7,.3,1), box-shadow 0.3s ease, border-color 0.3s ease !important;
   position: relative !important;
   overflow: hidden !important;
-  margin-bottom: 0.7rem !important;
+  margin-bottom: 0 !important;
 }
 .tip-card.editorial-row::before {
   content: "";
@@ -10484,14 +9678,6 @@ article li {
   border-color: rgba(139, 30, 30, 0.4) !important;
   color: #6b1818 !important;
 }
-.tip-card.editorial-row .editorial-row__tag {
-  font-size: 0.7rem !important;
-  color: var(--forest, #1e3a2a) !important;
-  background: rgba(30, 58, 42, 0.06) !important;
-  padding: 0.15rem 0.45rem !important;
-  border-radius: 3px !important;
-  border: 1px solid rgba(30, 58, 42, 0.12) !important;
-}
 .tip-card.editorial-row .editorial-row__cta {
   font-family: var(--sans, system-ui, sans-serif) !important;
   font-size: 0.78rem !important;
@@ -10499,17 +9685,6 @@ article li {
   text-transform: uppercase !important;
   letter-spacing: 0.06em !important;
   color: var(--gold, #b89243) !important;
-  display: flex !important;
-  align-items: center !important;
-  gap: 0.35rem !important;
-}
-.tip-card.editorial-row .editorial-row__cta svg {
-  width: 14px !important;
-  height: 14px !important;
-  transition: transform 0.2s ease !important;
-}
-.tip-card.editorial-row:hover .editorial-row__cta svg {
-  transform: translateX(4px) !important;
 }
 .tip-card.editorial-row .editorial-row__visual-icon {
   background: linear-gradient(135deg, var(--forest-dark, #143524), var(--forest, #1e3a2a)) !important;
@@ -10517,95 +9692,28 @@ article li {
   border-radius: 4px !important;
 }
 
-/* Category navigation buttons (desktop) */
-.tip-category-nav {
-  display: none;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 0.6rem;
-  gap: 0.5rem;
-}
-@media (min-width: 769px) {
-  .tip-category-nav {
-    display: flex;
-  }
-}
-.tip-category-nav__btn {
-  background: linear-gradient(135deg, var(--forest-dark, #143524), var(--forest, #1e3a2a)) !important;
-  color: #fff !important;
-  border: 1px solid var(--gold, #b89243) !important;
-  border-radius: 30px !important;
-  padding: 0.45rem 1rem !important;
-  font-family: var(--sans, system-ui, sans-serif) !important;
-  font-size: 0.78rem !important;
-  font-weight: 600 !important;
-  letter-spacing: 0.05em !important;
-  text-transform: uppercase !important;
-  cursor: pointer !important;
-  display: inline-flex !important;
-  align-items: center !important;
-  gap: 0.35rem !important;
-  transition: transform 0.2s ease, box-shadow 0.2s ease !important;
-  box-shadow: 0 2px 6px rgba(21, 40, 28, 0.15) !important;
-}
-.tip-category-nav__btn:hover:not(:disabled) {
-  transform: translateY(-2px) !important;
-  box-shadow: 0 6px 14px rgba(21, 40, 28, 0.22) !important;
-}
-.tip-category-nav__btn:disabled {
-  opacity: 0.4 !important;
-  cursor: not-allowed !important;
-}
-.tip-category-nav__btn svg {
-  width: 14px !important;
-  height: 14px !important;
-}
-.tip-category-nav__label {
-  font-family: var(--sans, system-ui, sans-serif) !important;
-  font-size: 0.78rem !important;
-  font-weight: 600 !important;
-  letter-spacing: 0.06em !important;
-  text-transform: uppercase !important;
-  color: var(--forest-deep, #143524) !important;
-}
-
 /* ==========================================================================
-   ISSUE 8 — Garden tools and planners: cards premium upgrade
-   Current: .editorial-calc-card plain. Apply premium dark theme.
+   ISSUE 6 — Nine services desktop cards premium upgrade
+   Apply dark forest + gold theme to .editorial-service-grid__cell on desktop.
    ========================================================================== */
-.editorial-calc-grid {
-  display: grid !important;
-  grid-template-columns: repeat(3, 1fr) !important;
-  gap: 1rem !important;
-  margin-top: 2rem !important;
-}
-@media (max-width: 900px) {
-  .editorial-calc-grid {
-    grid-template-columns: 1fr 1fr !important;
-    gap: 0.7rem !important;
-  }
-}
-@media (max-width: 600px) {
-  .editorial-calc-grid {
-    grid-template-columns: 1fr !important;
-  }
-}
-.editorial-calc-card {
-  background: linear-gradient(160deg, var(--forest-dark, #143524) 0%, var(--forest, #1e3a2a) 100%) !important;
-  color: #fff !important;
+.editorial-service-grid {
+  background: var(--forest-dark, #143524) !important;
   border: 1px solid rgba(184, 146, 67, 0.3) !important;
   border-radius: 6px !important;
-  padding: 1.4rem 1.3rem !important;
-  text-decoration: none !important;
-  display: flex !important;
-  flex-direction: column !important;
-  gap: 0.5rem !important;
-  min-height: 200px !important;
+  overflow: hidden !important;
+  gap: 1px !important;
+}
+.editorial-service-grid__cell {
+  background: linear-gradient(160deg, var(--forest-dark, #143524) 0%, var(--forest, #1e3a2a) 100%) !important;
+  color: #fff !important;
+  border: none !important;
+  padding: 1.5rem 1.4rem !important;
   position: relative !important;
   overflow: hidden !important;
-  transition: transform 0.3s cubic-bezier(.2,.7,.3,1), box-shadow 0.3s ease, border-color 0.3s ease !important;
+  transition: transform 0.3s cubic-bezier(.2,.7,.3,1), box-shadow 0.3s ease, background 0.3s ease !important;
+  min-height: 180px !important;
 }
-.editorial-calc-card::before {
+.editorial-service-grid__cell::after {
   content: "";
   position: absolute;
   top: 0; left: 0; right: 0;
@@ -10615,73 +9723,50 @@ article li {
   transform-origin: left;
   transition: transform 0.35s ease;
 }
-.editorial-calc-card:hover::before {
+.editorial-service-grid__cell:hover::after {
   transform: scaleX(1);
 }
-.editorial-calc-card:hover {
+.editorial-service-grid__cell:hover {
+  background: linear-gradient(160deg, var(--forest, #1e3a2a) 0%, #2a4a36 100%) !important;
   transform: translateY(-4px) !important;
   box-shadow: 0 14px 30px rgba(21, 40, 28, 0.22) !important;
-  border-color: var(--gold, #b89243) !important;
 }
-.editorial-calc-card__num {
-  color: var(--gold, #b89243) !important;
-  font-family: var(--sans, system-ui, sans-serif) !important;
-  font-size: 0.72rem !important;
-  font-weight: 700 !important;
-  letter-spacing: 0.1em !important;
-  text-transform: uppercase !important;
-}
-.editorial-calc-card__title {
+.editorial-service-grid__cell h3 {
   color: #fff !important;
   font-family: var(--serif, Georgia, serif) !important;
-  font-size: 1.25rem !important;
   font-weight: 600 !important;
-  margin: 0 !important;
-  line-height: 1.2 !important;
-  letter-spacing: -0.01em;
 }
-.editorial-calc-card__body {
+.editorial-service-grid__cell p {
   color: rgba(245, 233, 200, 0.78) !important;
-  font-family: var(--sans, system-ui, sans-serif) !important;
-  font-size: 0.85rem !important;
-  line-height: 1.45 !important;
-  margin: 0 !important;
 }
-.editorial-calc-card__cta {
+.editorial-service-grid__num {
   color: var(--gold, #b89243) !important;
-  font-family: var(--sans, system-ui, sans-serif) !important;
-  font-size: 0.78rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.08em !important;
+}
+.editorial-service-grid__arrow {
+  color: var(--gold, #b89243) !important;
   font-weight: 700 !important;
   text-transform: uppercase !important;
   letter-spacing: 0.06em !important;
-  margin-top: auto !important;
-  padding-top: 0.5rem !important;
-  border-top: 1px solid rgba(184, 146, 67, 0.2) !important;
-  display: inline-flex !important;
-  align-items: center !important;
-  gap: 0.3rem !important;
 }
-.editorial-calc-card:hover .editorial-calc-card__cta {
-  color: #fff !important;
+.editorial-service-grid__cell--featured {
+  border-right: 1px solid rgba(184, 146, 67, 0.3) !important;
+}
+.editorial-service-grid__cell--featured .editorial-service-grid__num {
+  color: var(--gold, #b89243) !important;
 }
 
-/* ==========================================================================
-   ISSUE 9 — Nine services mobile: restore to original (only show .service-
-   list-mobile on mobile, hide .editorial-service-grid).
-   v7 broke this by forcing .editorial-service-grid to display:flex on mobile.
-   ========================================================================== */
+/* Mobile: keep the original .service-list-mobile, hide desktop grid */
 @media (max-width: 768px) {
-  /* Hide the desktop grid on mobile — use the original mobile-only list */
   .editorial-service-grid {
     display: none !important;
   }
-  /* Show the mobile-only list (was set to display:none inline) */
   .service-list-mobile {
     display: flex !important;
-    flex-direction: column;
+    flex-direction: column !important;
     gap: 0.6rem !important;
   }
-  /* Restore the premium card styling for mobile service cards */
   .service-card-mobile {
     background: linear-gradient(135deg, #ffffff, #faf5e9) !important;
     border: 1px solid rgba(184, 146, 67, 0.25) !important;
@@ -10715,13 +9800,7 @@ article li {
   }
   .service-card-mobile__arrow {
     color: var(--gold, #b89243) !important;
-    flex-shrink: 0 !important;
   }
-  .service-card-mobile__arrow svg {
-    width: 18px !important;
-    height: 18px !important;
-  }
-  /* The "View six more services" disclosure */
   .service-list-mobile-more > summary {
     background: linear-gradient(135deg, var(--forest-dark, #143524), var(--forest, #1e3a2a)) !important;
     color: var(--gold, #b89243) !important;
@@ -10740,9 +9819,6 @@ article li {
   .service-list-mobile-more > summary::-webkit-details-marker {
     display: none !important;
   }
-  .service-list-mobile-more[open] > summary {
-    border-bottom: 1px solid var(--gold, #b89243) !important;
-  }
   .service-list-mobile-more__items {
     display: flex !important;
     flex-direction: column !important;
@@ -10752,971 +9828,303 @@ article li {
 }
 
 /* ==========================================================================
-   ISSUE 10 — "What do you need?" multi-select with numbered ordering
-   Replace radio buttons with checkboxes + numbered badges.
+   ISSUE 7 — Move "check your postcode" CTA to fix mobile white box
+   The .loc-cta section is a large dark band. On mobile, when the compare
+   drawer is visible, the combination creates a visual glitch.
+   Fix: make the loc-cta section shorter on mobile and ensure it doesn't
+   interact with the compare drawer.
    ========================================================================== */
-.calc-options--multi {
-  display: grid !important;
-  grid-template-columns: repeat(2, 1fr) !important;
-  gap: 0.5rem !important;
-}
-@media (max-width: 600px) {
-  .calc-options--multi {
-    grid-template-columns: 1fr !important;
+@media (max-width: 768px) {
+  .loc-cta {
+    padding: 2rem 0 !important;
+    margin-top: 1rem !important;
+    margin-bottom: 5rem !important; /* space for compare drawer */
+  }
+  .loc-cta h2 {
+    font-size: 1.5rem !important;
+  }
+  .loc-cta p {
+    font-size: 0.9rem !important;
+    margin-bottom: 1rem !important;
+  }
+  .loc-cta__form {
+    flex-direction: column !important;
+    gap: 0.5rem !important;
+  }
+  .loc-cta__input {
+    max-width: 100% !important;
+    height: 44px !important;
+    font-size: 0.9rem !important;
   }
 }
-.calc-options--multi input[type="checkbox"] {
-  position: absolute !important;
-  opacity: 0 !important;
-  pointer-events: none !important;
-  width: 0 !important;
-  height: 0 !important;
-}
-.calc-options--multi label {
-  display: flex !important;
-  align-items: center !important;
-  gap: 0.6rem !important;
-  padding: 0.7rem 0.9rem !important;
-  background: linear-gradient(135deg, #ffffff, #faf5e9) !important;
-  border: 1px solid rgba(184, 146, 67, 0.25) !important;
-  border-radius: 4px !important;
-  cursor: pointer !important;
-  font-family: var(--sans, system-ui, sans-serif) !important;
-  font-size: 0.88rem !important;
-  font-weight: 500 !important;
-  color: var(--forest-deep, #143524) !important;
-  transition: all 0.2s ease !important;
-  position: relative !important;
-  user-select: none !important;
-  -webkit-user-select: none !important;
-}
-.calc-options--multi label::before {
-  content: "";
-  width: 18px !important;
-  height: 18px !important;
-  border: 2px solid rgba(184, 146, 67, 0.4) !important;
-  border-radius: 3px !important;
-  background: #fff !important;
-  flex-shrink: 0 !important;
-  transition: all 0.2s ease !important;
-  display: inline-block !important;
-}
-.calc-options--multi label::after {
-  content: "";
-  position: absolute !important;
-  left: 0.9rem !important;
-  top: 50% !important;
-  transform: translateY(-50%) !important;
-  width: 18px !important;
-  height: 18px !important;
-  background: var(--gold, #b89243) !important;
-  border-radius: 3px !important;
-  opacity: 0 !important;
-  transition: opacity 0.2s ease !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-}
-.calc-options--multi label .order-badge {
-  margin-left: auto !important;
-  background: var(--gold, #b89243) !important;
-  color: var(--forest-dark, #143524) !important;
-  font-weight: 700 !important;
-  font-size: 0.72rem !important;
-  padding: 0.15rem 0.45rem !important;
-  border-radius: 12px !important;
-  min-width: 22px !important;
-  text-align: center !important;
-  display: none !important;
-}
-.calc-options--multi input[type="checkbox"]:checked + label {
-  background: linear-gradient(135deg, var(--forest-dark, #143524), var(--forest, #1e3a2a)) !important;
-  color: #fff !important;
-  border-color: var(--gold, #b89243) !important;
-  box-shadow: 0 4px 12px rgba(21, 40, 28, 0.18) !important;
-}
-.calc-options--multi input[type="checkbox"]:checked + label::before {
-  border-color: var(--gold, #b89243) !important;
-  background: var(--gold, #b89243) !important;
-}
-.calc-options--multi input[type="checkbox"]:checked + label::after {
-  opacity: 1 !important;
-  background: transparent !important;
-}
-.calc-options--multi input[type="checkbox"]:checked + label::after {
-  /* Checkmark */
-  content: "✓" !important;
-  color: var(--forest-dark, #143524) !important;
-  font-weight: 700 !important;
-  font-size: 0.85rem !important;
-  background: var(--gold, #b89243) !important;
-  opacity: 1 !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-}
-.calc-options--multi input[type="checkbox"]:checked + label .order-badge {
-  display: inline-block !important;
-}
-.calc-options--multi label:hover {
-  border-color: var(--gold, #b89243) !important;
-  transform: translateY(-1px) !important;
-  box-shadow: 0 4px 10px rgba(21, 40, 28, 0.1) !important;
-}
-
-/* Summary chip showing selected services in order */
-.service-multi-summary {
-  background: rgba(184, 146, 67, 0.06) !important;
-  border: 1px solid rgba(184, 146, 67, 0.3) !important;
-  border-radius: 4px !important;
-  padding: 0.7rem 0.9rem !important;
-  margin-top: 0.6rem !important;
-  font-family: var(--sans, system-ui, sans-serif) !important;
-  font-size: 0.82rem !important;
-  color: var(--forest-deep, #143524) !important;
-  display: none;
-}
-.service-multi-summary:not(:empty) {
-  display: block;
-}
-.service-multi-summary__label {
-  font-weight: 700 !important;
-  text-transform: uppercase !important;
-  letter-spacing: 0.06em !important;
-  color: var(--gold, #b89243) !important;
-  font-size: 0.72rem !important;
-  display: block !important;
-  margin-bottom: 0.3rem !important;
-}
-.service-multi-summary__list {
-  display: flex !important;
-  flex-wrap: wrap !important;
-  gap: 0.3rem !important;
-}
-.service-multi-summary__chip {
-  background: linear-gradient(135deg, var(--forest-dark, #143524), var(--forest, #1e3a2a)) !important;
-  color: #fff !important;
-  padding: 0.25rem 0.55rem !important;
-  border-radius: 12px !important;
-  font-size: 0.75rem !important;
-  font-weight: 500 !important;
-  display: inline-flex !important;
-  align-items: center !important;
-  gap: 0.3rem !important;
-}
-.service-multi-summary__chip-num {
-  background: var(--gold, #b89243) !important;
-  color: var(--forest-dark, #143524) !important;
-  font-weight: 700 !important;
-  padding: 0 0.35rem !important;
-  border-radius: 8px !important;
-  font-size: 0.68rem !important;
-  min-width: 16px !important;
-  text-align: center !important;
-}
 
 /* ==========================================================================
-   ISSUE 3 — Town search popup box ("Select town" button)
+   ISSUE 8 — Photo editor: button labels, Done button, mobile image fix
    ========================================================================== */
-.town-search-popup {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  right: 0;
-  z-index: 50;
-  background: linear-gradient(160deg, var(--forest-dark, #143524), var(--forest, #1e3a2a)) !important;
-  border: 1px solid var(--gold, #b89243) !important;
-  border-radius: 6px !important;
-  box-shadow: 0 14px 30px rgba(21, 40, 28, 0.25) !important;
-  padding: 1rem !important;
-  margin-top: 0.5rem !important;
-  display: none;
-}
-.town-search-popup:not([hidden]) {
-  display: block;
-}
-.town-search-popup__name {
-  color: #fff !important;
-  font-family: var(--serif, Georgia, serif) !important;
-  font-size: 1.3rem !important;
-  font-weight: 700 !important;
-  margin: 0 0 0.2rem 0 !important;
-}
-.town-search-popup__county {
-  color: var(--gold, #b89243) !important;
-  font-family: var(--sans, system-ui, sans-serif) !important;
-  font-size: 0.78rem !important;
-  font-weight: 600 !important;
-  letter-spacing: 0.05em !important;
-  text-transform: uppercase !important;
-  margin: 0 0 0.7rem 0 !important;
-}
-.town-search-popup__intro {
-  color: rgba(245, 233, 200, 0.85) !important;
-  font-family: var(--sans, system-ui, sans-serif) !important;
-  font-size: 0.85rem !important;
-  line-height: 1.45 !important;
-  margin: 0 0 0.8rem 0 !important;
-}
-.town-search-popup__btn {
-  display: inline-flex !important;
-  align-items: center !important;
-  gap: 0.4rem !important;
-  background: var(--gold, #b89243) !important;
-  color: var(--forest-dark, #143524) !important;
-  border: none !important;
-  padding: 0.55rem 1rem !important;
-  border-radius: 3px !important;
-  font-family: var(--sans, system-ui, sans-serif) !important;
-  font-size: 0.82rem !important;
-  font-weight: 700 !important;
-  text-transform: uppercase !important;
-  letter-spacing: 0.06em !important;
-  cursor: pointer !important;
-  transition: background 0.2s ease, transform 0.2s ease !important;
-}
-.town-search-popup__btn:hover {
-  background: #fff !important;
-  transform: translateY(-1px) !important;
-}
-
-/* ==========================================================================
-   Reduced motion safety
-   ========================================================================== */
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation-duration: 0.01ms !important;
-    transition-duration: 0.01ms !important;
-  }
-}
-/* ==========================================================================
-   CGM v9 Update Stylesheet — Round-5 amendments (9 issues)
-   Appended to styles.css. Additive only.
-   ========================================================================== */
-
-/* ==========================================================================
-   ISSUE 1 — Unified photo upload + editor at top of form
-   Replaces the two-step upload + advanced disclosure with a single upload
-   zone that auto-opens the full-screen editor on file selection.
-   The editor has a side toolbar (pen / label / erase) always visible.
-   ========================================================================== */
-
-/* Hide the old advanced disclosure and edit button */
-.quote-advanced,
-.quote-photo-edit-button {
-  display: none !important;
-}
-
-/* New unified upload zone at the top of the form */
-.quote-photo-upload-zone {
-  background: linear-gradient(135deg, var(--forest-dark, #143524), var(--forest, #1e3a2a)) !important;
-  border: 2px dashed var(--gold, #b89243) !important;
-  border-radius: 8px !important;
-  padding: 1.5rem 1.2rem !important;
-  text-align: center !important;
-  cursor: pointer !important;
-  transition: border-color 0.2s ease, background 0.2s ease !important;
-  position: relative !important;
-  overflow: hidden !important;
-  margin-bottom: 1rem !important;
-  color: #fff !important;
-}
-.quote-photo-upload-zone:hover {
-  border-color: #fff !important;
-  background: linear-gradient(135deg, var(--forest, #1e3a2a), #2a4a36) !important;
-}
-.quote-photo-upload-zone svg {
-  color: var(--gold, #b89243) !important;
-  width: 36px !important;
-  height: 36px !important;
-  margin-bottom: 0.5rem !important;
-}
-.quote-photo-upload-zone__title {
-  font-family: var(--serif, Georgia, serif) !important;
-  font-size: 1.1rem !important;
-  font-weight: 600 !important;
-  color: #fff !important;
-  margin: 0 0 0.3rem 0 !important;
-}
-.quote-photo-upload-zone__hint {
-  font-family: var(--sans, system-ui, sans-serif) !important;
-  font-size: 0.78rem !important;
-  color: rgba(245, 233, 200, 0.75) !important;
-  margin: 0 !important;
-}
-.quote-photo-upload-zone input[type="file"] {
-  position: absolute !important;
-  inset: 0 !important;
-  opacity: 0 !important;
-  cursor: pointer !important;
-  width: 100% !important;
-  height: 100% !important;
-}
-
-/* Photo thumbnails row (compact, above the form) */
-.quote-photo-thumbs {
-  display: flex !important;
-  flex-wrap: wrap !important;
-  gap: 0.5rem !important;
-  margin-bottom: 1rem !important;
-}
-.quote-photo-thumb {
-  position: relative !important;
-  width: 80px !important;
-  height: 80px !important;
-  border-radius: 4px !important;
-  overflow: hidden !important;
-  border: 2px solid rgba(184, 146, 67, 0.3) !important;
-  cursor: pointer !important;
-  transition: border-color 0.2s ease, transform 0.2s ease !important;
-}
-.quote-photo-thumb:hover {
-  border-color: var(--gold, #b89243) !important;
-  transform: scale(1.05) !important;
-}
-.quote-photo-thumb img {
-  width: 100% !important;
-  height: 100% !important;
-  object-fit: cover !important;
-}
-.quote-photo-thumb__edit-badge {
-  position: absolute !important;
-  top: 2px !important;
-  right: 2px !important;
-  background: var(--gold, #b89243) !important;
-  color: var(--forest-dark, #143524) !important;
-  font-size: 0.6rem !important;
-  font-weight: 700 !important;
-  padding: 0.1rem 0.3rem !important;
-  border-radius: 2px !important;
-  display: none !important;
-}
-.quote-photo-thumb--edited .quote-photo-thumb__edit-badge {
-  display: block !important;
-}
-.quote-photo-thumb__remove {
-  position: absolute !important;
-  bottom: 2px !important;
-  right: 2px !important;
-  background: rgba(139, 30, 30, 0.85) !important;
-  color: #fff !important;
-  border: none !important;
-  width: 20px !important;
-  height: 20px !important;
-  border-radius: 50% !important;
-  font-size: 0.7rem !important;
-  cursor: pointer !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  padding: 0 !important;
-  line-height: 1 !important;
-}
-
-/* Full-screen editor modal (unified, opens on upload) */
-.photo-editor-modal {
-  position: fixed !important;
-  inset: 0 !important;
-  z-index: 100000 !important;
-  background: rgba(0, 0, 0, 0.92) !important;
-  display: flex !important;
-  flex-direction: column !important;
-  backdrop-filter: blur(8px) !important;
-  -webkit-backdrop-filter: blur(8px) !important;
-}
-.photo-editor-modal[hidden] { display: none !important; }
-.photo-editor-modal__header {
-  display: flex !important;
-  align-items: center !important;
-  justify-content: space-between !important;
-  padding: 0.75rem 1rem !important;
-  background: linear-gradient(180deg, var(--forest-dark, #143524), var(--forest, #1e3a2a)) !important;
-  border-bottom: 1px solid var(--gold, #b89243) !important;
-  color: #fff !important;
-  flex-shrink: 0 !important;
-}
-.photo-editor-modal__title {
-  font-family: var(--serif, Georgia, serif) !important;
-  font-size: 1rem !important;
-  font-weight: 600 !important;
-  color: #fff !important;
-  margin: 0 !important;
-}
-.photo-editor-modal__counter {
-  font-family: var(--sans, system-ui, sans-serif) !important;
-  font-size: 0.75rem !important;
-  color: var(--gold, #b89243) !important;
-  font-weight: 600 !important;
-}
-.photo-editor-modal__close {
-  background: rgba(255, 255, 255, 0.15) !important;
-  border: 1px solid rgba(184, 146, 67, 0.4) !important;
-  color: #fff !important;
-  width: 36px !important;
-  height: 36px !important;
-  border-radius: 4px !important;
-  font-size: 1.3rem !important;
-  cursor: pointer !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  transition: background 0.2s ease !important;
-}
-.photo-editor-modal__close:hover {
-  background: rgba(184, 146, 67, 0.3) !important;
-}
-
-.photo-editor-modal__body {
-  flex: 1 1 auto !important;
-  display: flex !important;
-  flex-direction: row !important;
-  overflow: hidden !important;
-  position: relative !important;
-}
-
-/* Canvas area */
+/* Photo editor modal — ensure canvas doesn't stretch on mobile */
 .photo-editor-modal__canvas-wrap {
-  flex: 1 1 auto !important;
-  display: flex !important;
   align-items: center !important;
   justify-content: center !important;
-  padding: 1rem !important;
-  overflow: hidden !important;
-  position: relative !important;
+  min-height: 0 !important;
 }
 .photo-editor-modal__canvas-wrap canvas {
   max-width: 100% !important;
   max-height: 100% !important;
+  width: auto !important;
+  height: auto !important;
   object-fit: contain !important;
-  cursor: crosshair !important;
-  border-radius: 4px !important;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5) !important;
+  aspect-ratio: auto !important;
 }
-
-/* Side toolbar (desktop: right side, mobile: bottom) */
-.photo-editor-modal__toolbar {
-  flex-shrink: 0 !important;
-  background: linear-gradient(180deg, var(--forest-dark, #143524), var(--forest, #1e3a2a)) !important;
-  border-left: 1px solid rgba(184, 146, 67, 0.3) !important;
-  padding: 1rem 0.75rem !important;
-  display: flex !important;
-  flex-direction: column !important;
-  gap: 0.5rem !important;
-  width: 64px !important;
-  align-items: center !important;
-}
-.photo-editor-modal__tool {
-  width: 44px !important;
-  height: 44px !important;
-  border-radius: 6px !important;
-  border: 1px solid rgba(184, 146, 67, 0.25) !important;
-  background: rgba(255, 255, 255, 0.06) !important;
-  color: rgba(245, 233, 200, 0.7) !important;
-  cursor: pointer !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  transition: all 0.2s ease !important;
-  position: relative !important;
-}
-.photo-editor-modal__tool:hover {
-  border-color: var(--gold, #b89243) !important;
-  color: #fff !important;
-  background: rgba(184, 146, 67, 0.12) !important;
-}
-.photo-editor-modal__tool.is-active {
-  background: var(--gold, #b89243) !important;
-  color: var(--forest-dark, #143524) !important;
-  border-color: #fff !important;
-  box-shadow: 0 0 0 2px rgba(184, 146, 67, 0.4) !important;
-}
-.photo-editor-modal__tool svg {
-  width: 20px !important;
-  height: 20px !important;
-}
-.photo-editor-modal__tool-label {
-  position: absolute !important;
-  right: 100% !important;
-  top: 50% !important;
-  transform: translateY(-50%) !important;
-  margin-right: 8px !important;
-  background: var(--forest-dark, #143524) !important;
-  color: #fff !important;
-  font-size: 0.72rem !important;
-  font-family: var(--sans, system-ui, sans-serif) !important;
-  padding: 0.25rem 0.5rem !important;
-  border-radius: 3px !important;
-  white-space: nowrap !important;
-  opacity: 0 !important;
-  pointer-events: none !important;
-  transition: opacity 0.15s ease !important;
-  border: 1px solid rgba(184, 146, 67, 0.3) !important;
-}
-.photo-editor-modal__tool:hover .photo-editor-modal__tool-label {
-  opacity: 1 !important;
-}
-.photo-editor-modal__tool-divider {
-  width: 70% !important;
-  height: 1px !important;
-  background: rgba(184, 146, 67, 0.2) !important;
-  margin: 0.2rem 0 !important;
-}
-.photo-editor-modal__color-picker {
-  display: flex !important;
-  flex-direction: column !important;
-  gap: 0.3rem !important;
-  align-items: center !important;
-}
-.photo-editor-modal__color {
-  width: 22px !important;
-  height: 22px !important;
-  border-radius: 50% !important;
-  border: 2px solid rgba(255, 255, 255, 0.2) !important;
-  cursor: pointer !important;
-  transition: transform 0.15s ease, border-color 0.15s ease !important;
-}
-.photo-editor-modal__color:hover {
-  transform: scale(1.15) !important;
-}
-.photo-editor-modal__color.is-active {
-  border-color: #fff !important;
-  transform: scale(1.15) !important;
-  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.3) !important;
-}
-
-/* Mobile: toolbar moves to bottom, horizontal */
 @media (max-width: 768px) {
-  .photo-editor-modal__body {
-    flex-direction: column !important;
-  }
-  .photo-editor-modal__toolbar {
-    flex-direction: row !important;
-    width: 100% !important;
-    border-left: none !important;
-    border-top: 1px solid rgba(184, 146, 67, 0.3) !important;
-    padding: 0.5rem 0.75rem !important;
-    gap: 0.4rem !important;
-    overflow-x: auto !important;
-    justify-content: flex-start !important;
-    -webkit-overflow-scrolling: touch !important;
-  }
-  .photo-editor-modal__tool {
-    flex-shrink: 0 !important;
-    width: 40px !important;
-    height: 40px !important;
-  }
-  .photo-editor-modal__tool-label {
-    display: none !important;
-  }
-  .photo-editor-modal__tool-divider {
-    width: 1px !important;
-    height: 70% !important;
-    margin: 0 0.2rem !important;
-  }
-  .photo-editor-modal__color-picker {
-    flex-direction: row !important;
-  }
   .photo-editor-modal__canvas-wrap {
     padding: 0.5rem !important;
+    /* Use available height between header and toolbar */
+    flex: 1 1 0 !important;
+    min-height: 0 !important;
+    overflow: hidden !important;
+  }
+  .photo-editor-modal__canvas-wrap canvas {
+    max-width: calc(100vw - 1rem) !important;
+    max-height: 100% !important;
   }
 }
 
-/* Photo navigation (prev/next) for multiple photos */
-.photo-editor-modal__nav {
-  position: absolute !important;
-  top: 50% !important;
-  transform: translateY(-50%) !important;
-  background: rgba(21, 40, 28, 0.8) !important;
-  border: 1px solid rgba(184, 146, 67, 0.4) !important;
-  color: #fff !important;
-  width: 40px !important;
-  height: 40px !important;
-  border-radius: 50% !important;
-  cursor: pointer !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  z-index: 5 !important;
-  transition: background 0.2s ease !important;
-}
-.photo-editor-modal__nav:hover {
-  background: var(--gold, #b89243) !important;
-  color: var(--forest-dark, #143524) !important;
-}
-.photo-editor-modal__nav--prev { left: 0.5rem !important; }
-.photo-editor-modal__nav--next { right: 0.5rem !important; }
-.photo-editor-modal__nav svg {
-  width: 20px !important;
-  height: 20px !important;
+/* Tool button labels — always visible on mobile (text under icon) */
+@media (max-width: 768px) {
+  .photo-editor-modal__tool {
+    flex-direction: column !important;
+    gap: 0.15rem !important;
+    width: 48px !important;
+    height: auto !important;
+    min-height: 48px !important;
+    padding: 0.25rem 0.15rem !important;
+  }
+  .photo-editor-modal__tool svg {
+    width: 18px !important;
+    height: 18px !important;
+  }
+  .photo-editor-modal__tool::after {
+    content: attr(data-label);
+    font-size: 0.55rem !important;
+    font-family: var(--sans, system-ui, sans-serif) !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.03em !important;
+    text-transform: uppercase !important;
+    color: inherit !important;
+    line-height: 1 !important;
+  }
 }
 
-/* ==========================================================================
-   ISSUE 2 — Bottom WhatsApp section: compact, professional
-   Replace the bulky sidebar cards with a slim, inline strip.
-   ========================================================================== */
-.quote-bottom-cta {
-  display: flex !important;
-  flex-wrap: wrap !important;
-  gap: 0.6rem !important;
-  align-items: center !important;
-  justify-content: center !important;
-  padding: 1rem 1.2rem !important;
-  background: linear-gradient(135deg, var(--forest-dark, #143524), var(--forest, #1e3a2a)) !important;
-  border-radius: 6px !important;
-  border: 1px solid rgba(184, 146, 67, 0.3) !important;
-  margin: 1.5rem 0 !important;
-}
-.quote-bottom-cta__label {
-  font-family: var(--sans, system-ui, sans-serif) !important;
-  font-size: 0.78rem !important;
-  font-weight: 600 !important;
-  letter-spacing: 0.06em !important;
-  text-transform: uppercase !important;
-  color: var(--gold, #b89243) !important;
-  margin-right: 0.5rem !important;
-}
-.quote-bottom-cta__btn {
-  display: inline-flex !important;
-  align-items: center !important;
-  gap: 0.35rem !important;
-  padding: 0.45rem 0.85rem !important;
+/* Done button in the header */
+.photo-editor-modal__done {
+  background: var(--gold, #b89243) !important;
+  color: var(--forest-dark, #143524) !important;
+  border: none !important;
+  padding: 0.4rem 0.85rem !important;
   border-radius: 3px !important;
   font-family: var(--sans, system-ui, sans-serif) !important;
   font-size: 0.78rem !important;
-  font-weight: 600 !important;
-  text-decoration: none !important;
-  transition: all 0.2s ease !important;
-  border: 1px solid rgba(184, 146, 67, 0.4) !important;
-  background: transparent !important;
-  color: #fff !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.06em !important;
+  cursor: pointer !important;
+  transition: background 0.2s ease !important;
 }
-.quote-bottom-cta__btn:hover {
-  background: var(--gold, #b89243) !important;
-  color: var(--forest-dark, #143524) !important;
-  border-color: #fff !important;
-  transform: translateY(-1px) !important;
-}
-.quote-bottom-cta__btn--primary {
-  background: var(--gold, #b89243) !important;
-  color: var(--forest-dark, #143524) !important;
-  border-color: #fff !important;
-}
-.quote-bottom-cta__btn--primary:hover {
+.photo-editor-modal__done:hover {
   background: #fff !important;
-}
-.quote-bottom-cta__btn svg {
-  width: 14px !important;
-  height: 14px !important;
-}
-
-/* Hide the old bulky sidebar on the quote page */
-.quote-page .sidebar,
-.booking-page .sidebar {
-  display: none !important;
-}
-/* Make the article full-width since sidebar is hidden */
-.quote-page .article-layout,
-.booking-page .article-layout {
-  display: block !important;
-}
-.quote-page .article-body,
-.booking-page .article-body {
-  max-width: 100% !important;
 }
 
 /* ==========================================================================
-   ISSUE 3 — Service page "everything we do" cards premium upgrade
+   ISSUE 9 — Footer headings (Services, Explore, Company) white text
+   The HTML uses <h3> but CSS only styles <h4>. Add h3 rule.
    ========================================================================== */
-.svc-grid-card {
+.footer h3 {
+  color: #fff !important;
+  font-family: var(--sans, system-ui, sans-serif) !important;
+  font-size: 0.78rem !important;
+  letter-spacing: 0.1em !important;
+  text-transform: uppercase !important;
+  font-weight: 700 !important;
+  margin-bottom: 1rem !important;
+}
+.footer h3 a {
+  color: #fff !important;
+}
+
+/* ==========================================================================
+   ISSUE 10 — Remove swipe-row from homepage
+   The user says "just remove this selection for options, does not work."
+   ========================================================================== */
+.swipe-row {
+  display: none !important;
+}
+
+/* ==========================================================================
+   PREMIUM CARD UPGRADES (from previous v7/v8/v9 that were never appended)
+   These are needed for the cards across the site to look right.
+   ========================================================================== */
+
+/* Gardening Intelligence cards (homepage) */
+.editorial-card-grid {
+  background: var(--forest-dark, #143524) !important;
+  border: 1px solid rgba(184, 146, 67, 0.3) !important;
+  border-radius: 6px !important;
+  gap: 1px !important;
+}
+.editorial-card-grid__cell {
+  background: linear-gradient(160deg, var(--forest-dark, #143524) 0%, var(--forest, #1e3a2a) 100%) !important;
+  color: #f5e9c8 !important;
+  border: 1px solid rgba(184, 146, 67, 0.2) !important;
+  position: relative;
+  overflow: hidden;
+}
+.editorial-card-grid__cell h3 {
+  color: #fff !important;
+  font-family: var(--serif, Georgia, serif) !important;
+  font-weight: 600 !important;
+}
+.editorial-card-grid__cell p {
+  color: rgba(245, 233, 200, 0.78) !important;
+}
+.editorial-card-grid__arrow {
+  color: var(--gold, #b89243) !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.06em !important;
+  font-size: 0.75rem !important;
+}
+@media (max-width: 768px) {
+  .editorial-card-grid {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 0.5rem !important;
+  }
+  .editorial-card-grid__cell {
+    padding: 0.85rem 0.9rem !important;
+  }
+  .editorial-card-grid__cell h3 {
+    font-size: 0.92rem !important;
+  }
+  .editorial-card-grid__cell p {
+    font-size: 0.76rem !important;
+  }
+}
+
+/* Four counties cards */
+.loc-county-card {
+  background: linear-gradient(160deg, var(--forest-dark, #143524) 0%, var(--forest, #1e3a2a) 100%) !important;
+  color: #fff !important;
+  border: 1px solid rgba(184, 146, 67, 0.3) !important;
+  border-radius: 6px !important;
+  padding: 1.4rem 1.2rem !important;
+  position: relative !important;
+  overflow: hidden !important;
+  transition: transform 0.3s cubic-bezier(.2,.7,.3,1), box-shadow 0.3s ease, border-color 0.3s ease !important;
+  min-height: 180px !important;
+}
+.loc-county-card h3 {
+  color: #fff !important;
+  font-family: var(--serif, Georgia, serif) !important;
+  font-weight: 600 !important;
+}
+.loc-county-card__count {
+  color: var(--gold, #b89243) !important;
+  font-family: var(--serif, Georgia, serif) !important;
+  font-size: 2.2rem !important;
+  font-weight: 700 !important;
+}
+.loc-county-card__label {
+  color: rgba(245, 233, 200, 0.75) !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.04em !important;
+  font-size: 0.78rem !important;
+}
+.loc-county-card__link {
+  color: var(--gold, #b89243) !important;
+  font-weight: 600 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.06em !important;
+  font-size: 0.78rem !important;
+}
+
+/* Town intelligence section premium */
+.town-data-panel {
+  background: linear-gradient(160deg, var(--forest-dark, #143524) 0%, var(--forest, #1e3a2a) 100%) !important;
+  border: 1px solid rgba(184, 146, 67, 0.35) !important;
+  border-radius: 8px !important;
+  overflow: hidden !important;
+  box-shadow: 0 12px 32px rgba(21, 40, 28, 0.18) !important;
+}
+.town-data-panel__summary {
+  background: linear-gradient(135deg, rgba(184, 146, 67, 0.12), rgba(184, 146, 67, 0.04)) !important;
+  padding: 1.5rem 1.75rem !important;
+  border-bottom: 1px solid rgba(184, 146, 67, 0.25) !important;
+}
+.town-data-panel__summary h3 {
+  color: #fff !important;
+  font-family: var(--serif, Georgia, serif) !important;
+  font-weight: 700 !important;
+}
+.town-data-panel__summary p {
+  color: rgba(245, 233, 200, 0.85) !important;
+}
+.town-data-panel__link {
+  color: var(--gold, #b89243) !important;
+  border: 1px solid var(--gold, #b89243) !important;
+  background: rgba(184, 146, 67, 0.08) !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+}
+.town-data-card {
+  background: rgba(255, 255, 255, 0.04) !important;
+}
+.town-data-card h4,
+.town-data-card__label {
+  color: var(--gold, #b89243) !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.08em !important;
+  font-size: 0.7rem !important;
+  font-weight: 700 !important;
+}
+.town-data-card p,
+.town-data-card__value {
+  color: rgba(245, 233, 200, 0.9) !important;
+}
+
+/* Calculators page cards */
+.editorial-calc-card {
   background: linear-gradient(160deg, var(--forest-dark, #143524) 0%, var(--forest, #1e3a2a) 100%) !important;
   color: #fff !important;
   border: 1px solid rgba(184, 146, 67, 0.3) !important;
   border-radius: 6px !important;
   padding: 1.4rem 1.3rem !important;
-  text-decoration: none !important;
-  display: flex !important;
-  flex-direction: column !important;
-  gap: 0.6rem !important;
-  min-height: 200px !important;
   position: relative !important;
   overflow: hidden !important;
   transition: transform 0.3s cubic-bezier(.2,.7,.3,1), box-shadow 0.3s ease, border-color 0.3s ease !important;
 }
-.svc-grid-card::before {
-  content: "";
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 3px;
-  background: linear-gradient(90deg, var(--gold, #b89243), transparent 80%);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.35s ease;
-}
-.svc-grid-card:hover::before {
-  transform: scaleX(1);
-}
-.svc-grid-card:hover {
-  transform: translateY(-4px) !important;
-  box-shadow: 0 14px 30px rgba(21, 40, 28, 0.22) !important;
-  border-color: var(--gold, #b89243) !important;
-}
-.svc-grid-card__icon {
-  background: rgba(184, 146, 67, 0.12) !important;
-  border: 1px solid rgba(184, 146, 67, 0.3) !important;
-  border-radius: 4px !important;
-  width: 44px !important;
-  height: 44px !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
+.editorial-calc-card__num {
   color: var(--gold, #b89243) !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.1em !important;
+  font-weight: 700 !important;
+  font-size: 0.72rem !important;
 }
-.svc-grid-card__icon svg {
-  width: 22px !important;
-  height: 22px !important;
-}
-.svc-grid-card h3 {
+.editorial-calc-card__title {
   color: #fff !important;
   font-family: var(--serif, Georgia, serif) !important;
-  font-size: 1.2rem !important;
   font-weight: 600 !important;
-  margin: 0 !important;
-  line-height: 1.2 !important;
 }
-.svc-grid-card p {
+.editorial-calc-card__body {
   color: rgba(245, 233, 200, 0.78) !important;
-  font-family: var(--sans, system-ui, sans-serif) !important;
-  font-size: 0.85rem !important;
-  line-height: 1.45 !important;
-  margin: 0 !important;
 }
-.svc-grid-card__link {
+.editorial-calc-card__cta {
   color: var(--gold, #b89243) !important;
-  font-family: var(--sans, system-ui, sans-serif) !important;
-  font-size: 0.78rem !important;
   font-weight: 700 !important;
   text-transform: uppercase !important;
   letter-spacing: 0.06em !important;
-  margin-top: auto !important;
-  padding-top: 0.5rem !important;
-  border-top: 1px solid rgba(184, 146, 67, 0.2) !important;
-  display: inline-flex !important;
-  align-items: center !important;
-  gap: 0.3rem !important;
 }
-.svc-grid-card__link svg {
-  width: 14px !important;
-  height: 14px !important;
-  transition: transform 0.2s ease !important;
-}
-.svc-grid-card:hover .svc-grid-card__link svg {
-  transform: translateX(4px) !important;
-}
-
-/* ==========================================================================
-   ISSUE 4 — Gardening Knowledge desktop arrows: larger, visible, fix hover
-   Current: tiny arrows at bottom, cards "stick" on hover preventing scroll.
-   Fix: large floating arrows on left/right edges, disable pointer-events
-   on card hover tilt to prevent scroll-jam.
-   ========================================================================== */
-
-/* Fix: remove the pointermove tilt handler that causes scroll-jam */
-.tip-card.editorial-row.cgm-tilt {
-  will-change: auto !important;
-}
-.tip-card.editorial-row {
-  pointer-events: auto !important;
-}
-
-/* Replace the small bottom nav with large floating side arrows */
-.tip-category-nav {
-  position: sticky !important;
-  top: 60px !important;
-  z-index: 50 !important;
-  background: linear-gradient(180deg, rgba(253, 251, 246, 0.98), rgba(253, 251, 246, 0.92)) !important;
-  backdrop-filter: blur(8px) !important;
-  -webkit-backdrop-filter: blur(8px) !important;
-  padding: 0.6rem 0 !important;
-  margin-bottom: 1rem !important;
-  border-bottom: 1px solid rgba(184, 146, 67, 0.2) !important;
-}
-.tip-category-nav__btn {
-  background: linear-gradient(135deg, var(--forest-dark, #143524), var(--forest, #1e3a2a)) !important;
-  color: #fff !important;
-  border: 1px solid var(--gold, #b89243) !important;
-  border-radius: 30px !important;
-  padding: 0.6rem 1.2rem !important;
-  font-family: var(--sans, system-ui, sans-serif) !important;
-  font-size: 0.85rem !important;
-  font-weight: 600 !important;
-  letter-spacing: 0.05em !important;
-  text-transform: uppercase !important;
-  cursor: pointer !important;
-  display: inline-flex !important;
-  align-items: center !important;
-  gap: 0.45rem !important;
-  transition: transform 0.2s ease, box-shadow 0.2s ease !important;
-  box-shadow: 0 4px 12px rgba(21, 40, 28, 0.2) !important;
-}
-.tip-category-nav__btn:hover:not(:disabled) {
-  transform: translateY(-2px) !important;
-  box-shadow: 0 8px 18px rgba(21, 40, 28, 0.28) !important;
-}
-.tip-category-nav__btn:disabled {
-  opacity: 0.35 !important;
-  cursor: not-allowed !important;
-}
-.tip-category-nav__btn svg {
-  width: 18px !important;
-  height: 18px !important;
-}
-.tip-category-nav__label {
-  font-family: var(--serif, Georgia, serif) !important;
-  font-size: 1rem !important;
-  font-weight: 600 !important;
-  color: var(--forest-deep, #143524) !important;
-}
-
-/* Large floating side arrows (desktop) */
-.tip-floating-nav {
-  position: fixed;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 45;
-  display: none;
-}
-@media (min-width: 769px) {
-  .tip-floating-nav {
-    display: flex;
-  }
-}
-.tip-floating-nav--left {
-  left: 0.5rem;
-}
-.tip-floating-nav--right {
-  right: 0.5rem;
-}
-.tip-floating-nav__btn {
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, var(--forest-dark, #143524), var(--forest, #1e3a2a));
-  border: 2px solid var(--gold, #b89243);
-  color: #fff;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 4px 14px rgba(21, 40, 28, 0.25);
-  transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
-  opacity: 0.7;
-}
-.tip-floating-nav__btn:hover {
-  opacity: 1;
-  transform: scale(1.1);
-  box-shadow: 0 8px 22px rgba(21, 40, 28, 0.35);
-}
-.tip-floating-nav__btn:disabled {
-  opacity: 0.2;
-  cursor: not-allowed;
-  transform: none;
-}
-.tip-floating-nav__btn svg {
-  width: 24px;
-  height: 24px;
-}
-
-/* ==========================================================================
-   ISSUE 5 — Featured / Newest / Most popular: sideways scroll + condense
-   Make these sections horizontally scrollable like the category sections.
-   ========================================================================== */
-.tip-featured-section .editorial-list,
-.tip-popular-section .editorial-list,
-.tip-newest-section .editorial-list {
-  display: flex !important;
-  flex-wrap: nowrap !important;
-  overflow-x: auto !important;
-  overflow-y: hidden !important;
-  scroll-snap-type: x mandatory !important;
-  -webkit-overflow-scrolling: touch !important;
-  gap: 0.75rem !important;
-  padding: 0.35rem 0.5rem 1rem !important;
-  margin-inline: -0.5rem !important;
-  scrollbar-width: thin !important;
-  scrollbar-color: var(--gold, #b89243) rgba(30, 58, 42, 0.08) !important;
-}
-.tip-featured-section .editorial-list::-webkit-scrollbar,
-.tip-popular-section .editorial-list::-webkit-scrollbar,
-.tip-newest-section .editorial-list::-webkit-scrollbar {
-  height: 5px;
-  -webkit-appearance: none;
-}
-.tip-featured-section .editorial-list::-webkit-scrollbar-track,
-.tip-popular-section .editorial-list::-webkit-scrollbar-track,
-.tip-newest-section .editorial-list::-webkit-scrollbar-track {
-  background: rgba(30, 58, 42, 0.06);
-  border-radius: 3px;
-}
-.tip-featured-section .editorial-list::-webkit-scrollbar-thumb,
-.tip-popular-section .editorial-list::-webkit-scrollbar-thumb,
-.tip-newest-section .editorial-list::-webkit-scrollbar-thumb {
-  background: var(--gold, #b89243);
-  border-radius: 3px;
-}
-.tip-featured-section .tip-card.editorial-row,
-.tip-popular-section .tip-card.editorial-row,
-.tip-newest-section .tip-card.editorial-row {
-  flex: 0 0 min(78vw, 340px) !important;
-  width: min(78vw, 340px) !important;
-  min-width: 0 !important;
-  max-width: 340px !important;
-  scroll-snap-align: start !important;
-  scroll-snap-stop: normal !important;
-}
-@media (min-width: 769px) {
-  .tip-featured-section .tip-card.editorial-row,
-  .tip-popular-section .tip-card.editorial-row,
-  .tip-newest-section .tip-card.editorial-row {
-    flex: 0 0 min(45vw, 380px) !important;
-    width: min(45vw, 380px) !important;
-    max-width: 380px !important;
-  }
-}
-
-/* ==========================================================================
-   ISSUE 6 — Mobile menu: Garden Knowledge alignment fix
-   The word is slightly right of other items. Fix: ensure consistent padding.
-   ========================================================================== */
-@media (max-width: 1024px) {
-  .mobile-gk-toggle {
-    padding-left: 0.5rem !important;
-    padding-right: 0.5rem !important;
-    margin-left: 0 !important;
-    text-indent: 0 !important;
-  }
-  .mobile-gk-toggle::before {
-    margin-right: 0.55rem !important;
-    width: 4px !important;
-    min-width: 4px !important;
-  }
-  /* Ensure the toggle text aligns with the link text */
-  .mobile-menu > a,
-  .mobile-gk-toggle {
-    padding-left: 0.5rem !important;
-  }
-}
-
-/* ==========================================================================
-   ISSUE 7 — Plant passport cards: fix unreadable text on dark background
-   The v8 .editorial-calc-card upgrade made cards dark forest, but inline
-   styles on cards 1 and 3 use color:var(--forest-dark) for price text,
-   which is dark on dark = unreadable.
-   Fix: override inline styles for price/value text to use gold or white.
-   ========================================================================== */
+/* Fix plant passport inline dark text on dark background */
 .editorial-calc-card p[style*="forest-dark"] {
-  color: var(--gold, #b89243) !important;
-}
-.editorial-calc-card p[style*="color:var(--forest-dark)"] {
   color: var(--gold, #b89243) !important;
 }
 .editorial-calc-card p[style*="font-size:0.82rem"] {
@@ -11728,60 +10136,106 @@ article li {
 .editorial-calc-card ul li {
   color: rgba(245, 233, 200, 0.85) !important;
 }
-.editorial-calc-card ul li::marker {
+
+/* Service page cards */
+.svc-grid-card {
+  background: linear-gradient(160deg, var(--forest-dark, #143524) 0%, var(--forest, #1e3a2a) 100%) !important;
+  color: #fff !important;
+  border: 1px solid rgba(184, 146, 67, 0.3) !important;
+  border-radius: 6px !important;
+  padding: 1.4rem 1.3rem !important;
+  position: relative !important;
+  overflow: hidden !important;
+  transition: transform 0.3s cubic-bezier(.2,.7,.3,1), box-shadow 0.3s ease, border-color 0.3s ease !important;
+}
+.svc-grid-card h3 {
+  color: #fff !important;
+  font-family: var(--serif, Georgia, serif) !important;
+  font-weight: 600 !important;
+}
+.svc-grid-card p {
+  color: rgba(245, 233, 200, 0.78) !important;
+}
+.svc-grid-card__icon {
+  background: rgba(184, 146, 67, 0.12) !important;
+  border: 1px solid rgba(184, 146, 67, 0.3) !important;
   color: var(--gold, #b89243) !important;
 }
+.svc-grid-card__link {
+  color: var(--gold, #b89243) !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.06em !important;
+}
 
 /* ==========================================================================
-   ISSUE 8 — Town intelligence 12-month calendar: fix month header visibility
-   The cal-cell__month uses cream background + dark text, but v8 made the
-   town-data-card dark. The cal-cell itself has cream bg so it should work,
-   but the month text is too small and the contrast with the inactive bars
-   is poor.
-   Fix: make month header bold gold on dark, increase size.
+   MOBILE MENU: finger-drag scroll, uppercase, Garden Knowledge alignment
    ========================================================================== */
-.town-data-card--widget .cal-cell__month {
-  background: var(--gold, #b89243) !important;
-  color: var(--forest-dark, #143524) !important;
-  font-size: 0.72rem !important;
-  font-weight: 800 !important;
-  height: 18px !important;
-  border-bottom: none !important;
-}
-.town-data-card--widget .cal-cell--data {
-  background: rgba(255, 255, 255, 0.92) !important;
-  border: 1px solid rgba(184, 146, 67, 0.3) !important;
-}
-.town-data-card--widget .cal-cell__bars {
-  background: #fff !important;
-}
-.town-data-card--widget .cal-cell__bar {
-  background: #e0d9c8 !important;
-}
-.town-data-card--widget .cal-legend__item {
-  color: rgba(245, 233, 200, 0.85) !important;
-  font-size: 0.68rem !important;
-}
-.town-data-card--widget .town-data-card__label {
-  margin-bottom: 0.5rem !important;
+@media (max-width: 1024px) {
+  .mobile-menu:not([hidden]) {
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    scrollbar-width: thin !important;
+    scrollbar-color: var(--gold, #b89243) rgba(30, 58, 42, 0.12) !important;
+    overflow-y: scroll !important;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    z-index: 10000 !important;
+    padding-top: 56px !important;
+    padding-left: 1.25rem !important;
+    padding-right: 1.25rem !important;
+    padding-bottom: 2rem !important;
+    background: linear-gradient(180deg, #fdfbf6 0%, #f6efe2 100%) !important;
+  }
+  .mobile-menu:not([hidden])::-webkit-scrollbar {
+    width: 6px !important;
+    -webkit-appearance: none !important;
+    appearance: none !important;
+  }
+  .mobile-menu:not([hidden])::-webkit-scrollbar-track {
+    background: rgba(30, 58, 42, 0.06) !important;
+    border-radius: 3px !important;
+  }
+  .mobile-menu:not([hidden])::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, var(--forest, #1e3a2a), var(--gold, #b89243)) !important;
+    border-radius: 3px !important;
+  }
+  .header {
+    z-index: 10001 !important;
+    background: #fdfbf6 !important;
+  }
+  html.mobile-menu-open body {
+    overflow: hidden !important;
+    position: fixed !important;
+    width: 100% !important;
+  }
+  .mobile-menu a,
+  .mobile-gk-toggle {
+    text-transform: uppercase !important;
+    letter-spacing: 0.06em !important;
+    font-weight: 600 !important;
+    padding-left: 0.5rem !important;
+  }
+  .mobile-gk-toggle {
+    justify-content: flex-start !important;
+    gap: 0.55rem !important;
+    text-align: left !important;
+  }
+  .mobile-gk-toggle .mobile-gk-chevron {
+    margin-left: auto !important;
+  }
+  .mobile-gk-items a::before {
+    content: "" !important;
+  }
 }
 
 /* ==========================================================================
-   ISSUE 9 — Compare modal on mobile: fix white box takeover
-   Root cause: the compare-drawer (bottom bar) renders correctly, but when
-   the user clicks "Compare" in the drawer, showCompareModal() opens a
-   full-screen white modal. The user wants the bottom bar only on mobile,
-   and the full comparison table should render as a bottom sheet, not a
-   full-screen white box.
-   Fix: make the compare-modal a bottom sheet on mobile (not full-screen
-   white), and ensure the drawer stays as a slim bar.
-   Also: the v8 rule `body.compare-modal-open .compare-drawer` was supposed
-   to hide the drawer when modal opens, but the MutationObserver may not
-   be firing. Use a CSS-only approach: hide drawer when modal is visible
-   using :has() or adjacent sibling.
+   COMPARE MODAL on mobile: bottom sheet, not white box
    ========================================================================== */
 @media (max-width: 768px) {
-  /* Compare drawer: slim floating bar, NOT full-width */
   .compare-drawer {
     position: fixed !important;
     bottom: 0 !important;
@@ -11807,24 +10261,12 @@ article li {
   .compare-drawer__count {
     color: var(--gold, #b89243) !important;
     font-weight: 700 !important;
-    font-size: 1rem !important;
   }
   .compare-drawer__label {
     color: rgba(255, 255, 255, 0.85) !important;
     font-size: 0.72rem !important;
   }
-  .compare-drawer__chips {
-    flex: 1 1 100% !important;
-    order: 3 !important;
-  }
-  .compare-drawer__actions {
-    flex: 1 1 100% !important;
-    order: 4 !important;
-    display: flex !important;
-    gap: 0.4rem !important;
-  }
   .compare-drawer__btn {
-    flex: 1 !important;
     padding: 0.5rem 0.6rem !important;
     font-size: 0.75rem !important;
     border-radius: 4px !important;
@@ -11844,10 +10286,8 @@ article li {
     background: rgba(255, 255, 255, 0.1) !important;
     color: rgba(255, 255, 255, 0.8) !important;
     border: 1px solid rgba(255, 255, 255, 0.2) !important;
-    flex: 0 0 36px !important;
   }
 
-  /* Compare modal: bottom sheet, NOT full-screen white */
   .compare-modal {
     padding: 0 !important;
     align-items: flex-end !important;
@@ -11873,7 +10313,6 @@ article li {
     to { transform: translateY(0); opacity: 1; }
   }
   .compare-modal__header {
-    padding: 0.85rem 1rem !important;
     background: linear-gradient(135deg, var(--forest-dark, #143524), var(--forest, #1e3a2a)) !important;
     color: #fff !important;
     border-radius: 12px 12px 0 0 !important;
@@ -11881,27 +10320,16 @@ article li {
   }
   .compare-modal__title {
     color: #fff !important;
-    font-size: 1.05rem !important;
   }
   .compare-modal__close {
     background: rgba(255, 255, 255, 0.15) !important;
     color: #fff !important;
-    width: 32px !important;
-    height: 32px !important;
-    border-radius: 4px !important;
   }
   .compare-modal__body {
-    padding: 1rem !important;
+    background: linear-gradient(180deg, #fdfbf6, #f6efe2) !important;
     overflow-y: auto !important;
     -webkit-overflow-scrolling: touch !important;
-    background: linear-gradient(180deg, #fdfbf6, #f6efe2) !important;
   }
-
-  /* Hide the drawer when the modal is open (CSS-only, no JS needed) */
-  .compare-modal:not([hidden]) {
-    z-index: 1000 !important;
-  }
-  /* When modal is open, push drawer behind it */
   body.compare-modal-open .compare-drawer {
     z-index: 997 !important;
     opacity: 0.3 !important;
@@ -11910,7 +10338,7 @@ article li {
 }
 
 /* ==========================================================================
-   Reduced motion safety
+   REDUCED MOTION
    ========================================================================== */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
