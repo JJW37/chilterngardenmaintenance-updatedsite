@@ -107,9 +107,14 @@ document.addEventListener("DOMContentLoaded", function () {
   function loadGA() {
     if (GA_LOADED) return;
     GA_LOADED = true;
+    // Queue gtag calls before the library is loaded so they fire in order.
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ window.dataLayer.push(arguments); }
+    window.gtag = gtag;
     var s = document.createElement("script");
     s.async = true;
     s.src = "https://www.googletagmanager.com/gtag/js?id=" + GA_ID;
+    s.onerror = function() { GA_LOADED = false; }; // allow retry on network failure
     document.head.appendChild(s);
     gtag("js", new Date());
     gtag("config", GA_ID, { anonymize_ip: true });

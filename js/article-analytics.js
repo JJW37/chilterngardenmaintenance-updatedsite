@@ -6,7 +6,11 @@
   'use strict';
 
   // ---- Helpers ----
+  // Debug mode: set window.CGM_ANALYTICS_DEBUG = true in the console to log events.
   function track(eventName, params) {
+    if (typeof window !== 'undefined' && window.CGM_ANALYTICS_DEBUG) {
+      try { console.log('[CGM Analytics]', eventName, params); } catch (e) { /* no-op */ }
+    }
     if (typeof gtag === 'function') {
       gtag('event', eventName, params);
     }
@@ -165,14 +169,3 @@
     });
   }
 })();
-
-// ---- Debug mode: log all tracked events to console ----
-// Set window.CGM_ANALYTICS_DEBUG = true in the console to enable
-var originalTrack = track;
-track = function(eventName, params) {
-  if (window.CGM_ANALYTICS_DEBUG) {
-    console.log('[CGM Analytics]', eventName, params);
-  }
-  originalTrack(eventName, params);
-};
-console.log('[CGM Analytics] Loaded on', window.location.pathname, '- set CGM_ANALYTICS_DEBUG=true to see events');

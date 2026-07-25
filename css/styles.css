@@ -3,8 +3,6 @@
    Designed for visual impact, performance and SEO.
    ========================================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
-
 :root {
   /* Brand palette - deepened and refined */
   --forest: #2d5a3d;
@@ -415,8 +413,6 @@ body { padding-top: 0; }
   background: var(--sky);
 }
 
-
-
 @media (max-width: 1024px) {
   .nav-links { display: none; }
   .nav-dropdown { display: none; }
@@ -576,7 +572,6 @@ body { padding-top: 0; }
   gap: 3.5rem;
   align-items: center;
 }
-
 
 @media (max-width: 900px) {
   .hero-grid { grid-template-columns: 1fr; gap: 2.5rem; }
@@ -4943,7 +4938,6 @@ tbody tr:hover { background: var(--sky); }
 /* Hide top-strip entirely */
 .top-strip { display: none !important; }
 
-
 /* Mobile menu open state - fixed overlay, scrollable, safe area */
 @media (max-width: 1024px) {
   .header {
@@ -4977,7 +4971,6 @@ tbody tr:hover { background: var(--sky); }
   .nav-dropdown { display: inline-block; }
   .mobile-menu { display: none !important; }
 }
-
 
 /* ==========================================================================
    V3: Clean accordion for service pages
@@ -9090,14 +9083,7 @@ article li {
 }
 
 /* ----- Reduced motion safety ----- */
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-  }
-}
-/* ==========================================================================
+@medi=========================================================================
    CGM v6 Update Stylesheet — Round-2 amendments
    Appended to styles.css. Additive only — does not override existing logic
    except where explicitly corrected (the swipe-row first-item-hidden bug,
@@ -10062,13 +10048,7 @@ article li {
 /* ==========================================================================
    Reduced motion safety
    ========================================================================== */
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation-duration: 0.01ms !important;
-    transition-duration: 0.01ms !important;
-  }
-}
-/* ==========================================================================
+@medi=========================================================================
    CGM v8 Update Stylesheet — Round-4 amendments (10 issues)
    Appended to styles.css. Additive only.
    ========================================================================== */
@@ -10983,13 +10963,7 @@ article li {
 /* ==========================================================================
    Reduced motion safety
    ========================================================================== */
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation-duration: 0.01ms !important;
-    transition-duration: 0.01ms !important;
-  }
-}
-/* ==========================================================================
+@medi=========================================================================
    CGM v9 Update Stylesheet — Round-5 amendments (9 issues)
    Appended to styles.css. Additive only.
    ========================================================================== */
@@ -11912,9 +11886,4 @@ article li {
 /* ==========================================================================
    Reduced motion safety
    ========================================================================== */
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation-duration: 0.01ms !important;
-    transition-duration: 0.01ms !important;
-  }
-}
+

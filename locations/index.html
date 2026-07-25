@@ -10,6 +10,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="/chilterngardenmaintenance-updatedsite/css/styles.css?v=20260727a-v9">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap">
   <link rel="stylesheet" href="/chilterngardenmaintenance-updatedsite/css/coverage-map.css?v=20260723o">
   <link rel="stylesheet" href="/chilterngardenmaintenance-updatedsite/css/editorial.css?v=20260723r2">
   <link rel="preload" as="image" href="/chilterngardenmaintenance-updatedsite/images/maps/cgm-coverage-basemap.webp" type="image/webp">
@@ -24,35 +27,8 @@
   <meta property="og:site_name" content="Chiltern Garden Maintenance">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:image" content="https://www.chilterngardenmaintenance.com/images/hero-garden.jpg">
-  <!-- Google Analytics, consent-gated (ICO compliant) -->
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    // Check stored consent before loading GA
-    (function() {
-      var consent = localStorage.getItem('cookieConsent');
-      if (consent === 'accepted') {
-        var s = document.createElement('script');
-        s.async = true;
-        s.src = 'https://www.googletagmanager.com/gtag/js?id=G-SYLGY77VNE';
-        document.head.appendChild(s);
-        gtag('js', new Date());
-        gtag('config', 'G-SYLGY77VNE');
-      }
-    })();
-    // Listen for consent acceptance
-    window.addEventListener('cookieConsentChanged', function(e) {
-      if (e.detail === 'accepted') {
-        var s = document.createElement('script');
-        s.async = true;
-        s.src = 'https://www.googletagmanager.com/gtag/js?id=G-SYLGY77VNE';
-        document.head.appendChild(s);
-        gtag('js', new Date());
-        gtag('config', 'G-SYLGY77VNE');
-      }
-    });
-  </script>
-  
+  <!-- GA consent-gated loading is handled globally by js/main.js + js/analytics.js -->
+
 </head>
 <body class="locations-page">
 

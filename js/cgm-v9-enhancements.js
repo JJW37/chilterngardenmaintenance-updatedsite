@@ -448,32 +448,71 @@
       if (currentPhotoIdx < uploadedFiles.length - 1) openEditor(currentPhotoIdx + 1);
     });
 
-    // Intercept form submit to include edited photos
-    form.addEventListener('submit', function () {
-      // Sync the edited photos back to the original #photos input's form data
-      // by creating a hidden container with DataTransfer
+    // Intercept form submit to include edited photos.
+    // toBlob() is async, so we MUST synchronously prevent the default submit,
+    // wait for ALL blobs to finish, then re-trigger submit programmatically.
+    var submitInProgress = false;
+    form.addEventListener('submit', function (e) {
+      if (submitInProgress) {
+        // This is our programmatic re-submit after blobs finished - let it through.
+        return;
+      }
+      // Check whether any photo actually has an edited canvas - if not, skip the dance.
+      var hasEdited = uploadedFiles.some(function (p) { return !!p.finalCanvas; });
+      if (!hasEdited) {
+        return; // let the browser submit normally with the original file input
+      }
+      e.preventDefault();
+      submitInProgress = true;
       try {
         var dt = new DataTransfer();
-        uploadedFiles.forEach(function (photo) {
-          if (photo.finalCanvas) {
-            // Convert canvas to blob
-            photo.finalCanvas.toBlob(function (blob) {
-              var editedFile = new File([blob], photo.file.name.replace(/\.(jpg|jpeg|png|webp)$/i, '-edited.jpg'), { type: 'image/jpeg' });
-              dt.items.add(editedFile);
-            }, 'image/jpeg', 0.92);
-          } else {
-            dt.items.add(photo.file);
-          }
-        });
-        // Wait a tick for blobs to complete, then assign
-        setTimeout(function () {
+        var pending = uploadedFiles.length;
+        function doneOne() {
+          pending -= 1;
+          if (pending > 0) return;
           var originalInput = document.getElementById('photos');
           if (originalInput) {
-            originalInput.files = dt.files;
+            try { originalInput.files = dt.files; } catch (e2) { /* some browsers reject assignment */ }
           }
-        }, 200);
+          // Re-trigger submit synchronously
+          // Use requestAnimationFrame so the file input update is committed first.
+          requestAnimationFrame(function () {
+            if (typeof form.requestSubmit === 'function') {
+              form.requestSubmit();
+            } else {
+              form.submit();
+            }
+          });
+        }
+        uploadedFiles.forEach(function (photo) {
+          if (photo.finalCanvas) {
+            try {
+              photo.finalCanvas.toBlob(function (blob) {
+                if (blob) {
+                  var editedFile = new File([blob], photo.file.name.replace(/\.(jpg|jpeg|png|webp)$/i, '-edited.jpg'), { type: 'image/jpeg' });
+                  dt.items.add(editedFile);
+                } else {
+                  dt.items.add(photo.file);
+                }
+                doneOne();
+              }, 'image/jpeg', 0.92);
+            } catch (err) {
+              dt.items.add(photo.file);
+              doneOne();
+            }
+          } else {
+            dt.items.add(photo.file);
+            doneOne();
+          }
+        });
       } catch (err) {
-        // Fallback: just use original files
+        // Fallback: re-trigger submit with original files
+        submitInProgress = false;
+        if (typeof form.requestSubmit === 'function') {
+          form.requestSubmit();
+        } else {
+          form.submit();
+        }
       }
     }, true);
   }

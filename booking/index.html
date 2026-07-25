@@ -8,6 +8,9 @@
   <meta name="theme-color" content="#1e3a2a">
   <link rel="canonical" href="https://www.chilterngardenmaintenance.com/booking/">
   <link rel="stylesheet" href="/chilterngardenmaintenance-updatedsite/css/styles.css?v=20260727a-v9">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap">
   <link rel="stylesheet" href="/chilterngardenmaintenance-updatedsite/css/editorial.css?v=20260723r2">
   <link rel="icon" type="image/png" sizes="32x32" href="/chilterngardenmaintenance-updatedsite/images/favicon-32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/chilterngardenmaintenance-updatedsite/images/favicon-16.png">
@@ -284,13 +287,22 @@
               var isGithubPagesPreview = /(^|\.)github\.io$/.test(window.location.hostname);
               if (isGithubPagesPreview) {
                 var value = function(name) { return formData.get(name) || ''; };
+                // cgm-v8-enhancements.js converts the service radios to
+                // multi-select checkboxes named service[] and adds a hidden
+                // services_ordered field. Prefer the ordered list, fall back
+                // to a single service value, then to the array of checkboxes.
+                var servicesOrdered = value('services_ordered');
+                var serviceText = servicesOrdered
+                  || value('service')
+                  || formData.getAll('service[]').join(', ')
+                  || '';
                 var whatsappText = [
                   'CGM quote enquiry',
                   'Name: ' + value('name'),
                   'Phone: ' + value('phone'),
                   'Email: ' + value('email'),
                   'Postcode: ' + value('postcode'),
-                  'Service: ' + value('service'),
+                  'Service: ' + serviceText,
                   'When: ' + value('when'),
                   'Preferred contact: ' + value('preferredContact'),
                   'Details: ' + value('details'),
