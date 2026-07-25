@@ -2099,13 +2099,15 @@
       var interpretation = generateGardenInterpretation(town, phAvg, drainageType, rainfallMm);
       cardsHtml += '<div class="town-data-card town-data-card--interpretation">' +
         '<span class="town-data-card__label">What this means for your garden</span>' +
-        '<p class="town-data-card__interpretation">' + interpretation + '</p>' +
+        '<div class="town-data-card__interpretation">' + interpretation + '</div>' +
         '</div>';
 
       grid.innerHTML = cardsHtml;
     }
 
     // ---- Generate plain-English garden interpretation ----
+    // Returns HTML with each part as its own paragraph so the text reads as
+    // distinct sentences, not a single run-on paragraph.
     function generateGardenInterpretation(town, phAvg, drainageType, rainfallMm) {
       var parts = [];
 
@@ -2138,7 +2140,9 @@
         parts.push('Rainfall is typical for the UK, so <strong>most plants will establish well</strong> with normal watering in their first year.');
       }
 
-      return parts.join(' ');
+      // Return each part wrapped in its own <p> so they read as distinct
+      // sentences rather than one run-on paragraph.
+      return parts.map(function (p) { return '<p>' + p + '</p>'; }).join('');
     }
 
     // ---- Recent searches (localStorage) ----

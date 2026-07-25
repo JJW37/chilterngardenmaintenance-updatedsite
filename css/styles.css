@@ -7,7 +7,8 @@
   /* Brand palette - deepened and refined */
   --forest: #2d5a3d;
   --forest-deep: #1e3a2a;
-  --forest-dark: #15281c;
+  --forest-dark: #102019;  /* Premium luxury dark - v10 upgrade */
+  --forest-night: #0a1410;  /* Even darker for deep contrast sections */
   --forest-light: #4a7c5c;
   --forest-mist: #7ba88a;
   --moss: #6b8e5a;
@@ -11926,3 +11927,500 @@ article li {
    Reduced motion safety
    ========================================================================== */
 
+
+/* ==========================================================================
+   v10 PREMIUM UPGRADE — Luxury dark theme + card modernisation
+   Brand colour: #102019 (deep premium forest-night)
+   Applied to: Popular right now cards, Services page cards, Plant pages,
+   CTA bands, dark sections. Maintains classiness, no garish effects.
+   ========================================================================== */
+
+/* ---- Premium dark gradient backgrounds (reusable) ---- */
+.bg-premium-dark {
+  background: linear-gradient(155deg, var(--forest-dark) 0%, var(--forest-night) 100%);
+  color: #fff;
+}
+.bg-premium-dark h2, .bg-premium-dark h3 { color: #fff; }
+.bg-premium-dark p { color: rgba(255, 255, 255, 0.78); }
+.bg-premium-dark a { color: var(--gold-light, #d4a851); }
+
+/* ---- "Popular right now" cards: dark premium treatment ----
+   Reuses the editorial-card-grid__cell visual language but scoped to
+   #popular-articles so the JS-rebuilt cards inherit it automatically. */
+#popular-articles .article-card-popular {
+  background: linear-gradient(155deg, var(--forest-dark) 0%, var(--forest-night) 100%) !important;
+  color: #fff !important;
+  border: 1px solid rgba(184, 146, 67, 0.22) !important;
+  border-radius: var(--radius, 8px) !important;
+  padding: 1.5rem 1.5rem 1.25rem !important;
+  height: 280px !important;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  box-shadow: 0 2px 12px rgba(16, 32, 25, 0.18);
+}
+#popular-articles .article-card-popular::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--gold, #b89243), var(--gold-light, #d4a851));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+#popular-articles .article-card-popular:hover {
+  transform: translateY(-3px);
+  border-color: rgba(184, 146, 67, 0.5) !important;
+  box-shadow: 0 8px 28px rgba(16, 32, 25, 0.35);
+}
+#popular-articles .article-card-popular:hover::before { opacity: 1; }
+
+#popular-articles .article-card-popular h3 {
+  color: #fff !important;
+  font-family: var(--serif, Georgia, serif) !important;
+  font-size: 1.1rem !important;
+  font-weight: 500 !important;
+  line-height: 1.3 !important;
+  margin: 0 0 0.5rem 0 !important;
+}
+#popular-articles .article-card-popular p {
+  color: rgba(255, 255, 255, 0.72) !important;
+  font-size: 0.88rem !important;
+  line-height: 1.5 !important;
+}
+#popular-articles .article-card-popular .card-link {
+  color: var(--gold, #b89243) !important;
+  font-family: var(--sans, system-ui, sans-serif) !important;
+  font-size: 0.78rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.08em !important;
+  text-transform: uppercase !important;
+  text-decoration: none !important;
+  padding-top: 0.5rem;
+  border-top: 1px solid rgba(184, 146, 67, 0.2);
+  display: block;
+}
+#popular-articles .article-card-popular .card-link:hover {
+  color: var(--gold-light, #d4a851) !important;
+}
+
+/* Meta chips (tag + level + read-time) restyled for dark bg */
+#popular-articles .article-card-popular .article-card-popular__meta,
+#popular-articles .article-card-popular .article-meta {
+  display: flex;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.75rem;
+}
+#popular-articles .article-card-popular [class*="article-card-popular__tag"],
+#popular-articles .article-card-popular [class*="article-card-popular__level"],
+#popular-articles .article-card-popular [class*="article-meta__"] {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.2rem 0.55rem;
+  border-radius: 999px;
+  font-size: 0.68rem !important;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  border: 1px solid rgba(184, 146, 67, 0.3);
+  background: rgba(184, 146, 67, 0.1);
+  color: var(--gold-light, #d4a851) !important;
+}
+#popular-articles .article-card-popular [class*="--easy"] {
+  background: rgba(90, 154, 62, 0.18);
+  border-color: rgba(90, 154, 62, 0.4);
+  color: #a8d68a !important;
+}
+#popular-articles .article-card-popular [class*="--intermediate"] {
+  background: rgba(217, 148, 31, 0.18);
+  border-color: rgba(217, 148, 31, 0.4);
+  color: #e8b25e !important;
+}
+#popular-articles .article-card-popular [class*="--hard"] {
+  background: rgba(196, 69, 54, 0.18);
+  border-color: rgba(196, 69, 54, 0.4);
+  color: #e88a7d !important;
+}
+
+/* ---- Services page: premium guide cards ---- */
+.svc-guide-card {
+  background: linear-gradient(155deg, var(--forest-dark) 0%, var(--forest-night) 100%) !important;
+  color: #fff !important;
+  border: 1px solid rgba(184, 146, 67, 0.22) !important;
+  border-radius: var(--radius, 8px) !important;
+  padding: 1.5rem !important;
+  text-decoration: none !important;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  box-shadow: 0 2px 12px rgba(16, 32, 25, 0.18);
+  min-height: 200px;
+}
+.svc-guide-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--gold, #b89243), var(--gold-light, #d4a851));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.svc-guide-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(184, 146, 67, 0.5) !important;
+  box-shadow: 0 8px 28px rgba(16, 32, 25, 0.35);
+}
+.svc-guide-card:hover::before { opacity: 1; }
+.svc-guide-card h3 {
+  color: #fff !important;
+  font-family: var(--serif, Georgia, serif) !important;
+  font-weight: 500 !important;
+}
+.svc-guide-card p, .svc-guide-card [class*="read"] {
+  color: rgba(255, 255, 255, 0.72) !important;
+}
+.svc-guide-card .svc-guide-card__icon {
+  background: linear-gradient(135deg, var(--gold, #b89243), var(--gold-deep, #8a6d31)) !important;
+  color: var(--forest-dark) !important;
+}
+.svc-guide-card [class*="link"], .svc-guide-card a {
+  color: var(--gold, #b89243) !important;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.78rem;
+}
+
+/* ---- Services principles: add subtle card framing on dark bg ---- */
+.svc-principle {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(184, 146, 67, 0.18);
+  border-radius: var(--radius, 8px);
+  padding: 1.5rem 1.25rem;
+  transition: border-color 0.3s ease, background 0.3s ease;
+}
+.svc-principle:hover {
+  border-color: rgba(184, 146, 67, 0.45);
+  background: rgba(255, 255, 255, 0.07);
+}
+.svc-principle__num {
+  color: var(--gold, #b89243) !important;
+  font-family: var(--serif, Georgia, serif);
+  font-size: 1.8rem;
+  font-weight: 500;
+  opacity: 0.9;
+}
+.svc-principle h3 {
+  color: #fff !important;
+  font-family: var(--serif, Georgia, serif) !important;
+  font-weight: 500 !important;
+}
+.svc-principle p {
+  color: rgba(255, 255, 255, 0.72) !important;
+}
+
+/* ---- Services how-we-work steps: light cream/gold cards ---- */
+.svc-step {
+  background: linear-gradient(155deg, var(--bone, #faf8f3), var(--cream, #f7f3ea));
+  border: 1px solid rgba(184, 146, 67, 0.25);
+  border-radius: var(--radius, 8px);
+  padding: 1.5rem 1.25rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+.svc-step::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--gold, #b89243), var(--gold-light, #d4a851));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.svc-step:hover {
+  transform: translateY(-2px);
+  border-color: rgba(184, 146, 67, 0.5);
+  box-shadow: 0 6px 20px rgba(16, 32, 25, 0.12);
+}
+.svc-step:hover::before { opacity: 1; }
+.svc-step [class*="num"] {
+  color: var(--gold-deep, #8a6d31);
+  font-family: var(--serif, Georgia, serif);
+  font-weight: 500;
+}
+
+/* ---- Premium CTA band (darker, more luxurious) ---- */
+.cta-band, .cta-band-compact, .section-dark {
+  background: linear-gradient(155deg, var(--forest-dark) 0%, var(--forest-night) 100%) !important;
+  position: relative;
+  overflow: hidden;
+}
+.cta-band::before, .cta-band-compact::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold, #b89243), transparent);
+  opacity: 0.5;
+}
+
+/* ---- Plant page: premium "Plant relationships" cards ---- */
+.plant-relationships {
+  background: linear-gradient(155deg, var(--bone, #faf8f3), var(--cream, #f7f3ea)) !important;
+  border: 1px solid rgba(184, 146, 67, 0.25) !important;
+  border-radius: var(--radius, 8px);
+  padding: 1.5rem !important;
+  margin-top: 1.5rem;
+}
+.plant-relationships > h3 {
+  color: var(--forest-dark) !important;
+  font-family: var(--serif, Georgia, serif);
+  font-size: 1.05rem !important;
+  font-weight: 600 !important;
+  margin-top: 1.25rem !important;
+  margin-bottom: 0.5rem !important;
+  padding-bottom: 0.35rem;
+  border-bottom: 1px solid rgba(184, 146, 67, 0.2);
+}
+.plant-relationships > h3:first-child { margin-top: 0 !important; }
+.plant-relationships > p {
+  font-size: 0.85rem !important;
+  color: var(--muted) !important;
+  margin-bottom: 0.5rem !important;
+}
+.plant-relationships ul {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 0.5rem;
+  list-style: none;
+  padding: 0;
+  margin: 0 0 0.5rem 0;
+}
+.plant-relationships ul li {
+  background: #fff;
+  border: 1px solid rgba(45, 90, 61, 0.12);
+  border-radius: 6px;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.85rem;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+.plant-relationships ul li:hover {
+  border-color: var(--gold, #b89243);
+  transform: translateY(-1px);
+}
+.plant-relationships ul li a {
+  color: var(--forest-dark);
+  text-decoration: none;
+  font-weight: 500;
+}
+.plant-relationships ul li a:hover {
+  color: var(--gold-deep, #8a6d31);
+}
+
+/* ---- Plant page: fact grid premium upgrade ---- */
+.fact-grid {
+  gap: 0.75rem;
+}
+.fact-grid .fact {
+  background: linear-gradient(155deg, var(--bone, #faf8f3), #fff) !important;
+  border: 1px solid rgba(184, 146, 67, 0.2) !important;
+  border-radius: var(--radius, 8px) !important;
+  padding: 1rem !important;
+  transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+.fact-grid .fact::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; bottom: 0;
+  width: 3px;
+  background: linear-gradient(180deg, var(--gold, #b89243), var(--gold-light, #d4a851));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.fact-grid .fact:hover {
+  border-color: rgba(184, 146, 67, 0.45) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 14px rgba(16, 32, 25, 0.1);
+}
+.fact-grid .fact:hover::before { opacity: 1; }
+
+/* ---- Plant page: hero premium upgrade ---- */
+.plant-hero {
+  background: linear-gradient(155deg, var(--forest-dark) 0%, var(--forest-night) 100%) !important;
+  color: #fff !important;
+  border-radius: var(--radius, 8px);
+  overflow: hidden;
+  position: relative;
+}
+.plant-hero::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--gold, #b89243), var(--gold-light, #d4a851));
+}
+.plant-hero h1, .plant-hero h2 { color: #fff !important; }
+.plant-hero p { color: rgba(255, 255, 255, 0.8) !important; }
+
+/* ---- Editorial quick answer callout: premium dark ---- */
+.editorial-quick-answer {
+  background: linear-gradient(155deg, var(--forest-dark) 0%, var(--forest-night) 100%) !important;
+  color: #fff !important;
+  border-left: 4px solid var(--gold, #b89243) !important;
+  border-radius: var(--radius, 8px);
+  padding: 1.5rem !important;
+}
+.editorial-quick-answer h2, .editorial-quick-answer h3 {
+  color: var(--gold-light, #d4a851) !important;
+}
+.editorial-quick-answer p { color: rgba(255, 255, 255, 0.85) !important; }
+.editorial-quick-answer strong { color: #fff; }
+
+/* ---- Town page: premium sidebar cards ---- */
+.sidebar-card {
+  background: linear-gradient(155deg, var(--bone, #faf8f3), #fff) !important;
+  border: 1px solid rgba(184, 146, 67, 0.2) !important;
+  border-radius: var(--radius, 8px) !important;
+  padding: 1.25rem !important;
+  box-shadow: 0 2px 10px rgba(16, 32, 25, 0.06);
+  transition: box-shadow 0.3s ease;
+}
+.sidebar-card:hover {
+  box-shadow: 0 4px 18px rgba(16, 32, 25, 0.1);
+}
+.sidebar-card h3 {
+  color: var(--forest-dark) !important;
+  font-family: var(--serif, Georgia, serif);
+  font-weight: 600;
+}
+
+/* ---- Quick facts grid: premium upgrade ---- */
+.quick-facts {
+  background: linear-gradient(155deg, var(--forest-dark) 0%, var(--forest-night) 100%) !important;
+  border-radius: var(--radius, 8px);
+  padding: 1.5rem !important;
+  color: #fff;
+}
+.quick-facts h2 { color: #fff !important; }
+.quick-facts h2 svg { color: var(--gold, #b89243); }
+.quick-facts-grid {
+  gap: 0.75rem;
+}
+.quick-fact {
+  background: rgba(255, 255, 255, 0.06) !important;
+  border: 1px solid rgba(184, 146, 67, 0.2) !important;
+  border-radius: 6px;
+  padding: 0.85rem !important;
+  transition: border-color 0.3s ease, background 0.3s ease;
+}
+.quick-fact:hover {
+  border-color: rgba(184, 146, 67, 0.45) !important;
+  background: rgba(255, 255, 255, 0.09) !important;
+}
+.quick-fact dt {
+  color: var(--gold-light, #d4a851) !important;
+}
+.quick-fact dt svg { color: var(--gold, #b89243); }
+.quick-fact dd {
+  color: rgba(255, 255, 255, 0.85) !important;
+}
+
+/* ---- Editorial principles (town pages): premium upgrade ---- */
+.editorial-principles {
+  gap: 1rem;
+}
+.editorial-principles__item {
+  background: linear-gradient(155deg, var(--bone, #faf8f3), #fff) !important;
+  border: 1px solid rgba(184, 146, 67, 0.2) !important;
+  border-radius: var(--radius, 8px) !important;
+  padding: 1.5rem 1.25rem !important;
+  transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+.editorial-principles__item::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--gold, #b89243), var(--gold-light, #d4a851));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.editorial-principles__item:hover {
+  border-color: rgba(184, 146, 67, 0.45) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 14px rgba(16, 32, 25, 0.1);
+}
+.editorial-principles__item:hover::before { opacity: 1; }
+.editorial-principles__num {
+  color: var(--gold, #b89243) !important;
+  font-family: var(--serif, Georgia, serif) !important;
+  font-size: 1.6rem !important;
+  font-weight: 500 !important;
+}
+.editorial-principles__title {
+  color: var(--forest-dark) !important;
+  font-family: var(--serif, Georgia, serif) !important;
+}
+.editorial-principles__body {
+  color: var(--muted) !important;
+  font-size: 0.92rem !important;
+  line-height: 1.5 !important;
+}
+
+/* ---- Page header: subtle premium gold accent line ---- */
+.page-header-editorial {
+  position: relative;
+}
+.page-header-editorial::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold, #b89243), transparent);
+}
+
+/* ---- Footer: deeper premium dark ---- */
+.footer {
+  background: var(--forest-night, #0a1410) !important;
+}
+
+/* ---- Buttons: premium gold hover ---- */
+.btn-primary {
+  background: linear-gradient(135deg, var(--forest, #2d5a3d), var(--forest-dark, #102019));
+  border: 1px solid rgba(184, 146, 67, 0.3);
+}
+.btn-primary:hover {
+  background: linear-gradient(135deg, var(--forest-dark, #102019), var(--forest-night, #0a1410));
+  border-color: var(--gold, #b89243);
+}
+
+/* ---- Brand logo: premium subtle gold ring ---- */
+.brand-logo {
+  border-radius: 6px;
+  transition: box-shadow 0.3s ease;
+}
+.brand:hover .brand-logo {
+  box-shadow: 0 0 0 2px rgba(184, 146, 67, 0.4);
+}
+
+/* ---- Section dividers: premium gold accent ---- */
+.section-title h2::after,
+.editorial-h2::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--gold, #b89243), transparent);
+  margin-top: 0.5rem;
+}
