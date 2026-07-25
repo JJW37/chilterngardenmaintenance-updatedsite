@@ -3588,6 +3588,39 @@ header nav[aria-label] {
 .seasonal-calendar-town-link:hover { text-decoration: underline; }
 .seasonal-calendar-note { margin-top: 2rem; }
 .seasonal-calendar-note .btn { margin-top: .75rem; }
+
+/* 12-month overview strip + coloured tag pills (v10) */
+.seasonal-calendar-overview {
+  max-width: 1100px;
+  margin: 0 auto 2rem;
+  padding: 1.25rem 1rem 1rem;
+  background: var(--cream);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius);
+}
+.seasonal-calendar-overview__label {
+  margin: 0 0 0.75rem;
+  font-size: 0.85rem;
+  color: var(--muted);
+  text-align: center;
+}
+.seasonal-calendar-overview__strip {
+  margin: 0 0 0.75rem;
+}
+.seasonal-calendar-overview__legend {
+  justify-content: center;
+  margin: 0;
+}
+
+/* Coloured tag pills on the month cards — each tag gets its activity colour */
+.seasonal-calendar-card__tag--frost   { background: rgba(58, 127, 181, 0.14);  border-color: rgba(58, 127, 181, 0.35);  color: #1f5689; }
+.seasonal-calendar-card__tag--sow     { background: rgba(90, 154, 62, 0.14);   border-color: rgba(90, 154, 62, 0.35);   color: #3b6d27; }
+.seasonal-calendar-card__tag--flower  { background: rgba(217, 148, 31, 0.16);  border-color: rgba(217, 148, 31, 0.4);   color: #8a5b0c; }
+.seasonal-calendar-card__tag--prune   { background: rgba(142, 95, 168, 0.14);  border-color: rgba(142, 95, 168, 0.35);  color: #5e3a73; }
+.seasonal-calendar-card__tag--lawn    { background: rgba(74, 124, 60, 0.14);   border-color: rgba(74, 124, 60, 0.35);   color: #345929; }
+.seasonal-calendar-card__tag--feed    { background: rgba(139, 111, 63, 0.16);  border-color: rgba(139, 111, 63, 0.4);   color: #6e5527; }
+.seasonal-calendar-card__tag--water   { background: rgba(46, 134, 171, 0.14);  border-color: rgba(46, 134, 171, 0.35);  color: #1f5e7d; }
+.seasonal-calendar-card__tag--pests   { background: rgba(196, 69, 54, 0.14);   border-color: rgba(196, 69, 54, 0.35);   color: #8c281e; }
 @media (max-width: 800px) {
   .seasonal-calendar-toolbar { grid-template-columns: 1fr 1fr; }
   .seasonal-calendar-toolbar label { grid-column: 1 / -1; }
@@ -5204,5 +5237,91 @@ header nav[aria-label] {
   .locations-page .town-card__pin svg,
   .locations-page .town-card__compare svg {
     display: none;
+  }
+}
+
+/* ==========================================================================
+   v10 — Town page link card grids (replace plain <ul> lists with card grids)
+   ========================================================================== */
+.town-link-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 0.75rem;
+  margin: 1.25rem 0 1.5rem;
+}
+.town-link-card {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.85rem 1rem;
+  background: var(--bone, #faf8f3);
+  border: 1px solid var(--border-soft, #e8e4d6);
+  border-radius: var(--radius, 8px);
+  text-decoration: none;
+  color: var(--forest-dark, #15281c);
+  transition: all 0.2s ease;
+  box-shadow: 0 1px 3px rgba(21, 40, 28, 0.03);
+  position: relative;
+}
+.town-link-card:hover {
+  border-color: var(--forest-light, #4a7c5c);
+  box-shadow: 0 4px 14px rgba(21, 40, 28, 0.1);
+  transform: translateY(-1px);
+  text-decoration: none;
+}
+.town-link-card__icon {
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--forest, #2d5a3d), var(--forest-dark, #1e3a2a));
+  color: var(--gold, #b89243);
+  border-radius: 8px;
+}
+.town-link-card__icon svg {
+  width: 20px;
+  height: 20px;
+}
+.town-link-card__label {
+  flex: 1;
+  font-weight: 600;
+  font-size: 0.95rem;
+  line-height: 1.25;
+  color: var(--forest-dark, #15281c);
+}
+.town-link-card__arrow {
+  flex-shrink: 0;
+  color: var(--gold, #b89243);
+  font-size: 1rem;
+  font-weight: 700;
+  transition: transform 0.2s ease;
+}
+.town-link-card:hover .town-link-card__arrow {
+  transform: translateX(3px);
+}
+@media (max-width: 640px) {
+  .town-link-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* v10 — Enhanced cal-strip on town pages (8 bars per month) */
+.cal-cell--data {
+  height: 96px;
+}
+.cal-cell--data .cal-cell__bars {
+  grid-template-rows: repeat(8, 1fr);
+}
+.cal-cell--data .cal-cell__bar {
+  min-height: 4px;
+}
+@media (max-width: 640px) {
+  .cal-cell--data {
+    height: 80px;
+  }
+  .cal-cell--data .cal-cell__bar {
+    min-height: 3px;
   }
 }

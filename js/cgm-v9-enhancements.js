@@ -163,24 +163,33 @@
       currentPhotoIdx = idx;
       var photo = uploadedFiles[idx];
 
-      // Load the image if not already loaded
-      if (!photo.image) {
-        var img = new Image();
-        img.onload = function () {
-          photo.image = img;
-          renderEditorCanvas();
-          editorModal.hidden = false;
-          document.body.style.overflow = 'hidden';
-        };
-        img.src = photo.url;
-      } else {
-        renderEditorCanvas();
-        editorModal.hidden = false;
-        document.body.style.overflow = 'hidden';
-      }
-
+      // Show the modal FIRST so the browser can lay it out and the canvas
+      // wrap gets a real clientWidth/clientHeight. On mobile, calling
+      // renderEditorCanvas() while the modal is still hidden produced
+      // clientHeight=0, which led to negative canvas dimensions, which
+      // fell back to the default 300x150 and stretched the photo.
+      editorModal.hidden = false;
+      document.body.style.overflow = 'hidden';
       updateCounter();
       updateNavButtons();
+
+      function loadAndRender() {
+        if (!photo.image) {
+          var img = new Image();
+          img.onload = function () {
+            photo.image = img;
+            // Wait one more frame for layout to settle on mobile before
+            // measuring the canvas wrap.
+            requestAnimationFrame(renderEditorCanvas);
+          };
+          img.src = photo.url;
+        } else {
+          requestAnimationFrame(renderEditorCanvas);
+        }
+      }
+
+      // Wait for the next frame so the modal is visible and has dimensions.
+      requestAnimationFrame(loadAndRender);
     }
 
     function updateCounter() {
@@ -213,14 +222,18 @@
       editorCanvas = document.createElement('canvas');
       editorCanvas.className = 'photo-editor-modal__canvas';
 
-      // Size: fit within viewport
-      var maxW = wrap.clientWidth - 32;
-      var maxH = wrap.clientHeight - 32;
-      var imgW = photo.image.width;
-      var imgH = photo.image.height;
+      // Size: fit within viewport. Guard against zero/negative dimensions
+      // (which happened on mobile when the modal hadn't been laid out yet,
+      // causing the canvas to fall back to 300x150 and stretch the photo).
+      var imgW = photo.image.width || 1;
+      var imgH = photo.image.height || 1;
+      var maxW = Math.max(64, wrap.clientWidth - 32);
+      var maxH = Math.max(64, wrap.clientHeight - 32);
       var scale = Math.min(maxW / imgW, maxH / imgH, 1);
-      editorCanvas.width = imgW * scale;
-      editorCanvas.height = imgH * scale;
+      // Guard: if scale is not a positive finite number, use a safe default.
+      if (!isFinite(scale) || scale <= 0) scale = 0.1;
+      editorCanvas.width = Math.max(1, Math.round(imgW * scale));
+      editorCanvas.height = Math.max(1, Math.round(imgH * scale));
 
       wrap.appendChild(editorCanvas);
       editorCtx = editorCanvas.getContext('2d');
@@ -230,6 +243,18 @@
 
       // Wire up drawing
       wireCanvasDrawing();
+
+      // On mobile the modal may still be settling. If the canvas wrap has
+      // grown since we sized the canvas, re-render once after the next frame.
+      var measuredW = maxW;
+      var measuredH = maxH;
+      requestAnimationFrame(function () {
+        var newW = Math.max(64, wrap.clientWidth - 32);
+        var newH = Math.max(64, wrap.clientHeight - 32);
+        if (Math.abs(newW - measuredW) > 8 || Math.abs(newH - measuredH) > 8) {
+          renderEditorCanvas();
+        }
+      });
     }
 
     function redrawCanvas() {

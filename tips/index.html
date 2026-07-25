@@ -3105,7 +3105,7 @@
     // Native horizontal scrolling gives finger swipes and trackpads a
     // natural feel. This small pointer layer also allows click-dragging with
     // a mouse without changing the links' normal click behaviour.
-    document.querySelectorAll('.tip-category-section > .editorial-list').forEach(function(slider) {
+    document.querySelectorAll('.tip-category-section > .editorial-list, .tip-featured-section > .editorial-list, .tip-popular-section > .editorial-list, .tip-newest-section > .editorial-list').forEach(function(slider) {
       var dragging = false;
       var moved = false;
       var startX = 0;

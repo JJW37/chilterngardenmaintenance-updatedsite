@@ -14,6 +14,18 @@
     water: "Watering",
     "pests-watch": "Watch for pests"
   };
+  // Bar visualisation — must match the CSS bar classes and the cal-strip HTML.
+  var TAG_ORDER = ["frost", "sow-plant", "flowering", "prune", "lawn", "feed-mulch", "water", "pests-watch"];
+  var TAG_TO_BAR = {
+    "frost": "frost",
+    "sow-plant": "sow",
+    "flowering": "flower",
+    "prune": "prune",
+    "lawn": "lawn",
+    "feed-mulch": "feed",
+    "water": "water",
+    "pests-watch": "pests"
+  };
   var towns = [];
   var selected = 0;
   var select = document.getElementById("calendarTown");
@@ -69,13 +81,50 @@
     status.textContent = town.name + " · " + town.county + (town.region ? " · " + town.region : "");
     months.replaceChildren();
 
+    // Bar visualization strip (12 months x 8 activity types) — same data as
+    // the cal-strip on town pages, rendered here as a single overview row.
+    var overview = make("div", "seasonal-calendar-overview");
+    var overviewLabel = make("p", "seasonal-calendar-overview__label",
+      "12-month overview — coloured bars show what is happening in the garden each month.");
+    overview.appendChild(overviewLabel);
+    var strip = make("div", "cal-strip seasonal-calendar-overview__strip");
+    (town.calendar || []).slice().sort(function (a, b) { return a.m - b.m; }).forEach(function (month) {
+      var cell = make("div", "cal-cell cal-cell--data");
+      cell.title = (monthNames[month.m - 1] || "Month " + month.m) + ": " + (month.h || "");
+      cell.appendChild(make("span", "cal-cell__month", monthNames[month.m - 1] || ("M" + month.m)));
+      var bars = make("span", "cal-cell__bars");
+      TAG_ORDER.forEach(function (tag) {
+        var bar = make("span", "cal-cell__bar cal-cell__bar--" + TAG_TO_BAR[tag]);
+        if ((month.t || []).indexOf(tag) >= 0) bar.classList.add("is-active");
+        bars.appendChild(bar);
+      });
+      cell.appendChild(bars);
+      strip.appendChild(cell);
+    });
+    overview.appendChild(strip);
+
+    // Legend
+    var legend = make("div", "cal-legend seasonal-calendar-overview__legend");
+    TAG_ORDER.forEach(function (tag) {
+      var item = make("span", "cal-legend__item");
+      var dot = make("span", "cal-dot cal-dot--" + TAG_TO_BAR[tag]);
+      item.appendChild(dot);
+      item.appendChild(document.createTextNode(" " + tagNames[tag]));
+      legend.appendChild(item);
+    });
+    overview.appendChild(legend);
+    months.appendChild(overview);
+
+    // Detailed month cards
     (town.calendar || []).slice().sort(function (a, b) { return a.m - b.m; }).forEach(function (month) {
       var card = make("article", "seasonal-calendar-card");
       card.appendChild(make("span", "seasonal-calendar-card__month", monthNames[month.m - 1] || "Month " + month.m));
       card.appendChild(make("h3", "seasonal-calendar-card__heading", month.h || "Seasonal garden work"));
       var tags = make("div", "seasonal-calendar-card__tags");
       (month.t || []).forEach(function (tag) {
-        tags.appendChild(make("span", "seasonal-calendar-card__tag", tagNames[tag] || tag));
+        var tagSpan = make("span", "seasonal-calendar-card__tag seasonal-calendar-card__tag--" + TAG_TO_BAR[tag],
+          tagNames[tag] || tag);
+        tags.appendChild(tagSpan);
       });
       card.appendChild(tags);
       months.appendChild(card);
