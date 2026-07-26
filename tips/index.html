@@ -3145,11 +3145,18 @@
       }
       slider.addEventListener('pointerup', stopDragging);
       slider.addEventListener('pointercancel', stopDragging);
+      // NOTE: Do NOT capture vertical wheel scrolls and convert them to
+      // horizontal. This was causing the page to feel "stuck" when the
+      // mouse was over a category section — the user could not scroll
+      // down the page. Only shift+wheel (explicit horizontal) should
+      // scroll the slider horizontally.
       slider.addEventListener('wheel', function(e) {
-        if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) return;
+        // Only intercept if the user is explicitly scrolling horizontally
+        // (shift+wheel or a trackpad horizontal gesture).
+        if (Math.abs(e.deltaX) <= Math.abs(e.deltaY)) return;
         if (slider.scrollWidth <= slider.clientWidth) return;
         e.preventDefault();
-        slider.scrollLeft += e.deltaY;
+        slider.scrollLeft += e.deltaX;
       }, { passive: false });
     });
 
