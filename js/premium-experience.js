@@ -41,6 +41,8 @@
   document.documentElement.classList.add('cgm-premium-experience');
   document.documentElement.dataset.cgmExperience = routeKey;
 
+  var heroSelector = '.page-header, .quote-hero, .svc-hero, .plant-hero, .hero';
+
   function ready(fn) {
     if (document.readyState === 'loading') {
       document.addEventListener('DOMContentLoaded', fn, { once: true });
@@ -50,12 +52,39 @@
   }
 
   function addHeroBadge() {
-    var hero = document.querySelector('.page-header, .quote-hero, .svc-hero, .plant-hero');
+    var hero = document.querySelector(heroSelector);
     if (!hero || hero.querySelector('.cgm-experience-badge')) return;
     var badge = document.createElement('p');
     badge.className = 'cgm-experience-badge';
     badge.innerHTML = '<span aria-hidden="true">◆</span> ' + modeLabels[routeKey];
     hero.appendChild(badge);
+  }
+
+  function setupHeroDepth() {
+    if (reduceMotion) return;
+    var hero = document.querySelector(heroSelector);
+    if (!hero || hero.dataset.cgmHeroDepth === 'true') return;
+    var media = hero.querySelector('.page-header-bg img, .quote-hero-bg img, .svc-hero__bg img, .plant-hero img, .hero-bg img');
+    if (!media) return;
+    hero.dataset.cgmHeroDepth = 'true';
+    var frame = null;
+    function setDepth(event) {
+      if (event.pointerType === 'touch') return;
+      var bounds = hero.getBoundingClientRect();
+      var x = ((event.clientX - bounds.left) / Math.max(bounds.width, 1) - .5) * 2;
+      var y = ((event.clientY - bounds.top) / Math.max(bounds.height, 1) - .5) * 2;
+      if (frame) window.cancelAnimationFrame(frame);
+      frame = window.requestAnimationFrame(function () {
+        hero.style.setProperty('--cgm-hero-x', (x * -7).toFixed(2) + 'px');
+        hero.style.setProperty('--cgm-hero-y', (y * -5).toFixed(2) + 'px');
+      });
+    }
+    function resetDepth() {
+      hero.style.setProperty('--cgm-hero-x', '0px');
+      hero.style.setProperty('--cgm-hero-y', '0px');
+    }
+    hero.addEventListener('pointermove', setDepth, { passive: true });
+    hero.addEventListener('pointerleave', resetDepth, { passive: true });
   }
 
   function setupReveals() {
@@ -149,6 +178,17 @@
     if (!calculator) return;
     addProgressMeter(calculator, 'Diagnostic progress', 'Your result sharpens as you answer each prompt.');
     calculator.classList.add('cgm-calculator-ready');
+    var steps = Array.prototype.slice.call(calculator.querySelectorAll('.calc-step'));
+    steps.forEach(function (step) {
+      var controls = step.querySelectorAll('input, select, textarea');
+      controls.forEach(function (control) {
+        control.addEventListener('focus', function () {
+          steps.forEach(function (item) { item.classList.remove('is-cgm-focused'); });
+          step.classList.add('is-cgm-focused');
+        });
+        control.addEventListener('blur', function () { step.classList.remove('is-cgm-focused'); });
+      });
+    });
   }
 
   function setupQuoteExperience() {
@@ -186,6 +226,7 @@
 
   ready(function () {
     addHeroBadge();
+    setupHeroDepth();
     setupReveals();
     setupSectionFocus();
     // cgm-v9 builds the optional photo editor on the same DOM-ready cycle.
