@@ -1,0 +1,1160 @@
+/* Services showroom — a dedicated, non-destructive experience layer for the
+   Services landing page. It borrows the project showroom's editorial rhythm,
+   command rail and deliberate interaction without replacing service content. */
+
+.services-showroom {
+  --ss-ink: #151e19;
+  --ss-deep: #0c1712;
+  --ss-forest: #193a28;
+  --ss-forest-2: #28533b;
+  --ss-sage: #d7e0d2;
+  --ss-paper: #f4f1e8;
+  --ss-white: #fbfaf7;
+  --ss-gold: #c39b62;
+  --ss-line: rgba(251, 250, 247, .18);
+  --ss-line-dark: rgba(21, 30, 25, .16);
+  --ss-shadow: 0 26px 70px rgba(0, 0, 0, .23);
+  --ss-pad: clamp(1.1rem, 4vw, 5rem);
+  position: relative;
+  overflow: clip;
+  background: var(--ss-paper);
+  color: var(--ss-ink);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  scroll-behavior: smooth;
+}
+
+.services-showroom *,
+.services-showroom *::before,
+.services-showroom *::after { box-sizing: border-box; }
+
+.services-showroom img { display: block; max-width: 100%; }
+
+.services-showroom .breadcrumbs { display: none !important; }
+
+.services-command-bar {
+  position: sticky;
+  z-index: 70;
+  top: 64px;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 1rem;
+  min-height: 4rem;
+  padding: .7rem var(--ss-pad);
+  border-bottom: 1px solid rgba(251, 250, 247, .14);
+  background: rgba(12, 23, 18, .94);
+  color: var(--ss-white);
+  backdrop-filter: blur(18px);
+}
+
+.services-command-bar__brand {
+  display: inline-flex;
+  align-items: center;
+  gap: .7rem;
+  width: fit-content;
+  color: var(--ss-white);
+  text-decoration: none;
+  font-size: .66rem;
+  font-weight: 700;
+  letter-spacing: .13em;
+  text-transform: uppercase;
+}
+
+.services-command-bar__brand b {
+  display: grid;
+  width: 2rem;
+  height: 2rem;
+  place-items: center;
+  border: 1px solid rgba(251, 250, 247, .7);
+  border-radius: 50%;
+  font-family: "Iowan Old Style", Baskerville, Georgia, serif;
+  font-size: .78rem;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+
+.services-command-bar__center {
+  display: flex;
+  align-items: center;
+  gap: .7rem;
+  color: rgba(251, 250, 247, .63);
+  font-size: .63rem;
+  letter-spacing: .13em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.services-command-bar__progress {
+  width: clamp(5rem, 12vw, 11rem);
+  height: 2px;
+  overflow: hidden;
+  background: rgba(251, 250, 247, .18);
+}
+
+.services-command-bar__progress i {
+  display: block;
+  width: 20%;
+  height: 100%;
+  background: var(--ss-gold);
+  transition: width .35s ease;
+}
+
+.services-command-bar__actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: .4rem;
+}
+
+.services-icon-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.2rem;
+  padding: .45rem .65rem;
+  border: 1px solid rgba(251, 250, 247, .23);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--ss-white);
+  font: inherit;
+  font-size: .63rem;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background .2s ease, border-color .2s ease, transform .2s ease;
+}
+
+.services-icon-button:hover,
+.services-icon-button:focus-visible {
+  border-color: var(--ss-gold);
+  background: rgba(195, 155, 98, .16);
+  transform: translateY(-1px);
+}
+
+/* Hero: deliberately close to the portfolio's opening frame. */
+.services-showroom .svc-hero--showroom {
+  position: relative;
+  min-height: max(47rem, calc(100vh - 8rem));
+  display: grid;
+  align-items: end;
+  overflow: hidden;
+  margin: 0;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: #14271d;
+  box-shadow: none !important;
+  isolation: isolate;
+}
+
+.services-showroom .svc-hero--showroom::after { display: none !important; }
+
+.services-showroom .svc-hero--showroom .svc-hero__bg {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  overflow: hidden;
+}
+
+.services-showroom .svc-hero--showroom .svc-hero__bg::after { display: none; }
+
+.services-showroom .svc-hero--showroom .svc-hero__bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  filter: saturate(.74) contrast(1.04);
+  transform: scale(1.055) translate3d(var(--service-hero-x, 0px), var(--service-hero-y, 0px), 0) !important;
+  transition: transform 1.2s cubic-bezier(.2, .7, .2, 1), filter .7s ease !important;
+}
+
+.services-showroom .svc-hero--showroom .svc-hero__overlay {
+  z-index: 1;
+  background:
+    linear-gradient(90deg, rgba(8, 20, 13, .94) 0%, rgba(8, 20, 13, .70) 38%, rgba(8, 20, 13, .16) 75%),
+    linear-gradient(0deg, rgba(8, 20, 13, .93), transparent 48%) !important;
+}
+
+.services-showroom .svc-hero--showroom .svc-hero__container {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(15rem, .42fr);
+  gap: clamp(2rem, 6vw, 6rem);
+  align-items: end;
+  width: min(100%, 90rem);
+  padding: 8rem var(--ss-pad) clamp(4rem, 8vw, 7.2rem) !important;
+}
+
+.services-showroom .svc-hero--showroom .svc-hero__content {
+  max-width: 48rem;
+}
+
+.services-showroom .svc-hero--showroom .svc-hero__kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: .65rem;
+  margin: 0;
+  color: var(--ss-gold) !important;
+  font-size: .66rem;
+  font-weight: 700;
+  letter-spacing: .19em;
+  text-transform: uppercase;
+}
+
+.services-showroom .svc-hero--showroom .svc-hero__kicker::before {
+  width: 2.5rem;
+  height: 1px;
+  background: currentColor;
+  content: "";
+}
+
+.services-showroom .svc-hero--showroom h1 {
+  max-width: 9.6ch;
+  margin: 1.25rem 0 1.3rem !important;
+  color: var(--ss-white) !important;
+  font-family: "Iowan Old Style", Baskerville, Georgia, serif !important;
+  font-size: clamp(4.5rem, 9vw, 9.8rem) !important;
+  font-weight: 400 !important;
+  line-height: .79 !important;
+  letter-spacing: -.058em !important;
+}
+
+.services-showroom .svc-hero--showroom h1 em {
+  color: var(--ss-gold);
+  font-style: italic;
+}
+
+.services-showroom .svc-hero--showroom .svc-hero__lede {
+  max-width: 33rem;
+  margin: 0 0 1.7rem !important;
+  color: rgba(251, 250, 247, .77) !important;
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+.services-showroom .svc-hero--showroom .svc-hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .65rem;
+  margin: 0 !important;
+}
+
+.services-showroom .svc-hero--showroom .svc-hero__actions .btn,
+.services-showroom .svc-cta .btn {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.9rem;
+  padding: .7rem 1rem;
+  border: 1px solid rgba(251, 250, 247, .52) !important;
+  border-radius: 999px !important;
+  background: transparent !important;
+  color: var(--ss-white) !important;
+  box-shadow: none !important;
+  font-size: .66rem !important;
+  font-weight: 700 !important;
+  letter-spacing: .14em !important;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: transform .22s ease, background .22s ease, color .22s ease;
+}
+
+.services-showroom .svc-hero--showroom .svc-hero__actions .btn::after,
+.services-showroom .svc-cta .btn::after {
+  margin-left: .5rem;
+  color: var(--ss-gold);
+  content: "↗";
+  font-size: 1.05rem;
+  line-height: .5;
+}
+
+.services-showroom .svc-hero--showroom .svc-hero__actions .btn-primary,
+.services-showroom .svc-cta .btn-gold {
+  border-color: var(--ss-gold) !important;
+  background: var(--ss-gold) !important;
+  color: var(--ss-deep) !important;
+}
+
+.services-showroom .svc-hero--showroom .svc-hero__actions .btn-primary::after,
+.services-showroom .svc-cta .btn-gold::after { color: var(--ss-deep); }
+
+.services-showroom .svc-hero--showroom .svc-hero__actions .btn:hover,
+.services-showroom .svc-hero--showroom .svc-hero__actions .btn:focus-visible,
+.services-showroom .svc-cta .btn:hover,
+.services-showroom .svc-cta .btn:focus-visible {
+  background: rgba(251, 250, 247, .1) !important;
+  transform: translateY(-2px);
+}
+
+.services-showroom .svc-hero--showroom .svc-hero__actions .btn-primary:hover,
+.services-showroom .svc-hero--showroom .svc-hero__actions .btn-primary:focus-visible,
+.services-showroom .svc-cta .btn-gold:hover,
+.services-showroom .svc-cta .btn-gold:focus-visible {
+  background: #dfbd83 !important;
+}
+
+.services-showroom .svc-hero--showroom .svc-hero__index {
+  align-self: end;
+  display: grid;
+  gap: 1rem;
+  max-width: 26rem;
+  margin: 0 !important;
+  padding: 1.2rem 0 0 1.3rem !important;
+  border: 0;
+  border-left: 1px solid rgba(251, 250, 247, .30) !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.services-showroom .svc-hero--showroom .svc-hero__index > strong {
+  color: rgba(251, 250, 247, .9) !important;
+  font-family: "Iowan Old Style", Baskerville, Georgia, serif !important;
+  font-size: 1.3rem;
+  font-weight: 400;
+}
+
+.services-showroom .svc-hero--showroom .svc-hero__stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1px;
+  background: rgba(251, 250, 247, .22);
+}
+
+.services-showroom .svc-hero--showroom .svc-hero__stat {
+  padding: .9rem .85rem;
+  background: rgba(12, 23, 18, .44);
+}
+
+.services-showroom .svc-hero--showroom .svc-hero__stat b {
+  display: block;
+  color: var(--ss-gold);
+  font-family: "Iowan Old Style", Baskerville, Georgia, serif;
+  font-size: 2rem;
+  font-weight: 400;
+  line-height: 1;
+}
+
+.services-showroom .svc-hero--showroom .svc-hero__stat span {
+  display: block;
+  margin-top: .3rem;
+  color: rgba(251, 250, 247, .58);
+  font-size: .61rem;
+  letter-spacing: .09em;
+  line-height: 1.35;
+  text-transform: uppercase;
+}
+
+.services-showroom .svc-hero--showroom .svc-hero__index p {
+  margin: 0;
+  color: rgba(251, 250, 247, .73) !important;
+  font-family: "Iowan Old Style", Baskerville, Georgia, serif !important;
+  font-size: 1.05rem;
+  font-style: italic;
+  line-height: 1.3;
+}
+
+.services-showroom .svc-hero--showroom .svc-hero__index cite {
+  color: var(--ss-gold) !important;
+  font-size: .62rem;
+  font-style: normal;
+  font-weight: 700;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+}
+
+.services-showroom .svc-hero--showroom .svc-hero__scroll {
+  position: absolute;
+  z-index: 2;
+  right: var(--ss-pad);
+  bottom: 1.8rem;
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+  color: rgba(251, 250, 247, .56);
+  font-size: .62rem;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+}
+
+.services-showroom .svc-hero--showroom .svc-hero__scroll i {
+  display: block;
+  width: 3.3rem;
+  height: 1px;
+  background: var(--ss-gold);
+}
+
+.services-showroom .cgm-experience-badge { display: none !important; }
+
+.services-chapter-rail {
+  position: sticky;
+  z-index: 55;
+  top: 128px;
+  display: flex;
+  align-items: center;
+  gap: 1.4rem;
+  overflow-x: auto;
+  padding: .85rem var(--ss-pad);
+  border-top: 1px solid rgba(251, 250, 247, .12);
+  border-bottom: 1px solid rgba(251, 250, 247, .12);
+  background: rgba(12, 23, 18, .95);
+  backdrop-filter: blur(16px);
+}
+
+.services-chapter-rail a {
+  display: inline-flex;
+  align-items: center;
+  gap: .45rem;
+  flex: 0 0 auto;
+  color: rgba(251, 250, 247, .51);
+  font-size: .62rem;
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: color .2s ease;
+}
+
+.services-chapter-rail a::before {
+  width: .45rem;
+  height: .45rem;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  content: "";
+}
+
+.services-chapter-rail a:hover,
+.services-chapter-rail a:focus-visible,
+.services-chapter-rail a.is-active { color: var(--ss-gold); }
+
+.services-chapter-rail a.is-active::before { background: currentColor; }
+
+/* A quiet proof strip before the service finder. */
+.services-showroom .svc-stats {
+  margin: 0 !important;
+  padding: clamp(2.6rem, 5vw, 4.4rem) var(--ss-pad) !important;
+  background: var(--ss-deep) !important;
+  color: var(--ss-white);
+}
+
+.services-showroom .svc-stats__grid {
+  display: grid !important;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px !important;
+  max-width: 90rem;
+  padding: 0 !important;
+  background: rgba(251, 250, 247, .18);
+}
+
+.services-showroom .svc-stat {
+  min-height: 9.6rem;
+  padding: 1.2rem !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: var(--ss-deep) !important;
+  box-shadow: none !important;
+}
+
+.services-showroom .svc-stat__icon {
+  color: var(--ss-gold) !important;
+  opacity: .9;
+}
+
+.services-showroom .svc-stat__value {
+  display: block;
+  margin-top: 1.25rem;
+  color: var(--ss-white) !important;
+  font-family: "Iowan Old Style", Baskerville, Georgia, serif;
+  font-size: clamp(1.55rem, 3vw, 2.45rem) !important;
+  font-weight: 400 !important;
+  line-height: .95;
+}
+
+.services-showroom .svc-stat__label {
+  display: block;
+  margin-top: .5rem;
+  color: rgba(251, 250, 247, .57) !important;
+  font-size: .64rem !important;
+  letter-spacing: .09em;
+  line-height: 1.45;
+  text-transform: uppercase;
+}
+
+/* The selector becomes the Services equivalent of the portfolio comparison lab. */
+.services-showroom .svc-selector-section,
+.services-showroom .svc-grid-section,
+.services-showroom .svc-guides-section,
+.services-showroom .svc-how-section {
+  position: relative;
+  padding: clamp(5.4rem, 10vw, 10rem) var(--ss-pad) !important;
+  background: var(--ss-paper) !important;
+  scroll-margin-top: 8.6rem;
+}
+
+.services-showroom .svc-selector-section::before,
+.services-showroom .svc-grid-section::before,
+.services-showroom .svc-guides-section::before,
+.services-showroom .svc-how-section::before { display: none !important; }
+
+.services-showroom .svc-selector-section > .container,
+.services-showroom .svc-grid-section > .container,
+.services-showroom .svc-guides-section > .container,
+.services-showroom .svc-how-section > .container,
+.services-showroom .svc-principles > .container,
+.services-showroom .svc-cta > .container { max-width: 90rem; padding: 0 !important; }
+
+.services-showroom .svc-selector {
+  display: grid !important;
+  grid-template-columns: minmax(16rem, .58fr) minmax(22rem, 1.1fr);
+  gap: clamp(2rem, 7vw, 8rem) !important;
+  align-items: start;
+}
+
+.services-showroom .svc-selector__left { position: sticky; top: 11rem; }
+
+.services-showroom .svc-selector__kicker,
+.services-showroom .section-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: .65rem;
+  margin: 0 0 .9rem !important;
+  color: var(--ss-gold) !important;
+  font-size: .66rem !important;
+  font-weight: 700 !important;
+  letter-spacing: .18em !important;
+  text-transform: uppercase;
+}
+
+.services-showroom .svc-selector__kicker::before,
+.services-showroom .section-kicker::before {
+  width: 2.5rem;
+  height: 1px;
+  background: currentColor;
+  content: "";
+}
+
+.services-showroom .svc-selector__left h2,
+.services-showroom .section-title-center h2,
+.services-showroom .svc-guides-header h2,
+.services-showroom .svc-how-section h2 {
+  max-width: 10ch;
+  margin: 0 !important;
+  color: var(--ss-ink) !important;
+  font-family: "Iowan Old Style", Baskerville, Georgia, serif !important;
+  font-size: clamp(3.6rem, 7vw, 7.8rem) !important;
+  font-weight: 400 !important;
+  line-height: .83 !important;
+  letter-spacing: -.055em;
+}
+
+.services-showroom .svc-selector__intro,
+.services-showroom .section-lede,
+.services-showroom .svc-guides-header p {
+  max-width: 32rem;
+  margin: 1.2rem 0 2.3rem !important;
+  color: rgba(21, 30, 25, .64) !important;
+  font-size: 1rem !important;
+  line-height: 1.6;
+}
+
+.services-showroom .svc-selector__options {
+  display: grid;
+  gap: .38rem;
+  counter-reset: service-path;
+}
+
+.services-showroom .svc-selector__option {
+  display: grid !important;
+  grid-template-columns: 2.1rem 1fr auto;
+  gap: .6rem;
+  align-items: center;
+  width: 100%;
+  min-height: 3.5rem;
+  padding: .75rem .7rem !important;
+  border: 1px solid transparent !important;
+  border-radius: .28rem !important;
+  background: transparent !important;
+  color: rgba(21, 30, 25, .65) !important;
+  box-shadow: none !important;
+  counter-increment: service-path;
+  font: inherit;
+  text-align: left;
+  transition: background .22s ease, border-color .22s ease, color .22s ease, transform .22s ease;
+}
+
+.services-showroom .svc-selector__option::before {
+  color: var(--ss-gold);
+  content: counter(service-path, decimal-leading-zero);
+  font-family: "Iowan Old Style", Baskerville, Georgia, serif;
+  font-size: 1.2rem;
+}
+
+.services-showroom .svc-selector__option-label {
+  font-size: .69rem;
+  font-weight: 700;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+}
+
+.services-showroom .svc-selector__option-arrow {
+  display: grid;
+  width: 1.8rem;
+  height: 1.8rem;
+  place-items: center;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+}
+
+.services-showroom .svc-selector__option:hover,
+.services-showroom .svc-selector__option:focus-visible {
+  border-color: rgba(21, 30, 25, .24) !important;
+  background: rgba(255, 255, 255, .42) !important;
+  color: var(--ss-ink) !important;
+}
+
+.services-showroom .svc-selector__option.is-active,
+.services-showroom .svc-selector__option[aria-pressed="true"] {
+  border-color: var(--ss-forest) !important;
+  background: var(--ss-forest) !important;
+  color: var(--ss-white) !important;
+  transform: translateX(.35rem);
+}
+
+.services-showroom .services-selection-meter {
+  display: grid;
+  gap: .25rem;
+  padding: 1rem 1.1rem;
+  border: 1px solid rgba(21, 30, 25, .15);
+  background: rgba(255, 255, 255, .6);
+}
+
+.services-showroom .services-selection-meter > span {
+  color: rgba(21, 30, 25, .52);
+  font-size: .62rem;
+  font-weight: 700;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+}
+
+.services-showroom .services-selection-meter strong {
+  color: var(--ss-forest);
+  font-family: "Iowan Old Style", Baskerville, Georgia, serif;
+  font-size: 1.7rem;
+  font-weight: 400;
+  line-height: 1;
+}
+
+.services-showroom .services-selection-meter small {
+  color: rgba(21, 30, 25, .58);
+  font-size: .76rem;
+  line-height: 1.4;
+}
+
+.services-showroom .svc-selector__right {
+  display: grid;
+  gap: .8rem;
+}
+
+.services-showroom .svc-selector__panel {
+  min-height: 32rem;
+  padding: clamp(1.5rem, 4vw, 3rem) !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background:
+    radial-gradient(circle at 88% 12%, rgba(195, 155, 98, .28), transparent 22rem),
+    linear-gradient(145deg, var(--ss-deep), var(--ss-forest)) !important;
+  color: var(--ss-white) !important;
+  box-shadow: var(--ss-shadow) !important;
+}
+
+.services-showroom .svc-selector__panel-label,
+.services-showroom .svc-selector__next-label {
+  color: var(--ss-gold) !important;
+  font-size: .64rem !important;
+  font-weight: 700;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+}
+
+.services-showroom .svc-selector__panel-title {
+  max-width: 7.5ch;
+  margin: 2rem 0 1rem !important;
+  color: var(--ss-white) !important;
+  font-family: "Iowan Old Style", Baskerville, Georgia, serif !important;
+  font-size: clamp(3.2rem, 6vw, 6.5rem) !important;
+  font-weight: 400 !important;
+  line-height: .83 !important;
+  letter-spacing: -.05em;
+}
+
+.services-showroom .svc-selector__panel-blurb {
+  max-width: 36rem;
+  margin: 0 0 1.7rem !important;
+  color: rgba(251, 250, 247, .72) !important;
+  font-size: .96rem !important;
+  line-height: 1.65;
+}
+
+.services-showroom .svc-selector__panel .btn {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.8rem;
+  padding: .68rem .95rem;
+  border: 1px solid var(--ss-gold) !important;
+  border-radius: 999px !important;
+  background: var(--ss-gold) !important;
+  color: var(--ss-deep) !important;
+  box-shadow: none !important;
+  font-size: .64rem !important;
+  font-weight: 700 !important;
+  letter-spacing: .12em;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.services-showroom .svc-selector__panel .btn::after { margin-left: .5rem; content: "↗"; }
+
+.services-showroom .svc-selector__next-label { margin: 2rem 0 .8rem !important; }
+
+.services-showroom .svc-selector__next-steps { display: grid; gap: 1px; background: rgba(251, 250, 247, .18); }
+
+.services-showroom .svc-selector__next-step {
+  display: grid !important;
+  grid-template-columns: 2.2rem 1fr auto;
+  gap: .65rem;
+  align-items: center;
+  min-height: 3.7rem;
+  padding: .55rem .65rem;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: rgba(12, 23, 18, .48) !important;
+  color: var(--ss-white) !important;
+  text-decoration: none;
+  transition: background .2s ease, transform .2s ease;
+}
+
+.services-showroom .svc-selector__next-step:hover,
+.services-showroom .svc-selector__next-step:focus-visible {
+  background: rgba(251, 250, 247, .11) !important;
+  transform: translateX(.3rem);
+}
+
+.services-showroom .svc-selector__next-step-icon,
+.services-showroom .svc-selector__next-step-arrow { color: var(--ss-gold) !important; }
+
+.services-showroom .svc-selector__next-step-name {
+  font-size: .66rem;
+  font-weight: 700;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+}
+
+.services-showroom .svc-selector__whatsapp {
+  display: inline-flex;
+  align-items: center;
+  gap: .55rem;
+  margin-top: 1.4rem;
+  color: rgba(251, 250, 247, .72) !important;
+  font-size: .68rem;
+  font-weight: 700;
+  letter-spacing: .09em;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.services-showroom .svc-selector__whatsapp:hover,
+.services-showroom .svc-selector__whatsapp:focus-visible { color: var(--ss-gold) !important; }
+
+/* Index: services become individual, numbered destinations rather than a grid of boxes. */
+.services-showroom .svc-grid-section { background: var(--ss-sage) !important; }
+
+.services-showroom .section-title-center {
+  display: block;
+  max-width: 72rem;
+  margin-bottom: clamp(2.5rem, 6vw, 6rem);
+  text-align: left !important;
+}
+
+.services-showroom .section-title-center .section-lede {
+  max-width: 34rem;
+  margin: 1.2rem 0 0 !important;
+}
+
+.services-showroom .svc-grid {
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1px !important;
+  background: var(--ss-line-dark);
+  counter-reset: service-index;
+}
+
+.services-showroom .svc-grid-card {
+  position: relative;
+  display: flex !important;
+  flex-direction: column;
+  min-height: 19rem;
+  padding: 1.35rem !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: var(--ss-sage) !important;
+  color: var(--ss-ink) !important;
+  box-shadow: none !important;
+  counter-increment: service-index;
+  overflow: hidden;
+  text-decoration: none !important;
+  transition: background .28s ease, color .28s ease, transform .28s ease;
+}
+
+.services-showroom .svc-grid-card::before {
+  align-self: flex-start;
+  color: var(--ss-gold);
+  content: counter(service-index, decimal-leading-zero);
+  font-family: "Iowan Old Style", Baskerville, Georgia, serif;
+  font-size: 1.35rem;
+  line-height: 1;
+}
+
+.services-showroom .svc-grid-card::after {
+  position: absolute;
+  right: -2.2rem;
+  bottom: -2.2rem;
+  width: 7rem;
+  height: 7rem;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  content: "";
+  opacity: .15;
+  transition: transform .35s ease;
+}
+
+.services-showroom .svc-grid-card:hover,
+.services-showroom .svc-grid-card:focus-visible {
+  z-index: 1;
+  background: var(--ss-forest) !important;
+  color: var(--ss-white) !important;
+  transform: translateY(-5px);
+}
+
+.services-showroom .svc-grid-card:hover::after,
+.services-showroom .svc-grid-card:focus-visible::after { transform: scale(1.35); }
+
+.services-showroom .svc-grid-card__icon {
+  width: 2.8rem !important;
+  height: 2.8rem !important;
+  margin: 0 0 2.8rem !important;
+  padding: .55rem;
+  border: 1px solid rgba(21, 30, 25, .18) !important;
+  border-radius: 50% !important;
+  background: transparent !important;
+  color: var(--ss-forest) !important;
+}
+
+.services-showroom .svc-grid-card:hover .svc-grid-card__icon,
+.services-showroom .svc-grid-card:focus-visible .svc-grid-card__icon {
+  border-color: rgba(251, 250, 247, .4) !important;
+  color: var(--ss-gold) !important;
+}
+
+.services-showroom .svc-grid-card h3 {
+  margin: auto 0 .55rem !important;
+  color: inherit !important;
+  font-family: "Iowan Old Style", Baskerville, Georgia, serif !important;
+  font-size: clamp(2rem, 3vw, 3rem) !important;
+  font-weight: 400 !important;
+  line-height: .87 !important;
+}
+
+.services-showroom .svc-grid-card p {
+  margin: 0 !important;
+  color: rgba(21, 30, 25, .64) !important;
+  font-size: .78rem !important;
+  line-height: 1.55;
+}
+
+.services-showroom .svc-grid-card:hover p,
+.services-showroom .svc-grid-card:focus-visible p { color: rgba(251, 250, 247, .68) !important; }
+
+.services-showroom .svc-grid-card__link {
+  display: inline-flex !important;
+  align-items: center;
+  gap: .4rem;
+  margin-top: 1.4rem;
+  color: var(--ss-forest) !important;
+  font-size: .64rem !important;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+.services-showroom .svc-grid-card:hover .svc-grid-card__link,
+.services-showroom .svc-grid-card:focus-visible .svc-grid-card__link { color: var(--ss-gold) !important; }
+
+/* Method, reading and project handover. */
+.services-showroom .svc-principles {
+  position: relative;
+  padding: clamp(5.4rem, 10vw, 10rem) var(--ss-pad) !important;
+  background: var(--ss-deep) !important;
+  color: var(--ss-white);
+  scroll-margin-top: 8.6rem;
+}
+
+.services-showroom .svc-principles .section-title-center { display: block; }
+
+.services-showroom .svc-principles .section-kicker { color: var(--ss-gold) !important; }
+
+.services-showroom .svc-principles h2 {
+  max-width: 9ch;
+  margin: 0 !important;
+  color: var(--ss-white) !important;
+  font-family: "Iowan Old Style", Baskerville, Georgia, serif !important;
+  font-size: clamp(3.6rem, 7vw, 7.8rem) !important;
+  font-weight: 400 !important;
+  line-height: .82 !important;
+  letter-spacing: -.055em;
+}
+
+.services-showroom .svc-principles__grid {
+  display: grid !important;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px !important;
+  margin-top: clamp(2.5rem, 6vw, 6rem);
+  background: rgba(251, 250, 247, .18);
+}
+
+.services-showroom .svc-principle {
+  min-height: 17rem;
+  padding: 1.35rem;
+  background: var(--ss-deep);
+  color: var(--ss-white);
+  transition: background .25s ease, transform .25s ease;
+}
+
+.services-showroom .svc-principle:hover { background: var(--ss-forest); transform: translateY(-4px); }
+
+.services-showroom .svc-principle__num { color: var(--ss-gold) !important; font-size: .67rem; letter-spacing: .15em; }
+
+.services-showroom .svc-principle h3 {
+  margin: 3rem 0 .65rem !important;
+  color: var(--ss-white) !important;
+  font-family: "Iowan Old Style", Baskerville, Georgia, serif !important;
+  font-size: 2.2rem !important;
+  font-weight: 400 !important;
+  line-height: .9 !important;
+}
+
+.services-showroom .svc-principle p {
+  margin: 0 !important;
+  color: rgba(251, 250, 247, .66) !important;
+  font-size: .78rem !important;
+  line-height: 1.55;
+}
+
+.services-showroom .svc-guides-section { background: var(--ss-paper) !important; }
+
+.services-showroom .svc-guides-header {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 2rem;
+  align-items: end;
+  margin-bottom: clamp(2.5rem, 5vw, 5rem);
+}
+
+.services-showroom .svc-guides-viewall {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  color: var(--ss-forest) !important;
+  font-size: .66rem;
+  font-weight: 700;
+  letter-spacing: .13em;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.services-showroom .svc-guides-viewall:hover,
+.services-showroom .svc-guides-viewall:focus-visible { color: var(--ss-gold) !important; }
+
+.services-showroom .svc-guides-grid {
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px !important;
+  background: var(--ss-line-dark);
+}
+
+.services-showroom .svc-guide-card {
+  min-height: 15rem;
+  padding: 1.25rem !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: var(--ss-paper) !important;
+  color: var(--ss-ink) !important;
+  box-shadow: none !important;
+  text-decoration: none !important;
+  transition: background .25s ease, color .25s ease;
+}
+
+.services-showroom .svc-guide-card:hover,
+.services-showroom .svc-guide-card:focus-visible { background: var(--ss-forest) !important; color: var(--ss-white) !important; }
+
+.services-showroom .svc-guide-card__icon,
+.services-showroom .svc-guide-card__read,
+.services-showroom .svc-guide-card__link { color: var(--ss-gold) !important; }
+
+.services-showroom .svc-guide-card h3 {
+  margin: 2.4rem 0 auto !important;
+  color: inherit !important;
+  font-family: "Iowan Old Style", Baskerville, Georgia, serif !important;
+  font-size: 2.1rem !important;
+  font-weight: 400 !important;
+  line-height: .9 !important;
+}
+
+.services-showroom .svc-guide-card__read,
+.services-showroom .svc-guide-card__link {
+  margin-top: 1rem !important;
+  font-size: .63rem !important;
+  font-weight: 700;
+  letter-spacing: .11em;
+  text-transform: uppercase;
+}
+
+.services-showroom .svc-how-section { background: var(--ss-sage) !important; }
+
+.services-showroom .svc-how-grid {
+  display: grid !important;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px !important;
+  margin-top: clamp(2.5rem, 6vw, 6rem);
+  background: var(--ss-line-dark);
+}
+
+.services-showroom .svc-step {
+  min-height: 16rem;
+  padding: 1.3rem;
+  background: var(--ss-sage);
+}
+
+.services-showroom .svc-step__num { color: var(--ss-gold) !important; font-size: .67rem; letter-spacing: .16em; }
+
+.services-showroom .svc-step h3 {
+  margin: 3rem 0 .6rem !important;
+  color: var(--ss-ink) !important;
+  font-family: "Iowan Old Style", Baskerville, Georgia, serif !important;
+  font-size: 2.1rem !important;
+  font-weight: 400 !important;
+  line-height: .88 !important;
+}
+
+.services-showroom .svc-step p { margin: 0 !important; color: rgba(21, 30, 25, .62) !important; font-size: .78rem !important; line-height: 1.55; }
+
+.services-showroom .svc-cta {
+  position: relative;
+  padding: clamp(5.5rem, 12vw, 11rem) var(--ss-pad) !important;
+  background: var(--ss-forest) !important;
+  color: var(--ss-white);
+  scroll-margin-top: 8.6rem;
+}
+
+.services-showroom .svc-cta__inner {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) minmax(16rem, .55fr);
+  gap: clamp(2rem, 8vw, 7rem);
+  align-items: end;
+}
+
+.services-showroom .svc-cta h2 { grid-row: 1 / span 2; }
+.services-showroom .svc-cta__inner > p,
+.services-showroom .svc-cta__actions { grid-column: 2; }
+
+.services-showroom .svc-cta h2 {
+  max-width: 7.5ch;
+  margin: 0 !important;
+  color: var(--ss-white) !important;
+  font-family: "Iowan Old Style", Baskerville, Georgia, serif !important;
+  font-size: clamp(4rem, 8vw, 8.5rem) !important;
+  font-weight: 400 !important;
+  line-height: .8 !important;
+  letter-spacing: -.055em;
+}
+
+.services-showroom .svc-cta p {
+  max-width: 28rem;
+  margin: 0 0 1.5rem !important;
+  color: rgba(251, 250, 247, .7) !important;
+  font-size: .94rem !important;
+  line-height: 1.65;
+}
+
+.services-showroom .svc-cta__actions { display: flex; flex-wrap: wrap; gap: .65rem; }
+
+/* Reveal only after script enhancement has attached; content is readable if JS fails. */
+.services-showroom [data-service-reveal] { opacity: 1; transform: none; }
+
+.services-showroom.services-showroom--enhanced [data-service-reveal] {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity .72s ease, transform .72s cubic-bezier(.2, .7, .2, 1);
+}
+
+.services-showroom.services-showroom--enhanced [data-service-reveal].is-visible { opacity: 1; transform: none; }
+
+.services-showroom a:focus-visible,
+.services-showroom button:focus-visible { outline: 2px solid var(--ss-gold); outline-offset: 3px; }
+
+@media (max-width: 1020px) {
+  .services-showroom .svc-hero--showroom .svc-hero__container,
+  .services-showroom .svc-selector,
+  .services-showroom .svc-cta__inner { grid-template-columns: 1fr; }
+
+  .services-showroom .svc-cta h2 { grid-row: auto; }
+  .services-showroom .svc-cta__inner > p,
+  .services-showroom .svc-cta__actions { grid-column: auto; }
+
+  .services-showroom .svc-hero--showroom .svc-hero__index { max-width: 31rem; padding-left: 0 !important; border-left: 0 !important; }
+  .services-showroom .svc-selector__left { position: static; }
+  .services-showroom .svc-stats__grid,
+  .services-showroom .svc-principles__grid,
+  .services-showroom .svc-how-grid { grid-template-columns: repeat(2, 1fr); }
+  .services-showroom .svc-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 700px) {
+  .services-command-bar { top: 56px; grid-template-columns: 1fr auto; }
+  .services-command-bar__center { display: none; }
+  .services-command-bar__brand span { display: none; }
+  .services-command-bar__actions .services-icon-button:nth-child(2) { display: none; }
+  .services-chapter-rail { top: 120px; }
+  .services-showroom .svc-hero--showroom { min-height: 47rem; }
+  .services-showroom .svc-hero--showroom .svc-hero__container { padding-top: 7rem !important; }
+  .services-showroom .svc-hero--showroom h1 { font-size: clamp(4rem, 17.4vw, 6.7rem) !important; }
+  .services-showroom .svc-hero--showroom .svc-hero__stats { max-width: 25rem; }
+  .services-showroom .svc-hero--showroom .svc-hero__scroll { display: none; }
+  .services-showroom .svc-grid,
+  .services-showroom .svc-guides-grid { grid-template-columns: 1fr; }
+  .services-showroom .svc-grid-card { min-height: 15rem; }
+  .services-showroom .svc-principles__grid,
+  .services-showroom .svc-how-grid,
+  .services-showroom .svc-stats__grid { grid-template-columns: 1fr 1fr; }
+  .services-showroom .svc-guides-header { grid-template-columns: 1fr; }
+  .services-showroom .svc-selector__panel { min-height: 0; }
+}
+
+@media (max-width: 440px) {
+  .services-showroom .svc-stats__grid,
+  .services-showroom .svc-principles__grid,
+  .services-showroom .svc-how-grid { grid-template-columns: 1fr; }
+  .services-showroom .svc-hero--showroom .svc-hero__stat b { font-size: 1.7rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .services-showroom *,
+  .services-showroom *::before,
+  .services-showroom *::after {
+    scroll-behavior: auto !important;
+    transition-duration: .01ms !important;
+    animation-duration: .01ms !important;
+  }
+
+  .services-showroom.services-showroom--enhanced [data-service-reveal] { opacity: 1; transform: none; }
+}
