@@ -28,6 +28,7 @@
 
 .about-showroom img { display: block; max-width: 100%; }
 .about-showroom .breadcrumbs { display: none !important; }
+.about-showroom .cgm-experience-badge { display: none !important; }
 
 /* A project-style command rail gives the long-form company page a clear route. */
 .about-command-bar {
@@ -144,6 +145,18 @@
   background: var(--as-deep);
   box-shadow: none !important;
   isolation: isolate;
+}
+
+html.cgm-premium-experience .about-showroom .about-hero {
+  min-height: max(47rem, calc(100vh - 8rem)) !important;
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+}
+
+html.cgm-premium-experience .about-showroom .about-hero .about-hero__container {
+  position: relative;
+  z-index: 2;
 }
 
 .about-showroom .about-hero::after { display: none !important; }
