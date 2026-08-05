@@ -12,6 +12,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap">
   <link rel="stylesheet" href="/chilterngardenmaintenance-updatedsite/css/editorial.css?v=20260723r2">
+  <link rel="stylesheet" href="/chilterngardenmaintenance-updatedsite/css/knowledge-showroom.css?v=20260805a">
   <link rel="icon" type="image/png" sizes="32x32" href="/chilterngardenmaintenance-updatedsite/images/favicon-32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/chilterngardenmaintenance-updatedsite/images/favicon-16.png">
   <link rel="apple-touch-icon" href="/chilterngardenmaintenance-updatedsite/images/cgm-logo-square.png">
@@ -99,32 +100,87 @@
     </div><a href="/chilterngardenmaintenance-updatedsite/locations/">Locations</a><a href="/chilterngardenmaintenance-updatedsite/about/maintenance.html">The CGM Method</a><a href="/chilterngardenmaintenance-updatedsite/booking/">Get a Quote</a><a href="https://wa.me/447467657459" target="_blank" rel="noopener">WhatsApp</a>
     </nav>
   </header>
-<main id="main-content">
+<main id="main-content" class="knowledge-showroom knowledge-showroom--plants" tabindex="-1">
 
-  <section class="page-header">
+  <header class="knowledge-command-bar" aria-label="Plant library controls">
+    <div class="knowledge-command-bar__brand" aria-label="Chiltern Plant Library">
+      <span class="knowledge-command-bar__mark" aria-hidden="true">CG</span>
+      <span><strong>Plant library</strong><small>Field notes from real gardens</small></span>
+    </div>
+    <div class="knowledge-command-bar__progress" aria-label="Current page chapter">
+      <span data-knowledge-progress-label>01 / 04</span>
+      <span class="knowledge-command-bar__line" aria-hidden="true"><i data-knowledge-progress-bar></i></span>
+      <strong data-knowledge-progress-title>Browse the library</strong>
+    </div>
+    <div class="knowledge-command-bar__actions">
+      <button type="button" data-knowledge-scroll-target="plant-search-stage">Find a plant</button>
+      <button type="button" data-knowledge-scroll-target="plant-routes">By condition</button>
+      <button type="button" data-knowledge-scroll-target="knowledge-quote">Planting help</button>
+    </div>
+  </header>
+
+  <section class="page-header knowledge-hero knowledge-hero--plants" id="knowledge-hero" data-knowledge-chapter="hero" data-knowledge-chapter-title="Browse the library">
     <div class="page-header-bg"><img src="/chilterngardenmaintenance-updatedsite/images/plant-header.jpg" alt="" width="1920" height="400"></div>
-    <div class="container">
+    <div class="container knowledge-hero__container">
       <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/chilterngardenmaintenance-updatedsite/">Home</a><span>/</span>Chiltern Plant Library</nav>
+      <span class="knowledge-hero__kicker">A working field library</span>
       <h1>Chiltern Plant Library</h1>
       <p>A working library of 130 plants we use in real gardens across the Chilterns and Thames Valley. Each profile includes light, soil, pruning, wildlife value and our own CGM care notes.</p>
+      <aside class="knowledge-hero__index" aria-label="Plant library facts">
+        <strong>Field notes</strong>
+        <div><b>130</b><span>plants in use</span></div>
+        <div><b>12</b><span>plant worlds</span></div>
+        <div><b>04</b><span>local counties</span></div>
+        <p>Every entry starts with work in a real garden, not a stock list.</p>
+      </aside>
     </div>
+    <a class="knowledge-hero__scroll" href="#plant-routes"><span aria-hidden="true"></span> Explore by garden condition</a>
   </section>
 
-  <section class="section" style="padding-top:2rem;">
+  <nav class="knowledge-chapter-rail" aria-label="Plant library sections">
+    <a href="#knowledge-hero" data-knowledge-chapter-link="hero" class="is-active"><span>01</span> The library</a>
+    <a href="#plant-routes" data-knowledge-chapter-link="routes"><span>02</span> By condition</a>
+    <a href="#plant-search-stage" data-knowledge-chapter-link="catalogue"><span>03</span> The collection</a>
+    <a href="#knowledge-quote" data-knowledge-chapter-link="quote"><span>04</span> Make a plan</a>
+  </nav>
+
+  <section class="section knowledge-tool-stage" style="padding-top:2rem;">
     <div class="container">
       <div id="rightPlantTool"></div>
     </div>
   </section>
 
-  <section class="section">
+  <section class="section knowledge-discovery" id="plant-library">
     <div class="container">
-      <div class="callout plants-callout">
+      <section class="knowledge-route-lab knowledge-route-lab--plants" id="plant-routes" data-knowledge-chapter="routes" data-knowledge-chapter-title="By condition" data-knowledge-reveal>
+        <div class="knowledge-route-lab__intro">
+          <span class="knowledge-eyebrow">Choose your starting ground</span>
+          <h2>Find a plant family by the way your garden needs to feel.</h2>
+          <p>Start with a real condition, not an endless plant list. Pick a direction and we will take you straight to a useful part of the library.</p>
+          <div class="knowledge-route-lab__controls" role="tablist" aria-label="Choose a plant route">
+            <button class="knowledge-route-lab__control is-active" type="button" role="tab" aria-selected="true" data-knowledge-route data-knowledge-target="cat-aromatic-and-silver-foliage" data-knowledge-route-label="Sun &amp; dry ground" data-knowledge-route-title="Aromatic and silver foliage" data-knowledge-route-copy="A reliable first stop for bright, free-draining positions where scent, softness and drought tolerance matter."><span>01</span>Sun &amp; dry ground</button>
+            <button class="knowledge-route-lab__control" type="button" role="tab" aria-selected="false" data-knowledge-route data-knowledge-target="cat-shade-lovers" data-knowledge-route-label="Shade &amp; cool corners" data-knowledge-route-title="Shade lovers" data-knowledge-route-copy="Build a calmer planting palette for the parts of a garden that receive less sun and retain more moisture."><span>02</span>Shade &amp; cool corners</button>
+            <button class="knowledge-route-lab__control" type="button" role="tab" aria-selected="false" data-knowledge-route data-knowledge-target="cat-hedges-and-structural-evergreens" data-knowledge-route-label="Privacy &amp; structure" data-knowledge-route-title="Hedges and structural evergreens" data-knowledge-route-copy="Choose living boundaries and year-round shape with plants that can take a practical role in the garden."><span>03</span>Privacy &amp; structure</button>
+            <button class="knowledge-route-lab__control" type="button" role="tab" aria-selected="false" data-knowledge-route data-knowledge-target="cat-border-perennials" data-knowledge-route-label="Colour &amp; pollinators" data-knowledge-route-title="Border perennials" data-knowledge-route-copy="Explore plants that bring seasonal rhythm, pollinator value and a more generous feeling to a border."><span>04</span>Colour &amp; pollinators</button>
+          </div>
+        </div>
+        <aside class="knowledge-route-card" id="knowledge-route-detail" role="tabpanel" tabindex="0" aria-live="polite">
+          <div class="knowledge-route-card__topline"><span>Suggested collection</span><b data-knowledge-route-number>01</b></div>
+          <p class="knowledge-route-card__tag" data-knowledge-route-label-output>Sun &amp; dry ground</p>
+          <h3 data-knowledge-route-title-output>Aromatic and silver foliage</h3>
+          <p data-knowledge-route-copy-output>A reliable first stop for bright, free-draining positions where scent, softness and drought tolerance matter.</p>
+          <a class="knowledge-route-card__cta" data-knowledge-route-link href="#cat-aromatic-and-silver-foliage">Open this collection <span aria-hidden="true">→</span></a>
+          <p class="knowledge-route-card__note">You can refine further with the live search and the categories below.</p>
+        </aside>
+      </section>
+
+      <div class="callout plants-callout knowledge-library-note">
         <h3>About this library</h3>
         <p>This is a working library updated by our gardeners, not an encyclopaedia. Every plant here is one of many we have planted, pruned or maintained in real gardens across Oxfordshire, Buckinghamshire, Berkshire and Bedfordshire. The CGM care notes are our own observations from working with each plant in the Chilterns.</p>
       </div>
 
       <!-- Premium search bar with expand-on-focus -->
-      <div class="plant-search-premium">
+      <div class="plant-search-premium knowledge-search-stage" id="plant-search-stage">
         <div class="plant-search-premium__wrap">
           <span class="plant-search-premium__icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></span>
           <input
@@ -140,7 +196,7 @@
         <p id="plantSearchStatus" class="plant-search-premium__status" role="status" aria-live="polite"></p>
       </div>
 
-      <div class="plant-cat-chips" id="plantCatChips"><button class="plant-cat-chips__toggle" type="button" id="plantCatToggle" aria-expanded="false" aria-controls="plantCatList"><span>Browse categories</span><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="plant-cat-chips__chevron"><path d="m6 9 6 6 6-6"/></svg></button><div class="plant-cat-chips__list" id="plantCatList"><a href="#cat-aromatic-and-silver-foliage" class="plant-cat-chip" data-target="cat-aromatic-and-silver-foliage">Aromatic and silver foliage<span class="plant-cat-chip__count">6</span></a><a href="#cat-climbers-and-scramblers" class="plant-cat-chip" data-target="cat-climbers-and-scramblers">Climbers and scramblers<span class="plant-cat-chip__count">4</span></a><a href="#cat-statement-shrubs" class="plant-cat-chip" data-target="cat-statement-shrubs">Statement shrubs<span class="plant-cat-chip__count">8</span></a><a href="#cat-shade-lovers" class="plant-cat-chip" data-target="cat-shade-lovers">Shade lovers<span class="plant-cat-chip__count">13</span></a><a href="#cat-border-perennials" class="plant-cat-chip" data-target="cat-border-perennials">Border perennials<span class="plant-cat-chip__count">12</span></a><a href="#cat-ornamental-grasses" class="plant-cat-chip" data-target="cat-ornamental-grasses">Ornamental grasses<span class="plant-cat-chip__count">7</span></a><a href="#cat-hedges-and-structural-evergreens" class="plant-cat-chip" data-target="cat-hedges-and-structural-evergreens">Hedges and structural evergreens<span class="plant-cat-chip__count">20</span></a><a href="#cat-trees-and-specimen-shrubs" class="plant-cat-chip" data-target="cat-trees-and-specimen-shrubs">Trees and specimen shrubs<span class="plant-cat-chip__count">20</span></a><a href="#cat-fruit-and-edibles" class="plant-cat-chip" data-target="cat-fruit-and-edibles">Fruit and edibles<span class="plant-cat-chip__count">12</span></a><a href="#cat-herbs" class="plant-cat-chip" data-target="cat-herbs">Herbs<span class="plant-cat-chip__count">8</span></a><a href="#cat-bulbs-and-corms" class="plant-cat-chip" data-target="cat-bulbs-and-corms">Bulbs and corms<span class="plant-cat-chip__count">14</span></a><a href="#cat-ground-cover" class="plant-cat-chip" data-target="cat-ground-cover">Ground cover<span class="plant-cat-chip__count">4</span></a></div></div>
+      <div class="plant-cat-chips" id="plantCatChips" data-knowledge-chapter="catalogue" data-knowledge-chapter-title="The collection"><button class="plant-cat-chips__toggle" type="button" id="plantCatToggle" aria-expanded="false" aria-controls="plantCatList"><span>Browse categories</span><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="plant-cat-chips__chevron"><path d="m6 9 6 6 6-6"/></svg></button><div class="plant-cat-chips__list" id="plantCatList"><a href="#cat-aromatic-and-silver-foliage" class="plant-cat-chip" data-target="cat-aromatic-and-silver-foliage">Aromatic and silver foliage<span class="plant-cat-chip__count">6</span></a><a href="#cat-climbers-and-scramblers" class="plant-cat-chip" data-target="cat-climbers-and-scramblers">Climbers and scramblers<span class="plant-cat-chip__count">4</span></a><a href="#cat-statement-shrubs" class="plant-cat-chip" data-target="cat-statement-shrubs">Statement shrubs<span class="plant-cat-chip__count">8</span></a><a href="#cat-shade-lovers" class="plant-cat-chip" data-target="cat-shade-lovers">Shade lovers<span class="plant-cat-chip__count">13</span></a><a href="#cat-border-perennials" class="plant-cat-chip" data-target="cat-border-perennials">Border perennials<span class="plant-cat-chip__count">12</span></a><a href="#cat-ornamental-grasses" class="plant-cat-chip" data-target="cat-ornamental-grasses">Ornamental grasses<span class="plant-cat-chip__count">7</span></a><a href="#cat-hedges-and-structural-evergreens" class="plant-cat-chip" data-target="cat-hedges-and-structural-evergreens">Hedges and structural evergreens<span class="plant-cat-chip__count">20</span></a><a href="#cat-trees-and-specimen-shrubs" class="plant-cat-chip" data-target="cat-trees-and-specimen-shrubs">Trees and specimen shrubs<span class="plant-cat-chip__count">20</span></a><a href="#cat-fruit-and-edibles" class="plant-cat-chip" data-target="cat-fruit-and-edibles">Fruit and edibles<span class="plant-cat-chip__count">12</span></a><a href="#cat-herbs" class="plant-cat-chip" data-target="cat-herbs">Herbs<span class="plant-cat-chip__count">8</span></a><a href="#cat-bulbs-and-corms" class="plant-cat-chip" data-target="cat-bulbs-and-corms">Bulbs and corms<span class="plant-cat-chip__count">14</span></a><a href="#cat-ground-cover" class="plant-cat-chip" data-target="cat-ground-cover">Ground cover<span class="plant-cat-chip__count">4</span></a></div></div>
 
       <div id="plantNoResults" class="plant-no-results" hidden>
         <h3>No plants found</h3>
@@ -2175,7 +2231,7 @@
   </script>
 
   
-  <section class="cta-band-compact">
+  <section class="cta-band-compact knowledge-quote" id="knowledge-quote" data-knowledge-chapter="quote" data-knowledge-chapter-title="Make a plan">
     <div class="container">
       <h2>Need help choosing or planting? Contact us on WhatsApp.</h2>
       <p>Contact us on WhatsApp and we will aim to respond within 12 to 36 hours, Monday to Sunday.</p>
@@ -2287,5 +2343,6 @@
   <script src="/chilterngardenmaintenance-updatedsite/js/custom-scrollbar.js?v=20260719b"></script>
   <script src="/chilterngardenmaintenance-updatedsite/js/predictive-search.js?v=20260719b"></script>
   <script src="/chilterngardenmaintenance-updatedsite/js/mobile-dock.js?v=20260719b"></script>
+  <script src="/chilterngardenmaintenance-updatedsite/js/knowledge-showroom.js?v=20260805a"></script>
 </body>
 </html>
