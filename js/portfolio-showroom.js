@@ -339,7 +339,7 @@
         if (progress && index >= 0) progress.style.width = `${((index + 1) / chapters.length) * 100}%`;
         const label = $('[data-progress-label]');
         if (label && index >= 0) label.textContent = `${pad(index + 1)} / ${pad(chapters.length)}`;
-      }), { rootMargin: '-34% 0 -55% 0', threshold: 0 });
+      }), { rootMargin: '-34% 0px -55% 0px', threshold: 0 });
       chapters.forEach((chapter) => observer.observe(chapter));
 
       const reveal = new IntersectionObserver((entries, ob) => entries.forEach((entry) => { if (entry.isIntersecting) { entry.target.classList.add('is-visible'); ob.unobserve(entry.target); } }), { threshold: .1 });
