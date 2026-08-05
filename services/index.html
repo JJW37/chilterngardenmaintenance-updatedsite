@@ -11,6 +11,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap">
+  <link rel="stylesheet" href="/chilterngardenmaintenance-updatedsite/css/services-showroom.css?v=20260805a">
   <link rel="icon" type="image/png" sizes="32x32" href="/chilterngardenmaintenance-updatedsite/images/favicon-32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/chilterngardenmaintenance-updatedsite/images/favicon-16.png">
   <link rel="apple-touch-icon" href="/chilterngardenmaintenance-updatedsite/images/cgm-logo-square.png">
@@ -98,31 +99,56 @@
     </div><a href="/chilterngardenmaintenance-updatedsite/locations/">Locations</a><a href="/chilterngardenmaintenance-updatedsite/about/maintenance.html">The CGM Method</a><a href="/chilterngardenmaintenance-updatedsite/booking/">Get a Quote</a><a href="https://wa.me/447467657459" target="_blank" rel="noopener">WhatsApp</a>
     </nav>
   </header>
-<main id="main-content">
+<main id="main-content" class="services-showroom" tabindex="-1">
+  <header class="services-command-bar" aria-label="Services controls">
+    <a class="services-command-bar__brand" href="/chilterngardenmaintenance-updatedsite/services/"><b>CG</b><span>Garden service studio</span></a>
+    <div class="services-command-bar__center" aria-live="polite"><span data-service-progress-label>01 / 05</span><span class="services-command-bar__progress"><i data-service-progress-bar></i></span><span data-service-progress-title>Service studio</span></div>
+    <div class="services-command-bar__actions">
+      <button class="services-icon-button" type="button" data-service-action="finder">Service finder</button>
+      <button class="services-icon-button" type="button" data-service-action="index">Services</button>
+      <button class="services-icon-button" type="button" data-service-action="quote">Get a quote</button>
+    </div>
+  </header>
 <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/chilterngardenmaintenance-updatedsite/">Home</a><span>/</span>Services</nav>
   <!-- ===== HERO ===== -->
-  <section class="svc-hero">
+  <section class="svc-hero svc-hero--showroom" id="services-hero" data-service-chapter="hero">
     <div class="svc-hero__bg"><img src="/chilterngardenmaintenance-updatedsite/images/services-header.jpg" alt="Chiltern garden in summer"></div>
     <div class="svc-hero__overlay"></div>
     <div class="container svc-hero__container">
       <div class="svc-hero__content">
-        <p class="svc-hero__kicker">Garden and Grounds Services</p>
-        <h1>Everything your garden needs.<br>Handled with care.</h1>
+        <p class="svc-hero__kicker">Garden and grounds services / Chilterns &amp; Thames Valley</p>
+        <h1>Everything your garden needs.<br><em>Handled with care.</em></h1>
         <p class="svc-hero__lede">From garden clearance to ongoing maintenance, we offer a complete range of gardening services across the Chilterns and Thames Valley.</p>
         <div class="svc-hero__actions">
           <a class="btn btn-primary btn-lg" href="#service-selector">Find the right service</a>
           <a class="btn btn-outline-light btn-lg" href="#all-services">Explore all services</a>
         </div>
       </div>
-      <div class="svc-hero__quote">
+      <aside class="svc-hero__quote svc-hero__index" aria-label="Service studio index">
+        <strong>Garden service studio</strong>
+        <div class="svc-hero__stats">
+          <div class="svc-hero__stat"><b>09</b><span>core services</span></div>
+          <div class="svc-hero__stat"><b>04</b><span>counties covered</span></div>
+          <div class="svc-hero__stat"><b>12–36</b><span>hour response aim</span></div>
+          <div class="svc-hero__stat"><b>01</b><span>clear route in</span></div>
+        </div>
         <p>"We look after gardens as if they were our own."</p>
         <cite>The CGM Team</cite>
-      </div>
+      </aside>
     </div>
+    <div class="svc-hero__scroll" aria-hidden="true"><i></i>Enter the service studio</div>
   </section>
 
+  <nav class="services-chapter-rail" aria-label="Service page chapters">
+    <a href="#services-hero" data-service-chapter-link="hero">Garden service studio</a>
+    <a href="#service-selector" data-service-chapter-link="finder">Find your route</a>
+    <a href="#all-services" data-service-chapter-link="index">Service index</a>
+    <a href="#cgm-method" data-service-chapter-link="method">The CGM method</a>
+    <a href="#service-handover" data-service-chapter-link="handover">Start a project</a>
+  </nav>
+
   <!-- ===== STATS BAR ===== -->
-  <section class="svc-stats">
+  <section class="svc-stats" data-service-proof>
     <div class="container svc-stats__grid">
       <div class="svc-stat">
         <span class="svc-stat__icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg></span>
@@ -148,7 +174,7 @@
   </section>
 
   <!-- ===== INTERACTIVE SERVICE SELECTOR ===== -->
-  <section class="svc-selector-section" id="service-selector">
+  <section class="svc-selector-section" id="service-selector" data-service-chapter="finder">
     <div class="container">
       <div class="svc-selector">
         <div class="svc-selector__left">
@@ -180,6 +206,11 @@
           </div>
         </div>
         <div class="svc-selector__right">
+          <div class="services-selection-meter" aria-live="polite">
+            <span>Current route</span>
+            <strong data-service-selection>Garden Maintenance</strong>
+            <small data-service-selection-note>Regular care for a garden that needs consistent attention.</small>
+          </div>
           
             <div class="svc-selector__panel" data-svc-panel="regular">
               <p class="svc-selector__panel-label">The best starting point is</p>
@@ -312,7 +343,7 @@
   </section>
 
   <!-- ===== ALL SERVICES GRID ===== -->
-  <section class="svc-grid-section section-tinted" id="all-services">
+  <section class="svc-grid-section section-tinted" id="all-services" data-service-chapter="index">
     <div class="container">
       <div class="section-title-center">
         <p class="section-kicker">All Garden Services</p>
@@ -380,7 +411,7 @@
   </section>
 
   <!-- ===== FOUR PRINCIPLES (dark green) ===== -->
-  <section class="svc-principles">
+  <section class="svc-principles" id="cgm-method" data-service-chapter="method">
     <div class="container">
       <div class="section-title-center">
         <p class="section-kicker section-kicker--light">The CGM Method</p>
@@ -447,7 +478,7 @@
   </section>
 
   <!-- ===== HOW WE WORK ===== -->
-  <section class="svc-how-section section-tinted">
+  <section class="svc-how-section section-tinted" data-service-journey>
     <div class="container">
       <div class="section-title-center">
         <p class="section-kicker">How We Work</p>
@@ -481,7 +512,7 @@
   </section>
 
   <!-- ===== CTA ===== -->
-  <section class="svc-cta">
+  <section class="svc-cta" id="service-handover" data-service-chapter="handover">
     <div class="container svc-cta__inner">
       <h2>Ready to improve your garden?</h2>
       <p>Talk to us about what you would like to improve and we will take care of the rest.</p>
@@ -586,6 +617,7 @@
   </div>
 
   <script src="/chilterngardenmaintenance-updatedsite/js/main.js?v=20260713a"></script>
+  <script src="/chilterngardenmaintenance-updatedsite/js/services-showroom.js?v=20260805a"></script>
 <script src="/chilterngardenmaintenance-updatedsite/js/card-tilt.js?v=20260719b"></script>
   <script src="/chilterngardenmaintenance-updatedsite/js/cgm-v5-enhancements.js?v=20260724a"></script>
   <script src="/chilterngardenmaintenance-updatedsite/js/custom-scrollbar.js?v=20260719b"></script>
