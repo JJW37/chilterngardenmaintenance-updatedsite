@@ -64,9 +64,9 @@
     editorModal.hidden = true;
     editorModal.innerHTML =
       '<div class="photo-editor-modal__header">' +
-        '<h3 class="photo-editor-modal__title">Edit photo</h3>' +
+        '<div><h3 class="photo-editor-modal__title">Edit photo</h3><p class="photo-editor-modal__hint" id="editorToolHint">Pen — click and drag to mark an area.</p></div>' +
         '<span class="photo-editor-modal__counter" id="editorCounter">1 of 1</span>' +
-        '<button type="button" class="photo-editor-modal__close" id="editorClose">&times;</button>' +
+        '<button type="button" class="photo-editor-modal__close" id="editorClose" aria-label="Close photo editor" title="Close photo editor">&times;</button>' +
       '</div>' +
       '<div class="photo-editor-modal__body">' +
         '<div class="photo-editor-modal__canvas-wrap" id="editorCanvasWrap">' +
@@ -74,15 +74,15 @@
           '<button type="button" class="photo-editor-modal__nav photo-editor-modal__nav--next" id="editorNext" aria-label="Next photo"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></button>' +
         '</div>' +
         '<div class="photo-editor-modal__toolbar">' +
-          '<button type="button" class="photo-editor-modal__tool is-active" data-tool="pen" title="Pen">' +
+          '<button type="button" class="photo-editor-modal__tool is-active" data-tool="pen" title="Draw a freehand mark" aria-label="Pen — draw a freehand mark" aria-pressed="true">' +
             '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/></svg>' +
             '<span class="photo-editor-modal__tool-label">Pen</span>' +
           '</button>' +
-          '<button type="button" class="photo-editor-modal__tool" data-tool="label" title="Label">' +
+          '<button type="button" class="photo-editor-modal__tool" data-tool="label" title="Place a text label" aria-label="Label — place a text label" aria-pressed="false">' +
             '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7v10a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2Z"/><path d="M7 10h10"/></svg>' +
             '<span class="photo-editor-modal__tool-label">Label</span>' +
           '</button>' +
-          '<button type="button" class="photo-editor-modal__tool" data-tool="erase" title="Erase">' +
+          '<button type="button" class="photo-editor-modal__tool" data-tool="erase" title="Remove a mark or label" aria-label="Eraser — remove a mark or label" aria-pressed="false">' +
             '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 21h12"/><path d="M5 13l6-6 6 6-6 6H8l-3-3Z"/></svg>' +
             '<span class="photo-editor-modal__tool-label">Erase</span>' +
           '</button>' +
@@ -95,7 +95,7 @@
             '<span class="photo-editor-modal__color" data-color="#ffffff" style="background:#ffffff;"></span>' +
           '</div>' +
           '<div class="photo-editor-modal__tool-divider"></div>' +
-          '<button type="button" class="photo-editor-modal__tool" data-action="clear" title="Clear all">' +
+          '<button type="button" class="photo-editor-modal__tool" data-action="clear" title="Remove every annotation and keep the photo" aria-label="Clear all annotations and keep the photo">' +
             '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>' +
             '<span class="photo-editor-modal__tool-label">Clear</span>' +
           '</button>' +
@@ -243,6 +243,7 @@
 
       // Wire up drawing
       wireCanvasDrawing();
+      updateToolHint(currentTool);
 
       // On mobile the modal may still be settling. If the canvas wrap has
       // grown since we sized the canvas, re-render once after the next frame.
@@ -263,18 +264,16 @@
 
       editorCtx.drawImage(photo.image, 0, 0, editorCanvas.width, editorCanvas.height);
 
-      // Draw strokes
+      // Draw saved annotations. Eraser actions deliberately are not stored as
+      // canvas strokes: removing image pixels creates transparent/black marks
+      // when an edited photograph is exported to JPEG.
       photo.strokes.forEach(function (stroke) {
-        if (stroke.tool === 'pen' || stroke.tool === 'erase') {
-          editorCtx.strokeStyle = stroke.tool === 'erase' ? 'rgba(0,0,0,1)' : stroke.color;
-          editorCtx.lineWidth = stroke.tool === 'erase' ? 20 : 3;
+        if (stroke.tool === 'pen') {
+          editorCtx.strokeStyle = stroke.color;
+          editorCtx.lineWidth = 3;
           editorCtx.lineCap = 'round';
           editorCtx.lineJoin = 'round';
-          if (stroke.tool === 'erase') {
-            editorCtx.globalCompositeOperation = 'destination-out';
-          } else {
-            editorCtx.globalCompositeOperation = 'source-over';
-          }
+          editorCtx.globalCompositeOperation = 'source-over';
           editorCtx.beginPath();
           stroke.points.forEach(function (pt, i) {
             if (i === 0) editorCtx.moveTo(pt.x, pt.y);
@@ -298,6 +297,42 @@
           editorCtx.fillText(text, stroke.x, stroke.y);
         }
       });
+    }
+
+    function distanceToSegment(point, start, end) {
+      var dx = end.x - start.x;
+      var dy = end.y - start.y;
+      if (dx === 0 && dy === 0) {
+        return Math.hypot(point.x - start.x, point.y - start.y);
+      }
+      var t = ((point.x - start.x) * dx + (point.y - start.y) * dy) / (dx * dx + dy * dy);
+      t = Math.max(0, Math.min(1, t));
+      return Math.hypot(point.x - (start.x + t * dx), point.y - (start.y + t * dy));
+    }
+
+    function eraseAnnotationAt(photo, point) {
+      var hitRadius = 20;
+      for (var i = photo.strokes.length - 1; i >= 0; i--) {
+        var stroke = photo.strokes[i];
+        var hit = false;
+        if (stroke.tool === 'label') {
+          hit = Math.hypot(point.x - stroke.x, point.y - stroke.y) <= 40;
+        } else if (stroke.tool === 'pen' && stroke.points && stroke.points.length) {
+          for (var j = 0; j < stroke.points.length; j++) {
+            var start = stroke.points[j];
+            var end = stroke.points[j + 1] || start;
+            if (distanceToSegment(point, start, end) <= hitRadius) {
+              hit = true;
+              break;
+            }
+          }
+        }
+        if (hit) {
+          photo.strokes.splice(i, 1);
+          return true;
+        }
+      }
+      return false;
     }
 
     function wireCanvasDrawing() {
@@ -336,8 +371,17 @@
           return;
         }
 
+        if (currentTool === 'erase') {
+          if (eraseAnnotationAt(photo, pos)) {
+            photo.edited = photo.strokes.length > 0;
+            redrawCanvas();
+            renderThumbs();
+          }
+          return;
+        }
+
         currentStroke = {
-          tool: currentTool,
+          tool: 'pen',
           color: currentColor,
           points: [pos]
         };
@@ -375,6 +419,17 @@
       editorCanvas.addEventListener('touchend', end);
     }
 
+    function updateToolHint(tool) {
+      var messages = {
+        pen: 'Pen — click and drag to mark an area.',
+        label: 'Label — click the image to place a short note.',
+        erase: 'Eraser — click a mark or label to remove it. Your photo stays untouched.'
+      };
+      var hint = editorModal.querySelector('#editorToolHint');
+      if (hint) hint.textContent = messages[tool] || messages.pen;
+      if (editorCanvas) editorCanvas.style.cursor = tool === 'erase' ? 'not-allowed' : (tool === 'label' ? 'copy' : 'crosshair');
+    }
+
     // Tool selection
     editorModal.querySelectorAll('.photo-editor-modal__tool[data-tool]').forEach(function (btn) {
       btn.addEventListener('click', function () {
@@ -382,8 +437,11 @@
         currentTool = tool;
         editorModal.querySelectorAll('.photo-editor-modal__tool').forEach(function (b) {
           b.classList.remove('is-active');
+          b.setAttribute('aria-pressed', 'false');
         });
         this.classList.add('is-active');
+        this.setAttribute('aria-pressed', 'true');
+        updateToolHint(tool);
       });
     });
 
@@ -429,16 +487,12 @@
           var scaleX = photo.image.width / editorCanvas.width;
           var scaleY = photo.image.height / editorCanvas.height;
           photo.strokes.forEach(function (stroke) {
-            if (stroke.tool === 'pen' || stroke.tool === 'erase') {
-              ctx.strokeStyle = stroke.tool === 'erase' ? 'rgba(0,0,0,1)' : stroke.color;
-              ctx.lineWidth = (stroke.tool === 'erase' ? 20 : 3) * scaleX;
+            if (stroke.tool === 'pen') {
+              ctx.strokeStyle = stroke.color;
+              ctx.lineWidth = 3 * scaleX;
               ctx.lineCap = 'round';
               ctx.lineJoin = 'round';
-              if (stroke.tool === 'erase') {
-                ctx.globalCompositeOperation = 'destination-out';
-              } else {
-                ctx.globalCompositeOperation = 'source-over';
-              }
+              ctx.globalCompositeOperation = 'source-over';
               ctx.beginPath();
               stroke.points.forEach(function (pt, i) {
                 if (i === 0) ctx.moveTo(pt.x * scaleX, pt.y * scaleY);
