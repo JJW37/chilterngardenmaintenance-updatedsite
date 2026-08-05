@@ -63,7 +63,8 @@ html.cgm-premium-experience .breadcrumbs {
 html.cgm-premium-experience .page-header,
 html.cgm-premium-experience .quote-hero,
 html.cgm-premium-experience .svc-hero,
-html.cgm-premium-experience .plant-hero {
+html.cgm-premium-experience .plant-hero,
+html.cgm-premium-experience .hero {
   isolation: isolate;
   overflow: hidden;
   border: 0 !important;
@@ -72,6 +73,12 @@ html.cgm-premium-experience .plant-hero {
 
 html.cgm-premium-experience .page-header {
   min-height: clamp(25rem, 54vw, 41rem);
+  margin: 0 clamp(1rem, 3vw, 3rem) clamp(2rem, 5vw, 4.5rem);
+  border-radius: clamp(1.2rem, 2.4vw, 2.4rem);
+  box-shadow: var(--cgm-premium-shadow);
+}
+
+html.cgm-premium-experience .hero {
   margin: 0 clamp(1rem, 3vw, 3rem) clamp(2rem, 5vw, 4.5rem);
   border-radius: clamp(1.2rem, 2.4vw, 2.4rem);
   box-shadow: var(--cgm-premium-shadow);
@@ -94,9 +101,19 @@ html.cgm-premium-experience .plant-hero::after {
 html.cgm-premium-experience .page-header .container,
 html.cgm-premium-experience .quote-hero .container,
 html.cgm-premium-experience .svc-hero__container,
-html.cgm-premium-experience .plant-hero .container {
+html.cgm-premium-experience .plant-hero .container,
+html.cgm-premium-experience .hero .container {
   position: relative;
   z-index: 1;
+}
+
+html.cgm-premium-experience .page-header-bg img,
+html.cgm-premium-experience .quote-hero-bg img,
+html.cgm-premium-experience .svc-hero__bg img,
+html.cgm-premium-experience .plant-hero img,
+html.cgm-premium-experience .hero-bg img {
+  transform: scale(1.045) translate3d(var(--cgm-hero-x, 0px), var(--cgm-hero-y, 0px), 0);
+  transition: transform 1.1s cubic-bezier(.2,.7,.2,1);
 }
 
 html.cgm-premium-experience .cgm-experience-badge {
@@ -128,7 +145,8 @@ html.cgm-premium-experience .cgm-experience-badge span {
 html.cgm-premium-experience .page-header h1,
 html.cgm-premium-experience .quote-hero h1,
 html.cgm-premium-experience .svc-hero h1,
-html.cgm-premium-experience .plant-hero h1 {
+html.cgm-premium-experience .plant-hero h1,
+html.cgm-premium-experience .hero h1 {
   max-width: 14ch;
   color: #fff;
   font-size: clamp(3rem, 7.4vw, 6.7rem);
@@ -142,7 +160,8 @@ html.cgm-premium-experience .page-header p,
 html.cgm-premium-experience .page-header-lede,
 html.cgm-premium-experience .quote-hero p,
 html.cgm-premium-experience .svc-hero__lede,
-html.cgm-premium-experience .plant-hero p {
+html.cgm-premium-experience .plant-hero p,
+html.cgm-premium-experience .hero p {
   max-width: 42rem;
   color: rgba(255, 255, 255, .86);
   font-size: clamp(1rem, 1.6vw, 1.18rem);
@@ -364,6 +383,12 @@ html.cgm-premium-experience .calc-step {
   position: relative;
   z-index: 1;
   padding-block: .9rem;
+  transition: transform .22s ease, border-color .22s ease, filter .22s ease;
+}
+
+html.cgm-premium-experience .calc-step.is-cgm-focused {
+  transform: translateX(.3rem);
+  filter: drop-shadow(0 10px 14px rgba(16,32,25,.08));
 }
 
 html.cgm-premium-experience .calc-step > label {
@@ -635,10 +660,16 @@ html.cgm-premium-experience .photo-editor-modal__close::after {
     border-radius: 1.15rem;
   }
 
+  html.cgm-premium-experience .hero {
+    margin: 0 .75rem 2rem;
+    border-radius: 1.15rem;
+  }
+
   html.cgm-premium-experience .page-header h1,
   html.cgm-premium-experience .quote-hero h1,
   html.cgm-premium-experience .svc-hero h1,
-  html.cgm-premium-experience .plant-hero h1 {
+  html.cgm-premium-experience .plant-hero h1,
+  html.cgm-premium-experience .hero h1 {
     font-size: clamp(3rem, 16vw, 4.5rem);
   }
 
