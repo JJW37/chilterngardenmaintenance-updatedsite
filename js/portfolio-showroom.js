@@ -13,13 +13,13 @@
   const pad = (number) => String(number).padStart(2, '0');
 
   const state = {
-    group: groups.includes(3) ? 3 : groups[0],
+    group: groups.includes(14) ? 14 : groups[0],
     stage: 'after',
     filter: 'all',
     search: '',
     groupFilter: 'all',
     selected: [],
-    journeyIndex: Math.max(0, photos.findIndex((photo) => photo.id === 'view-03-after')),
+    journeyIndex: Math.max(0, photos.findIndex((photo) => photo.id === 'view-14-after-2')),
     lightboxIndex: 0,
     guidedIndex: 0,
     guidedTimer: null,
@@ -205,7 +205,7 @@
     const dialog = $('[data-lightbox]');
     if (!dialog) return;
     renderLightbox();
-    document.body.classList.add('paddock-showroom--lightbox');
+    document.body.classList.add('portfolio-showroom--lightbox');
     if (typeof dialog.showModal === 'function') dialog.showModal();
     else dialog.setAttribute('open', '');
   };
@@ -225,7 +225,7 @@
     if (!dialog) return;
     if (typeof dialog.close === 'function') dialog.close();
     else dialog.removeAttribute('open');
-    document.body.classList.remove('paddock-showroom--lightbox');
+    document.body.classList.remove('portfolio-showroom--lightbox');
   };
 
   const startGuided = () => {
@@ -234,7 +234,7 @@
     state.guidedIndex = 0;
     state.guidedPaused = false;
     $('[data-guided-dock]')?.removeAttribute('hidden');
-    document.body.classList.add('paddock-showroom--locked');
+    document.body.classList.add('portfolio-showroom--locked');
     scrollToId('journey');
     advanceGuided();
     state.guidedTimer = window.setInterval(() => { if (!state.guidedPaused) advanceGuided(); }, 4200);
@@ -257,7 +257,7 @@
     state.guidedTimer = null;
     state.guidedPaused = false;
     $('[data-guided-dock]')?.setAttribute('hidden', '');
-    document.body.classList.remove('paddock-showroom--locked');
+    document.body.classList.remove('portfolio-showroom--locked');
   };
 
   const toggleGuided = () => {
@@ -324,13 +324,20 @@
       renderPhotoWall();
     }));
     $('[data-lightbox]')?.addEventListener('click', (event) => { if (event.target === event.currentTarget) closeLightbox(); });
-    $('[data-lightbox]')?.addEventListener('close', () => document.body.classList.remove('paddock-showroom--lightbox'));
+    $('[data-lightbox]')?.addEventListener('close', () => document.body.classList.remove('portfolio-showroom--lightbox'));
   };
 
   const initObservers = () => {
     const chapters = $$('[data-chapter]');
     const railLinks = $$('[data-chapter-link]');
-    if ('IntersectionObserver' in window) {
+    const showroom = $('.portfolio-showroom');
+    const reveals = $$('.reveal');
+    if (!('IntersectionObserver' in window)) {
+      reveals.forEach((item) => item.classList.add('is-visible'));
+      return;
+    }
+
+    try {
       const observer = new IntersectionObserver((entries) => entries.forEach((entry) => {
         if (!entry.isIntersecting) return;
         railLinks.forEach((link) => link.classList.toggle('is-active', link.dataset.chapterLink === entry.target.dataset.chapter));
@@ -342,9 +349,18 @@
       }), { rootMargin: '-34% 0px -55% 0px', threshold: 0 });
       chapters.forEach((chapter) => observer.observe(chapter));
 
-      const reveal = new IntersectionObserver((entries, ob) => entries.forEach((entry) => { if (entry.isIntersecting) { entry.target.classList.add('is-visible'); ob.unobserve(entry.target); } }), { threshold: .1 });
-      $$('.reveal').forEach((item) => reveal.observe(item));
-    } else $$('.reveal').forEach((item) => item.classList.add('is-visible'));
+      const reveal = new IntersectionObserver((entries, ob) => entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('is-visible');
+        ob.unobserve(entry.target);
+      }), { threshold: .1 });
+      reveals.forEach((item) => reveal.observe(item));
+      showroom?.classList.add('is-enhanced');
+    } catch (error) {
+      // The content stays readable even if a browser declines an enhancement API.
+      showroom?.classList.remove('is-enhanced');
+      reveals.forEach((item) => item.classList.add('is-visible'));
+    }
   };
 
   const initKeyboard = () => {
@@ -372,6 +388,5 @@
     initObservers();
     initKeyboard();
     initParallax();
-    window.setTimeout(() => $('[data-loading]')?.classList.add('is-done'), 350);
   });
 })();
