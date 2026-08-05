@@ -12,6 +12,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap">
   <link rel="stylesheet" href="/chilterngardenmaintenance-updatedsite/css/editorial.css?v=20260723r2">
+  <link rel="stylesheet" href="/chilterngardenmaintenance-updatedsite/css/knowledge-showroom.css?v=20260805a">
   <link rel="icon" type="image/png" sizes="32x32" href="/chilterngardenmaintenance-updatedsite/images/favicon-32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/chilterngardenmaintenance-updatedsite/images/favicon-16.png">
   <link rel="apple-touch-icon" href="/chilterngardenmaintenance-updatedsite/images/cgm-logo-square.png">
@@ -99,27 +100,82 @@
     </div><a href="/chilterngardenmaintenance-updatedsite/locations/">Locations</a><a href="/chilterngardenmaintenance-updatedsite/about/maintenance.html">The CGM Method</a><a href="/chilterngardenmaintenance-updatedsite/booking/">Get a Quote</a><a href="https://wa.me/447467657459" target="_blank" rel="noopener">WhatsApp</a>
     </nav>
   </header>
-<main id="main-content">
+<main id="main-content" class="knowledge-showroom knowledge-showroom--tips" tabindex="-1">
 
-  <section class="page-header page-header-editorial">
-    <div class="page-header-bg"><img src="/chilterngardenmaintenance-updatedsite/images/project/full-width-1-garden-makeover.webp" alt="" loading="eager" decoding="async"></div>
-    <div class="container">
-      <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/chilterngardenmaintenance-updatedsite/">Home</a><span>/</span>Gardening Knowledge</nav>
-      <span class="editorial-kicker">Gardening Knowledge</span>
-      <h1>Gardening Knowledge</h1>
-      <p class="page-header-lede"></p>
+  <header class="knowledge-command-bar" aria-label="Gardening Knowledge controls">
+    <div class="knowledge-command-bar__brand" aria-label="Chiltern Gardening Knowledge">
+      <span class="knowledge-command-bar__mark" aria-hidden="true">CG</span>
+      <span><strong>Knowledge desk</strong><small>Local answers for working gardens</small></span>
     </div>
+    <div class="knowledge-command-bar__progress" aria-label="Current page chapter">
+      <span data-knowledge-progress-label>01 / 04</span>
+      <span class="knowledge-command-bar__line" aria-hidden="true"><i data-knowledge-progress-bar></i></span>
+      <strong data-knowledge-progress-title>Find an answer</strong>
+    </div>
+    <div class="knowledge-command-bar__actions">
+      <button type="button" data-knowledge-scroll-target="knowledge-search-stage">Search guides</button>
+      <button type="button" data-knowledge-scroll-target="knowledge-routes">Pick a problem</button>
+      <button type="button" data-knowledge-scroll-target="knowledge-quote">Ask a gardener</button>
+    </div>
+  </header>
+
+  <section class="page-header page-header-editorial knowledge-hero knowledge-hero--tips" id="knowledge-hero" data-knowledge-chapter="hero" data-knowledge-chapter-title="Find an answer">
+    <div class="page-header-bg"><img src="/chilterngardenmaintenance-updatedsite/images/project/full-width-1-garden-makeover.webp" alt="" loading="eager" decoding="async"></div>
+    <div class="container knowledge-hero__container">
+      <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/chilterngardenmaintenance-updatedsite/">Home</a><span>/</span>Gardening Knowledge</nav>
+      <span class="knowledge-hero__kicker">Gardening Knowledge</span>
+      <h1>Gardening Knowledge</h1>
+      <p class="page-header-lede">Hand-written, practical guidance from the gardens we care for across the Chilterns. Start with the question in front of you, then make the next move with confidence.</p>
+      <aside class="knowledge-hero__index" aria-label="Gardening Knowledge facts">
+        <strong>Knowledge desk</strong>
+        <div><b>149</b><span>local guides</span></div>
+        <div><b>14</b><span>garden routes</span></div>
+        <div><b>04</b><span>local counties</span></div>
+        <p>Advice shaped by the soil, weather and gardens we actually see.</p>
+      </aside>
+    </div>
+    <a class="knowledge-hero__scroll" href="#knowledge-routes"><span aria-hidden="true"></span> Start with your garden question</a>
   </section>
 
-  <section class="section">
+  <nav class="knowledge-chapter-rail" aria-label="Gardening Knowledge sections">
+    <a href="#knowledge-hero" data-knowledge-chapter-link="hero" class="is-active"><span>01</span> Knowledge desk</a>
+    <a href="#knowledge-routes" data-knowledge-chapter-link="routes"><span>02</span> Pick a problem</a>
+    <a href="#knowledge-library" data-knowledge-chapter-link="library"><span>03</span> Read the guides</a>
+    <a href="#knowledge-quote" data-knowledge-chapter-link="quote"><span>04</span> Get local help</a>
+  </nav>
+
+  <section class="section knowledge-discovery" data-knowledge-chapter="routes" data-knowledge-chapter-title="Pick a problem">
     <div class="container">
-      <div class="callout">
+      <section class="knowledge-route-lab knowledge-route-lab--tips" id="knowledge-routes" data-knowledge-reveal>
+        <div class="knowledge-route-lab__intro">
+          <span class="knowledge-eyebrow">Start with the real question</span>
+          <h2>What needs attention in your garden right now?</h2>
+          <p>Pick the closest concern and we will take you to a focused group of local guides. You can then search or browse without losing the thread.</p>
+          <div class="knowledge-route-lab__controls" role="tablist" aria-label="Choose a gardening question">
+            <button class="knowledge-route-lab__control is-active" type="button" role="tab" aria-selected="true" data-knowledge-route data-knowledge-target="cat-garden-clearance-&amp;-tidy-up-guides" data-knowledge-route-label="Regain control" data-knowledge-route-title="Garden clearance &amp; tidy-up guides" data-knowledge-route-copy="Start here if a garden feels overgrown, neglected or difficult to reset. These guides help you understand the sensible first moves."><span>01</span>I need to regain control</button>
+            <button class="knowledge-route-lab__control" type="button" role="tab" aria-selected="false" data-knowledge-route data-knowledge-target="cat-regular-garden-maintenance" data-knowledge-route-label="Care rhythm" data-knowledge-route-title="Regular garden maintenance" data-knowledge-route-copy="Build a manageable rhythm for the garden you have—seasonal jobs, ongoing care and the work that keeps small problems small."><span>02</span>I need a care rhythm</button>
+            <button class="knowledge-route-lab__control" type="button" role="tab" aria-selected="false" data-knowledge-route data-knowledge-target="cat-lawn-care-&amp;-lawn-repair" data-knowledge-route-label="Lawn recovery" data-knowledge-route-title="Lawn care &amp; lawn repair" data-knowledge-route-copy="For lawns with moss, bare patches, weeds, shade or poor drainage. Work out why it is struggling before choosing a treatment."><span>03</span>My lawn needs help</button>
+            <button class="knowledge-route-lab__control" type="button" role="tab" aria-selected="false" data-knowledge-route data-knowledge-target="cat-plants,-borders-&amp;-planting-ideas" data-knowledge-route-label="Planting direction" data-knowledge-route-title="Plants, borders &amp; planting ideas" data-knowledge-route-copy="Use this route when the garden needs stronger planting decisions, a better border or a more resilient palette for the conditions."><span>04</span>I want to improve planting</button>
+            <button class="knowledge-route-lab__control" type="button" role="tab" aria-selected="false" data-knowledge-route data-knowledge-target="cat-seasonal-garden-jobs" data-knowledge-route-label="Seasonal work" data-knowledge-route-title="Seasonal garden jobs" data-knowledge-route-copy="A simple route into the jobs that matter now, with enough context to know what to leave alone as well as what to tackle."><span>05</span>What should I do this season?</button>
+          </div>
+        </div>
+        <aside class="knowledge-route-card" id="knowledge-route-detail" role="tabpanel" tabindex="0" aria-live="polite">
+          <div class="knowledge-route-card__topline"><span>Suggested reading route</span><b data-knowledge-route-number>01</b></div>
+          <p class="knowledge-route-card__tag" data-knowledge-route-label-output>Regain control</p>
+          <h3 data-knowledge-route-title-output>Garden clearance &amp; tidy-up guides</h3>
+          <p data-knowledge-route-copy-output>Start here if a garden feels overgrown, neglected or difficult to reset. These guides help you understand the sensible first moves.</p>
+          <a class="knowledge-route-card__cta" data-knowledge-route-link href="#cat-garden-clearance-&amp;-tidy-up-guides">Open this reading route <span aria-hidden="true">→</span></a>
+          <p class="knowledge-route-card__note">Every route remains connected to the full library and the live search below.</p>
+        </aside>
+      </section>
+
+      <div class="callout knowledge-library-note">
         <h3>Welcome to our Gardening Knowledge library</h3>
         <p>Welcome to our Gardening Knowledge section, tailored specifically for residents in the Chilterns and surrounding areas of Oxfordshire, Berkshire, Buckinghamshire, and Bedfordshire. Take your time exploring these seasonal articles, hand-written by our expert local gardeners. We created this resource to answer our clients' most frequent garden maintenance questions, and we update it regularly to keep your outdoor spaces thriving.</p>
       </div>
 
       <!-- Premium search bar with expand-on-focus -->
-      <div class="plant-search-premium">
+      <div class="plant-search-premium knowledge-search-stage" id="knowledge-search-stage">
         <div class="plant-search-premium__wrap">
           <span class="plant-search-premium__icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></span>
           <input
@@ -143,7 +199,7 @@
       </div>
 
       <!-- Featured this month -->
-      <div class="tip-featured-section">
+      <div class="tip-featured-section" id="knowledge-library" data-knowledge-chapter="library" data-knowledge-chapter-title="Read the guides">
         <div class="plant-cat-header">
           <h2 class="tip-section-title">Featured this month</h2>
           <span class="plant-cat-count">3</span>
@@ -3405,7 +3461,7 @@
   </script>
 
   
-  <section class="cta-band-compact">
+  <section class="cta-band-compact knowledge-quote" id="knowledge-quote" data-knowledge-chapter="quote" data-knowledge-chapter-title="Get local help">
     <div class="container">
       <h2>Ready to talk through your garden project?</h2>
       <p>Contact us on WhatsApp and we will aim to respond within 12 to 36 hours, Monday to Sunday.</p>
@@ -3530,5 +3586,6 @@
   <script src="/chilterngardenmaintenance-updatedsite/js/custom-scrollbar.js?v=20260719b"></script>
   <script src="/chilterngardenmaintenance-updatedsite/js/predictive-search.js?v=20260719b"></script>
   <script src="/chilterngardenmaintenance-updatedsite/js/mobile-dock.js?v=20260719b"></script>
+  <script src="/chilterngardenmaintenance-updatedsite/js/knowledge-showroom.js?v=20260805a"></script>
 </body>
 </html>
