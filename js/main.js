@@ -2,6 +2,24 @@
    Handles: mobile nav toggle (native click, Safari-safe),
    cookie consent, smooth scroll, contact-float widget.
 */
+(function loadPremiumExperience() {
+  var path = window.location.pathname;
+  var premiumRoutes = ['/about/', '/tips/', '/calculators/', '/guides/', '/garden-passport/', '/plants/', '/services/', '/booking/'];
+  if (!premiumRoutes.some(function (route) { return path.indexOf(route) !== -1; })) return;
+  if (document.documentElement.dataset.cgmPremiumBooted === 'true') return;
+  document.documentElement.dataset.cgmPremiumBooted = 'true';
+
+  var style = document.createElement('link');
+  style.rel = 'stylesheet';
+  style.href = '/chilterngardenmaintenance-updatedsite/css/premium-experience.css?v=20260805p1';
+  document.head.appendChild(style);
+
+  var script = document.createElement('script');
+  script.src = '/chilterngardenmaintenance-updatedsite/js/premium-experience.js?v=20260805p1';
+  script.defer = true;
+  document.head.appendChild(script);
+})();
+
 document.addEventListener("DOMContentLoaded", function () {
   "use strict";
 
