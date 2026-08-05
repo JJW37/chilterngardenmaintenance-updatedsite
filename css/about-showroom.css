@@ -1,0 +1,855 @@
+/* About CGM showroom — an editorial layer for the existing About page.
+   It retains every original section, route and contact option. */
+
+.about-showroom {
+  --as-ink: #151e19;
+  --as-deep: #0c1712;
+  --as-forest: #193a28;
+  --as-forest-2: #28533b;
+  --as-sage: #d7e0d2;
+  --as-paper: #f4f1e8;
+  --as-white: #fbfaf7;
+  --as-gold: #c39b62;
+  --as-line: rgba(251, 250, 247, .18);
+  --as-line-dark: rgba(21, 30, 25, .16);
+  --as-shadow: 0 26px 70px rgba(0, 0, 0, .23);
+  --as-pad: clamp(1.1rem, 4vw, 5rem);
+  position: relative;
+  overflow: clip;
+  background: var(--as-paper);
+  color: var(--as-ink);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  scroll-behavior: smooth;
+}
+
+.about-showroom *,
+.about-showroom *::before,
+.about-showroom *::after { box-sizing: border-box; }
+
+.about-showroom img { display: block; max-width: 100%; }
+.about-showroom .breadcrumbs { display: none !important; }
+
+/* A project-style command rail gives the long-form company page a clear route. */
+.about-command-bar {
+  position: sticky;
+  z-index: 70;
+  top: 64px;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 1rem;
+  min-height: 4rem;
+  padding: .7rem var(--as-pad);
+  background: rgba(12, 23, 18, .94);
+  border-bottom: 1px solid rgba(251, 250, 247, .14);
+  color: var(--as-white);
+  backdrop-filter: blur(18px);
+}
+
+.about-command-bar__brand {
+  display: inline-flex;
+  align-items: center;
+  gap: .7rem;
+  width: fit-content;
+  color: var(--as-white);
+  font-size: .66rem;
+  font-weight: 700;
+  letter-spacing: .13em;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.about-command-bar__brand b {
+  display: grid;
+  width: 2rem;
+  height: 2rem;
+  place-items: center;
+  border: 1px solid rgba(251, 250, 247, .7);
+  border-radius: 50%;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: .82rem;
+  font-weight: 500;
+  letter-spacing: 0;
+}
+
+.about-command-bar__center {
+  display: flex;
+  align-items: center;
+  gap: .7rem;
+  color: rgba(251, 250, 247, .63);
+  font-size: .63rem;
+  letter-spacing: .13em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.about-command-bar__progress {
+  width: clamp(5rem, 12vw, 11rem);
+  height: 2px;
+  overflow: hidden;
+  background: rgba(251, 250, 247, .18);
+}
+
+.about-command-bar__progress i {
+  display: block;
+  width: 20%;
+  height: 100%;
+  background: var(--as-gold);
+  transition: width .35s ease;
+}
+
+.about-command-bar__actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: .4rem;
+}
+
+.about-icon-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.2rem;
+  padding: .45rem .65rem;
+  border: 1px solid rgba(251, 250, 247, .23);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--as-white);
+  font: inherit;
+  font-size: .63rem;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background .2s ease, border-color .2s ease, transform .2s ease;
+}
+
+.about-icon-button:hover,
+.about-icon-button:focus-visible {
+  border-color: var(--as-gold);
+  background: rgba(195, 155, 98, .16);
+  transform: translateY(-1px);
+}
+
+/* Hero: the same cinematic scale as the portfolio, tailored to the company story. */
+.about-showroom .about-hero {
+  position: relative;
+  display: grid;
+  min-height: max(47rem, calc(100vh - 8rem));
+  align-items: end;
+  overflow: hidden;
+  margin: 0;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: var(--as-deep);
+  box-shadow: none !important;
+  isolation: isolate;
+}
+
+.about-showroom .about-hero::after { display: none !important; }
+
+.about-showroom .about-hero .page-header-bg {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  overflow: hidden;
+}
+
+.about-showroom .about-hero .page-header-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  filter: saturate(.72) contrast(1.06);
+  transform: scale(1.055) translate3d(var(--about-hero-x, 0px), var(--about-hero-y, 0px), 0) !important;
+  transition: transform 1.2s cubic-bezier(.2, .7, .2, 1), filter .7s ease !important;
+}
+
+.about-showroom .about-hero__overlay {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(8, 20, 13, .95) 0%, rgba(8, 20, 13, .72) 39%, rgba(8, 20, 13, .17) 77%),
+    linear-gradient(0deg, rgba(8, 20, 13, .92), transparent 51%);
+}
+
+.about-showroom .about-hero__container {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(15rem, .42fr);
+  gap: clamp(2rem, 6vw, 6rem);
+  align-items: end;
+  width: min(100%, 90rem);
+  padding: 8rem var(--as-pad) clamp(4rem, 8vw, 7.2rem) !important;
+}
+
+.about-showroom .about-hero__content { max-width: 48rem; }
+
+.about-showroom .about-hero__kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: .65rem;
+  margin: 0;
+  color: var(--as-gold);
+  font-size: .66rem;
+  font-weight: 700;
+  letter-spacing: .19em;
+  text-transform: uppercase;
+}
+
+.about-showroom .about-hero__kicker::before {
+  width: 2.5rem;
+  height: 1px;
+  background: currentColor;
+  content: "";
+}
+
+.about-showroom .about-hero h1 {
+  max-width: 10.2ch;
+  margin: 1.25rem 0 1.3rem !important;
+  color: var(--as-white) !important;
+  font-family: "Cormorant Garamond", Georgia, serif !important;
+  font-size: clamp(4.7rem, 9.2vw, 10rem) !important;
+  font-weight: 500 !important;
+  line-height: .78 !important;
+  letter-spacing: -.06em !important;
+}
+
+.about-showroom .about-hero h1 em { color: var(--as-gold); font-style: italic; }
+
+.about-showroom .about-hero__lede {
+  max-width: 33rem;
+  margin: 0 0 1.7rem !important;
+  color: rgba(251, 250, 247, .78) !important;
+  font-size: 1.05rem !important;
+  line-height: 1.6;
+}
+
+.about-showroom .about-hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .65rem;
+  margin: 0 !important;
+}
+
+.about-showroom .about-hero__actions .btn,
+.about-showroom .about-narrative__chapter--contact .btn {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.9rem;
+  padding: .7rem 1rem;
+  border: 1px solid rgba(251, 250, 247, .52) !important;
+  border-radius: 999px !important;
+  background: transparent !important;
+  color: var(--as-white) !important;
+  box-shadow: none !important;
+  font-size: .66rem !important;
+  font-weight: 700 !important;
+  letter-spacing: .14em !important;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: transform .22s ease, background .22s ease, color .22s ease;
+}
+
+.about-showroom .about-hero__actions .btn::after,
+.about-showroom .about-narrative__chapter--contact .btn::after {
+  margin-left: .5rem;
+  color: var(--as-gold);
+  content: "↗";
+  font-size: 1.05rem;
+  line-height: .5;
+}
+
+.about-showroom .about-hero__actions .btn-primary,
+.about-showroom .about-narrative__chapter--contact .btn-primary {
+  border-color: var(--as-gold) !important;
+  background: var(--as-gold) !important;
+  color: var(--as-deep) !important;
+}
+
+.about-showroom .about-hero__actions .btn-primary::after,
+.about-showroom .about-narrative__chapter--contact .btn-primary::after { color: var(--as-deep); }
+
+.about-showroom .about-hero__actions .btn:hover,
+.about-showroom .about-hero__actions .btn:focus-visible,
+.about-showroom .about-narrative__chapter--contact .btn:hover,
+.about-showroom .about-narrative__chapter--contact .btn:focus-visible {
+  background: rgba(251, 250, 247, .1) !important;
+  transform: translateY(-2px);
+}
+
+.about-showroom .about-hero__actions .btn-primary:hover,
+.about-showroom .about-hero__actions .btn-primary:focus-visible,
+.about-showroom .about-narrative__chapter--contact .btn-primary:hover,
+.about-showroom .about-narrative__chapter--contact .btn-primary:focus-visible { background: #dfbd83 !important; }
+
+.about-showroom .about-hero__index {
+  align-self: end;
+  display: grid;
+  gap: 1rem;
+  max-width: 26rem;
+  margin: 0 !important;
+  padding: 1.2rem 0 0 1.3rem !important;
+  border: 0;
+  border-left: 1px solid rgba(251, 250, 247, .3) !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.about-showroom .about-hero__index > strong {
+  color: rgba(251, 250, 247, .9) !important;
+  font-family: "Cormorant Garamond", Georgia, serif !important;
+  font-size: 1.3rem;
+  font-weight: 500;
+}
+
+.about-showroom .about-hero__stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1px;
+  background: rgba(251, 250, 247, .22);
+}
+
+.about-showroom .about-hero__stat { padding: .9rem .85rem; background: rgba(12, 23, 18, .44); }
+
+.about-showroom .about-hero__stat b {
+  display: block;
+  color: var(--as-gold);
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 2rem;
+  font-weight: 500;
+  line-height: .9;
+}
+
+.about-showroom .about-hero__stat span {
+  display: block;
+  margin-top: .32rem;
+  color: rgba(251, 250, 247, .67);
+  font-size: .56rem;
+  font-weight: 700;
+  letter-spacing: .1em;
+  line-height: 1.35;
+  text-transform: uppercase;
+}
+
+.about-showroom .about-hero__index > p {
+  margin: 0 !important;
+  color: rgba(251, 250, 247, .72) !important;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 1.1rem !important;
+  font-style: italic;
+  line-height: 1.25;
+}
+
+.about-showroom .about-hero__scroll {
+  position: absolute;
+  z-index: 3;
+  right: var(--as-pad);
+  bottom: 1.5rem;
+  display: inline-flex;
+  align-items: center;
+  gap: .65rem;
+  color: rgba(251, 250, 247, .65);
+  font-size: .58rem;
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+
+.about-showroom .about-hero__scroll i {
+  width: 2.4rem;
+  height: 1px;
+  background: var(--as-gold);
+}
+
+/* The rail turns the company story into five deliberate chapters. */
+.about-chapter-rail {
+  position: sticky;
+  z-index: 61;
+  top: 128px;
+  display: flex;
+  gap: clamp(.75rem, 3vw, 3.4rem);
+  align-items: center;
+  overflow-x: auto;
+  padding: .92rem var(--as-pad);
+  background: rgba(12, 23, 18, .98);
+  scrollbar-width: none;
+}
+
+.about-chapter-rail::-webkit-scrollbar { display: none; }
+
+.about-chapter-rail a {
+  display: inline-flex;
+  gap: .42rem;
+  align-items: center;
+  flex: 0 0 auto;
+  color: rgba(251, 250, 247, .52);
+  font-size: .61rem;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: color .2s ease;
+}
+
+.about-chapter-rail a::before {
+  width: .4rem;
+  height: .4rem;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  content: "";
+}
+
+.about-chapter-rail a:hover,
+.about-chapter-rail a:focus-visible,
+.about-chapter-rail a.is-active { color: var(--as-gold); }
+
+.about-chapter-rail a.is-active::before { background: currentColor; }
+
+/* The existing article becomes an editorial company narrative, not a generic article stack. */
+.about-showroom .about-narrative-section {
+  margin: 0 !important;
+  padding: 0 0 clamp(5.5rem, 12vw, 11rem) !important;
+  background: var(--as-paper) !important;
+}
+
+.about-showroom .about-narrative-section > .container { width: min(100%, 90rem); padding: 0 var(--as-pad) !important; }
+
+.about-introduction {
+  display: grid;
+  grid-template-columns: minmax(0, .88fr) minmax(17rem, .72fr);
+  gap: clamp(2rem, 9vw, 10rem);
+  align-items: end;
+  padding: clamp(5rem, 12vw, 11rem) 0 clamp(4rem, 9vw, 8.5rem);
+}
+
+.about-showroom .section-kicker,
+.about-showroom .about-narrative__number,
+.about-showroom .about-area-marker__eyebrow,
+.about-showroom .about-standard-lab__eyebrow,
+.about-showroom .about-sidecar__label {
+  display: flex;
+  gap: .65rem;
+  align-items: center;
+  margin: 0 0 1rem !important;
+  color: var(--as-gold) !important;
+  font-size: .64rem !important;
+  font-weight: 700 !important;
+  letter-spacing: .18em !important;
+  text-transform: uppercase;
+}
+
+.about-showroom .section-kicker::before,
+.about-showroom .about-narrative__number::before,
+.about-showroom .about-area-marker__eyebrow::before,
+.about-showroom .about-standard-lab__eyebrow::before {
+  width: 2.4rem;
+  height: 1px;
+  background: currentColor;
+  content: "";
+}
+
+.about-introduction h2 {
+  max-width: 8.5ch;
+  margin: 0 !important;
+  color: var(--as-ink) !important;
+  font-family: "Cormorant Garamond", Georgia, serif !important;
+  font-size: clamp(4.3rem, 8vw, 8.5rem) !important;
+  font-weight: 500 !important;
+  line-height: .8 !important;
+  letter-spacing: -.055em !important;
+}
+
+.about-introduction > p {
+  max-width: 32rem;
+  margin: 0 0 .35rem !important;
+  color: rgba(21, 30, 25, .72) !important;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(1.55rem, 2.4vw, 2.2rem) !important;
+  font-weight: 500;
+  line-height: 1.06;
+}
+
+.about-showroom .about-story-layout {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) minmax(15rem, .33fr);
+  gap: clamp(2rem, 8vw, 8rem);
+  align-items: start;
+  max-width: none !important;
+  margin: 0 !important;
+}
+
+.about-showroom .about-narrative {
+  max-width: none !important;
+  margin: 0 !important;
+  color: var(--as-ink) !important;
+}
+
+.about-showroom .about-narrative__chapter {
+  position: relative;
+  scroll-margin-top: 9.2rem;
+  padding: clamp(4rem, 9vw, 8rem) 0;
+}
+
+.about-showroom .about-narrative__chapter:first-child { padding-top: 0; }
+
+.about-showroom .about-narrative__chapter::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: min(100%, 42rem);
+  height: 1px;
+  background: var(--as-line-dark);
+  content: "";
+}
+
+.about-showroom .about-narrative__chapter:first-child::before { display: none; }
+
+.about-showroom .about-narrative h2 {
+  max-width: 10ch;
+  margin: 0 0 1.55rem !important;
+  color: var(--as-ink) !important;
+  font-family: "Cormorant Garamond", Georgia, serif !important;
+  font-size: clamp(3.9rem, 6.7vw, 7.4rem) !important;
+  font-weight: 500 !important;
+  line-height: .8 !important;
+  letter-spacing: -.055em !important;
+}
+
+.about-showroom .about-narrative p {
+  max-width: 42rem;
+  margin: 0 0 1.1rem !important;
+  color: rgba(21, 30, 25, .71) !important;
+  font-size: 1.02rem !important;
+  line-height: 1.75;
+}
+
+.about-showroom .about-narrative p a {
+  color: var(--as-forest) !important;
+  font-weight: 700;
+  text-decoration-color: rgba(25, 58, 40, .3);
+  text-underline-offset: .18em;
+}
+
+.about-showroom .about-narrative ul {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1px;
+  max-width: 48rem;
+  margin: 2rem 0 2.7rem !important;
+  padding: 1px !important;
+  list-style: none !important;
+  background: var(--as-line-dark);
+  counter-reset: about-services;
+}
+
+.about-showroom .about-narrative li {
+  position: relative;
+  min-height: 5.4rem;
+  margin: 0 !important;
+  padding: 1.05rem 1rem 1rem 3.3rem !important;
+  background: var(--as-paper);
+  color: rgba(21, 30, 25, .75);
+  font-size: .78rem;
+  line-height: 1.42;
+  counter-increment: about-services;
+}
+
+.about-showroom .about-narrative li::before {
+  position: absolute;
+  top: 1.04rem;
+  left: 1rem;
+  color: var(--as-gold);
+  content: counter(about-services, decimal-leading-zero);
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.about-showroom .about-narrative li a { color: var(--as-ink) !important; font-weight: 700; }
+
+.about-area-marker {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: .9rem 2rem;
+  align-items: end;
+  max-width: 48rem;
+  margin: 2.7rem 0 clamp(3rem, 6vw, 5rem);
+  padding: clamp(1.35rem, 3vw, 2rem);
+  background: var(--as-sage);
+  color: var(--as-ink);
+}
+
+.about-showroom .about-area-marker__eyebrow {
+  grid-column: 1 / -1;
+  margin-bottom: 0 !important;
+  color: var(--as-forest) !important;
+}
+
+.about-showroom .about-area-marker > p:not(.about-area-marker__eyebrow) {
+  max-width: 30rem;
+  margin: 0 !important;
+  color: var(--as-ink) !important;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(1.6rem, 3vw, 2.5rem) !important;
+  font-weight: 500;
+  line-height: .92;
+}
+
+.about-showroom .about-area-marker a,
+.about-showroom .about-standard-lab a {
+  display: inline-flex;
+  gap: .55rem;
+  align-items: center;
+  width: fit-content;
+  color: var(--as-forest) !important;
+  font-size: .64rem;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.about-showroom .about-area-marker a span,
+.about-showroom .about-standard-lab a span { color: var(--as-gold); font-size: 1.1rem; }
+
+/* An interactive standards board gives the About page a real point of discovery. */
+.about-standard-lab {
+  display: grid;
+  grid-template-columns: minmax(0, .82fr) minmax(16rem, 1fr);
+  gap: clamp(1.8rem, 6vw, 5.5rem);
+  margin-top: clamp(2.8rem, 7vw, 6rem);
+  padding: clamp(1.6rem, 4vw, 3rem);
+  background: var(--as-deep);
+  color: var(--as-white);
+  box-shadow: var(--as-shadow);
+}
+
+.about-standard-lab__intro { align-self: end; }
+
+.about-showroom .about-standard-lab__eyebrow { color: var(--as-gold) !important; }
+
+.about-showroom .about-standard-lab h3 {
+  max-width: 8ch;
+  margin: 0 0 1rem !important;
+  color: var(--as-white) !important;
+  font-family: "Cormorant Garamond", Georgia, serif !important;
+  font-size: clamp(2.7rem, 5vw, 5rem) !important;
+  font-weight: 500 !important;
+  line-height: .82 !important;
+  letter-spacing: -.05em;
+}
+
+.about-showroom .about-standard-lab__intro > p:not(.about-standard-lab__eyebrow) {
+  max-width: 27rem;
+  color: rgba(251, 250, 247, .74) !important;
+  font-size: .88rem !important;
+  line-height: 1.7;
+}
+
+.about-showroom .about-standard-lab a { margin-top: .45rem; color: var(--as-white) !important; }
+
+.about-standard-lab__controls {
+  display: grid;
+  align-content: end;
+  border-top: 1px solid var(--as-line);
+}
+
+.about-standard-lab__control {
+  display: grid;
+  grid-template-columns: 2.3rem 1fr;
+  gap: .65rem;
+  align-items: center;
+  min-height: 4.55rem;
+  padding: .9rem 0;
+  border: 0;
+  border-bottom: 1px solid var(--as-line);
+  background: transparent;
+  color: rgba(251, 250, 247, .65);
+  font: inherit;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(1.38rem, 2.5vw, 2rem);
+  font-weight: 500;
+  line-height: 1;
+  text-align: left;
+  cursor: pointer;
+  transition: color .2s ease, padding-left .25s ease;
+}
+
+.about-standard-lab__control span {
+  color: var(--as-gold);
+  font-family: Inter, ui-sans-serif, sans-serif;
+  font-size: .58rem;
+  font-weight: 700;
+  letter-spacing: .12em;
+}
+
+.about-standard-lab__control:hover,
+.about-standard-lab__control:focus-visible,
+.about-standard-lab__control.is-active { padding-left: .55rem; color: var(--as-white); }
+
+.about-standard-lab__control.is-active { background: linear-gradient(90deg, rgba(195, 155, 98, .12), transparent 75%); }
+
+.about-showroom .about-narrative__chapter--contact {
+  width: calc(100% + clamp(1.1rem, 4vw, 5rem));
+  margin-left: calc(clamp(1.1rem, 4vw, 5rem) * -1);
+  padding: clamp(3.2rem, 7vw, 6rem) clamp(1.1rem, 4vw, 5rem) !important;
+  background: var(--as-forest);
+  color: var(--as-white);
+}
+
+.about-showroom .about-narrative__chapter--contact::before { display: none; }
+.about-showroom .about-narrative__chapter--contact .about-narrative__number { color: var(--as-gold) !important; }
+
+.about-showroom .about-narrative__chapter--contact h2 { color: var(--as-white) !important; }
+
+.about-showroom .about-narrative__chapter--contact p {
+  color: rgba(251, 250, 247, .73) !important;
+  font-size: 1.03rem !important;
+}
+
+.about-showroom .about-narrative__chapter--contact p a { color: var(--as-white) !important; text-decoration-color: rgba(251, 250, 247, .35); }
+
+.about-contact__route {
+  display: grid;
+  gap: .4rem;
+  max-width: 31rem;
+  margin: 2.2rem 0 1.65rem;
+  padding: 1rem 0 0 1.05rem;
+  border-left: 1px solid var(--as-gold);
+}
+
+.about-contact__route span {
+  color: var(--as-gold);
+  font-size: .58rem;
+  font-weight: 700;
+  letter-spacing: .13em;
+  text-transform: uppercase;
+}
+
+.about-contact__route strong {
+  color: var(--as-white);
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(1.7rem, 3vw, 2.55rem);
+  font-weight: 500;
+  line-height: .92;
+}
+
+.about-contact__route small { color: rgba(251, 250, 247, .62); font-size: .74rem; line-height: 1.45; }
+
+.about-showroom .about-narrative__chapter--contact .btn-pair { display: flex; flex-wrap: wrap; gap: .65rem; margin: 0 !important; }
+
+/* The old sidebar is kept, but framed as useful facts rather than stacked cards. */
+.about-showroom .about-sidecar {
+  position: sticky;
+  top: 9.25rem;
+  display: grid;
+  gap: 0;
+  margin: 0 !important;
+  padding: 0 0 0 1.4rem !important;
+  border-left: 1px solid var(--as-line-dark);
+}
+
+.about-showroom .about-sidecar__label { color: rgba(21, 30, 25, .5) !important; }
+.about-showroom .about-sidecar__label::before { display: none; }
+
+.about-showroom .about-sidecar .sidebar-card {
+  margin: 0 !important;
+  padding: 1.15rem 0 !important;
+  border: 0 !important;
+  border-top: 1px solid var(--as-line-dark) !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.about-showroom .about-sidecar .sidebar-card h3 {
+  margin: 0 0 .75rem !important;
+  color: var(--as-ink) !important;
+  font-family: "Cormorant Garamond", Georgia, serif !important;
+  font-size: 1.55rem !important;
+  font-weight: 500 !important;
+  line-height: .9;
+}
+
+.about-showroom .about-sidecar .sidebar-card ul { display: grid; gap: .35rem; margin: 0 !important; padding: 0 !important; list-style: none !important; }
+
+.about-showroom .about-sidecar .sidebar-card li,
+.about-showroom .about-sidecar .sidebar-card p {
+  margin: 0 !important;
+  color: rgba(21, 30, 25, .63) !important;
+  font-size: .72rem !important;
+  line-height: 1.55;
+}
+
+.about-showroom .about-sidecar .sidebar-card a { color: var(--as-forest) !important; font-weight: 700; text-decoration: none; }
+
+/* Motion only starts once JavaScript has attached; every section is readable without it. */
+.about-showroom [data-about-reveal],
+.about-showroom .about-narrative__chapter { opacity: 1; transform: none; }
+
+.about-showroom.about-showroom--enhanced [data-about-reveal],
+.about-showroom.about-showroom--enhanced .about-narrative__chapter {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity .72s ease, transform .72s cubic-bezier(.2, .7, .2, 1);
+}
+
+.about-showroom.about-showroom--enhanced [data-about-reveal].is-visible,
+.about-showroom.about-showroom--enhanced .about-narrative__chapter.is-visible { opacity: 1; transform: none; }
+
+.about-showroom a:focus-visible,
+.about-showroom button:focus-visible { outline: 2px solid var(--as-gold); outline-offset: 3px; }
+
+@media (max-width: 1020px) {
+  .about-showroom .about-hero__container,
+  .about-introduction,
+  .about-showroom .about-story-layout,
+  .about-standard-lab { grid-template-columns: 1fr; }
+
+  .about-showroom .about-hero__index { max-width: 31rem; padding-left: 0 !important; border-left: 0 !important; }
+  .about-showroom .about-sidecar { position: static; max-width: 35rem; margin-top: 2.8rem !important; }
+  .about-standard-lab__controls { max-width: 38rem; }
+}
+
+@media (max-width: 700px) {
+  .about-command-bar { top: 56px; grid-template-columns: 1fr auto; }
+  .about-command-bar__center { display: none; }
+  .about-command-bar__brand span { display: none; }
+  .about-command-bar__actions .about-icon-button:nth-child(2) { display: none; }
+  .about-chapter-rail { top: 120px; }
+  .about-showroom .about-hero { min-height: 47rem; }
+  .about-showroom .about-hero__container { padding-top: 7rem !important; }
+  .about-showroom .about-hero h1 { font-size: clamp(4rem, 17.4vw, 6.7rem) !important; }
+  .about-showroom .about-hero__scroll { display: none; }
+  .about-introduction { gap: 1.6rem; padding: 4.2rem 0; }
+  .about-introduction h2 { font-size: clamp(3.85rem, 16.2vw, 6rem) !important; }
+  .about-showroom .about-narrative h2 { font-size: clamp(3.5rem, 14vw, 5.7rem) !important; }
+  .about-showroom .about-narrative ul { grid-template-columns: 1fr; }
+  .about-area-marker { grid-template-columns: 1fr; }
+  .about-showroom .about-narrative__chapter--contact { width: calc(100% + 2.2rem); margin-left: -1.1rem; padding-right: 1.1rem !important; padding-left: 1.1rem !important; }
+}
+
+@media (max-width: 440px) {
+  .about-showroom .about-hero__stat b { font-size: 1.7rem; }
+  .about-standard-lab { padding: 1.3rem; }
+  .about-standard-lab__control { font-size: 1.42rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about-showroom *,
+  .about-showroom *::before,
+  .about-showroom *::after {
+    scroll-behavior: auto !important;
+    transition-duration: .01ms !important;
+    animation-duration: .01ms !important;
+  }
+
+  .about-showroom.about-showroom--enhanced [data-about-reveal],
+  .about-showroom.about-showroom--enhanced .about-narrative__chapter { opacity: 1; transform: none; }
+}
