@@ -11,7 +11,7 @@
 
   var style = document.createElement('link');
   style.rel = 'stylesheet';
-  style.href = '/chilterngardenmaintenance-updatedsite/css/premium-experience.css?v=20260805p2';
+  style.href = '/chilterngardenmaintenance-updatedsite/css/premium-experience.css?v=20260805p3';
   document.head.appendChild(style);
 
   var script = document.createElement('script');
