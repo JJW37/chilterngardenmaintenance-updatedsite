@@ -1,0 +1,651 @@
+/* ========================================================================
+   CGM Premium Experience
+   A non-destructive experience layer for knowledge, tools, guides, plants,
+   services, the passport, About CGM and the quote journey.
+   ======================================================================== */
+
+html.cgm-premium-experience {
+  --cgm-premium-ink: #102019;
+  --cgm-premium-paper: #fbf8f0;
+  --cgm-premium-mist: #e9eee4;
+  --cgm-premium-gold: #c8a45e;
+  --cgm-premium-line: rgba(16, 32, 25, .13);
+  --cgm-premium-shadow: 0 24px 64px rgba(16, 32, 25, .13);
+  background: var(--cgm-premium-paper);
+}
+
+html.cgm-premium-experience body {
+  background:
+    radial-gradient(circle at 8% 1%, rgba(200, 164, 94, .13), transparent 28rem),
+    linear-gradient(180deg, #fffdf8 0%, var(--cgm-premium-paper) 46rem, #f5f2e8 100%);
+}
+
+/* The prior hard horizontal dividers made otherwise warm pages feel boxed in. */
+html.cgm-premium-experience .header {
+  border-bottom: 0 !important;
+  background: rgba(253, 251, 246, .88);
+  box-shadow: 0 10px 30px rgba(16, 32, 25, .06);
+}
+
+html.cgm-premium-experience .header::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(200, 164, 94, .65), transparent);
+  pointer-events: none;
+}
+
+html.cgm-premium-experience .nav-links a,
+html.cgm-premium-experience .nav-dropdown-toggle {
+  border-radius: 999px;
+}
+
+html.cgm-premium-experience .nav-links a:hover,
+html.cgm-premium-experience .nav-links a.active,
+html.cgm-premium-experience .nav-dropdown-toggle:hover {
+  background: rgba(45, 90, 61, .08);
+}
+
+html.cgm-premium-experience .breadcrumbs {
+  max-width: min(1200px, calc(100% - 3rem));
+  margin: 1.3rem auto .8rem;
+  padding: .65rem .85rem;
+  border: 1px solid rgba(16, 32, 25, .08);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, .62);
+  box-shadow: 0 8px 24px rgba(16, 32, 25, .04);
+  backdrop-filter: blur(12px);
+}
+
+html.cgm-premium-experience .page-header,
+html.cgm-premium-experience .quote-hero,
+html.cgm-premium-experience .svc-hero,
+html.cgm-premium-experience .plant-hero {
+  isolation: isolate;
+  overflow: hidden;
+  border: 0 !important;
+  box-shadow: none;
+}
+
+html.cgm-premium-experience .page-header {
+  min-height: clamp(25rem, 54vw, 41rem);
+  margin: 0 clamp(1rem, 3vw, 3rem) clamp(2rem, 5vw, 4.5rem);
+  border-radius: clamp(1.2rem, 2.4vw, 2.4rem);
+  box-shadow: var(--cgm-premium-shadow);
+}
+
+html.cgm-premium-experience .page-header::after,
+html.cgm-premium-experience .quote-hero::after,
+html.cgm-premium-experience .svc-hero::after,
+html.cgm-premium-experience .plant-hero::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(7, 20, 13, .88) 0%, rgba(7, 20, 13, .55) 42%, rgba(7, 20, 13, .12) 78%),
+    linear-gradient(0deg, rgba(7, 20, 13, .64), transparent 58%);
+  pointer-events: none;
+}
+
+html.cgm-premium-experience .page-header .container,
+html.cgm-premium-experience .quote-hero .container,
+html.cgm-premium-experience .svc-hero__container,
+html.cgm-premium-experience .plant-hero .container {
+  position: relative;
+  z-index: 1;
+}
+
+html.cgm-premium-experience .cgm-experience-badge {
+  position: absolute;
+  z-index: 2;
+  right: clamp(1rem, 3vw, 3rem);
+  bottom: 1.15rem;
+  display: inline-flex;
+  align-items: center;
+  gap: .45rem;
+  margin: 0;
+  padding: .48rem .7rem;
+  border: 1px solid rgba(255,255,255,.3);
+  border-radius: 999px;
+  background: rgba(7,20,13,.46);
+  color: rgba(255,255,255,.86);
+  font-size: .62rem;
+  font-weight: 800;
+  letter-spacing: .11em;
+  text-transform: uppercase;
+  backdrop-filter: blur(12px);
+}
+
+html.cgm-premium-experience .cgm-experience-badge span {
+  color: var(--cgm-premium-gold);
+  font-size: .75rem;
+}
+
+html.cgm-premium-experience .page-header h1,
+html.cgm-premium-experience .quote-hero h1,
+html.cgm-premium-experience .svc-hero h1,
+html.cgm-premium-experience .plant-hero h1 {
+  max-width: 14ch;
+  color: #fff;
+  font-size: clamp(3rem, 7.4vw, 6.7rem);
+  font-weight: 500;
+  line-height: .86;
+  letter-spacing: -.045em;
+  text-wrap: balance;
+}
+
+html.cgm-premium-experience .page-header p,
+html.cgm-premium-experience .page-header-lede,
+html.cgm-premium-experience .quote-hero p,
+html.cgm-premium-experience .svc-hero__lede,
+html.cgm-premium-experience .plant-hero p {
+  max-width: 42rem;
+  color: rgba(255, 255, 255, .86);
+  font-size: clamp(1rem, 1.6vw, 1.18rem);
+}
+
+html.cgm-premium-experience .editorial-kicker,
+html.cgm-premium-experience .svc-hero__kicker,
+html.cgm-premium-experience .plant-hero__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: .55rem;
+  color: var(--cgm-premium-gold);
+  font-size: .68rem;
+  font-weight: 800;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+}
+
+html.cgm-premium-experience .editorial-kicker::before,
+html.cgm-premium-experience .svc-hero__kicker::before,
+html.cgm-premium-experience .plant-hero__eyebrow::before {
+  width: 2.2rem;
+  height: 1px;
+  background: currentColor;
+  content: "";
+}
+
+html.cgm-premium-experience .btn,
+html.cgm-premium-experience button.btn,
+html.cgm-premium-experience .quote-bottom-cta__btn {
+  position: relative;
+  min-height: 2.9rem;
+  border: 1px solid rgba(16, 32, 25, .18);
+  border-radius: 999px;
+  box-shadow: 0 6px 16px rgba(16, 32, 25, .06);
+  font-size: .77rem;
+  font-weight: 800;
+  letter-spacing: .065em;
+  text-transform: uppercase;
+  transition: transform .25s ease, box-shadow .25s ease, background .25s ease, color .25s ease;
+}
+
+html.cgm-premium-experience .btn:hover,
+html.cgm-premium-experience .btn:focus-visible,
+html.cgm-premium-experience .quote-bottom-cta__btn:hover,
+html.cgm-premium-experience .quote-bottom-cta__btn:focus-visible {
+  transform: translateY(-2px);
+  box-shadow: 0 13px 28px rgba(16, 32, 25, .16);
+  text-decoration: none;
+}
+
+html.cgm-premium-experience .btn-primary,
+html.cgm-premium-experience .quote-bottom-cta__btn--primary {
+  border-color: var(--forest-deep);
+  background: linear-gradient(135deg, #214b32, #102019);
+  color: #fff;
+}
+
+html.cgm-premium-experience .btn-primary::after,
+html.cgm-premium-experience .quote-bottom-cta__btn--primary::after {
+  margin-left: .5rem;
+  color: var(--gold-light);
+  content: "↗";
+}
+
+html.cgm-premium-experience .btn-ghost,
+html.cgm-premium-experience .btn-outline-light {
+  background: rgba(255, 255, 255, .78);
+  color: var(--forest-deep);
+}
+
+html.cgm-premium-experience .section:not(.section-dark) {
+  position: relative;
+}
+
+html.cgm-premium-experience .section:not(.section-dark)::before {
+  position: absolute;
+  top: 0;
+  left: 7%;
+  width: 5.5rem;
+  height: 1px;
+  background: linear-gradient(90deg, var(--gold), transparent);
+  content: "";
+  opacity: .7;
+}
+
+html.cgm-premium-experience .card,
+html.cgm-premium-experience [class*="-card"],
+html.cgm-premium-experience .guide-card,
+html.cgm-premium-experience .plant-card,
+html.cgm-premium-experience .tip-card,
+html.cgm-premium-experience .service-card,
+html.cgm-premium-experience .insight-card {
+  border-color: rgba(16, 32, 25, .11);
+  border-radius: 1rem;
+  box-shadow: 0 12px 30px rgba(16, 32, 25, .055);
+  transition: transform .32s cubic-bezier(.2, .75, .25, 1), box-shadow .32s ease, border-color .32s ease;
+}
+
+html.cgm-premium-experience [data-cgm-reveal] {
+  opacity: 1;
+  transform: none;
+}
+
+html.cgm-premium-experience.cgm-premium-ready [data-cgm-reveal] {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity .7s ease, transform .7s cubic-bezier(.2, .75, .25, 1);
+}
+
+html.cgm-premium-experience.cgm-premium-ready [data-cgm-reveal].is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+html.cgm-premium-experience.cgm-premium-ready .card[data-cgm-reveal].is-visible:hover,
+html.cgm-premium-experience.cgm-premium-ready [class*="-card"][data-cgm-reveal].is-visible:hover {
+  z-index: 1;
+  transform: translateY(-7px);
+  border-color: rgba(200, 164, 94, .6);
+  box-shadow: 0 24px 44px rgba(16, 32, 25, .14);
+}
+
+/* Calculator pages become a calm, interactive diagnostics desk. */
+html.cgm-premium-experience .cgm-experience-meter {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: .8rem;
+  align-items: center;
+  max-width: 66rem;
+  margin: -1.2rem auto 2.2rem;
+  padding: .85rem 1rem;
+  border: 1px solid rgba(16, 32, 25, .11);
+  border-radius: 1rem;
+  background: rgba(255, 255, 255, .78);
+  box-shadow: 0 14px 32px rgba(16, 32, 25, .08);
+  backdrop-filter: blur(14px);
+}
+
+html.cgm-premium-experience .cgm-experience-meter__ring {
+  display: grid;
+  width: 2.8rem;
+  height: 2.8rem;
+  place-items: center;
+  border-radius: 50%;
+  background: conic-gradient(var(--forest) calc(var(--cgm-progress, 0) * 1%), #e3e9df 0);
+}
+
+html.cgm-premium-experience .cgm-experience-meter__ring::after {
+  display: grid;
+  width: 2.12rem;
+  height: 2.12rem;
+  place-items: center;
+  border-radius: inherit;
+  background: #fffdf7;
+  color: var(--forest-deep);
+  font-size: .62rem;
+  font-weight: 800;
+  content: attr(data-cgm-progress) "%";
+}
+
+html.cgm-premium-experience .cgm-experience-meter__copy b,
+html.cgm-premium-experience .cgm-experience-meter__copy span {
+  display: block;
+}
+
+html.cgm-premium-experience .cgm-experience-meter__copy b {
+  color: var(--forest-deep);
+  font-size: .73rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+html.cgm-premium-experience .cgm-experience-meter__copy span {
+  margin-top: .12rem;
+  color: var(--muted);
+  font-size: .78rem;
+}
+
+html.cgm-premium-experience .cgm-experience-meter__status {
+  color: var(--gold-deep);
+  font-size: .68rem;
+  font-weight: 800;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+html.cgm-premium-experience .calc-layout {
+  gap: clamp(1.5rem, 4vw, 4rem);
+}
+
+html.cgm-premium-experience .calc-form,
+html.cgm-premium-experience .calc-result,
+html.cgm-premium-experience .callout {
+  border: 1px solid rgba(16, 32, 25, .11);
+  border-radius: 1.15rem;
+  box-shadow: 0 16px 38px rgba(16, 32, 25, .08);
+}
+
+html.cgm-premium-experience .calc-form {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(145deg, rgba(255, 255, 255, .94), rgba(239, 245, 235, .84));
+}
+
+html.cgm-premium-experience .calc-form::before {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 9rem;
+  height: 9rem;
+  border: 1px solid rgba(200, 164, 94, .35);
+  border-radius: 0 0 0 100%;
+  content: "";
+  pointer-events: none;
+}
+
+html.cgm-premium-experience .calc-step {
+  position: relative;
+  z-index: 1;
+  padding-block: .9rem;
+}
+
+html.cgm-premium-experience .calc-step > label {
+  color: var(--forest-deep);
+  font-weight: 750;
+}
+
+html.cgm-premium-experience .calc-number,
+html.cgm-premium-experience .calc-form input[type="text"],
+html.cgm-premium-experience .calc-form input[type="email"],
+html.cgm-premium-experience .calc-form input[type="tel"],
+html.cgm-premium-experience .calc-form textarea,
+html.cgm-premium-experience .calc-form select {
+  min-height: 3rem;
+  border-radius: .75rem;
+  border-color: rgba(16, 32, 25, .18);
+  background: rgba(255, 255, 255, .86);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.85);
+}
+
+html.cgm-premium-experience .calc-options {
+  gap: .55rem;
+}
+
+html.cgm-premium-experience .calc-options label {
+  min-height: 2.7rem;
+  border: 1px solid rgba(16, 32, 25, .15);
+  border-radius: .75rem;
+  background: rgba(255, 255, 255, .7);
+  box-shadow: 0 4px 10px rgba(16, 32, 25, .035);
+  transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease, background .18s ease;
+}
+
+html.cgm-premium-experience .calc-options input:checked + label {
+  border-color: var(--forest);
+  background: linear-gradient(135deg, var(--forest), var(--forest-deep));
+  box-shadow: 0 10px 20px rgba(16, 32, 25, .17);
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+html.cgm-premium-experience .calc-result {
+  overflow: hidden;
+  background: linear-gradient(155deg, #102019, #284c36);
+  color: rgba(255,255,255,.84);
+}
+
+html.cgm-premium-experience .calc-result h3,
+html.cgm-premium-experience .calc-result h4,
+html.cgm-premium-experience .calc-result strong {
+  color: #fff;
+}
+
+html.cgm-premium-experience .estimate-range {
+  color: var(--gold-light);
+  font-family: var(--serif);
+  font-size: clamp(2rem, 5vw, 3.6rem);
+  line-height: .95;
+}
+
+/* Service selector and guidance collections retain their content, but receive
+   a clearer sense of focus and physical depth. */
+html.cgm-premium-experience .svc-stats,
+html.cgm-premium-experience .svc-selector,
+html.cgm-premium-experience .service-grid,
+html.cgm-premium-experience .guides-grid,
+html.cgm-premium-experience .plants-grid,
+html.cgm-premium-experience .tips-grid {
+  position: relative;
+}
+
+html.cgm-premium-experience .svc-stat {
+  border-radius: .9rem;
+  background: rgba(255,255,255,.58);
+  box-shadow: 0 12px 26px rgba(16,32,25,.06);
+}
+
+html.cgm-premium-experience .svc-selector__option {
+  border-radius: .8rem;
+  transition: transform .22s ease, box-shadow .22s ease, background .22s ease;
+}
+
+html.cgm-premium-experience .svc-selector__option:hover,
+html.cgm-premium-experience .svc-selector__option:focus-visible,
+html.cgm-premium-experience .svc-selector__option.is-active {
+  transform: translateX(5px);
+  box-shadow: 0 10px 20px rgba(16,32,25,.1);
+}
+
+html.cgm-premium-experience .svc-selector__panel,
+html.cgm-premium-experience .svc-selector__right {
+  border-radius: 1.2rem;
+  box-shadow: var(--cgm-premium-shadow);
+}
+
+html.cgm-premium-experience .article-layout,
+html.cgm-premium-experience .article-body,
+html.cgm-premium-experience .plant-content {
+  position: relative;
+}
+
+html.cgm-premium-experience .article-body > h2,
+html.cgm-premium-experience .article-body > h3,
+html.cgm-premium-experience .plant-content > h2,
+html.cgm-premium-experience .plant-content > h3 {
+  scroll-margin-top: 7rem;
+}
+
+html.cgm-premium-experience .article-body > h2::before,
+html.cgm-premium-experience .article-body > h3::before,
+html.cgm-premium-experience .plant-content > h2::before {
+  display: inline-block;
+  width: 1.65rem;
+  height: 1px;
+  margin: 0 .55rem .35em 0;
+  background: var(--gold);
+  content: "";
+  vertical-align: middle;
+}
+
+/* Quote request: add hierarchy without removing the existing upload or markup
+   workflow. */
+html.cgm-premium-experience .quote-form-disclosure {
+  overflow: hidden;
+  border: 1px solid rgba(16, 32, 25, .12);
+  border-radius: 1.2rem;
+  background: rgba(255,255,255,.72);
+  box-shadow: 0 18px 42px rgba(16,32,25,.08);
+}
+
+html.cgm-premium-experience .quote-form-disclosure__summary {
+  min-height: 4.2rem;
+  padding: 1rem 1.2rem;
+  background: linear-gradient(135deg, #f9f7f0, #edf3e9);
+}
+
+html.cgm-premium-experience .quote-form-disclosure__label {
+  color: var(--forest-deep);
+  font-weight: 800;
+}
+
+html.cgm-premium-experience .quote-photo-upload-zone,
+html.cgm-premium-experience .quote-photo-upload {
+  border: 1px dashed rgba(45,90,61,.5);
+  border-radius: 1rem;
+  background: linear-gradient(135deg, rgba(233, 238, 228, .8), rgba(255,255,255,.88));
+}
+
+html.cgm-premium-experience .photo-editor-modal {
+  background: rgba(6, 15, 10, .92);
+  backdrop-filter: blur(18px);
+}
+
+html.cgm-premium-experience .photo-editor-modal__header {
+  min-height: 4.8rem;
+  border-bottom-color: rgba(255,255,255,.14);
+  background: linear-gradient(90deg, rgba(19,48,32,.98), rgba(15,31,22,.98));
+}
+
+html.cgm-premium-experience .photo-editor-modal__title {
+  color: #fff;
+}
+
+html.cgm-premium-experience .photo-editor-modal__hint {
+  margin: .1rem 0 0;
+  color: rgba(255,255,255,.7);
+  font-size: .75rem;
+}
+
+html.cgm-premium-experience .photo-editor-modal__toolbar {
+  gap: .55rem;
+  padding: .8rem;
+  border-radius: 1rem;
+  background: rgba(255,255,255,.96);
+  box-shadow: 0 16px 38px rgba(0,0,0,.18);
+}
+
+html.cgm-premium-experience .photo-editor-modal__tool {
+  display: inline-flex;
+  min-width: 4.7rem;
+  min-height: 3rem;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: .28rem;
+  border: 1px solid rgba(16,32,25,.16);
+  border-radius: .72rem;
+  background: #fff;
+  color: var(--forest-deep);
+  font-size: .65rem;
+  font-weight: 800;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+}
+
+html.cgm-premium-experience .photo-editor-modal__tool.is-active {
+  border-color: var(--forest);
+  background: var(--forest);
+  color: #fff;
+  box-shadow: 0 9px 18px rgba(16,32,25,.18);
+}
+
+html.cgm-premium-experience .photo-editor-modal__tool-label {
+  display: block;
+}
+
+html.cgm-premium-experience .photo-editor-modal__close {
+  display: inline-flex;
+  min-width: 5.4rem;
+  min-height: 2.55rem;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255,255,255,.35);
+  border-radius: 999px;
+  background: transparent;
+  color: #fff;
+  font-size: 0;
+  font-weight: 800;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+html.cgm-premium-experience .photo-editor-modal__close::after {
+  font-size: .68rem;
+  content: "Close";
+}
+
+@media (max-width: 800px) {
+  html.cgm-premium-experience .page-header {
+    min-height: 28rem;
+    margin: 0 .75rem 2rem;
+    border-radius: 1.15rem;
+  }
+
+  html.cgm-premium-experience .page-header h1,
+  html.cgm-premium-experience .quote-hero h1,
+  html.cgm-premium-experience .svc-hero h1,
+  html.cgm-premium-experience .plant-hero h1 {
+    font-size: clamp(3rem, 16vw, 4.5rem);
+  }
+
+  html.cgm-premium-experience .breadcrumbs {
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  html.cgm-premium-experience .cgm-experience-badge {
+    right: 1rem;
+    bottom: .9rem;
+    font-size: .56rem;
+  }
+
+  html.cgm-premium-experience .cgm-experience-meter {
+    grid-template-columns: auto 1fr;
+    margin: -1rem 1rem 1.6rem;
+  }
+
+  html.cgm-premium-experience .cgm-experience-meter__status {
+    grid-column: 2;
+  }
+
+  html.cgm-premium-experience .photo-editor-modal__toolbar {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  html.cgm-premium-experience .photo-editor-modal__tool {
+    min-width: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html.cgm-premium-experience *,
+  html.cgm-premium-experience *::before,
+  html.cgm-premium-experience *::after {
+    scroll-behavior: auto !important;
+    transition-duration: .01ms !important;
+    animation-duration: .01ms !important;
+  }
+
+  html.cgm-premium-experience.cgm-premium-ready [data-cgm-reveal] {
+    opacity: 1;
+    transform: none;
+  }
+}
