@@ -551,30 +551,30 @@ html.cgm-premium-experience .photo-editor-modal__toolbar {
 }
 
 html.cgm-premium-experience .photo-editor-modal__tool {
-  display: inline-flex;
+  display: inline-flex !important;
   width: 100% !important;
   min-width: 0;
   min-height: 3rem;
   height: auto !important;
   flex-direction: row !important;
-  align-items: center;
+  align-items: center !important;
   justify-content: flex-start !important;
-  gap: .28rem;
-  border: 1px solid rgba(16,32,25,.16);
-  border-radius: .72rem;
-  background: #fff;
-  color: var(--forest-deep);
-  font-size: .65rem;
-  font-weight: 800;
-  letter-spacing: .07em;
-  text-transform: uppercase;
+  gap: .28rem !important;
+  border: 1px solid rgba(16,32,25,.16) !important;
+  border-radius: .72rem !important;
+  background: #fff !important;
+  color: var(--forest-deep) !important;
+  font-size: .65rem !important;
+  font-weight: 800 !important;
+  letter-spacing: .07em !important;
+  text-transform: uppercase !important;
 }
 
 html.cgm-premium-experience .photo-editor-modal__tool.is-active {
-  border-color: var(--forest);
-  background: var(--forest);
-  color: #fff;
-  box-shadow: 0 9px 18px rgba(16,32,25,.18);
+  border-color: var(--forest) !important;
+  background: var(--forest) !important;
+  color: #fff !important;
+  box-shadow: 0 9px 18px rgba(16,32,25,.18) !important;
 }
 
 html.cgm-premium-experience .photo-editor-modal__tool-label {
