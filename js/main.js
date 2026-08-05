@@ -11,11 +11,11 @@
 
   var style = document.createElement('link');
   style.rel = 'stylesheet';
-  style.href = '/chilterngardenmaintenance-updatedsite/css/premium-experience.css?v=20260805p3';
+  style.href = '/chilterngardenmaintenance-updatedsite/css/premium-experience.css?v=20260805p4';
   document.head.appendChild(style);
 
   var script = document.createElement('script');
-  script.src = '/chilterngardenmaintenance-updatedsite/js/premium-experience.js?v=20260805p1';
+  script.src = '/chilterngardenmaintenance-updatedsite/js/premium-experience.js?v=20260805p2';
   script.defer = true;
   document.head.appendChild(script);
 })();
