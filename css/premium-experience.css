@@ -541,13 +541,24 @@ html.cgm-premium-experience .photo-editor-modal__toolbar {
   box-shadow: 0 16px 38px rgba(0,0,0,.18);
 }
 
+/* Override the old icon-only vertical toolbar. Text labels are deliberately
+   always visible so a customer knows exactly what each edit control does. */
+html.cgm-premium-experience .photo-editor-modal__toolbar {
+  width: 11.75rem !important;
+  align-items: stretch !important;
+  background: rgba(255,255,255,.97) !important;
+  border-left: 1px solid rgba(16,32,25,.13) !important;
+}
+
 html.cgm-premium-experience .photo-editor-modal__tool {
   display: inline-flex;
-  min-width: 4.7rem;
+  width: 100% !important;
+  min-width: 0;
   min-height: 3rem;
-  flex-direction: column;
+  height: auto !important;
+  flex-direction: row !important;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start !important;
   gap: .28rem;
   border: 1px solid rgba(16,32,25,.16);
   border-radius: .72rem;
@@ -567,7 +578,33 @@ html.cgm-premium-experience .photo-editor-modal__tool.is-active {
 }
 
 html.cgm-premium-experience .photo-editor-modal__tool-label {
-  display: block;
+  position: static !important;
+  display: block !important;
+  max-width: none !important;
+  padding: 0 !important;
+  border: 0 !important;
+  background: transparent !important;
+  color: currentColor !important;
+  font-size: .65rem !important;
+  line-height: 1.1 !important;
+  opacity: 1 !important;
+  transform: none !important;
+  pointer-events: auto !important;
+}
+
+html.cgm-premium-experience .photo-editor-modal__tool svg {
+  flex: 0 0 auto;
+}
+
+html.cgm-premium-experience .photo-editor-modal__tool-divider {
+  width: 100% !important;
+  margin: .1rem 0 !important;
+  background: rgba(16,32,25,.14) !important;
+}
+
+html.cgm-premium-experience .photo-editor-modal__color-picker {
+  align-items: flex-start !important;
+  padding: .15rem .2rem !important;
 }
 
 html.cgm-premium-experience .photo-editor-modal__close {
@@ -628,10 +665,28 @@ html.cgm-premium-experience .photo-editor-modal__close::after {
   html.cgm-premium-experience .photo-editor-modal__toolbar {
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
+    width: 100% !important;
+    max-height: 7.4rem !important;
+    overflow-x: auto !important;
+    border-top: 1px solid rgba(16,32,25,.13) !important;
+    border-left: 0 !important;
   }
 
   html.cgm-premium-experience .photo-editor-modal__tool {
     min-width: 0;
+    justify-content: center !important;
+    gap: .2rem;
+  }
+
+  html.cgm-premium-experience .photo-editor-modal__tool-label {
+    font-size: .56rem !important;
+  }
+
+  html.cgm-premium-experience .photo-editor-modal__color-picker {
+    display: flex !important;
+    flex-direction: row !important;
+    grid-column: span 4;
+    justify-content: center;
   }
 }
 
