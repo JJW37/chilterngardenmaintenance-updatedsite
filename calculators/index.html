@@ -12,6 +12,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap">
   <link rel="stylesheet" href="/chilterngardenmaintenance-updatedsite/css/editorial.css?v=20260807a">
+  <link rel="stylesheet" href="/chilterngardenmaintenance-updatedsite/css/estimator-showroom.css?v=20260805a">
   <link rel="icon" type="image/png" sizes="32x32" href="/chilterngardenmaintenance-updatedsite/images/favicon-32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/chilterngardenmaintenance-updatedsite/images/favicon-16.png">
   <link rel="apple-touch-icon" href="/chilterngardenmaintenance-updatedsite/images/cgm-logo-square.png">
@@ -99,28 +100,64 @@
     </div><a href="/chilterngardenmaintenance-updatedsite/locations/">Locations</a><a href="/chilterngardenmaintenance-updatedsite/about/maintenance.html">The CGM Method</a><a href="/chilterngardenmaintenance-updatedsite/booking/">Get a Quote</a><a href="https://wa.me/447467657459" target="_blank" rel="noopener">WhatsApp</a>
     </nav>
   </header>
-<main id="main-content">
+<main id="main-content" class="estimator-showroom" tabindex="-1">
+
+  <header class="estimator-command-bar" aria-label="Garden estimator controls">
+    <div class="estimator-command-bar__brand" aria-label="Chiltern Garden estimator studio">
+      <span class="estimator-command-bar__mark" aria-hidden="true">CG</span>
+      <span><strong>Garden estimator studio</strong><small>Seven practical routes</small></span>
+    </div>
+    <div class="estimator-command-bar__progress" aria-label="Current story chapter">
+      <span data-estimator-progress-label>01 / 05</span>
+      <span class="estimator-command-bar__line" aria-hidden="true"><i data-estimator-progress-bar></i></span>
+      <strong data-estimator-progress-title>Start here</strong>
+    </div>
+    <div class="estimator-command-bar__actions">
+      <button type="button" data-estimator-action="question">Find my tool</button>
+      <button type="button" data-estimator-action="library">All tools</button>
+      <button type="button" data-estimator-action="quote">Send photos</button>
+    </div>
+  </header>
 
   <!-- ============== HERO (editorial, full-bleed image, asymmetric text) ============== -->
-  <section class="hero" style="min-height:72vh;display:flex;align-items:flex-end;padding:0;">
+  <section class="hero estimator-hero" id="estimator-hero" data-estimator-chapter="hero" data-estimator-chapter-title="Start here" style="min-height:72vh;display:flex;align-items:flex-end;padding:0;">
     <div class="hero-bg" style="background:#102019;"><img src="/chilterngardenmaintenance-updatedsite/images/project/tools-planning.webp" alt="Garden planning tools, measuring tape, notebook, seed packets on a wooden bench" style="opacity:0.55;" loading="eager"></div>
-    <div class="container" style="position:relative;z-index:2;width:100%;padding:6rem 1.5rem 5rem;">
-      <div style="max-width:46rem;">
-        <div class="editorial-kicker" style="color:rgba(255,255,255,0.9);background:rgba(21,40,28,0.55);padding:.45rem .85rem;border-radius:2px;backdrop-filter:blur(4px);display:inline-block;">
+    <div class="container estimator-hero__container" style="position:relative;z-index:2;width:100%;padding:6rem 1.5rem 5rem;">
+      <div class="estimator-hero__content" style="max-width:46rem;">
+        <div class="editorial-kicker estimator-hero__kicker" style="color:rgba(255,255,255,0.9);background:rgba(21,40,28,0.55);padding:.45rem .85rem;border-radius:2px;backdrop-filter:blur(4px);display:inline-block;">
           Garden Tools &amp; Planners &middot; Free &middot; No sign-up
         </div>
-        <h1 class="editorial-h1" style="color:#fff;text-shadow:0 2px 16px rgba(21,40,28,0.5);margin-top:1rem;">Plan your garden<br><em style="font-family:var(--serif);font-weight:400;color:var(--gold-light);">before you spend a pound.</em></h1>
-        <p class="editorial-lede" style="color:rgba(255,255,255,0.94);max-width:36rem;text-shadow:0 1px 8px rgba(21,40,28,0.4);">Seven free interactive tools to help you assess clearance levels, diagnose your lawn, plan wildflower and privacy planting, and choose the right care. Tailored to your garden's conditions. No prices, no quotes, just honest guidance.</p>
-        <div class="hero-actions" style="margin-top:2rem;">
-          <a class="btn btn-primary btn-lg" href="#tools">Browse the tools</a>
+        <h1 class="editorial-h1 estimator-hero__title" style="color:#fff;text-shadow:0 2px 16px rgba(21,40,28,0.5);margin-top:1rem;">Plan your garden<br><em style="font-family:var(--serif);font-weight:400;color:var(--gold-light);">before you spend a pound.</em></h1>
+        <p class="editorial-lede estimator-hero__lede" style="color:rgba(255,255,255,0.94);max-width:36rem;text-shadow:0 1px 8px rgba(21,40,28,0.4);">Seven free interactive tools to help you assess clearance levels, diagnose your lawn, plan wildflower and privacy planting, and choose the right care. Tailored to your garden's conditions. No prices, no quotes, just honest guidance.</p>
+        <div class="hero-actions estimator-hero__actions" style="margin-top:2rem;">
+          <a class="btn btn-primary btn-lg" href="#estimator-question">Find the right tool</a>
           <a class="btn btn-whatsapp btn-lg" href="https://wa.me/447467657459" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 21 1.9-5.7a8.5 8.5 0 1 1 3.8 3.8z"/></svg> Ask us first</a>
         </div>
       </div>
+      <aside class="estimator-hero__index" aria-label="Estimator studio facts">
+        <strong>Estimator studio</strong>
+        <div class="estimator-hero__stats">
+          <div><b>07</b><span>garden diagnostics</span></div>
+          <div><b>00</b><span>sign-up barriers</span></div>
+          <div><b>14</b><span>lawn health signals</span></div>
+          <div><b>02</b><span>minutes to a route</span></div>
+        </div>
+        <p>Clearer questions make better garden decisions.</p>
+      </aside>
     </div>
+    <a class="estimator-hero__scroll" href="#estimator-question"><span aria-hidden="true"></span> Open the estimator studio</a>
   </section>
 
+  <nav class="estimator-chapter-rail" aria-label="Estimator page sections">
+    <a href="#estimator-hero" data-estimator-chapter-link="hero" class="is-active"><span>01</span> Estimator studio</a>
+    <a href="#estimator-question" data-estimator-chapter-link="question"><span>02</span> Find your question</a>
+    <a href="#tools" data-estimator-chapter-link="library"><span>03</span> Tool library</a>
+    <a href="#result-note" data-estimator-chapter-link="results"><span>04</span> Use the result</a>
+    <a href="#estimator-quote" data-estimator-chapter-link="quote"><span>05</span> Turn it into a plan</a>
+  </nav>
+
   <!-- ============== EDITORIAL INTRO ============== -->
-  <section class="section-editorial">
+  <section class="section-editorial estimator-intro" data-estimator-reveal>
     <div class="container">
       <div class="editorial-intro">
         <div class="editorial-intro__kicker-block">
@@ -135,8 +172,37 @@
     </div>
   </section>
 
+  <section class="estimator-question-lab" id="estimator-question" data-estimator-chapter="question" data-estimator-chapter-title="Find your question">
+    <div class="container estimator-question-lab__inner">
+      <div class="estimator-question-lab__intro">
+        <span class="estimator-eyebrow">Start with your garden</span>
+        <h2>What are you trying to understand?</h2>
+        <p>Choose the closest starting point. The studio will point you to the most useful first diagnostic, then you can explore from there.</p>
+        <div class="estimator-question-lab__controls" role="tablist" aria-label="Choose your garden question">
+          <button class="estimator-question-lab__control is-active" type="button" role="tab" aria-selected="true" data-estimator-route="clear"><span>01</span>I need to regain control</button>
+          <button class="estimator-question-lab__control" type="button" role="tab" aria-selected="false" data-estimator-route="care"><span>02</span>I need a care plan</button>
+          <button class="estimator-question-lab__control" type="button" role="tab" aria-selected="false" data-estimator-route="revive"><span>03</span>My lawn or meadow needs help</button>
+          <button class="estimator-question-lab__control" type="button" role="tab" aria-selected="false" data-estimator-route="screen"><span>04</span>I want more privacy or structure</button>
+        </div>
+      </div>
+      <aside class="estimator-route-card" id="estimator-route-detail" role="tabpanel" tabindex="0" aria-live="polite">
+        <div class="estimator-route-card__topline"><span>Recommended first route</span><b data-estimator-route-number>01</b></div>
+        <p class="estimator-route-card__tag" data-estimator-route-tag>Control &amp; clearance</p>
+        <h3 data-estimator-route-title>Garden Clearance Level</h3>
+        <p data-estimator-route-copy>For a garden that has become overgrown, hard to access or difficult to reset. Start here to understand the scale of the job before deciding what comes next.</p>
+        <ul data-estimator-route-signals>
+          <li>Size, access and waste</li>
+          <li>Brambles and overgrowth</li>
+          <li>Your intended outcome</li>
+        </ul>
+        <a class="estimator-route-card__cta" data-estimator-route-link href="/chilterngardenmaintenance-updatedsite/calculators/clearance.html">Open Garden Clearance Level <span aria-hidden="true">→</span></a>
+        <p class="estimator-route-card__note" data-estimator-route-note>Looks at the practical conditions that turn a tidy-up into a recovery project.</p>
+      </aside>
+    </div>
+  </section>
+
   <!-- ============== PROOF STRIP ============== -->
-  <section class="section-editorial-tight" style="padding-top:0;">
+  <section class="section-editorial-tight estimator-proof" style="padding-top:0;" data-estimator-reveal>
     <div class="container">
       <div class="proof-strip">
         <div class="proof-strip__item">
@@ -160,7 +226,7 @@
   </section>
 
   <!-- ============== EDITORIAL CALCULATOR GRID (replaces old card grid) ============== -->
-  <section class="section-editorial-loose" id="tools">
+  <section class="section-editorial-loose estimator-library" id="tools" data-estimator-chapter="library" data-estimator-chapter-title="Tool library">
     <div class="container">
       <div class="editorial-intro" style="margin-bottom:3rem;">
         <div class="editorial-intro__kicker-block">
@@ -171,56 +237,65 @@
           <p class="editorial-lede">Each tool answers a different question. Open one, answer the prompts, and get a tailored result in under two minutes.</p>
         </div>
       </div>
-      <div class="editorial-calc-grid">
-        <a class="editorial-calc-card" href="/chilterngardenmaintenance-updatedsite/calculators/clearance.html">
+      <div class="estimator-library__bar" data-estimator-reveal>
+        <div><span>Browse by intent</span><strong data-estimator-filter-label>All seven diagnostics</strong></div>
+        <div class="estimator-library__filters" role="tablist" aria-label="Filter garden tools">
+          <button type="button" role="tab" aria-selected="true" class="is-active" data-estimator-filter="all">All tools</button>
+          <button type="button" role="tab" aria-selected="false" data-estimator-filter="assess">Assess</button>
+          <button type="button" role="tab" aria-selected="false" data-estimator-filter="restore">Restore</button>
+          <button type="button" role="tab" aria-selected="false" data-estimator-filter="plan">Plan</button>
+        </div>
+      </div>
+      <div class="editorial-calc-grid estimator-library__grid">
+        <a class="editorial-calc-card" data-estimator-card data-estimator-tags="assess clear" href="/chilterngardenmaintenance-updatedsite/calculators/clearance.html">
           <div class="editorial-calc-card__num">01 &middot; Clearance</div>
           <h3 class="editorial-calc-card__title">Garden Clearance Level</h3>
           <p class="editorial-calc-card__body">Assesses size, overgrowth, access, brambles, waste and goal. Outputs Level 1 (tidy) to Level 4 (complex recovery).</p>
           <span class="editorial-calc-card__cta">Open tool &rarr;</span>
         </a>
-        <a class="editorial-calc-card" href="/chilterngardenmaintenance-updatedsite/calculators/maintenance.html">
+        <a class="editorial-calc-card" data-estimator-card data-estimator-tags="assess care" href="/chilterngardenmaintenance-updatedsite/calculators/maintenance.html">
           <div class="editorial-calc-card__num">02 &middot; Care</div>
           <h3 class="editorial-calc-card__title">Garden Care Assessment</h3>
           <p class="editorial-calc-card__body">Scores area, planting complexity, specialist features and responsibility level. Outputs CGM Care Level 1 (Essential) to 4 (Managed).</p>
           <span class="editorial-calc-card__cta">Open tool &rarr;</span>
         </a>
-        <a class="editorial-calc-card" href="/chilterngardenmaintenance-updatedsite/calculators/lawn.html">
+        <a class="editorial-calc-card" data-estimator-card data-estimator-tags="restore lawn plan" href="/chilterngardenmaintenance-updatedsite/calculators/lawn.html">
           <div class="editorial-calc-card__num">03 &middot; Lawn</div>
           <h3 class="editorial-calc-card__title">Lawn Renovation Planner</h3>
           <p class="editorial-calc-card__body">Recommends a precise grass seed blend with cultivars and sowing rates. Includes a 10-step renovation method.</p>
           <span class="editorial-calc-card__cta">Open tool &rarr;</span>
         </a>
-        <a class="editorial-calc-card" href="/chilterngardenmaintenance-updatedsite/calculators/wildflower.html">
+        <a class="editorial-calc-card" data-estimator-card data-estimator-tags="restore plan lawn" href="/chilterngardenmaintenance-updatedsite/calculators/wildflower.html">
           <div class="editorial-calc-card__num">04 &middot; Wildflower</div>
           <h3 class="editorial-calc-card__title">Wildflower Seed Selector</h3>
           <p class="editorial-calc-card__body">Matches soil, light, colour and look to a wildflower seed mix with botanical names and percentages. Includes a Chiltern chalk meadow mix.</p>
           <span class="editorial-calc-card__cta">Open tool &rarr;</span>
         </a>
-        <a class="editorial-calc-card" href="/chilterngardenmaintenance-updatedsite/calculators/pressure-wash.html">
+        <a class="editorial-calc-card" data-estimator-card data-estimator-tags="assess restore clear" href="/chilterngardenmaintenance-updatedsite/calculators/pressure-wash.html">
           <div class="editorial-calc-card__num">05 &middot; Pressure Wash</div>
           <h3 class="editorial-calc-card__title">Pressure Washing Level</h3>
           <p class="editorial-calc-card__body">Assesses surface area, algae, time since last wash, moss and water supply. Outputs Level 1 (light clean) to 4 (major recovery).</p>
           <span class="editorial-calc-card__cta">Open tool &rarr;</span>
         </a>
-        <a class="editorial-calc-card" href="/chilterngardenmaintenance-updatedsite/calculators/privacy-planner.html">
+        <a class="editorial-calc-card" data-estimator-card data-estimator-tags="plan screen" href="/chilterngardenmaintenance-updatedsite/calculators/privacy-planner.html">
           <div class="editorial-calc-card__num">06 &middot; Privacy</div>
           <h3 class="editorial-calc-card__title">Privacy Plant Planner</h3>
           <p class="editorial-calc-card__body">Premium diagnostic. Scores 18 screening plants against your conditions. Produces ranked list, arrangement, privacy score and seasonal calendar.</p>
           <span class="editorial-calc-card__cta">Open tool &rarr;</span>
         </a>
-        <a class="editorial-calc-card" href="/chilterngardenmaintenance-updatedsite/calculators/lawn-recovery.html">
+        <a class="editorial-calc-card" data-estimator-card data-estimator-tags="restore lawn assess" href="/chilterngardenmaintenance-updatedsite/calculators/lawn-recovery.html">
           <div class="editorial-calc-card__num">07 &middot; Lawn Recovery</div>
           <h3 class="editorial-calc-card__title">Lawn Recovery Predictor</h3>
           <p class="editorial-calc-card__body">Diagnoses across 14 factors including moss, weeds, bare patches, shade, drainage. Produces recovery score, named diagnosis, action plan and timeline.</p>
           <span class="editorial-calc-card__cta">Open tool &rarr;</span>
         </a>
-        <a class="editorial-calc-card" href="/chilterngardenmaintenance-updatedsite/booking/" style="background:var(--forest-dark);color:#fff;">
+        <a class="editorial-calc-card estimator-library__utility" data-estimator-card data-estimator-tags="utility" href="/chilterngardenmaintenance-updatedsite/booking/" style="background:var(--forest-dark);color:#fff;">
           <div class="editorial-calc-card__num" style="color:var(--gold);">08 &middot; Not sure?</div>
           <h3 class="editorial-calc-card__title" style="color:#fff;">Skip the tool, send photos</h3>
           <p class="editorial-calc-card__body" style="color:rgba(255,255,255,0.85);">If you would rather talk to a person, send us a few photos of your garden via WhatsApp or our quote form. We will come back with a clear plan and price, usually within 12 to 36 hours, Monday to Sunday.</p>
           <span class="editorial-calc-card__cta" style="color:var(--gold);">Get a quote &rarr;</span>
         </a>
-        <a class="editorial-calc-card" href="/chilterngardenmaintenance-updatedsite/tips/" style="background:var(--cream-warm);">
+        <a class="editorial-calc-card estimator-library__utility" data-estimator-card data-estimator-tags="utility" href="/chilterngardenmaintenance-updatedsite/tips/" style="background:var(--cream-warm);">
           <div class="editorial-calc-card__num">09 &middot; Read first</div>
           <h3 class="editorial-calc-card__title">Gardening Knowledge</h3>
           <p class="editorial-calc-card__body">150+ articles on garden clearance, lawn care, soil, planting, hedges, seasonal jobs and costs. Use the tools after you have read the context.</p>
@@ -231,7 +306,7 @@
   </section>
 
   <!-- ============== PHOTO INTERLUDE ============== -->
-  <section class="photo-interlude">
+  <section class="photo-interlude estimator-result-note" id="result-note" data-estimator-chapter="results" data-estimator-chapter-title="Use the result">
     <img class="photo-interlude__img" src="/chilterngardenmaintenance-updatedsite/images/project/floral-garden-interlude.webp" alt="Freshly mown lawn with deep stripe pattern" loading="lazy" decoding="async">
     <div class="photo-interlude__content">
       <div class="container" style="padding:0;">
@@ -243,7 +318,7 @@
   </section>
 
   <!-- ============== EDITORIAL FEATURE: how a tool works ============== -->
-  <section class="section-editorial-loose">
+  <section class="section-editorial-loose estimator-how" data-estimator-reveal>
     <div class="container">
       <div class="editorial-feature editorial-feature--reverse">
         <div class="editorial-feature__media">
@@ -262,7 +337,7 @@
   </section>
 
   <!-- ============== CTA ============== -->
-  <section class="section-dark" style="padding:5rem 0;">
+  <section class="section-dark estimator-quote" id="estimator-quote" data-estimator-chapter="quote" data-estimator-chapter-title="Turn it into a plan" style="padding:5rem 0;">
     <div class="container">
       <div style="max-width:42rem;">
         <span class="editorial-kicker" style="color:var(--gold);">Already used a tool?</span>
@@ -385,5 +460,6 @@
   <script src="/chilterngardenmaintenance-updatedsite/js/custom-scrollbar.js?v=20260719b"></script>
   <script src="/chilterngardenmaintenance-updatedsite/js/predictive-search.js?v=20260719b"></script>
   <script src="/chilterngardenmaintenance-updatedsite/js/mobile-dock.js?v=20260719b"></script>
+  <script src="/chilterngardenmaintenance-updatedsite/js/estimator-showroom.js?v=20260805a"></script>
 </body>
 </html>
