@@ -1,0 +1,316 @@
+/* Garden estimator studio — scoped enhancement for /calculators/ only. */
+.estimator-showroom {
+  --est-ink: #102018;
+  --est-deep: #0b1711;
+  --est-forest: #173a29;
+  --est-sage: #dce5d8;
+  --est-paper: #f6f3eb;
+  --est-white: #fcfbf7;
+  --est-gold: #c4a064;
+  --est-line: rgba(16, 32, 24, 0.15);
+  background: var(--est-white);
+  color: var(--est-ink);
+  overflow: clip;
+}
+
+html.cgm-premium-experience .estimator-showroom .cgm-experience-badge { display: none !important; }
+
+/* A compact control room above an unboxed, full-bleed hero. */
+.estimator-command-bar {
+  position: relative;
+  z-index: 24;
+  min-height: 64px;
+  display: grid;
+  grid-template-columns: minmax(12rem, 1fr) auto minmax(12rem, 1fr);
+  align-items: center;
+  gap: 1.5rem;
+  padding: 0.7rem clamp(1rem, 3vw, 3rem);
+  color: rgba(255,255,255,0.9);
+  background: var(--est-deep);
+}
+.estimator-command-bar__brand { display: inline-flex; align-items: center; gap: 0.7rem; min-width: 0; }
+.estimator-command-bar__mark {
+  display: grid;
+  width: 2rem;
+  height: 2rem;
+  place-items: center;
+  flex: 0 0 auto;
+  border: 1px solid rgba(196,160,100,0.72);
+  color: var(--est-gold);
+  font: 700 0.65rem/1 var(--sans, Inter, sans-serif);
+  letter-spacing: 0.1em;
+}
+.estimator-command-bar__brand strong,
+.estimator-command-bar__brand small { display: block; white-space: nowrap; }
+.estimator-command-bar__brand strong { font: 600 0.72rem/1.2 var(--sans, Inter, sans-serif); letter-spacing: 0.08em; text-transform: uppercase; }
+.estimator-command-bar__brand small { margin-top: 0.2rem; color: rgba(255,255,255,0.52); font: 400 0.68rem/1.2 var(--sans, Inter, sans-serif); }
+.estimator-command-bar__progress { display: flex; align-items: center; gap: 0.65rem; justify-content: center; min-width: max-content; font-family: var(--sans, Inter, sans-serif); }
+.estimator-command-bar__progress > span:first-child { color: var(--est-gold); font-size: 0.67rem; font-weight: 700; letter-spacing: 0.13em; }
+.estimator-command-bar__line { display: block; position: relative; width: clamp(5rem, 10vw, 9rem); height: 1px; overflow: hidden; background: rgba(255,255,255,0.22); }
+.estimator-command-bar__line i { position: absolute; inset: 0 auto 0 0; width: 20%; background: var(--est-gold); transition: width .45s ease; }
+.estimator-command-bar__progress strong { width: 8.5rem; overflow: hidden; color: rgba(255,255,255,0.7); font-size: 0.67rem; font-weight: 500; letter-spacing: 0.04em; text-overflow: ellipsis; text-transform: uppercase; white-space: nowrap; }
+.estimator-command-bar__actions { display: flex; justify-content: flex-end; align-items: center; gap: 0.3rem; }
+.estimator-command-bar__actions button {
+  min-height: 2.3rem;
+  padding: 0.55rem 0.7rem;
+  border: 0;
+  border-radius: 0;
+  color: rgba(255,255,255,0.77);
+  background: transparent;
+  cursor: pointer;
+  font: 600 0.67rem/1.1 var(--sans, Inter, sans-serif);
+  letter-spacing: 0.075em;
+  text-transform: uppercase;
+  transition: color .2s ease, background-color .2s ease;
+}
+.estimator-command-bar__actions button:hover,
+.estimator-command-bar__actions button:focus-visible { color: var(--est-deep); background: var(--est-gold); outline: none; }
+
+html.cgm-premium-experience .estimator-showroom .estimator-hero {
+  position: relative !important;
+  width: 100% !important;
+  max-width: none !important;
+  min-height: max(660px, calc(100svh - 1px)) !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  isolation: isolate;
+  background: var(--est-deep) !important;
+}
+.estimator-hero::before {
+  content: '';
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(7,18,12,0.94) 0%, rgba(7,18,12,0.76) 43%, rgba(7,18,12,0.18) 76%, rgba(7,18,12,0.38) 100%);
+  pointer-events: none;
+}
+.estimator-hero::after {
+  content: '';
+  position: absolute;
+  z-index: 2;
+  inset: auto 0 0;
+  height: 28%;
+  background: linear-gradient(0deg, rgba(4,12,8,0.64), transparent);
+  pointer-events: none;
+}
+.estimator-hero .hero-bg { z-index: 0 !important; }
+.estimator-hero .hero-bg img {
+  opacity: 0.72 !important;
+  object-position: 52% center;
+  transform: scale(1.035);
+  transition: transform 1.2s cubic-bezier(.2,.7,.2,1);
+}
+.estimator-showroom--enhanced .estimator-hero:hover .hero-bg img { transform: scale(1.08); }
+.estimator-hero__container {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1.25fr) minmax(245px, .45fr);
+  gap: clamp(2rem, 6vw, 8rem);
+  align-items: end;
+  max-width: 1320px !important;
+  min-height: max(660px, calc(100svh - 1px));
+  margin: 0 auto;
+}
+.estimator-hero__content { position: relative; z-index: 3; }
+.estimator-hero__kicker {
+  border: 1px solid rgba(255,255,255,0.18) !important;
+  border-radius: 0 !important;
+  font-size: 0.67rem !important;
+  letter-spacing: 0.16em !important;
+}
+.estimator-hero__title {
+  max-width: 11.5ch;
+  font-size: clamp(3.8rem, 7.6vw, 7.65rem) !important;
+  line-height: .88 !important;
+  letter-spacing: -.055em !important;
+}
+.estimator-hero__title em { display: inline-block; margin-top: .2em; color: #d5ba87 !important; }
+.estimator-hero__lede { max-width: 40rem !important; font-family: var(--sans, Inter, sans-serif) !important; font-size: clamp(1rem, 1.35vw, 1.18rem) !important; line-height: 1.65 !important; }
+.estimator-hero__actions .btn {
+  border-radius: 0 !important;
+  min-height: 3.35rem;
+  padding-inline: 1.2rem;
+  font-size: .78rem;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+}
+.estimator-hero__index {
+  position: relative;
+  z-index: 3;
+  align-self: end;
+  padding: 1.45rem 0 1.2rem 1.35rem;
+  border-left: 1px solid rgba(255,255,255,0.42);
+  color: #fff;
+}
+.estimator-hero__index > strong { display: block; margin-bottom: 1.1rem; color: var(--est-gold); font: 700 .66rem/1 var(--sans, Inter, sans-serif); letter-spacing: .15em; text-transform: uppercase; }
+.estimator-hero__stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1.1rem 1.4rem; }
+.estimator-hero__stats div { display: grid; gap: .2rem; }
+.estimator-hero__stats b { color: #fff; font: 500 clamp(1.75rem, 2.6vw, 2.5rem)/.95 var(--serif, Georgia, serif); letter-spacing: -.04em; }
+.estimator-hero__stats span { max-width: 8rem; color: rgba(255,255,255,.68); font: 500 .65rem/1.32 var(--sans, Inter, sans-serif); letter-spacing: .04em; text-transform: uppercase; }
+.estimator-hero__index p { max-width: 17rem; margin: 1.45rem 0 0; padding-top: .9rem; border-top: 1px solid rgba(255,255,255,.18); color: rgba(255,255,255,.74); font: 400 .8rem/1.5 var(--sans, Inter, sans-serif); }
+.estimator-hero__scroll { position: absolute; z-index: 5; right: clamp(1.25rem, 4vw, 4rem); bottom: 1.4rem; display: inline-flex; align-items: center; gap: .6rem; color: rgba(255,255,255,.78); font: 600 .62rem/1 var(--sans, Inter, sans-serif); letter-spacing: .14em; text-decoration: none; text-transform: uppercase; }
+.estimator-hero__scroll span { width: 2rem; height: 1px; background: var(--est-gold); transition: width .25s ease; }
+.estimator-hero__scroll:hover span, .estimator-hero__scroll:focus-visible span { width: 3rem; }
+
+.estimator-chapter-rail {
+  position: sticky;
+  top: 72px;
+  z-index: 20;
+  display: flex;
+  justify-content: center;
+  gap: clamp(.3rem, 2vw, 2rem);
+  min-height: 3.8rem;
+  padding: 0 clamp(1rem, 3vw, 3rem);
+  overflow-x: auto;
+  background: rgba(246,243,235,.96);
+  box-shadow: 0 6px 16px rgba(16,32,24,.04);
+  scrollbar-width: none;
+}
+.estimator-chapter-rail::-webkit-scrollbar { display: none; }
+.estimator-chapter-rail a {
+  display: inline-flex;
+  align-items: center;
+  gap: .45rem;
+  flex: 0 0 auto;
+  color: rgba(16,32,24,.58);
+  font: 600 .66rem/1 var(--sans, Inter, sans-serif);
+  letter-spacing: .08em;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: color .2s ease;
+}
+.estimator-chapter-rail a span { color: var(--est-gold); font-size: .62rem; }
+.estimator-chapter-rail a.is-active, .estimator-chapter-rail a:hover, .estimator-chapter-rail a:focus-visible { color: var(--est-ink); outline: none; }
+
+.estimator-intro { position: relative; padding-block: clamp(4.5rem, 9vw, 8rem) !important; background: var(--est-white); }
+.estimator-intro .editorial-intro { grid-template-columns: minmax(10rem,.42fr) minmax(0,1fr); max-width: 1210px; }
+.estimator-intro .editorial-h2 { max-width: 19ch; font-size: clamp(2.4rem, 4.4vw, 4.75rem); line-height: .98; letter-spacing: -.045em; }
+.estimator-intro .editorial-lede { max-width: 48rem; font-family: var(--sans, Inter, sans-serif); font-size: clamp(1rem,1.35vw,1.18rem); line-height: 1.7; }
+
+.estimator-question-lab { position: relative; overflow: hidden; background: var(--est-sage); }
+.estimator-question-lab::before { content: ''; position: absolute; inset: 0 50% 0 0; background: #e9ede5; }
+.estimator-question-lab__inner { position: relative; z-index: 1; display: grid; grid-template-columns: minmax(0,1fr) minmax(310px,.86fr); gap: clamp(2.5rem,7vw,8rem); align-items: stretch; padding-top: clamp(4rem,8vw,7.5rem); padding-bottom: clamp(4rem,8vw,7.5rem); }
+.estimator-question-lab__intro { padding-block: .65rem; }
+.estimator-eyebrow { display: block; margin-bottom: 1.3rem; color: var(--est-forest); font: 700 .68rem/1 var(--sans, Inter, sans-serif); letter-spacing: .15em; text-transform: uppercase; }
+.estimator-question-lab h2 { max-width: 11ch; margin: 0; color: var(--est-ink); font: 500 clamp(2.75rem,5.2vw,5.6rem)/.89 var(--serif, Georgia, serif); letter-spacing: -.055em; }
+.estimator-question-lab__intro > p { max-width: 35rem; margin: 1.5rem 0 2.4rem; color: rgba(16,32,24,.76); font: 400 1rem/1.7 var(--sans, Inter, sans-serif); }
+.estimator-question-lab__controls { display: grid; max-width: 39rem; border-top: 1px solid var(--est-line); }
+.estimator-question-lab__control { display: grid; grid-template-columns: 2.2rem 1fr; align-items: center; gap: .55rem; width: 100%; min-height: 4rem; padding: .85rem .1rem; border: 0; border-bottom: 1px solid var(--est-line); border-radius: 0; color: rgba(16,32,24,.62); background: transparent; cursor: pointer; text-align: left; font: 600 clamp(.8rem,1.05vw,.94rem)/1.3 var(--sans, Inter, sans-serif); transition: color .2s ease, padding .25s ease, background .25s ease; }
+.estimator-question-lab__control span { color: var(--est-gold); font-size: .66rem; letter-spacing: .1em; }
+.estimator-question-lab__control:hover, .estimator-question-lab__control:focus-visible { padding-left: .65rem; color: var(--est-ink); background: rgba(255,255,255,.38); outline: none; }
+.estimator-question-lab__control.is-active { padding-left: .65rem; color: var(--est-ink); background: var(--est-white); }
+.estimator-route-card { position: relative; display: flex; flex-direction: column; min-height: 100%; padding: clamp(2rem,4vw,4rem); overflow: hidden; color: rgba(255,255,255,.82); background: var(--est-deep); }
+.estimator-route-card::after { content: 'CGM'; position: absolute; right: -.05em; bottom: -.2em; color: rgba(255,255,255,.035); font: 600 clamp(8rem,17vw,15rem)/.7 var(--serif, Georgia, serif); pointer-events: none; }
+.estimator-route-card__topline { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding-bottom: 1rem; border-bottom: 1px solid rgba(255,255,255,.16); color: rgba(255,255,255,.62); font: 700 .63rem/1 var(--sans, Inter, sans-serif); letter-spacing: .14em; text-transform: uppercase; }
+.estimator-route-card__topline b { color: var(--est-gold); font-size: .9rem; }
+.estimator-route-card__tag { margin: 2.25rem 0 .65rem; color: var(--est-gold); font: 600 .68rem/1.2 var(--sans, Inter, sans-serif); letter-spacing: .12em; text-transform: uppercase; }
+.estimator-route-card h3 { position: relative; z-index: 1; max-width: 11ch; margin: 0; color: #fff; font: 500 clamp(2.25rem,3.5vw,3.6rem)/.94 var(--serif, Georgia, serif); letter-spacing: -.045em; }
+.estimator-route-card > p:not(.estimator-route-card__tag):not(.estimator-route-card__note) { position: relative; z-index: 1; margin: 1.25rem 0 0; color: rgba(255,255,255,.78); font: 400 .96rem/1.65 var(--sans, Inter, sans-serif); }
+.estimator-route-card ul { position: relative; z-index: 1; display: grid; gap: .45rem; margin: 1.6rem 0 2rem; padding: 0; list-style: none; }
+.estimator-route-card li { display: flex; gap: .6rem; color: rgba(255,255,255,.66); font: 500 .72rem/1.35 var(--sans, Inter, sans-serif); }
+.estimator-route-card li::before { content: '↗'; color: var(--est-gold); }
+.estimator-route-card__cta { position: relative; z-index: 1; display: flex; align-items: center; justify-content: space-between; gap: 1rem; width: 100%; margin-top: auto; padding: 1rem 0 .8rem; border-top: 1px solid rgba(255,255,255,.25); color: #fff; font: 700 .72rem/1.25 var(--sans, Inter, sans-serif); letter-spacing: .07em; text-decoration: none; text-transform: uppercase; }
+.estimator-route-card__cta span { color: var(--est-gold); font-size: 1.25rem; transition: transform .2s ease; }
+.estimator-route-card__cta:hover span, .estimator-route-card__cta:focus-visible span { transform: translateX(.35rem); }
+.estimator-route-card__note { position: relative; z-index: 1; margin: 1rem 0 0; color: rgba(255,255,255,.48); font: 400 .72rem/1.5 var(--sans, Inter, sans-serif); }
+
+.estimator-proof { padding-block: clamp(3.5rem,7vw,6.4rem) !important; background: var(--est-white); }
+.estimator-proof .proof-strip { border-color: var(--est-line); }
+.estimator-proof .proof-strip__item { padding-block: 1.9rem; border-color: var(--est-line); }
+.estimator-proof .proof-strip__value { font-size: clamp(2.6rem,4.1vw,4rem); }
+
+.estimator-library { padding-block: clamp(5rem,10vw,9rem) !important; background: var(--est-paper); }
+.estimator-library .editorial-intro { align-items: end; }
+.estimator-library .editorial-h2 { max-width: 16ch; font-size: clamp(2.5rem,4.6vw,4.9rem); line-height: .95; letter-spacing: -.045em; }
+.estimator-library .editorial-lede { max-width: 37rem; font-family: var(--sans, Inter, sans-serif); font-size: 1rem; line-height: 1.65; }
+.estimator-library__bar { display: flex; justify-content: space-between; align-items: end; gap: 1.5rem; margin-bottom: 1.5rem; padding: 1.2rem 0; border-top: 1px solid var(--est-line); border-bottom: 1px solid var(--est-line); }
+.estimator-library__bar > div:first-child { display: grid; gap: .3rem; }
+.estimator-library__bar > div:first-child span { color: rgba(16,32,24,.55); font: 700 .64rem/1 var(--sans, Inter, sans-serif); letter-spacing: .14em; text-transform: uppercase; }
+.estimator-library__bar > div:first-child strong { color: var(--est-ink); font: 500 clamp(1.1rem,1.6vw,1.35rem)/1.2 var(--serif, Georgia, serif); }
+.estimator-library__filters { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: .35rem; }
+.estimator-library__filters button { min-height: 2.35rem; padding: .5rem .75rem; border: 1px solid rgba(16,32,24,.18); border-radius: 0; color: var(--est-ink); background: transparent; cursor: pointer; font: 700 .63rem/1 var(--sans, Inter, sans-serif); letter-spacing: .1em; text-transform: uppercase; transition: background .2s ease, color .2s ease, border-color .2s ease; }
+.estimator-library__filters button:hover, .estimator-library__filters button:focus-visible, .estimator-library__filters button.is-active { border-color: var(--est-forest); color: #fff; background: var(--est-forest); outline: none; }
+.estimator-library__grid { gap: 1px !important; background: rgba(16,32,24,.14); }
+.estimator-library__grid .editorial-calc-card { position: relative; min-height: 19rem; padding: clamp(1.5rem,2.5vw,2.4rem) !important; border: 0 !important; border-radius: 0 !important; box-shadow: none !important; background: var(--est-white); transition: background .34s ease, color .34s ease, opacity .25s ease, transform .32s ease; }
+.estimator-library__grid .editorial-calc-card::before { content: ''; position: absolute; top: 0; left: 0; width: 3.2rem; height: 3px; background: var(--est-gold); transform: scaleX(0); transform-origin: left; transition: transform .3s ease; }
+.estimator-library__grid .editorial-calc-card:hover, .estimator-library__grid .editorial-calc-card:focus-visible, .estimator-library__grid .editorial-calc-card.is-spotlight { color: #fff !important; background: var(--est-forest) !important; outline: none; transform: translateY(-.3rem); }
+.estimator-library__grid .editorial-calc-card:hover::before, .estimator-library__grid .editorial-calc-card:focus-visible::before, .estimator-library__grid .editorial-calc-card.is-spotlight::before { transform: scaleX(1); }
+.estimator-library__grid .editorial-calc-card:hover .editorial-calc-card__title, .estimator-library__grid .editorial-calc-card:focus-visible .editorial-calc-card__title, .estimator-library__grid .editorial-calc-card.is-spotlight .editorial-calc-card__title { color: #fff !important; }
+.estimator-library__grid .editorial-calc-card:hover .editorial-calc-card__body, .estimator-library__grid .editorial-calc-card:focus-visible .editorial-calc-card__body, .estimator-library__grid .editorial-calc-card.is-spotlight .editorial-calc-card__body { color: rgba(255,255,255,.78) !important; }
+.estimator-library__grid .editorial-calc-card:hover .editorial-calc-card__cta, .estimator-library__grid .editorial-calc-card:focus-visible .editorial-calc-card__cta, .estimator-library__grid .editorial-calc-card.is-spotlight .editorial-calc-card__cta { color: var(--est-gold) !important; }
+.estimator-library__grid .editorial-calc-card.is-filtered-out:not(.estimator-library__utility) { opacity: .24; filter: saturate(.4); transform: scale(.975); }
+.estimator-library__grid .editorial-calc-card.is-filtered-out:not(.estimator-library__utility):hover, .estimator-library__grid .editorial-calc-card.is-filtered-out:not(.estimator-library__utility):focus-visible { opacity: .72; }
+.estimator-library__utility { background: var(--est-deep) !important; }
+.estimator-library__utility:last-child { background: #e7e0d1 !important; }
+
+.estimator-result-note { min-height: min(76svh, 48rem); }
+.estimator-result-note .photo-interlude__content { padding-bottom: clamp(3rem,7vw,6rem); }
+.estimator-result-note .photo-interlude__title { max-width: 15ch; font-size: clamp(2.8rem,5vw,5rem) !important; line-height: .95; letter-spacing: -.045em; }
+.estimator-result-note .photo-interlude__caption { max-width: 38rem; font-size: .98rem; line-height: 1.65; }
+.estimator-how { padding-block: clamp(4.5rem,9vw,8rem) !important; }
+.estimator-how .editorial-feature { max-width: 1200px; margin-inline: auto; }
+.estimator-how .editorial-feature__media { border-radius: 0; }
+.estimator-how .editorial-feature__text { padding-inline: clamp(0rem,2vw,2rem); }
+.estimator-how .editorial-h2 { max-width: 11ch; font-size: clamp(2.6rem,4.2vw,4.5rem); line-height: .95; letter-spacing: -.045em; }
+.estimator-how .editorial-body { font-family: var(--sans, Inter, sans-serif); font-size: 1rem; line-height: 1.7; }
+.estimator-quote { position: relative; overflow: hidden; padding-block: clamp(5rem,10vw,9rem) !important; background: var(--est-deep) !important; }
+.estimator-quote::before { content: '07'; position: absolute; top: -.22em; right: clamp(1rem,7vw,7rem); color: rgba(255,255,255,.035); font: 500 clamp(12rem,27vw,28rem)/.7 var(--serif, Georgia, serif); pointer-events: none; }
+.estimator-quote .container { position: relative; z-index: 1; }
+.estimator-quote .editorial-h2 { max-width: 13ch; font-size: clamp(2.8rem,5vw,5.5rem); line-height: .93; letter-spacing: -.05em; }
+.estimator-quote .editorial-lede { font-family: var(--sans, Inter, sans-serif); font-size: 1.02rem; line-height: 1.7; }
+.estimator-quote .btn { border-radius: 0 !important; min-height: 3.4rem; padding-inline: 1.4rem; font-size: .75rem; letter-spacing: .1em; text-transform: uppercase; }
+
+.estimator-showroom [data-estimator-reveal] { opacity: 1; transform: none; }
+.estimator-showroom--enhanced [data-estimator-reveal] { opacity: 0; transform: translateY(1.25rem); transition: opacity .65s ease, transform .65s cubic-bezier(.2,.7,.2,1); }
+.estimator-showroom--enhanced [data-estimator-reveal].is-visible { opacity: 1; transform: none; }
+
+@media (max-width: 900px) {
+  .estimator-command-bar { grid-template-columns: 1fr auto; }
+  .estimator-command-bar__progress { display: none; }
+  .estimator-hero__container { grid-template-columns: minmax(0,1fr); gap: 2.5rem; }
+  .estimator-hero__index { width: min(100%,35rem); }
+  .estimator-question-lab::before { inset: 0; }
+  .estimator-question-lab__inner { grid-template-columns: 1fr; gap: 2.5rem; }
+  .estimator-route-card { min-height: 34rem; }
+  .estimator-library__bar { align-items: start; flex-direction: column; }
+  .estimator-library__filters { justify-content: flex-start; }
+}
+@media (max-width: 680px) {
+  .estimator-command-bar { min-height: 58px; gap: .75rem; padding-inline: 1rem; }
+  .estimator-command-bar__brand small { display: none; }
+  .estimator-command-bar__brand strong { font-size: .62rem; }
+  .estimator-command-bar__actions { gap: 0; }
+  .estimator-command-bar__actions button { min-height: 2.1rem; padding-inline: .42rem; font-size: .56rem; }
+  html.cgm-premium-experience .estimator-showroom .estimator-hero, .estimator-hero__container { min-height: 43rem !important; }
+  .estimator-hero__container { padding: 5rem 1.2rem 4.5rem !important; }
+  .estimator-hero::before { background: linear-gradient(90deg, rgba(7,18,12,.91), rgba(7,18,12,.58)); }
+  .estimator-hero .hero-bg img { object-position: 61% center; }
+  .estimator-hero__title { max-width: 9.4ch; font-size: clamp(3.45rem,14vw,5.15rem) !important; }
+  .estimator-hero__lede { font-size: .95rem !important; }
+  .estimator-hero__actions { display: grid !important; grid-template-columns: 1fr; max-width: 18rem; }
+  .estimator-hero__actions .btn { justify-content: center; }
+  .estimator-hero__index { padding-top: 1rem; }
+  .estimator-hero__scroll { right: 1.2rem; bottom: 1.15rem; font-size: .55rem; }
+  .estimator-chapter-rail { top: 64px; justify-content: flex-start; min-height: 3.45rem; }
+  .estimator-chapter-rail a { font-size: .58rem; }
+  .estimator-intro .editorial-intro { grid-template-columns: 1fr; gap: 1.2rem; }
+  .estimator-question-lab__inner { padding-inline: 1.2rem; }
+  .estimator-question-lab h2 { max-width: 12ch; font-size: clamp(2.65rem,13vw,4.2rem); }
+  .estimator-route-card { min-height: 0; padding: 1.75rem; }
+  .estimator-route-card h3 { font-size: 2.45rem; }
+  .estimator-proof .container { padding-inline: 1.2rem; }
+  .estimator-library .container { padding-inline: 1.2rem; }
+  .estimator-library__filters { display: grid; grid-template-columns: repeat(4,1fr); width: 100%; }
+  .estimator-library__filters button { padding-inline: .2rem; }
+  .estimator-library__grid { grid-template-columns: 1fr !important; }
+  .estimator-library__grid .editorial-calc-card { min-height: 15.2rem; }
+  .estimator-result-note .photo-interlude__content { padding-inline: 1.2rem; }
+  .estimator-how .container { padding-inline: 1.2rem; }
+  .estimator-quote .container { padding-inline: 1.2rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .estimator-showroom *, .estimator-showroom *::before, .estimator-showroom *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; }
+}
