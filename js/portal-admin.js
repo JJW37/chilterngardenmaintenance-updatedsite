@@ -100,7 +100,11 @@
           '</div>' +
         '</div>' +
         '<div style="display:flex;flex-direction:column;gap:.4rem;align-items:flex-end;">' +
+<<<<<<< Updated upstream
           '<a class="btn-portal btn-primary" href="/portal/?clientId=' + c.id + '" data-action="open">Open portal</a>' +
+=======
+          '<a class="btn-portal btn-primary" href="/chilterngardenmaintenance-updatedsite/portal/?clientId=' + c.id + '" data-action="open">Open portal</a>' +
+>>>>>>> Stashed changes
           '<div style="display:flex;gap:.4rem;">' +
             '<button class="btn-portal btn-ghost" data-action="login-link" title="Send the client a login link by email">Send login link</button>' +
             '<button class="btn-portal btn-ghost" data-action="copy-link" title="Copy a direct login link to clipboard">Copy login URL</button>' +
@@ -154,7 +158,11 @@
     try {
       await fetch('/api/auth-logout', { method: 'POST', credentials: 'include' });
     } catch (e) {}
+<<<<<<< Updated upstream
     window.location.href = '/portal/admin/';
+=======
+    window.location.href = '/chilterngardenmaintenance-updatedsite/portal/admin/';
+>>>>>>> Stashed changes
   }
 
   // ---------- Modal ----------
@@ -295,7 +303,11 @@
   }
 
   async function copyLoginUrl(client) {
+<<<<<<< Updated upstream
     var url = window.location.origin + '/login/?username=' + encodeURIComponent(client.username);
+=======
+    var url = window.location.origin + '/chilterngardenmaintenance-updatedsite/login/?username=' + encodeURIComponent(client.username);
+>>>>>>> Stashed changes
     try {
       await navigator.clipboard.writeText(url);
       alert('Login URL copied to clipboard:\n\n' + url + '\n\nPaste this in an email or message to the client. They will still need to enter their username and click the magic link sent to their email.');

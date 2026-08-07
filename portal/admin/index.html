@@ -42,7 +42,11 @@
         <a href="/chilterngardenmaintenance-updatedsite/booking/">Get a Quote</a>
       </div>
       <div class="nav-cta">
+<<<<<<< Updated upstream
         <a class="btn btn-ghost" href="/login/" style="margin-right:.5rem;">Client login</a>
+=======
+        <a class="btn btn-ghost" href="/chilterngardenmaintenance-updatedsite/login/" style="margin-right:.5rem;">Client login</a>
+>>>>>>> Stashed changes
       </div>
     </nav>
   </div>
@@ -122,7 +126,11 @@ document.getElementById('year').textContent = new Date().getFullYear();
       });
       var data = await res.json();
       if (data.ok) {
+<<<<<<< Updated upstream
         window.location.href = data.redirect || '/portal/admin/dashboard/';
+=======
+        window.location.href = data.redirect || '/chilterngardenmaintenance-updatedsite/portal/admin/dashboard/';
+>>>>>>> Stashed changes
       } else {
         showAlert(data.error || 'Invalid credentials.', 'error');
       }

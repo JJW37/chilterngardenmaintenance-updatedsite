@@ -48,7 +48,11 @@
         if (urlClientId) {
           state.clientId = urlClientId;
         } else {
+<<<<<<< Updated upstream
           window.location.replace('/portal/admin/dashboard/');
+=======
+          window.location.replace('/chilterngardenmaintenance-updatedsite/portal/admin/dashboard/');
+>>>>>>> Stashed changes
           return;
         }
       }
@@ -256,7 +260,11 @@
     try {
       await fetch('/api/auth-logout', { method: 'POST', credentials: 'include' });
     } catch (e) {}
+<<<<<<< Updated upstream
     window.location.href = '/login/';
+=======
+    window.location.href = '/chilterngardenmaintenance-updatedsite/login/';
+>>>>>>> Stashed changes
   }
 
   async function postNote() {

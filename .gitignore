@@ -1,0 +1,39 @@
+# Cloudflare / Wrangler
+.wrangler/
+.dev.vars
+.env
+.env.local
+.env.production
+wrangler.toml
+
+# Dependencies (if you ever add a package.json)
+node_modules/
+
+# OS junk
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Logs
+*.log
+npm-debug.log*
+
+# Local D1 dev data
+.local.out/
+*.sqlite
+*.sqlite-journal
+
+# Local uploads (don't commit client images)
+uploads/
+_local_images/
+
+# Cache
+.cache/
+.eslintcache

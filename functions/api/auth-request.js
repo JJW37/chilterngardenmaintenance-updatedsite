@@ -61,7 +61,11 @@ export async function onRequestPost({ request, env }) {
           to: client.email,
           householdName: client.household_name,
           token,
+<<<<<<< Updated upstream
           verifyPath: '/portal/verify/',
+=======
+          verifyPath: '/chilterngardenmaintenance-updatedsite/portal/verify/',
+>>>>>>> Stashed changes
         },
         env,
       );

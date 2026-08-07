@@ -34,6 +34,7 @@ No new frameworks. No build step. Just push to GitHub and Cloudflare auto-deploy
 
 ---
 
+<<<<<<< Updated upstream
 ## File structure (what's in this package)
 
 ```
@@ -53,6 +54,49 @@ No new frameworks. No build step. Just push to GitHub and Cloudflare auto-deploy
 ├── js/
 │   ├── portal.js               ← client portal front-end
 │   └── portal-admin.js         ← admin dashboard front-end
+=======
+## File structure (how files map to your repo)
+
+Your existing repo `chilterngardenmaintenance-updatedsite` has a two-level layout:
+
+```
+chilterngardenmaintenance-updatedsite/              ← REPO ROOT (GitHub Desktop manages this)
+├── chilterngardenmaintenance-updatedsite/          ← SUBFOLDER (all static HTML/CSS/JS/images)
+│   ├── about/   booking/   css/   js/   images/   ...
+│   └── (portal static files go HERE)
+├── functions/                                      ← AT REPO ROOT (Cloudflare API)
+│   └── api/quote.js                                ← (portal API files go HERE)
+└── (portal config files go HERE)
+```
+
+This is why your existing booking page calls `fetch('/api/quote')` (no prefix)
+but loads CSS from `/chilterngardenmaintenance-updatedsite/css/styles.css`
+(with prefix). The portal matches this exact pattern.
+
+### What goes where
+
+**STEP 1 — copy into the subfolder** (`chilterngardenmaintenance-updatedsite/chilterngardenmaintenance-updatedsite/`):
+
+```
+login/
+└── index.html              ← client magic-link login page
+portal/
+├── index.html              ← client household portal (private)
+├── verify/
+│   └── index.html          ← magic-link verification interstitial
+└── admin/
+    ├── index.html          ← master admin login
+    └── dashboard/
+        └── index.html      ← admin dashboard (manage all clients)
+css/
+└── portal.css              ← portal-only styles (loads on top of styles.css)
+js/
+├── portal.js               ← client portal front-end
+└── portal-admin.js         ← admin dashboard front-end
+```
+
+**STEP 2 — copy to repo root** (alongside the existing `functions/` folder):
+>>>>>>> Stashed changes
 ├── functions/
 │   ├── _lib/
 │   │   ├── db.js               ← D1 + CORS helpers
@@ -80,7 +124,15 @@ No new frameworks. No build step. Just push to GitHub and Cloudflare auto-deploy
 └── README-PORTAL.md            ← this file
 ```
 
+<<<<<<< Updated upstream
 > **Important:** drop these files INTO the root of your existing site repo (alongside `booking/`, `about/`, `css/`, `js/`, `functions/`, etc.). They do not modify any existing files — they only add new ones. Two existing folders get new files added to them: `css/portal.css` and `js/portal.js` + `js/portal-admin.js`.
+=======
+> **Important:** The portal files are split into two groups (see HOW-TO-INSTALL.txt):
+> - **STEP 1** (static HTML/CSS/JS) goes inside the `chilterngardenmaintenance-updatedsite/` subfolder, next to your existing `about/`, `booking/`, `css/`, `js/` folders.
+> - **STEP 2** (API functions + config) goes at the repo ROOT, next to your existing `functions/` folder.
+>
+> No existing files are modified — only new files are added.
+>>>>>>> Stashed changes
 
 ---
 
@@ -88,10 +140,36 @@ No new frameworks. No build step. Just push to GitHub and Cloudflare auto-deploy
 
 ### 1. Add the files to your GitHub repo
 
+<<<<<<< Updated upstream
 1. Unzip this package.
 2. Copy everything into the root of your existing site repo (the folder that already contains `booking/`, `about/`, `functions/api/quote.js`, etc.).
 3. In GitHub Desktop, you should now see new files staged: `login/`, `portal/`, `css/portal.css`, `js/portal.js`, `js/portal-admin.js`, new files under `functions/api/` and `functions/_lib/`, `db/schema.sql`, `wrangler.toml.example`, `.gitignore`, `README-PORTAL.md`.
 4. Commit and push. Cloudflare Pages will auto-deploy.
+=======
+Follow **HOW-TO-INSTALL.txt** (in the zip root) — it walks you through copying STEP-1 files into the subfolder and STEP-2 files to the repo root. When you're done, your repo looks like:
+
+```
+chilterngardenmaintenance-updatedsite/              ← repo root
+├── chilterngardenmaintenance-updatedsite/          ← subfolder
+│   ├── about/   booking/   css/   js/   ...        ← existing
+│   ├── login/                                      ← NEW
+│   ├── portal/                                     ← NEW
+│   ├── css/portal.css                              ← NEW
+│   ├── js/portal.js                                ← NEW
+│   └── js/portal-admin.js                          ← NEW
+├── functions/                                      ← existing
+│   ├── api/quote.js                                ← existing
+│   ├── api/auth-request.js                         ← NEW
+│   ├── api/auth-verify.js                          ← NEW
+│   ├── api/... (13 more API files)                 ← NEW
+│   └── _lib/ (db, auth, email, r2)                 ← NEW
+├── db/schema.sql                                   ← NEW
+├── wrangler.toml.example                           ← NEW
+├── .gitignore                                      ← NEW
+└── README-PORTAL.md                                ← NEW
+```
+3. In GitHub Desktop, you should see ~29 new files staged. Commit with a message like "Add client portal" and push. Cloudflare Pages will auto-deploy.
+>>>>>>> Stashed changes
 
 > The site will deploy successfully even before you wire up D1/R2 — but the portal API will return errors until the bindings are added (next steps).
 
@@ -181,7 +259,11 @@ In Cloudflare Pages, hit **Retry deployment** on the latest commit (or push a ne
 
 ### 10. Create your first client
 
+<<<<<<< Updated upstream
 1. Visit `https://www.chilterngardenmaintenance.com/portal/admin/`
+=======
+1. Visit `https://www.chilterngardenmaintenance.com/chilterngardenmaintenance-updatedsite/portal/admin/`
+>>>>>>> Stashed changes
 2. Log in with your master admin credentials.
 3. Click **+ New client**.
 4. Fill in:
@@ -196,7 +278,11 @@ In Cloudflare Pages, hit **Retry deployment** on the latest commit (or push a ne
 
 Send each client a message like:
 
+<<<<<<< Updated upstream
 > Hi! You can now access your private client portal at chilterngardenmaintenance.com/login/. Your username is `smith-household`. Enter it and we'll email you a secure login link. The link expires in 15 minutes and can only be used once.
+=======
+> Hi! You can now access your private client portal at chilterngardenmaintenance.com/chilterngardenmaintenance-updatedsite/login/. Your username is `smith-household`. Enter it and we'll email you a secure login link. The link expires in 15 minutes and can only be used once.
+>>>>>>> Stashed changes
 
 From the admin dashboard, you can also click **Send login link** to email a magic link to a client on demand, or **Copy login URL** to copy a pre-filled login link to share via message.
 
@@ -204,9 +290,15 @@ From the admin dashboard, you can also click **Send login link** to email a magi
 
 ## How the magic-link login works (security model)
 
+<<<<<<< Updated upstream
 1. Client enters their username on `/login/`.
 2. Server looks up the client by username. If found, generates a 256-bit random token stored in D1 with a 15-minute expiry.
 3. Server emails the client a link like `https://www.chilterngardenmaintenance.com/api/auth-verify?token=...` via Resend.
+=======
+1. Client enters their username on `/chilterngardenmaintenance-updatedsite/login/`.
+2. Server looks up the client by username. If found, generates a 256-bit random token stored in D1 with a 15-minute expiry.
+3. Server emails the client a link like `https://www.chilterngardenmaintenance.com/api/auth-verify?token=...` via Resend. (The API endpoint has no prefix — it lives at the repo root alongside your existing `quote.js`.)
+>>>>>>> Stashed changes
 4. Client clicks the link. Server verifies the token (must be unused + not expired), marks it used, creates a session row in D1, sets an HttpOnly + Secure + SameSite=Lax cookie containing `<sessionId>.<hmac>`.
 5. The HMAC prevents tampering — even if an attacker steals the cookie value, they can't change the session ID without invalidating the signature.
 6. All subsequent API requests check the cookie, verify the HMAC, look up the session in D1, and authorize based on `client_id` and `is_admin`.
@@ -223,7 +315,11 @@ From the admin dashboard, you can also click **Send login link** to email a magi
 
 ### Posting an update to a client
 
+<<<<<<< Updated upstream
 1. Log in to `/portal/admin/`.
+=======
+1. Log in to `/chilterngardenmaintenance-updatedsite/portal/admin/`.
+>>>>>>> Stashed changes
 2. Click **Open portal** next to the client.
 3. You're now viewing their household portal as an admin. Use the **Add a note** composer at the top.
 4. Choose **Update note** (visible to client, sends email) or **Visit note** (records a visit, appears in the "Most recent visit" callout).
@@ -255,7 +351,20 @@ The portal uses your existing CSS variables from `css/styles.css` (`--forest`, `
 
 ### Path prefix
 
+<<<<<<< Updated upstream
 All asset URLs use the same `/chilterngardenmaintenance-updatedsite/` prefix as the rest of your site. If you ever change this prefix in your existing pages, also update the new portal pages (`login/index.html`, `portal/index.html`, `portal/admin/index.html`, `portal/admin/dashboard/index.html`, `portal/verify/index.html`).
+=======
+Your site uses two URL patterns (this matches your existing booking page):
+- **Static assets & page links**: `/chilterngardenmaintenance-updatedsite/css/...`, `/chilterngardenmaintenance-updatedsite/login/`, etc. — WITH prefix (files live in the subfolder)
+- **API endpoints**: `/api/auth-request`, `/api/client-data`, etc. — NO prefix (functions live at the repo root, same as your existing `/api/quote`)
+
+If you ever change the `/chilterngardenmaintenance-updatedsite/` prefix in your existing pages, update these portal files too:
+- `login/index.html`, `portal/index.html`, `portal/admin/index.html`, `portal/admin/dashboard/index.html`, `portal/verify/index.html` — page links
+- `js/portal.js`, `js/portal-admin.js` — redirect URLs
+- `functions/api/auth-verify.js` — redirect URLs
+- `functions/api/auth-request.js` — `verifyPath` for magic link emails
+- `functions/_lib/email.js` — "visit portal" link in notification emails
+>>>>>>> Stashed changes
 
 ### Adding a "Get a Quote" CTA in the portal
 
@@ -285,7 +394,11 @@ To test locally with `wrangler pages dev`:
 
 ```bash
 npx wrangler pages dev . --d1 DB=cgm-portal-db --r2 PORTAL_BUCKET=cgm-portal-images --kv PORTAL_KV
+<<<<<<< Updated upstream
 # then visit http://localhost:8788/login/
+=======
+# then visit http://localhost:8788/chilterngardenmaintenance-updatedsite/login/
+>>>>>>> Stashed changes
 ```
 
 For local dev, you may want to set `SESSION_SECRET` to a dev value and temporarily disable the `Secure` cookie flag (search for `'Secure'` in `functions/_lib/auth.js` and replace with `''`).

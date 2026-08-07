@@ -75,7 +75,11 @@ https://www.chilterngardenmaintenance.com`;
 /** Send a "new note posted" notification to a client. */
 export async function sendNewNoteEmail({ to, householdName, authorName, notePreview }, env) {
   const baseUrl = (env.SITE_BASE_URL || '').replace(/\/+$/, '');
+<<<<<<< Updated upstream
   const link = `${baseUrl}/login/`;
+=======
+  const link = `${baseUrl}/chilterngardenmaintenance-updatedsite/login/`;
+>>>>>>> Stashed changes
   const subject = `New update from Chiltern Garden Maintenance`;
   const text = `Hello${householdName ? ` from ${householdName}` : ''},
 

@@ -18,7 +18,11 @@ export async function onRequestGet({ request, env }) {
   const token = url.searchParams.get('token');
 
   if (!token || !/^[a-f0-9]{64}$/i.test(token)) {
+<<<<<<< Updated upstream
     return Response.redirect(new URL('/login/?error=invalid_token', request.url).toString(), 302);
+=======
+    return Response.redirect(new URL('/chilterngardenmaintenance-updatedsite/login/?error=invalid_token', request.url).toString(), 302);
+>>>>>>> Stashed changes
   }
 
   const db = env.DB;
@@ -33,11 +37,19 @@ export async function onRequestGet({ request, env }) {
   );
 
   if (!row || row.used === 1 || new Date(row.expires_at) < new Date()) {
+<<<<<<< Updated upstream
     return Response.redirect(new URL('/login/?error=invalid_token', request.url).toString(), 302);
   }
 
   if (!row.is_active) {
     return Response.redirect(new URL('/login/?error=inactive', request.url).toString(), 302);
+=======
+    return Response.redirect(new URL('/chilterngardenmaintenance-updatedsite/login/?error=invalid_token', request.url).toString(), 302);
+  }
+
+  if (!row.is_active) {
+    return Response.redirect(new URL('/chilterngardenmaintenance-updatedsite/login/?error=inactive', request.url).toString(), 302);
+>>>>>>> Stashed changes
   }
 
   // Mark token as used
@@ -47,7 +59,11 @@ export async function onRequestGet({ request, env }) {
   const { cookieValue, expiresAt } = await createSession(db, env, { clientId: row.client_id });
 
   const headers = new Headers();
+<<<<<<< Updated upstream
   headers.set('Location', new URL('/portal/', request.url).toString());
+=======
+  headers.set('Location', new URL('/chilterngardenmaintenance-updatedsite/portal/', request.url).toString());
+>>>>>>> Stashed changes
   headers.set('Set-Cookie', buildSetCookieHeader(cookieValue, expiresAt));
   return new Response(null, { status: 302, headers });
 }
