@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Admin Dashboard | Chiltern Garden Maintenance</title>
+  <meta name="theme-color" content="#102019">
+  <meta name="robots" content="noindex,nofollow">
+  <link rel="stylesheet" href="/chilterngardenmaintenance-updatedsite/css/styles.css?v=20260808p1">
+  <link rel="stylesheet" href="/chilterngardenmaintenance-updatedsite/css/portal.css?v=20260808p1">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap">
+  <link rel="icon" type="image/png" sizes="32x32" href="/chilterngardenmaintenance-updatedsite/images/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/chilterngardenmaintenance-updatedsite/images/favicon-16.png">
+  <link rel="apple-touch-icon" href="/chilterngardenmaintenance-updatedsite/images/cgm-logo-square.png">
+</head>
+<body class="admin-dashboard-page">
+
+<style>
+.skip-link{position:absolute;left:-9999px;top:0;z-index:9999;padding:.75rem 1.25rem;background:var(--forest,#102019);color:#fff;text-decoration:none;border-radius:0 0 8px 0;font-size:.9rem;}
+.skip-link:focus{left:0;outline:2px solid var(--gold,#b89243);outline-offset:2px;}
+</style>
+<a class="skip-link" href="#main-content">Skip to main content</a>
+
+<header class="header">
+  <div class="container">
+    <nav class="nav" aria-label="Primary">
+      <a class="brand" href="/chilterngardenmaintenance-updatedsite/">
+        <img class="brand-logo" src="/chilterngardenmaintenance-updatedsite/images/cgm-logo-square.png" alt="Chiltern Garden Maintenance logo" width="48" height="48">
+        <span class="brand-title">
+          <strong>Chiltern Garden</strong>
+          <span>Maintenance</span>
+        </span>
+      </a>
+      <div class="nav-links" aria-label="Site links">
+        <a href="/chilterngardenmaintenance-updatedsite/services/">Services</a>
+        <a href="/chilterngardenmaintenance-updatedsite/portfolio/">Portfolio</a>
+        <a href="/chilterngardenmaintenance-updatedsite/booking/">Get a Quote</a>
+      </div>
+      <div class="nav-cta">
+        <span class="portal-badge admin" style="margin-right:.5rem;">Admin</span>
+        <button id="logoutBtn" class="btn-portal btn-ghost" type="button">Sign out</button>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main id="main-content" class="portal-shell">
+  <div class="container">
+
+    <!-- Loading state -->
+    <div id="loadingState" style="text-align:center;padding:4rem 0;">
+      <div class="loading-dots" style="justify-content:center;display:flex;">
+        <span></span><span></span><span></span>
+      </div>
+      <p style="margin-top:1rem;color:var(--muted);">Loading dashboard…</p>
+    </div>
+
+    <!-- Not authorised state -->
+    <div id="notAuthState" hidden style="max-width:480px;margin:3rem auto;text-align:center;">
+      <h1 style="font-size:1.8rem;">Admin access required</h1>
+      <p style="color:var(--muted);margin-bottom:1.5rem;">You need to sign in as an administrator to view this page.</p>
+      <a href="/portal/admin/" class="btn-portal btn-primary">Go to admin login</a>
+    </div>
+
+    <!-- Dashboard -->
+    <div id="dashboard" hidden>
+
+      <div class="portal-header">
+        <div>
+          <span class="portal-badge admin">Admin</span>
+          <h1>Client Dashboard</h1>
+          <p class="portal-sub" id="summaryLine">Loading clients…</p>
+        </div>
+        <div class="portal-meta">
+          <button class="btn-portal btn-gold" id="newClientBtn">+ New client</button>
+        </div>
+      </div>
+
+      <!-- Search + filter -->
+      <div class="search-bar">
+        <input type="search" id="searchInput" placeholder="Search by household, username, email or address…" aria-label="Search clients">
+        <button class="btn-portal btn-ghost" id="clearSearchBtn" type="button">Clear</button>
+        <label style="display:flex;align-items:center;gap:.4rem;font-size:.88rem;color:var(--muted);">
+          <input type="checkbox" id="activeOnlyChk"> Active only
+        </label>
+      </div>
+
+      <!-- Client list -->
+      <div id="clientList" class="client-list"></div>
+
+    </div>
+  </div>
+</main>
+
+<!-- New/Edit client modal -->
+<div id="clientModal" class="modal-backdrop" hidden>
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-head">
+      <h3 id="modalTitle">New client</h3>
+      <button class="modal-close" id="modalClose" aria-label="Close">&times;</button>
+    </div>
+    <div class="modal-body">
+      <div id="modalAlert" class="alert" hidden></div>
+      <form id="clientForm">
+        <input type="hidden" id="cf_id">
+        <div class="field" style="margin-bottom:1rem;">
+          <label for="cf_username" style="display:block;font-size:.85rem;font-weight:600;color:var(--ink-soft);margin-bottom:.4rem;">Username <span style="color:var(--rust);">*</span></label>
+          <input type="text" id="cf_username" required autocapitalize="off" spellcheck="false" pattern="[a-z0-9-]{3,40}" title="Lowercase letters, numbers and hyphens, 3-40 chars" style="width:100%;padding:.65rem .9rem;font:inherit;font-size:.95rem;background:var(--paper);border:1px solid var(--border);border-radius:var(--radius);">
+          <small style="display:block;color:var(--muted);font-size:.78rem;margin-top:.25rem;">Used as the client's login username. Cannot be changed later.</small>
+        </div>
+        <div class="field" style="margin-bottom:1rem;">
+          <label for="cf_household" style="display:block;font-size:.85rem;font-weight:600;color:var(--ink-soft);margin-bottom:.4rem;">Household name <span style="color:var(--rust);">*</span></label>
+          <input type="text" id="cf_household" required style="width:100%;padding:.65rem .9rem;font:inherit;font-size:.95rem;background:var(--paper);border:1px solid var(--border);border-radius:var(--radius);" placeholder="e.g. The Smith Household">
+        </div>
+        <div class="field" style="margin-bottom:1rem;">
+          <label for="cf_email" style="display:block;font-size:.85rem;font-weight:600;color:var(--ink-soft);margin-bottom:.4rem;">Email <span style="color:var(--rust);">*</span></label>
+          <input type="email" id="cf_email" required style="width:100%;padding:.65rem .9rem;font:inherit;font-size:.95rem;background:var(--paper);border:1px solid var(--border);border-radius:var(--radius);">
+        </div>
+        <div class="field" style="margin-bottom:1rem;">
+          <label for="cf_address" style="display:block;font-size:.85rem;font-weight:600;color:var(--ink-soft);margin-bottom:.4rem;">Address</label>
+          <input type="text" id="cf_address" style="width:100%;padding:.65rem .9rem;font:inherit;font-size:.95rem;background:var(--paper);border:1px solid var(--border);border-radius:var(--radius);">
+        </div>
+        <div class="field" style="margin-bottom:1rem;">
+          <label for="cf_area" style="display:block;font-size:.85rem;font-weight:600;color:var(--ink-soft);margin-bottom:.4rem;">Service area</label>
+          <input type="text" id="cf_area" style="width:100%;padding:.65rem .9rem;font:inherit;font-size:.95rem;background:var(--paper);border:1px solid var(--border);border-radius:var(--radius);" placeholder="e.g. Oxfordshire">
+        </div>
+        <div class="field" style="margin-bottom:1rem;">
+          <label for="cf_internal" style="display:block;font-size:.85rem;font-weight:600;color:var(--ink-soft);margin-bottom:.4rem;">Internal notes (private)</label>
+          <textarea id="cf_internal" rows="3" style="width:100%;padding:.65rem .9rem;font:inherit;font-size:.92rem;background:var(--paper);border:1px solid var(--border);border-radius:var(--radius);" placeholder="Notes only visible to you, not the client"></textarea>
+        </div>
+        <div class="field" style="display:flex;align-items:center;gap:.5rem;font-size:.88rem;color:var(--ink-soft);" id="cf_active_wrap">
+          <input type="checkbox" id="cf_active" checked>
+          <label for="cf_active" style="margin:0;font-weight:400;">Active (client can log in)</label>
+        </div>
+      </form>
+    </div>
+    <div class="modal-foot">
+      <button class="btn-portal btn-ghost" id="modalCancel">Cancel</button>
+      <button class="btn-portal btn-primary" id="modalSave">Save client</button>
+    </div>
+  </div>
+</div>
+
+<footer class="footer" style="background:var(--forest-dark);color:#c5d1be;padding:1.5rem 0;margin-top:3rem;">
+  <div class="container" style="text-align:center;font-size:0.82rem;">
+    <p style="margin:0;">&copy; <span id="year"></span> Chiltern Garden Maintenance · Admin dashboard</p>
+  </div>
+</footer>
+
+<script src="/chilterngardenmaintenance-updatedsite/js/portal-admin.js?v=20260808p1"></script>
+<script src="/chilterngardenmaintenance-updatedsite/js/main.js?v=20260727a"></script>
+</body>
+</html>
