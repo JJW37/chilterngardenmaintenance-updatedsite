@@ -1,0 +1,17 @@
+{
+  "name": "cgm-client-portal-development",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler pages dev --local --ip 127.0.0.1 --port 8788",
+    "db:init": "wrangler d1 execute cgm-portal-dev-db --local --file=db/schema.sql",
+    "db:seed": "wrangler d1 execute cgm-portal-dev-db --local --file=db/seed.sql",
+    "password:hash": "node scripts/hash-password.mjs",
+    "check": "node --check functions/_lib/auth.js && node --check functions/_lib/db.js && node --check functions/_lib/email.js && node --check functions/_lib/r2.js && node --check functions/api/auth-request.js && node --check functions/api/auth-verify.js && node --check functions/api/auth-login.js && node --check functions/api/auth-password-change.js && node --check functions/api/auth-admin.js && node --check functions/api/auth-session.js && node --check functions/api/client-data.js && node --check functions/api/client-image.js && node --check functions/api/client-note.js && node --check public/js/portal-shared.js && node --check public/js/portal-subpage.js && node --test",
+    "test": "node --test"
+  },
+  "devDependencies": {
+    "wrangler": "^4.38.0"
+  }
+}

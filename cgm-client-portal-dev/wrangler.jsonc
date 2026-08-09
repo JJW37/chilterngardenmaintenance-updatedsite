@@ -1,0 +1,39 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "cgm-client-portal-development",
+  "pages_build_output_dir": "./public",
+  "compatibility_date": "2026-08-09",
+  "compatibility_flags": ["nodejs_compat"],
+  "observability": {
+    "enabled": true,
+    "head_sampling_rate": 1
+  },
+  "secrets": {
+    "required": ["SESSION_SECRET", "MASTER_ADMIN_USER", "MASTER_ADMIN_PASS"]
+  },
+  "vars": {
+    "PORTAL_ENVIRONMENT": "local",
+    "PORTAL_DEV_CAPTURE_EMAILS": "true",
+    "SITE_BASE_URL": "http://127.0.0.1:8788"
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "cgm-portal-dev-db",
+      "database_id": "38121a3c-32b1-48aa-b1fb-113ba717f8f0",
+      "migrations_dir": "./migrations"
+    }
+  ],
+  "r2_buckets": [
+    {
+      "binding": "PORTAL_BUCKET",
+      "bucket_name": "cgm-portal-dev-images"
+    }
+  ],
+  "kv_namespaces": [
+    {
+      "binding": "PORTAL_KV",
+      "id": "95305098cee04cf19678b16a2ed16c82"
+    }
+  ]
+}
