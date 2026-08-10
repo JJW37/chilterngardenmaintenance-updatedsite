@@ -60,6 +60,39 @@
     hero.appendChild(badge);
   }
 
+
+/* Keep the long public catalogues readable when reveal observers are unavailable. */
+(function () {
+  'use strict';
+  function restoreCatalogueVisibility() {
+    var path = window.location.pathname;
+    if (path.indexOf('/plants/') === -1 && path.indexOf('/tips/') === -1) return;
+    document.documentElement.classList.remove('cgm-premium-ready');
+    document.querySelectorAll('[data-cgm-reveal]').forEach(function (node) {
+      node.classList.add('is-visible');
+    });
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', restoreCatalogueVisibility, { once: true });
+  } else {
+    restoreCatalogueVisibility();
+  }
+}());
+
+/* Final fallback: animation must never keep catalogue content hidden. */
+(function () {
+  function showCatalogueContent() {
+    var path = window.location.pathname;
+    if (path.indexOf('/plants/') === -1 && path.indexOf('/tips/') === -1) return;
+    window.setTimeout(function () {
+      document.documentElement.classList.remove('cgm-premium-ready');
+      document.querySelectorAll('[data-cgm-reveal]').forEach(function (node) { node.classList.add('is-visible'); });
+    }, 900);
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', showCatalogueContent, { once: true });
+  else showCatalogueContent();
+}());
+
   function setupHeroDepth() {
     if (reduceMotion) return;
     var hero = document.querySelector(heroSelector);
