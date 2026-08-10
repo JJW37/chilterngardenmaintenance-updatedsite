@@ -59,6 +59,21 @@
         var direction = event.key === 'ArrowDown' || event.key === 'ArrowRight' ? 1 : event.key === 'ArrowUp' || event.key === 'ArrowLeft' ? -1 : 0;
         if (!direction) return;
         event.preventDefault();
+
+
+/* Keep public library content visible if scroll-reveal callbacks do not arrive. */
+(function () {
+  function showKnowledgeShowroom() {
+    var root = document.querySelector('.knowledge-showroom');
+    if (!root) return;
+    window.setTimeout(function () {
+      root.classList.remove('knowledge-showroom--enhanced');
+      root.querySelectorAll('[data-knowledge-reveal]').forEach(function (node) { node.classList.add('is-visible'); });
+    }, 950);
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', showKnowledgeShowroom, { once: true });
+  else showKnowledgeShowroom();
+}());
         var next = (index + direction + routeButtons.length) % routeButtons.length;
         routeButtons[next].focus();
         setRoute(routeButtons[next]);
