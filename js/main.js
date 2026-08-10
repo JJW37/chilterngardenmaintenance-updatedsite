@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", function () {
       !document.body.classList.contains("admin-login-page") &&
       !document.body.classList.contains("admin-dashboard-page")) {
     var navCta = document.querySelector(".nav-cta");
-    if (navCta && !navCta.querySelector("[data-client-login-link]")) {
+    if (navCta && !navCta.querySelector("[data-client-login-link], a[href*='/login/']")) {
       var clientLogin = document.createElement("a");
       clientLogin.href = "/chilterngardenmaintenance-updatedsite/login/";
       clientLogin.className = "btn btn-ghost";
