@@ -175,20 +175,11 @@
       $('cf_email').value = client.email;
       $('cf_address').value = client.addressLine || '';
       $('cf_area').value = client.serviceArea || '';
+      $('cf_internal').value = client.notesInternal || '';
       $('cf_active').checked = client.isActive;
       $('cf_password').required = false;
       $('cf_password_required').hidden = true;
       $('cf_password_help').textContent = 'Leave blank to keep the current password. Enter a new 12+ character password to reset it and sign the household out on other devices.';
-      // internal notes - need to fetch
-      fetch('/api/client-data?clientId=' + client.id, { credentials: 'include' })
-        .then(function(r) { return r.json(); })
-        .then(function(d) {
-          if (d.ok && d.client) {
-            // We don't currently expose notesInternal through client-data - that's OK,
-            // it'll just be blank. (Admin can re-set it.)
-          }
-        })
-        .catch(function() {});
     } else {
       title.textContent = 'New client';
       $('cf_id').value = '';
@@ -211,6 +202,7 @@
     var email = $('cf_email').value.trim().toLowerCase();
     var addressLine = $('cf_address').value.trim();
     var serviceArea = $('cf_area').value.trim();
+    var notesInternal = $('cf_internal').value.trim();
     var isActive = $('cf_active').checked;
     var password = $('cf_password').value;
 
@@ -245,6 +237,7 @@
             email: email,
             addressLine: addressLine,
             serviceArea: serviceArea,
+            notesInternal: notesInternal,
             isActive: isActive,
             newPassword: password,
           }),
@@ -261,7 +254,9 @@
             email: email,
             addressLine: addressLine,
             serviceArea: serviceArea,
+            notesInternal: notesInternal,
             initialPassword: password,
+            isActive: isActive,
           }),
         });
       }
