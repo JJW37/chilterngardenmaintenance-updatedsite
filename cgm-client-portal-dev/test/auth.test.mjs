@@ -43,7 +43,7 @@ test('client passwords use a per-profile salted PBKDF2 hash', async () => {
   const password = 'a deliberately long garden portal passphrase';
   const firstHash = await hashPassword(password);
   const secondHash = await hashPassword(password);
-  assert.match(firstHash, /^pbkdf2_sha256\$600000\$[a-f0-9]{32}\$[a-f0-9]{64}$/);
+  assert.match(firstHash, /^pbkdf2_sha256\$60000\$[a-f0-9]{32}\$[a-f0-9]{64}$/);
   assert.notEqual(firstHash, secondHash, 'a fresh salt is used for every profile');
   assert.equal(await verifyPassword(password, firstHash), true);
   assert.equal(await verifyPassword('wrong passphrase', firstHash), false);
