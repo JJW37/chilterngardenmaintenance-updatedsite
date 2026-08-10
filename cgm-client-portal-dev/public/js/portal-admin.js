@@ -19,11 +19,13 @@
 
   async function init() {
     $('year') && ($('year').textContent = new Date().getFullYear());
+    bindModalSafety();
 
     try {
       var res = await fetch('/api/auth-session', { credentials: 'include' });
       var session = await res.json();
       if (!session.authenticated || !session.isAdmin) {
+        closeModal();
         showNotAuth();
         return;
       }
@@ -123,9 +125,6 @@
 
     $('newClientBtn').addEventListener('click', function() { openModal(null); });
 
-    // Modal
-    $('modalClose').addEventListener('click', closeModal);
-    $('modalCancel').addEventListener('click', closeModal);
     $('modalSave').addEventListener('click', saveClient);
 
     // Client list actions (event delegation)
@@ -193,6 +192,20 @@
 
   function closeModal() {
     $('clientModal').hidden = true;
+  }
+
+  function bindModalSafety() {
+    var modal = $('clientModal');
+    if (!modal || modal.dataset.closeBound === 'true') return;
+    modal.dataset.closeBound = 'true';
+    $('modalClose').addEventListener('click', closeModal);
+    $('modalCancel').addEventListener('click', closeModal);
+    modal.addEventListener('click', function(event) {
+      if (event.target === modal) closeModal();
+    });
+    document.addEventListener('keydown', function(event) {
+      if (event.key === 'Escape' && !modal.hidden) closeModal();
+    });
   }
 
   async function saveClient() {
@@ -264,6 +277,9 @@
       if (data.ok) {
         closeModal();
         await loadClients();
+      } else if (res.status === 401 || res.status === 403 || data.error === 'forbidden') {
+        closeModal();
+        window.location.href = '/portal/admin/?expired=1';
       } else {
         showModalAlert(data.error || 'Failed to save client.', 'error');
       }
