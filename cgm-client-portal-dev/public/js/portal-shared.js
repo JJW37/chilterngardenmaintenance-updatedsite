@@ -39,18 +39,24 @@
     // The portal is hosted separately for secure server-side functions. Keep
     // every public-site link pointed at the public CGM website, rather than at
     // an empty matching path on the portal host.
-    var publicPaths = {
-      'Services': 'services/',
-      'Portfolio': 'portfolio/',
-      'Garden Knowledge': 'tips/',
-      'Locations': 'locations/',
-      'The CGM Method': 'about/maintenance.html',
-      'Get a Quote': 'booking/'
-    };
-    header.querySelectorAll('.nav-links a').forEach(function (link) {
-      var path = publicPaths[(link.textContent || '').trim()];
-      if (path) link.href = publicSiteUrl(path);
-    });
+    var publicLinks = [
+      ['Services', 'services/'],
+      ['Portfolio', 'portfolio/'],
+      ['Garden Knowledge', 'tips/'],
+      ['Locations', 'locations/'],
+      ['The CGM Method', 'about/maintenance.html'],
+      ['Get a Quote', 'booking/']
+    ];
+    var siteLinks = header.querySelector('.nav-links');
+    if (!siteLinks) {
+      siteLinks = document.createElement('div');
+      siteLinks.className = 'nav-links';
+      header.insertBefore(siteLinks, header.querySelector('.nav-cta'));
+    }
+    siteLinks.setAttribute('aria-label', 'CGM website links');
+    siteLinks.innerHTML = publicLinks.map(function (item) {
+      return '<a href="' + publicSiteUrl(item[1]) + '">' + item[0] + '</a>';
+    }).join('');
 
     var actions = header.querySelector('.nav-cta');
     if (actions && !actions.querySelector('.cgm-site-return')) {
@@ -182,4 +188,8 @@
     showPageState: showPageState,
     rememberAdminClient: rememberAdminClient,
   };
+
+  // Run as soon as this shared script is available so the public-site return
+  // link is also present on a portal page that later shows a sign-in prompt.
+  configurePublicWebsiteNavigation();
 }());
