@@ -37,6 +37,7 @@ export async function onRequestPost({ request, env }) {
     const serviceArea = (body.serviceArea || '').toString().trim() || null;
     const notesInternal = (body.notesInternal || '').toString().trim() || null;
     const initialPassword = (body.initialPassword || '').toString();
+    const isActive = body.isActive !== false;
 
     if (!username || !householdName || !email) {
       return json({ ok: false, error: 'Username, household name and email are required.' }, 400);
@@ -69,9 +70,9 @@ export async function onRequestPost({ request, env }) {
       env.DB,
       `INSERT INTO clients (
           username, household_name, email, password_hash, password_updated_at,
-          address_line, service_area, notes_internal
-       ) VALUES (?, ?, ?, ?, datetime('now'), ?, ?, ?)`,
-      [username, householdName, email, passwordHash, addressLine, serviceArea, notesInternal],
+          address_line, service_area, notes_internal, is_active
+       ) VALUES (?, ?, ?, ?, datetime('now'), ?, ?, ?, ?)`,
+      [username, householdName, email, passwordHash, addressLine, serviceArea, notesInternal, isActive ? 1 : 0],
     );
 
     const newId = result.meta?.last_row_id;
@@ -86,6 +87,7 @@ export async function onRequestPost({ request, env }) {
         addressLine,
         serviceArea,
         notesInternal,
+        isActive,
       },
     });
   } catch (err) {
