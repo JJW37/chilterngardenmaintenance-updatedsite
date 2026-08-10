@@ -115,6 +115,14 @@
     if (state.isAdmin) {
       // Add type selector + visit date input if not already present
       if (!$('noteTypeSelect')) {
+        var titleInput = document.createElement('input');
+        titleInput.type = 'text';
+        titleInput.id = 'noteTitle';
+        titleInput.maxLength = 200;
+        titleInput.placeholder = 'Visit or update title';
+        titleInput.setAttribute('aria-label', 'Visit or update title');
+        composerMeta.insertBefore(titleInput, composerMeta.firstChild);
+
         var typeSelect = document.createElement('select');
         typeSelect.id = 'noteTypeSelect';
         typeSelect.innerHTML =
@@ -131,6 +139,8 @@
         // Hide the upload block for admin (uploads happen from the dashboard OR same - keep)
         // Actually keep - admin can upload from here too.
       }
+      var imageMeta = $('adminImageMeta');
+      if (imageMeta) imageMeta.hidden = false;
       var para = composerSection.querySelector('p');
       if (para) {
         para.textContent = 'Post an update or record a visit. Visit notes appear in the "Most recent visit" callout. Update notes notify the client by email.';
@@ -270,6 +280,8 @@
       var dateInput = $('noteVisitDate');
       if (typeSel) payload.noteType = typeSel.value;
       if (dateInput && dateInput.value) payload.visitDate = dateInput.value;
+      var titleInput = $('noteTitle');
+      if (titleInput && titleInput.value.trim()) payload.title = titleInput.value.trim();
       payload.clientId = state.clientId;
     }
 
@@ -285,6 +297,7 @@
       var data = await res.json();
       if (data.ok) {
         $('noteBody').value = '';
+        if ($('noteTitle')) $('noteTitle').value = '';
         $('charCount').textContent = '0';
         await loadClientData();
       } else {
@@ -373,7 +386,10 @@
       fd.append('file', file);
       fd.append('caption', caption);
       if (state.isAdmin) {
-        fd.append('category', 'progress');
+        var category = $('imageCategorySelect');
+        var visitDate = $('imageVisitDate');
+        fd.append('category', category ? category.value : 'progress');
+        if (visitDate && visitDate.value) fd.append('visitDate', visitDate.value);
         fd.append('clientId', state.clientId);
       } else {
         fd.append('category', 'client_upload');
