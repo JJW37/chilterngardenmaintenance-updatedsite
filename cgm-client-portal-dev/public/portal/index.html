@@ -159,6 +159,14 @@
               <div id="uploadCaptionRow" style="margin-top:.6rem;">
                 <input type="text" id="uploadCaption" placeholder="Optional caption (applies to all selected images)" style="width:100%;padding:.5rem .7rem;font:inherit;font-size:.85rem;background:var(--bone);border:1px solid var(--border);border-radius:var(--radius-sm);">
               </div>
+              <div id="adminImageMeta" hidden style="display:flex;gap:.5rem;flex-wrap:wrap;margin-top:.6rem;">
+                <select id="imageCategorySelect" aria-label="Image category" style="flex:1 1 12rem;padding:.5rem .7rem;font:inherit;font-size:.85rem;background:var(--bone);border:1px solid var(--border);border-radius:var(--radius-sm);">
+                  <option value="progress">Progress record</option>
+                  <option value="before_after">Before / after</option>
+                  <option value="reference">Reference</option>
+                </select>
+                <input type="date" id="imageVisitDate" aria-label="Associated visit date" style="flex:1 1 10rem;padding:.5rem .7rem;font:inherit;font-size:.85rem;background:var(--bone);border:1px solid var(--border);border-radius:var(--radius-sm);">
+              </div>
               <button type="button" class="btn-portal btn-gold" id="uploadBtn" style="width:100%;margin-top:.6rem;" disabled>Upload images</button>
             </div>
 
@@ -178,7 +186,7 @@
 </footer>
 
 <script src="/js/portal-shared.js?v=20260809p2"></script>
-<script src="/js/portal.js?v=20260809p2"></script>
+<script src="/js/portal.js?v=20260810p1"></script>
 <script src="/js/main.js?v=20260727a"></script>
 </body>
 </html>
