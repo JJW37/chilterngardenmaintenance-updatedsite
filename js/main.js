@@ -15,13 +15,35 @@
   document.head.appendChild(style);
 
   var script = document.createElement('script');
-  script.src = '/chilterngardenmaintenance-updatedsite/js/premium-experience.js?v=20260805p2';
+  script.src = '/chilterngardenmaintenance-updatedsite/js/premium-experience.js?v=20260810-knowledgefix';
   script.defer = true;
   document.head.appendChild(script);
 })();
 
 document.addEventListener("DOMContentLoaded", function () {
   "use strict";
+
+  // ---- Client portal entry point ----
+  // One small enhancer keeps the public navigation consistent across the
+  // static site without hand-editing hundreds of individual HTML files.
+  // Portal pages have their own sign-in/sign-out controls and are excluded.
+  if (!document.body.classList.contains("portal-page") &&
+      !document.body.classList.contains("login-page") &&
+      !document.body.classList.contains("admin-login-page") &&
+      !document.body.classList.contains("admin-dashboard-page")) {
+    var navCta = document.querySelector(".nav-cta");
+    if (navCta && !navCta.querySelector("[data-client-login-link]")) {
+      var clientLogin = document.createElement("a");
+      clientLogin.href = "/chilterngardenmaintenance-updatedsite/login/";
+      clientLogin.className = "btn btn-ghost";
+      clientLogin.textContent = "Client Login";
+      clientLogin.setAttribute("data-client-login-link", "true");
+      clientLogin.setAttribute("aria-label", "Open the secure client login");
+      clientLogin.style.marginRight = ".5rem";
+      var primaryCta = navCta.querySelector(".btn-primary");
+      navCta.insertBefore(clientLogin, primaryCta || navCta.firstChild);
+    }
+  }
 
   // ---- Mobile navigation (Safari-safe native click) ----
   var menuToggle = document.getElementById("mobileMenuToggle");
