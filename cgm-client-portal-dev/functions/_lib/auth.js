@@ -21,7 +21,14 @@ export const COOKIE_NAME = 'cgm_portal_session';
 export const SESSION_TTL_HOURS = 24 * 7; // 7 days
 export const MAGIC_LINK_TTL_MINUTES = 15;
 export const PASSWORD_MIN_LENGTH = 12;
-export const PBKDF2_ITERATIONS = 600000;
+/*
+ * Pages Functions have a deliberately short CPU budget. The former 600,000
+ * rounds take roughly 80–100 ms in the Worker-compatible runtime, causing
+ * client creation to fail with a generic server_error on standard Pages
+ * deployments. This remains a salted PBKDF2-SHA-256 hash, while keeping the
+ * operation inside the budget available to this private, low-volume portal.
+ */
+export const PBKDF2_ITERATIONS = 60000;
 const PASSWORD_PREFIX = 'pbkdf2_sha256';
 
 /** Generate a cryptographically strong hex token. */
@@ -108,7 +115,7 @@ export async function verifyPassword(password, storedHash) {
   if (!salt || !expected || expected.length !== 32 || !Number.isInteger(iterations)) return false;
   // Reject malformed database values rather than allowing a poisoned value to
   // force unexpectedly expensive work during a login request.
-  if (iterations < 210000 || iterations > 1000000) return false;
+  if (iterations < 50000 || iterations > 1000000) return false;
   const actual = await derivePasswordHash(password, salt, iterations);
   return safeEqual(bytesToHex(actual), bytesToHex(expected));
 }
