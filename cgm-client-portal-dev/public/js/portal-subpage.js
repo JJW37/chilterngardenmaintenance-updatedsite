@@ -13,7 +13,7 @@
       window.CGMPortal.setupNavigation(context, page);
       renderHeader(data, context, page);
       if (page === 'history') renderHistory(data);
-      else if (page === 'plan') renderPlan(data);
+      else if (page === 'plan') renderPlan(data, context);
       else if (page === 'photos') renderPhotos(data);
       else if (page === 'messages') renderMessages(data, context);
       else if (page === 'account') renderAccount(data, context);
@@ -65,7 +65,7 @@
       '</article>';
   }
 
-  function renderPlan(data) {
+  function renderPlan(data, context) {
     var items = data.planItems || [];
     var active = items.filter(function (item) { return item.status !== 'complete'; });
     var body = document.getElementById('pageBody');
@@ -75,20 +75,119 @@
         stat(items.filter(function (item) { return item.status === 'in_progress'; }).length, 'In progress') +
         stat(items.filter(function (item) { return item.status === 'complete'; }).length, 'Completed') +
       '</div>' +
-      '<section class="portal-section"><div class="section-heading-row"><div><h2>Seasonal priorities</h2><p>This is CGM’s shared direction for your garden. It is updated as your garden develops.</p></div></div>' +
-      (items.length ? '<div class="plan-list">' + items.map(renderPlanItem).join('') + '</div>' : empty('Your garden plan is being prepared', 'After the first planning visit, seasonal priorities and recommendations will appear here.')) +
+      '<section class="portal-section"><div class="section-heading-row"><div><h2>Seasonal priorities</h2><p>This is CGM’s shared direction for your garden. It is updated as your garden develops.</p></div>' +
+      (context.isAdmin ? '<button id="addPlanItemBtn" type="button" class="btn-portal btn-primary">Add priority</button>' : '') +
+      '</div>' +
+      (items.length ? '<div class="plan-list">' + items.map(function (item) { return renderPlanItem(item, context); }).join('') + '</div>' : empty('Your garden plan is being prepared', context.isAdmin ? 'Add the first seasonal priority to start this household’s shared direction.' : 'After the first planning visit, seasonal priorities and recommendations will appear here.')) +
       '</section>';
+    if (context.isAdmin) bindPlanActions(context, items);
   }
 
-  function renderPlanItem(item) {
+  function renderPlanItem(item, context) {
     var status = { planned: 'Planned', in_progress: 'In progress', complete: 'Completed' }[item.status] || 'Planned';
     var priority = { essential: 'Essential', recommended: 'Recommended', optional: 'Optional' }[item.priority] || 'Recommended';
+    var controls = context.isAdmin
+      ? '<div class="plan-admin-actions"><button class="btn-portal btn-ghost" type="button" data-plan-action="edit" data-plan-id="' + item.id + '">Edit</button>' +
+        (item.status !== 'complete' ? '<button class="btn-portal btn-ghost" type="button" data-plan-action="complete" data-plan-id="' + item.id + '">Complete</button>' : '') +
+        '<button class="btn-portal btn-danger" type="button" data-plan-action="delete" data-plan-id="' + item.id + '">Delete</button></div>'
+      : '';
     return '<article class="plan-item status-' + window.CGMPortal.escapeHtml(item.status) + '">' +
       '<div class="plan-item-top"><div><span class="plan-season">' + window.CGMPortal.escapeHtml(item.season) + '</span><h3>' + window.CGMPortal.escapeHtml(item.title) + '</h3></div>' +
       '<div class="plan-tags"><span class="plan-priority priority-' + window.CGMPortal.escapeHtml(item.priority) + '">' + priority + '</span><span class="plan-status">' + status + '</span></div></div>' +
       (item.detail ? '<p>' + nl2br(item.detail) + '</p>' : '') +
       (item.targetDate ? '<small>Target: ' + window.CGMPortal.formatDate(item.targetDate) + '</small>' : '') +
+      controls +
       '</article>';
+  }
+
+  function bindPlanActions(context, items) {
+    var add = document.getElementById('addPlanItemBtn');
+    if (add) add.addEventListener('click', function () { openPlanEditor(context, null); });
+    document.querySelectorAll('[data-plan-action]').forEach(function (button) {
+      button.addEventListener('click', function () {
+        var id = Number.parseInt(button.getAttribute('data-plan-id'), 10);
+        var item = items.find(function (candidate) { return candidate.id === id; });
+        if (!item) return;
+        if (button.getAttribute('data-plan-action') === 'edit') openPlanEditor(context, item);
+        else if (button.getAttribute('data-plan-action') === 'complete') updatePlanItem({ id: id, status: 'complete' });
+        else if (button.getAttribute('data-plan-action') === 'delete') deletePlanItem(id);
+      });
+    });
+  }
+
+  function openPlanEditor(context, item) {
+    var current = document.getElementById('planEditorModal');
+    if (current) current.remove();
+    var values = item || { season: 'All year', title: '', detail: '', status: 'planned', priority: 'recommended', targetDate: '' };
+    var selected = function (value, expected) { return value === expected ? ' selected' : ''; };
+    var title = item ? 'Edit garden priority' : 'Add garden priority';
+    var modal = document.createElement('div');
+    modal.id = 'planEditorModal';
+    modal.className = 'modal-backdrop';
+    modal.innerHTML = '<div class="modal" role="dialog" aria-modal="true" aria-labelledby="planEditorTitle">' +
+      '<div class="modal-head"><h3 id="planEditorTitle">' + title + '</h3><button type="button" class="modal-close" data-plan-close aria-label="Close">×</button></div>' +
+      '<div class="modal-body"><div id="planEditorAlert" class="alert" hidden></div><div class="field"><label for="planTitle">Priority title</label><input id="planTitle" maxlength="200" value="' + window.CGMPortal.escapeHtml(values.title) + '" placeholder="e.g. Autumn mulch and soil protection"></div>' +
+      '<div class="field"><label for="planDetail">Recommendation / detail</label><textarea id="planDetail" maxlength="8000" rows="5" placeholder="What will be done, and why?">' + window.CGMPortal.escapeHtml(values.detail || '') + '</textarea></div>' +
+      '<div class="plan-form-grid"><div class="field"><label for="planSeason">Season</label><input id="planSeason" maxlength="80" value="' + window.CGMPortal.escapeHtml(values.season || 'All year') + '" placeholder="e.g. Autumn"></div>' +
+      '<div class="field"><label for="planTargetDate">Target date</label><input id="planTargetDate" type="date" value="' + window.CGMPortal.escapeHtml(values.targetDate || '') + '"></div>' +
+      '<div class="field"><label for="planPriority">Priority</label><select id="planPriority"><option value="essential"' + selected(values.priority, 'essential') + '>Essential</option><option value="recommended"' + selected(values.priority, 'recommended') + '>Recommended</option><option value="optional"' + selected(values.priority, 'optional') + '>Optional</option></select></div>' +
+      '<div class="field"><label for="planStatus">Status</label><select id="planStatus"><option value="planned"' + selected(values.status, 'planned') + '>Planned</option><option value="in_progress"' + selected(values.status, 'in_progress') + '>In progress</option><option value="complete"' + selected(values.status, 'complete') + '>Completed</option></select></div></div></div>' +
+      '<div class="modal-foot"><button type="button" class="btn-portal btn-ghost" data-plan-close>Cancel</button><button id="planSaveBtn" type="button" class="btn-portal btn-primary">Save priority</button></div></div>';
+    document.body.appendChild(modal);
+    modal.querySelectorAll('[data-plan-close]').forEach(function (button) { button.addEventListener('click', function () { modal.remove(); }); });
+    modal.addEventListener('click', function (event) { if (event.target === modal) modal.remove(); });
+    modal.querySelector('#planSaveBtn').addEventListener('click', function () {
+      var payload = {
+        clientId: context.clientId,
+        title: modal.querySelector('#planTitle').value,
+        detail: modal.querySelector('#planDetail').value,
+        season: modal.querySelector('#planSeason').value,
+        targetDate: modal.querySelector('#planTargetDate').value,
+        priority: modal.querySelector('#planPriority').value,
+        status: modal.querySelector('#planStatus').value,
+      };
+      if (item) payload.id = item.id;
+      savePlanItem(payload, modal);
+    });
+    modal.querySelector('#planTitle').focus();
+  }
+
+  async function savePlanItem(payload, modal) {
+    var button = modal.querySelector('#planSaveBtn');
+    var alert = modal.querySelector('#planEditorAlert');
+    button.disabled = true; button.textContent = 'Saving…';
+    try {
+      var response = await fetch('/api/admin-plan', {
+        method: payload.id ? 'PATCH' : 'POST', credentials: 'include', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload),
+      });
+      var result = await response.json();
+      if (!result.ok) throw new Error(result.error || 'Unable to save this priority.');
+      window.location.reload();
+    } catch (error) {
+      alert.hidden = false; alert.className = 'alert alert-error'; alert.textContent = error.message || 'Unable to save this priority.';
+      button.disabled = false; button.textContent = 'Save priority';
+    }
+  }
+
+  async function updatePlanItem(payload) {
+    try {
+      var response = await fetch('/api/admin-plan', {
+        method: 'PATCH', credentials: 'include', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload),
+      });
+      var result = await response.json();
+      if (!result.ok) throw new Error(result.error || 'Unable to update this priority.');
+      window.location.reload();
+    } catch (error) { window.alert(error.message || 'Unable to update this priority.'); }
+  }
+
+  async function deletePlanItem(id) {
+    if (!window.confirm('Delete this garden-plan priority? This cannot be undone.')) return;
+    try {
+      var response = await fetch('/api/admin-plan?id=' + encodeURIComponent(id), { method: 'DELETE', credentials: 'include' });
+      var result = await response.json();
+      if (!result.ok) throw new Error(result.error || 'Unable to delete this priority.');
+      window.location.reload();
+    } catch (error) { window.alert(error.message || 'Unable to delete this priority.'); }
   }
 
   function renderPhotos(data) {
