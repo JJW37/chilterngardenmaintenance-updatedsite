@@ -12,6 +12,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap">
   <link rel="stylesheet" href="/chilterngardenmaintenance-updatedsite/css/editorial.css?v=20260807a">
+  <link rel="stylesheet" href="/chilterngardenmaintenance-updatedsite/css/content-studio.css?v=20260810a">
   <link rel="icon" type="image/png" sizes="32x32" href="/chilterngardenmaintenance-updatedsite/images/favicon-32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/chilterngardenmaintenance-updatedsite/images/favicon-16.png">
   <link rel="apple-touch-icon" href="/chilterngardenmaintenance-updatedsite/images/cgm-logo-square.png">
@@ -99,12 +100,28 @@
     </div><a href="/chilterngardenmaintenance-updatedsite/locations/">Locations</a><a href="/chilterngardenmaintenance-updatedsite/about/maintenance.html">The CGM Method</a><a href="/chilterngardenmaintenance-updatedsite/booking/">Get a Quote</a><a href="https://wa.me/447467657459" target="_blank" rel="noopener">WhatsApp</a>
     </nav>
   </header>
-<main id="main-content">
+<main id="main-content" class="content-studio content-studio--guides">
+  <div class="content-command-bar" aria-label="Garden Guides controls">
+    <a class="content-command-bar__brand" href="/chilterngardenmaintenance-updatedsite/"><b>CG</b><span>Garden Guides</span></a>
+    <div class="content-command-bar__center" aria-live="polite"><span data-studio-progress-label>01 / 04</span><span class="content-command-bar__progress"><i data-studio-progress-bar></i></span><span data-studio-progress-title>Guides</span></div>
+    <div class="content-command-bar__actions">
+      <button class="content-command-bar__button" type="button" data-studio-action="condition-report">Free report</button>
+      <button class="content-command-bar__button" type="button" data-studio-action="guide-library">Browse guides</button>
+      <button class="content-command-bar__button" type="button" data-studio-action="guides-quote">Get a quote</button>
+    </div>
+  </div>
+  <nav class="content-chapter-rail" aria-label="Garden Guides sections">
+    <a href="#guides-hero" data-studio-chapter-link="hero">Guide library</a>
+    <a href="#condition-report" data-studio-chapter-link="report">Field report</a>
+    <a href="#guide-library" data-studio-chapter-link="library">Browse by subject</a>
+    <a href="#guides-quote" data-studio-chapter-link="quote">Get practical help</a>
+  </nav>
 
-  <section class="page-header">
+  <section class="page-header" id="guides-hero" data-studio-chapter="hero">
     <div class="page-header-bg"><img src="/chilterngardenmaintenance-updatedsite/images/guides-header.jpg" alt="" width="1920" height="400"></div>
     <div class="container">
       <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/chilterngardenmaintenance-updatedsite/">Home</a><span>/</span>Chiltern Guides</nav>
+      <span class="editorial-kicker">CGM Knowledge &middot; Digital guides</span>
       <h1>Chiltern Guides</h1>
       <p>Premium PDF garden guides written by our expert local gardeners. Buy and download instantly. Lawn care, bedding themes, garden design plans and gardener skills.</p>
     </div>
@@ -113,7 +130,7 @@
   <section class="section">
     <div class="container">
       <!-- FEATURED: Free Condition Report -->
-      <div style="background:linear-gradient(135deg, var(--forest-dark), var(--forest)); color:#fff; padding:2rem 2.2rem; border-radius:2px; margin-bottom:2.5rem; position:relative; overflow:hidden;">
+      <div class="guide-featured-report" id="condition-report" data-studio-chapter="report" data-studio-reveal style="background:linear-gradient(135deg, var(--forest-dark), var(--forest)); color:#fff; padding:2rem 2.2rem; border-radius:2px; margin-bottom:2.5rem; position:relative; overflow:hidden;">
         <div style="position:absolute; top:0; left:0; width:4px; height:100%; background:var(--gold);"></div>
         <div style="display:grid; grid-template-columns:1fr 1.5fr; gap:2rem; align-items:center;">
           <div>
@@ -140,17 +157,17 @@
       </div>
       <style>@media (max-width:768px){.section > div > div[style*="grid-template-columns:1fr 1.5fr"]{grid-template-columns:1fr !important;}}</style>
 
-      <div class="callout">
+      <div class="callout" data-studio-reveal>
         <h3><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg> About our Chiltern Guides</h3>
         <p>Our Chiltern Guides are premium PDF guides written by our expert local gardeners based on years of hands-on experience in Oxfordshire, Buckinghamshire, Berkshire and Bedfordshire gardens. Each guide is packed with practical, actionable advice you can use straight away. Buy and download instantly, no waiting.</p>
       </div>
 
-      <div class="section-title" style="text-align:center;margin-bottom:1.5rem;">
+      <div class="section-title" id="guide-library" data-studio-chapter="library" style="text-align:center;margin-bottom:1.5rem;">
         <h2>Choose a category</h2>
         <p>29 premium PDF guides across 4 categories.</p>
       </div>
 
-      <div class="guide-cat-grid">
+      <div class="guide-cat-grid" data-studio-reveal>
         
         <a class="guide-cat-card" href="/chilterngardenmaintenance-updatedsite/guides/lawn-care/">
           <div class="guide-cat-card__icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 13V8"/><path d="M12 5V3"/><path d="m9 8-2-2"/><path d="m15 8 2-2"/><path d="M5 16c3-1 6-1 7 1"/><path d="M19 16c-3-1-6-1-7 1"/><path d="M7 20c2-1 4-1 5 1"/><path d="M17 20c-2-1-4-1-5 1"/><path d="M3 14c4-1 6 0 8 2"/><path d="M21 14c-4-1-6 0-8 2"/></svg></div>
@@ -198,7 +215,7 @@
   </section>
 
   
-  <section class="cta-band-compact">
+  <section class="cta-band-compact" id="guides-quote" data-studio-chapter="quote">
     <div class="container">
       <h2>Prefer us to do the work? Get a quote instead.</h2>
       <p>Contact us on WhatsApp and we will aim to respond within 12 to 36 hours, Monday to Sunday.</p>
@@ -309,5 +326,6 @@
   <script src="/chilterngardenmaintenance-updatedsite/js/custom-scrollbar.js?v=20260719b"></script>
   <script src="/chilterngardenmaintenance-updatedsite/js/predictive-search.js?v=20260719b"></script>
   <script src="/chilterngardenmaintenance-updatedsite/js/mobile-dock.js?v=20260719b"></script>
+  <script src="/chilterngardenmaintenance-updatedsite/js/content-studio.js?v=20260810a"></script>
 </body>
 </html>
