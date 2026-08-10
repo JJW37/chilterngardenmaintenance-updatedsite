@@ -116,6 +116,13 @@
 .plan-item-top { display:flex; justify-content:space-between; gap:1rem; align-items:flex-start; }
 .plan-item h3 { margin:.25rem 0 0; font-size:1.2rem; }
 .plan-item p { color:var(--ink-soft); line-height:1.6; margin:.7rem 0; }
+.plan-admin-actions { display:flex; flex-wrap:wrap; justify-content:flex-end; gap:.45rem; margin-top:1rem; }
+.plan-form-grid { display:grid; grid-template-columns:repeat(2, minmax(0, 1fr)); gap:.85rem; }
+.plan-form-grid .field { margin:0; }
+.modal .field { margin-bottom:1rem; }
+.modal .field label { display:block; margin:0 0 .35rem; color:var(--ink-soft); font-size:.84rem; font-weight:600; }
+.modal .field input, .modal .field textarea, .modal .field select { width:100%; padding:.62rem .75rem; font:inherit; font-size:.9rem; color:var(--ink); background:var(--paper); border:1px solid var(--border); border-radius:var(--radius-sm); }
+.modal .field textarea { resize:vertical; }
 .plan-season { color:var(--muted); font-size:.75rem; letter-spacing:.08em; font-weight:700; text-transform:uppercase; }
 .plan-tags { display:flex; flex-wrap:wrap; gap:.35rem; justify-content:flex-end; }
 .plan-priority, .plan-status { display:inline-flex; padding:.22rem .48rem; border-radius:999px; font:700 .67rem var(--sans); letter-spacing:.04em; text-transform:uppercase; white-space:nowrap; }
@@ -126,7 +133,7 @@
 .lightbox p { position:absolute; bottom:.85rem; left:1.5rem; right:1.5rem; color:#fff; text-align:center; font-size:.85rem; }
 
 .messages-grid { grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr); }.message-list { display:grid; gap:.75rem; max-height:740px; overflow:auto; padding-right:.2rem; }.message-list .note-card { margin:0; }.account-grid { display:grid; grid-template-columns:1fr 1fr; gap:var(--portal-gap); align-items:start; }.profile-list { margin:0; display:grid; gap:.75rem; }.profile-list div { padding-bottom:.72rem; border-bottom:1px solid var(--border-soft); }.profile-list div:last-child { border-bottom:0; padding-bottom:0; }.profile-list dt { color:var(--muted); font:700 .72rem var(--sans); text-transform:uppercase; letter-spacing:.08em; }.profile-list dd { margin:.23rem 0 0; color:var(--ink-soft); font-size:.95rem; }
-@media (max-width: 780px) { .messages-grid,.account-grid { grid-template-columns:1fr; }.plan-item-top { flex-direction:column; }.plan-tags { justify-content:flex-start; } }
+@media (max-width: 780px) { .messages-grid,.account-grid,.plan-form-grid { grid-template-columns:1fr; }.plan-item-top { flex-direction:column; }.plan-tags,.plan-admin-actions { justify-content:flex-start; } }
 
 .portal-badge {
   display: inline-flex;
