@@ -28,7 +28,7 @@ export async function onRequestGet({ request, env }) {
 
     let sql = `
       SELECT c.id, c.username, c.household_name, c.email, c.address_line,
-             c.service_area, c.is_active, c.created_at,
+             c.service_area, c.notes_internal, c.is_active, c.created_at,
              (SELECT COUNT(*) FROM notes  n WHERE n.client_id = c.id) AS note_count,
              (SELECT COUNT(*) FROM images i WHERE i.client_id = c.id) AS image_count,
              (SELECT MAX(n.created_at) FROM notes n WHERE n.client_id = c.id) AS last_note_at
@@ -62,6 +62,7 @@ export async function onRequestGet({ request, env }) {
         email: r.email,
         addressLine: r.address_line,
         serviceArea: r.service_area,
+        notesInternal: r.notes_internal,
         isActive: r.is_active === 1,
         createdAt: r.created_at,
         noteCount: r.note_count,
