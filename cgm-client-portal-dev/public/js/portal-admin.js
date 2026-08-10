@@ -188,10 +188,13 @@
       $('cf_password_help').textContent = 'Set a 12+ character password to activate this household. You will not be able to view it again.';
     }
     modal.hidden = false;
+    modal.setAttribute('aria-hidden', 'false');
   }
 
   function closeModal() {
-    $('clientModal').hidden = true;
+    var modal = $('clientModal');
+    modal.hidden = true;
+    modal.setAttribute('aria-hidden', 'true');
   }
 
   function bindModalSafety() {
