@@ -1,0 +1,612 @@
+@@ -0,0 +1,557 @@
+/*
+  CGM premium collection pages — v2
+  A single design language for Knowledge, Plant Library, Planners, Portfolio,
+  Guides and Garden Passport.  It intentionally sits after the older showroom
+  layers so the underlying content, filters and tools remain intact.
+*/
+
+.premium-v2 {
+  --v2-ink: #102019;
+  --v2-deep: #08150f;
+  --v2-forest: #173a29;
+  --v2-moss: #315844;
+  --v2-paper: #f7f4ec;
+  --v2-white: #fcfbf7;
+  --v2-sage: #dce6d8;
+  --v2-gold: #c6a062;
+  --v2-line: rgba(198, 160, 98, .28);
+  --v2-shadow: 0 28px 72px rgba(7, 19, 13, .17);
+  background: var(--v2-white);
+  color: var(--v2-ink);
+}
+
+/* The Services page succeeds because the controls read as one composed
+   instrument.  Apply that exact hierarchy to every collection page. */
+.premium-v2 .knowledge-command-bar,
+.premium-v2 .estimator-command-bar,
+.premium-v2 .content-command-bar {
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 40 !important;
+  min-height: 64px !important;
+  padding: .7rem clamp(1.15rem, 3.5vw, 3.7rem) !important;
+  color: #fbfaf7 !important;
+  background: rgba(8, 21, 15, .97) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, .13) !important;
+  box-shadow: 0 14px 32px rgba(5, 16, 10, .16) !important;
+  backdrop-filter: blur(16px);
+}
+
+.premium-v2 .knowledge-command-bar__mark,
+.premium-v2 .estimator-command-bar__mark,
+.premium-v2 .content-command-bar__brand b {
+  border-color: rgba(198, 160, 98, .78) !important;
+  color: var(--v2-gold) !important;
+}
+
+.premium-v2 .knowledge-command-bar__brand strong,
+.premium-v2 .estimator-command-bar__brand strong,
+.premium-v2 .content-command-bar__brand span {
+  color: #fbfaf7 !important;
+  letter-spacing: .11em !important;
+}
+
+.premium-v2 .knowledge-command-bar__brand small,
+.premium-v2 .estimator-command-bar__brand small,
+.premium-v2 .content-command-bar__center,
+.premium-v2 .content-command-bar__center span {
+  color: rgba(251, 250, 247, .62) !important;
+}
+
+.premium-v2 .knowledge-command-bar__line,
+.premium-v2 .estimator-command-bar__line,
+.premium-v2 .content-command-bar__progress {
+  background: rgba(255, 255, 255, .22) !important;
+}
+
+.premium-v2 .knowledge-command-bar__line i,
+.premium-v2 .estimator-command-bar__line i,
+.premium-v2 .content-command-bar__progress i {
+  background: var(--v2-gold) !important;
+}
+
+.premium-v2 .knowledge-command-bar__actions button,
+.premium-v2 .estimator-command-bar__actions button,
+.premium-v2 .content-command-bar__button {
+  border: 1px solid rgba(255, 255, 255, .23) !important;
+  border-radius: 999px !important;
+  color: rgba(255, 255, 255, .88) !important;
+  background: transparent !important;
+}
+
+.premium-v2 .knowledge-command-bar__actions button:hover,
+.premium-v2 .knowledge-command-bar__actions button:focus-visible,
+.premium-v2 .estimator-command-bar__actions button:hover,
+.premium-v2 .estimator-command-bar__actions button:focus-visible,
+.premium-v2 .content-command-bar__button:hover,
+.premium-v2 .content-command-bar__button:focus-visible {
+  border-color: var(--v2-gold) !important;
+  color: var(--v2-deep) !important;
+  background: var(--v2-gold) !important;
+}
+
+.premium-v2 .knowledge-chapter-rail,
+.premium-v2 .estimator-chapter-rail,
+.premium-v2 .content-chapter-rail {
+  position: sticky !important;
+  top: 64px !important;
+  z-index: 39 !important;
+  justify-content: flex-start !important;
+  min-height: 50px !important;
+  padding: 0 clamp(1.15rem, 3.5vw, 3.7rem) !important;
+  gap: clamp(.95rem, 2.8vw, 3.5rem) !important;
+  overflow-x: auto !important;
+  color: rgba(255, 255, 255, .68) !important;
+  background: rgba(16, 32, 24, .98) !important;
+  border-bottom: 1px solid rgba(198, 160, 98, .22) !important;
+  box-shadow: 0 12px 22px rgba(5, 16, 10, .10) !important;
+  scrollbar-width: none;
+}
+
+.premium-v2 .knowledge-chapter-rail::-webkit-scrollbar,
+.premium-v2 .estimator-chapter-rail::-webkit-scrollbar,
+.premium-v2 .content-chapter-rail::-webkit-scrollbar { display: none; }
+
+.premium-v2 .knowledge-chapter-rail a,
+.premium-v2 .estimator-chapter-rail a,
+.premium-v2 .content-chapter-rail a {
+  position: relative;
+  height: 50px;
+  color: rgba(255, 255, 255, .64) !important;
+  font-size: .65rem !important;
+  font-weight: 700 !important;
+  letter-spacing: .11em !important;
+}
+
+.premium-v2 .knowledge-chapter-rail a::after,
+.premium-v2 .estimator-chapter-rail a::after,
+.premium-v2 .content-chapter-rail a::after {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  background: var(--v2-gold);
+  content: '';
+  opacity: 0;
+  transform: scaleX(.45);
+  transition: opacity .22s ease, transform .22s ease;
+}
+
+.premium-v2 .knowledge-chapter-rail a span,
+.premium-v2 .estimator-chapter-rail a span { color: var(--v2-gold) !important; }
+
+.premium-v2 .knowledge-chapter-rail a.is-active,
+.premium-v2 .knowledge-chapter-rail a:hover,
+.premium-v2 .knowledge-chapter-rail a:focus-visible,
+.premium-v2 .estimator-chapter-rail a.is-active,
+.premium-v2 .estimator-chapter-rail a:hover,
+.premium-v2 .estimator-chapter-rail a:focus-visible,
+.premium-v2 .content-chapter-rail a.is-active,
+.premium-v2 .content-chapter-rail a:hover,
+.premium-v2 .content-chapter-rail a:focus-visible {
+  color: #fff !important;
+  outline: none;
+}
+
+.premium-v2 .knowledge-chapter-rail a.is-active::after,
+.premium-v2 .knowledge-chapter-rail a:hover::after,
+.premium-v2 .knowledge-chapter-rail a:focus-visible::after,
+.premium-v2 .estimator-chapter-rail a.is-active::after,
+.premium-v2 .estimator-chapter-rail a:hover::after,
+.premium-v2 .estimator-chapter-rail a:focus-visible::after,
+.premium-v2 .content-chapter-rail a.is-active::after,
+.premium-v2 .content-chapter-rail a:hover::after,
+.premium-v2 .content-chapter-rail a:focus-visible::after {
+  opacity: 1;
+  transform: scaleX(1);
+}
+
+/* Gardening Knowledge and Plant Library — large, calm editorial entrances. */
+.premium-v2 .knowledge-hero {
+  min-height: min(770px, calc(100svh - 114px)) !important;
+  background-color: var(--v2-deep) !important;
+}
+
+.premium-v2 .knowledge-hero__container {
+  min-height: min(770px, calc(100svh - 114px)) !important;
+  max-width: 1380px !important;
+  padding: clamp(4rem, 8vw, 7rem) clamp(1.3rem, 5vw, 5rem) clamp(4.5rem, 7vw, 6.5rem) !important;
+}
+
+.premium-v2 .knowledge-hero h1,
+.premium-v2 .knowledge-hero.page-header-editorial h1 {
+  max-width: 11ch !important;
+  margin-bottom: 1.25rem !important;
+  color: #fff !important;
+  font-family: "Iowan Old Style", "Cormorant Garamond", Georgia, serif !important;
+  font-size: clamp(4.1rem, 7.5vw, 8.2rem) !important;
+  font-weight: 500 !important;
+  line-height: .84 !important;
+  letter-spacing: -.065em !important;
+}
+
+.premium-v2 .knowledge-hero__kicker {
+  display: flex !important;
+  align-items: center;
+  gap: .7rem;
+  color: var(--v2-gold) !important;
+}
+.premium-v2 .knowledge-hero__kicker::before { width: 2.75rem; height: 1px; background: currentColor; content: ''; }
+
+.premium-v2 .knowledge-hero__container > p,
+.premium-v2 .knowledge-hero .page-header-lede {
+  max-width: 39rem !important;
+  color: rgba(255, 255, 255, .84) !important;
+  font-size: clamp(1rem, 1.3vw, 1.18rem) !important;
+  line-height: 1.65 !important;
+}
+
+.premium-v2 .knowledge-hero__index {
+  max-width: 19rem;
+  padding: 1.6rem 0 1.35rem 1.5rem !important;
+  border-left-color: rgba(198, 160, 98, .75) !important;
+  background: linear-gradient(90deg, rgba(8, 21, 15, 0), rgba(8, 21, 15, .22));
+}
+.premium-v2 .knowledge-hero__index > strong,
+.premium-v2 .knowledge-hero__index b { color: var(--v2-gold) !important; }
+.premium-v2 .knowledge-hero__index b { font-size: clamp(2.15rem, 3vw, 3rem) !important; }
+.premium-v2 .knowledge-hero__index p { color: rgba(255, 255, 255, .68) !important; }
+
+.premium-v2 .knowledge-hero__scroll,
+.premium-v2 .estimator-hero__scroll { color: rgba(255, 255, 255, .86) !important; }
+.premium-v2 .knowledge-hero__scroll span,
+.premium-v2 .estimator-hero__scroll span { background: var(--v2-gold) !important; }
+
+/* Knowledge uses a CSS-led field desk rather than an artificial stock image. */
+.premium-v2 .knowledge-hero--tips .page-header-bg { display: none !important; }
+.premium-v2 .knowledge-hero--tips {
+  isolation: isolate;
+  background:
+    radial-gradient(circle at 84% 19%, rgba(198, 160, 98, .18), transparent 0 20%),
+    radial-gradient(circle at 75% 83%, rgba(53, 104, 73, .35), transparent 0 32%),
+    linear-gradient(114deg, #07140e 0%, #0d2419 52%, #122d20 100%) !important;
+}
+.premium-v2 .knowledge-hero--tips::before {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
+  background-size: 3.5rem 3.5rem;
+  content: '';
+  mask-image: linear-gradient(90deg, transparent 0%, #000 44%, #000 100%);
+  pointer-events: none;
+}
+.premium-v2 .knowledge-hero--tips::after {
+  position: absolute;
+  z-index: 1;
+  top: 9%;
+  right: max(5%, 4rem);
+  width: min(26vw, 25rem);
+  aspect-ratio: 1;
+  border: 1px solid rgba(198,160,98,.34);
+  border-radius: 50%;
+  box-shadow: inset 0 0 0 2.5rem rgba(255,255,255,.018), 0 0 0 1.4rem rgba(255,255,255,.012);
+  content: '';
+  opacity: .9;
+  pointer-events: none;
+}
+.premium-v2 .knowledge-hero--tips .knowledge-hero__container,
+.premium-v2 .knowledge-hero--tips .knowledge-hero__scroll { z-index: 3 !important; }
+
+/* Plant Library keeps its existing botanical visual, but gives it the depth,
+   readability and specimen-card quality the content deserves. */
+.premium-v2 .knowledge-hero--plants .page-header-bg img {
+  opacity: .5 !important;
+  object-position: 66% 50% !important;
+  filter: saturate(.78) contrast(1.06) !important;
+}
+.premium-v2 .knowledge-hero--plants .page-header-bg::after {
+  background: linear-gradient(90deg, rgba(7, 20, 14, .97) 0%, rgba(7,20,14,.72) 42%, rgba(7,20,14,.22) 78%, rgba(7,20,14,.36) 100%) !important;
+}
+
+/* Plants, guides and tool collections share a more considered reading surface. */
+.premium-v2 .knowledge-discovery,
+.premium-v2 .knowledge-tool-stage,
+.premium-v2 .estimator-library,
+.premium-v2.content-studio .section-editorial,
+.premium-v2.content-studio .section-editorial-loose,
+.premium-v2.content-studio .section {
+  background: var(--v2-paper) !important;
+}
+
+.premium-v2 .knowledge-route-lab,
+.premium-v2 .estimator-question-lab__inner {
+  max-width: 1240px;
+  margin-inline: auto;
+}
+.premium-v2 .knowledge-route-lab__intro h2,
+.premium-v2 .estimator-question-lab h2,
+.premium-v2 .editorial-h2,
+.premium-v2 .section-title h2 {
+  color: var(--v2-ink) !important;
+  font-family: "Iowan Old Style", "Cormorant Garamond", Georgia, serif !important;
+}
+.premium-v2 .knowledge-route-card,
+.premium-v2 .estimator-route-card {
+  border: 1px solid rgba(198,160,98,.32);
+  box-shadow: var(--v2-shadow);
+  background: linear-gradient(145deg, #0b1b12 0%, #102a1d 100%) !important;
+}
+.premium-v2 .knowledge-route-card__topline,
+.premium-v2 .estimator-route-card__topline { border-bottom-color: rgba(198,160,98,.28) !important; }
+.premium-v2 .knowledge-route-card__tag,
+.premium-v2 .estimator-route-card__tag,
+.premium-v2 .knowledge-route-card__topline b,
+.premium-v2 .estimator-route-card__topline b { color: var(--v2-gold) !important; }
+
+.premium-v2 .knowledge-library-note,
+.premium-v2.content-studio .callout {
+  border-left-color: var(--v2-gold) !important;
+}
+.premium-v2 .knowledge-library-note h3,
+.premium-v2.content-studio .callout h3,
+.premium-v2 .plant-cat-header h2,
+.premium-v2 .tip-section-title { color: var(--v2-ink) !important; }
+.premium-v2 .knowledge-library-note p,
+.premium-v2.content-studio .callout p { color: rgba(16, 32, 25, .75) !important; }
+
+.premium-v2 .plant-search-premium__wrap {
+  overflow: hidden;
+  border: 1px solid rgba(16, 32, 25, .18) !important;
+  border-bottom: 3px solid var(--v2-forest) !important;
+  background: var(--v2-white) !important;
+  box-shadow: 0 14px 34px rgba(16,32,25,.08) !important;
+}
+.premium-v2 .plant-search-premium__input { background: transparent !important; }
+.premium-v2 .plant-search-premium__wrap:focus-within {
+  border-bottom-color: var(--v2-gold) !important;
+  box-shadow: 0 20px 48px rgba(16,32,25,.14) !important;
+}
+.premium-v2 .plant-cat-chip:hover,
+.premium-v2 .plant-cat-chip--active {
+  border-color: var(--v2-forest) !important;
+  background: var(--v2-forest) !important;
+}
+.premium-v2 .plant-grid-premium,
+.premium-v2 .editorial-list,
+.premium-v2 .estimator-library__grid,
+.premium-v2.content-studio .editorial-card-grid,
+.premium-v2.content-studio .guide-cat-grid { background: rgba(16,32,25,.15) !important; }
+.premium-v2 .plant-card-premium,
+.premium-v2 .tip-card.editorial-row,
+.premium-v2 .estimator-library__grid .editorial-calc-card,
+.premium-v2.content-studio .editorial-card-grid__cell,
+.premium-v2.content-studio .guide-cat-card { background: var(--v2-white) !important; }
+.premium-v2 .plant-card-premium:hover,
+.premium-v2 .tip-card.editorial-row:hover,
+.premium-v2 .estimator-library__grid .editorial-calc-card:hover,
+.premium-v2.content-studio .editorial-card-grid__cell:hover,
+.premium-v2.content-studio .guide-cat-card:hover { background: var(--v2-sage) !important; }
+
+/* Estimator: the restored real planning photograph gets a clean art-direction
+   pass.  It should feel like an advisory desk, never a generic calculator. */
+.premium-v2 .estimator-hero {
+  min-height: min(770px, calc(100svh - 114px)) !important;
+  background: var(--v2-deep) !important;
+}
+.premium-v2 .estimator-hero::before {
+  background: linear-gradient(90deg, rgba(7,18,12,.95) 0%, rgba(7,18,12,.77) 43%, rgba(7,18,12,.22) 76%, rgba(7,18,12,.42) 100%) !important;
+}
+.premium-v2 .estimator-hero .hero-bg img {
+  display: none !important;
+}
+.premium-v2 .estimator-hero .hero-bg {
+  background:
+    radial-gradient(circle at 79% 32%, rgba(198,160,98,.28), transparent 0 19%),
+    radial-gradient(circle at 66% 76%, rgba(49,88,68,.68), transparent 0 31%),
+    linear-gradient(128deg, #08160f 0%, #102b1e 61%, #173a29 100%) !important;
+}
+.premium-v2 .estimator-hero__container {
+  min-height: min(770px, calc(100svh - 114px)) !important;
+  max-width: 1380px !important;
+  padding-inline: clamp(1.3rem, 5vw, 5rem) !important;
+}
+.premium-v2 .estimator-hero__title {
+  font-family: "Iowan Old Style", "Cormorant Garamond", Georgia, serif !important;
+  font-size: clamp(4rem, 7.3vw, 8rem) !important;
+}
+.premium-v2 .estimator-hero__title em { color: var(--v2-gold) !important; }
+.premium-v2 .estimator-hero__index {
+  border-left-color: rgba(198,160,98,.74) !important;
+  background: linear-gradient(90deg, rgba(8,21,15,0), rgba(8,21,15,.22));
+}
+.premium-v2 .estimator-hero__index > strong,
+.premium-v2 .estimator-hero__stats b { color: var(--v2-gold) !important; }
+
+.premium-v2 .estimator-question-lab { background: var(--v2-sage) !important; }
+.premium-v2 .estimator-question-lab::before { background: rgba(255,255,255,.34) !important; }
+.premium-v2 .estimator-library__filters button.is-active,
+.premium-v2 .estimator-library__filters button:hover,
+.premium-v2 .estimator-library__filters button:focus-visible { background: var(--v2-forest) !important; }
+
+/* Portfolio, Guides and Passport — fix the previous mismatched colour layer
+   and give each a legible, purposeful hero. */
+.premium-v2.content-studio { --studio-deep: var(--v2-deep); --studio-forest: var(--v2-forest); --studio-paper: var(--v2-paper); --studio-white: var(--v2-white); --studio-sage: var(--v2-sage); --studio-gold: var(--v2-gold); --studio-ink: var(--v2-ink); }
+.premium-v2.content-studio .page-header,
+.premium-v2.content-studio .hero {
+  min-height: min(720px, calc(100svh - 114px)) !important;
+  margin: 0 !important;
+  border-radius: 0 !important;
+  background: var(--v2-deep) !important;
+}
+.premium-v2.content-studio .page-header > .container,
+.premium-v2.content-studio .hero > .container {
+  max-width: 1380px !important;
+  min-height: min(720px, calc(100svh - 114px)) !important;
+  padding: clamp(4rem, 8vw, 7rem) clamp(1.3rem, 5vw, 5rem) clamp(4.5rem, 7vw, 6.5rem) !important;
+}
+.premium-v2.content-studio .page-header h1,
+.premium-v2.content-studio .hero h1,
+.premium-v2.content-studio .page-header.page-header-editorial h1,
+.premium-v2.content-studio .hero .editorial-h1 {
+  max-width: 11ch !important;
+  color: #fff !important;
+  font-family: "Iowan Old Style", "Cormorant Garamond", Georgia, serif !important;
+  font-size: clamp(4.1rem, 7.4vw, 8.15rem) !important;
+  font-weight: 500 !important;
+  line-height: .84 !important;
+  letter-spacing: -.065em !important;
+}
+.premium-v2.content-studio .page-header p,
+.premium-v2.content-studio .hero .editorial-lede { color: rgba(255,255,255,.84) !important; font-size: clamp(1rem,1.3vw,1.18rem) !important; line-height: 1.65 !important; }
+.premium-v2.content-studio .page-header .editorial-kicker,
+.premium-v2.content-studio .hero .editorial-kicker { color: var(--v2-gold) !important; }
+.premium-v2.content-studio .page-header .page-header-bg::after,
+.premium-v2.content-studio .hero .hero-bg::after {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(7,18,12,.95) 0%, rgba(7,18,12,.72) 47%, rgba(7,18,12,.25) 100%);
+  content: '';
+}
+
+.premium-v2.content-studio--portfolio .page-header-bg { display: none !important; }
+.premium-v2.content-studio--portfolio #portfolio-hero {
+  background:
+    radial-gradient(circle at 80% 22%, rgba(198,160,98,.23), transparent 0 20%),
+    radial-gradient(circle at 80% 80%, rgba(49,88,68,.55), transparent 0 32%),
+    linear-gradient(125deg, #07140e 0%, #112c1f 64%, #173a29 100%) !important;
+}
+.premium-v2.content-studio--portfolio #portfolio-hero::after {
+  position: absolute;
+  top: 13%;
+  right: max(5%, 4rem);
+  width: min(31vw, 27rem);
+  aspect-ratio: 1;
+  border: 1px solid rgba(198,160,98,.38);
+  border-radius: 50%;
+  box-shadow: inset 0 0 0 2.8rem rgba(255,255,255,.018), 0 0 0 1.3rem rgba(255,255,255,.012);
+  content: '';
+}
+.premium-v2.content-studio--portfolio .portfolio-project-launch { border: 1px solid rgba(198,160,98,.32); box-shadow: var(--v2-shadow) !important; }
+.premium-v2.content-studio--portfolio .portfolio-project-launch__image img { opacity: .62 !important; filter: saturate(.78) contrast(1.05) !important; }
+.premium-v2.content-studio--portfolio .portfolio-project-launch__veil { background: linear-gradient(90deg, rgba(8,21,15,.94), rgba(8,21,15,.65) 46%, rgba(8,21,15,.18)) !important; }
+
+/* The unwanted Guides collage is deliberately gone.  This replaces it with
+   a refined, editorial cover rather than substituting another questionable image. */
+.premium-v2.content-studio--guides #guides-hero {
+  position: relative;
+  isolation: isolate;
+  background:
+    radial-gradient(circle at 78% 18%, rgba(198,160,98,.23), transparent 0 19%),
+    radial-gradient(circle at 88% 78%, rgba(55,105,75,.46), transparent 0 31%),
+    linear-gradient(125deg, #07140e 0%, #102b1e 60%, #153624 100%) !important;
+}
+.premium-v2.content-studio--guides #guides-hero .page-header-bg { display: none !important; }
+.premium-v2.content-studio--guides #guides-hero::before {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
+  background-size: 3.8rem 3.8rem;
+  content: '';
+  mask-image: linear-gradient(90deg, transparent 10%, #000 58%, #000 100%);
+}
+.premium-v2.content-studio--guides #guides-hero::after {
+  position: absolute;
+  z-index: 0;
+  right: clamp(2rem, 11vw, 12rem);
+  bottom: 10%;
+  width: min(27vw, 25rem);
+  aspect-ratio: .72;
+  border: 1px solid rgba(198,160,98,.5);
+  box-shadow: inset 0 0 0 .7rem rgba(255,255,255,.026), inset 0 0 0 4.5rem rgba(255,255,255,.014);
+  content: '';
+  transform: rotate(7deg);
+}
+.premium-v2.content-studio--guides #guides-hero > .container { position: relative; z-index: 2; }
+.premium-v2.content-studio--guides .guide-featured-report { border: 1px solid rgba(198,160,98,.33) !important; background: linear-gradient(135deg, #0b1b12, #173a29) !important; }
+
+.premium-v2.content-studio--passport .hero-bg img { display: none !important; }
+.premium-v2.content-studio--passport .hero-bg {
+  background:
+    radial-gradient(circle at 74% 28%, rgba(198,160,98,.25), transparent 0 17%),
+    radial-gradient(circle at 78% 76%, rgba(49,88,68,.76), transparent 0 31%),
+    linear-gradient(126deg, #07140e 0%, #102a1d 64%, #173a29 100%) !important;
+}
+.premium-v2.content-studio--passport .hero .editorial-h1 em { color: var(--v2-gold) !important; }
+.premium-v2.content-studio--passport .passport-plaque-visual {
+  position: relative;
+  display: grid;
+  min-height: 29rem;
+  place-items: end start;
+  overflow: hidden;
+  border: 1px solid rgba(198,160,98,.34);
+  background:
+    linear-gradient(90deg, rgba(8,21,15,.14) 50%, transparent 50%) 0 0 / 1rem 1rem,
+    linear-gradient(rgba(8,21,15,.14) 50%, transparent 50%) 0 0 / 1rem 1rem,
+    linear-gradient(135deg, #f0eee5, #d8e0d2) !important;
+  box-shadow: var(--v2-shadow) !important;
+}
+.premium-v2.content-studio--passport .passport-plaque-visual::before {
+  position: absolute;
+  top: 12%;
+  right: 10%;
+  width: 48%;
+  aspect-ratio: 1;
+  border: .65rem solid #102019;
+  background:
+    conic-gradient(#102019 25%, #f7f4ec 0 50%, #102019 0 75%, #f7f4ec 0) 0 0 / 1.2rem 1.2rem;
+  box-shadow: 0 16px 24px rgba(16,32,25,.18);
+  content: '';
+}
+.premium-v2.content-studio--passport .passport-plaque-visual img { display: none !important; }
+.premium-v2.content-studio--passport .passport-plaque-visual__label { position: relative; z-index: 1; max-width: 15rem; margin: 1.4rem !important; color: var(--v2-ink) !important; font-family: "Iowan Old Style", Georgia, serif !important; font-size: 1.25rem !important; line-height: 1.1 !important; }
+.premium-v2.content-studio--passport .editorial-calc-card:nth-child(2) { background: var(--v2-forest) !important; }
+.premium-v2.content-studio--passport .editorial-calc-card:nth-child(2) .editorial-calc-card__title { color: #fff !important; }
+.premium-v2.content-studio--passport .editorial-calc-card:nth-child(2) .editorial-calc-card__body { color: rgba(255,255,255,.78) !important; }
+
+.premium-v2.content-studio .section-tinted { background: var(--v2-sage) !important; }
+.premium-v2.content-studio .section-dark,
+.premium-v2.content-studio .cta-band-compact { background: var(--v2-deep) !important; }
+.premium-v2.content-studio .section h2,
+.premium-v2.content-studio .section-editorial h2,
+.premium-v2.content-studio .section-editorial-loose h2,
+.premium-v2.content-studio .section h3,
+.premium-v2.content-studio .section-editorial h3,
+.premium-v2.content-studio .section-editorial-loose h3 { color: var(--v2-ink) !important; }
+.premium-v2.content-studio .section p,
+.premium-v2.content-studio .section-editorial p,
+.premium-v2.content-studio .section-editorial-loose p { color: rgba(16,32,25,.76) !important; }
+.premium-v2.content-studio .section-dark h2,
+.premium-v2.content-studio .section-dark h3,
+.premium-v2.content-studio .cta-band-compact h2,
+.premium-v2.content-studio .cta-band-compact h3 { color: #fff !important; }
+.premium-v2.content-studio .section-dark p,
+.premium-v2.content-studio .cta-band-compact p { color: rgba(255,255,255,.77) !important; }
+
+.premium-v2 .btn-primary { border-color: var(--v2-gold) !important; background: var(--v2-gold) !important; color: var(--v2-deep) !important; }
+.premium-v2 .btn-whatsapp,
+.premium-v2 .btn-ghost { border-color: rgba(255,255,255,.45); }
+.premium-v2 :focus-visible { outline: 2px solid var(--v2-gold) !important; outline-offset: 3px !important; }
+
+@media (max-width: 900px) {
+  .premium-v2 .knowledge-command-bar,
+  .premium-v2 .estimator-command-bar,
+  .premium-v2 .content-command-bar { grid-template-columns: minmax(0,1fr) auto !important; }
+  .premium-v2 .knowledge-command-bar__progress,
+  .premium-v2 .estimator-command-bar__progress,
+  .premium-v2 .content-command-bar__center { display: none !important; }
+  .premium-v2 .knowledge-chapter-rail,
+  .premium-v2 .estimator-chapter-rail,
+  .premium-v2 .content-chapter-rail { top: 64px !important; }
+  .premium-v2 .knowledge-hero,
+  .premium-v2 .estimator-hero,
+  .premium-v2.content-studio .page-header,
+  .premium-v2.content-studio .hero { min-height: 43rem !important; }
+  .premium-v2 .knowledge-hero__container,
+  .premium-v2 .estimator-hero__container,
+  .premium-v2.content-studio .page-header > .container,
+  .premium-v2.content-studio .hero > .container { min-height: 43rem !important; }
+  .premium-v2 .knowledge-hero__index,
+  .premium-v2 .estimator-hero__index { max-width: 31rem; }
+}
+
+@media (max-width: 680px) {
+  .premium-v2 .knowledge-command-bar,
+  .premium-v2 .estimator-command-bar,
+  .premium-v2 .content-command-bar { min-height: 58px !important; padding-inline: 1rem !important; }
+  .premium-v2 .knowledge-command-bar__actions button:nth-child(2),
+  .premium-v2 .estimator-command-bar__actions button:nth-child(2),
+  .premium-v2 .content-command-bar__actions button:nth-child(2) { display: none !important; }
+  .premium-v2 .knowledge-chapter-rail,
+  .premium-v2 .estimator-chapter-rail,
+  .premium-v2 .content-chapter-rail { top: 58px !important; min-height: 44px !important; padding-inline: 1rem !important; gap: 1.25rem !important; }
+  .premium-v2 .knowledge-chapter-rail a,
+  .premium-v2 .estimator-chapter-rail a,
+  .premium-v2 .content-chapter-rail a { height: 44px !important; font-size: .56rem !important; }
+  .premium-v2 .knowledge-hero__container,
+  .premium-v2 .estimator-hero__container,
+  .premium-v2.content-studio .page-header > .container,
+  .premium-v2.content-studio .hero > .container { padding: 4.5rem 1.25rem 4rem !important; }
+  .premium-v2 .knowledge-hero h1,
+  .premium-v2 .knowledge-hero.page-header-editorial h1,
+  .premium-v2 .estimator-hero__title,
+  .premium-v2.content-studio .page-header h1,
+  .premium-v2.content-studio .hero h1 { font-size: clamp(3.6rem, 15vw, 5.55rem) !important; }
+  .premium-v2 .knowledge-hero--tips::after,
+  .premium-v2.content-studio--guides #guides-hero::after { right: -3rem; width: 16rem; opacity: .68; }
+  .premium-v2 .knowledge-hero__index,
+  .premium-v2 .estimator-hero__index { display: none !important; }
+  .premium-v2 .knowledge-hero__scroll,
+  .premium-v2 .estimator-hero__scroll { right: 1.25rem !important; bottom: 1.25rem !important; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .premium-v2 *, .premium-v2 *::before, .premium-v2 *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; }
+}
