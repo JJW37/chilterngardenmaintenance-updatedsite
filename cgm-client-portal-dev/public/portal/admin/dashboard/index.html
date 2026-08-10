@@ -74,7 +74,7 @@
           <p class="portal-sub" id="summaryLine">Loading clients…</p>
         </div>
         <div class="portal-meta">
-          <button class="btn-portal btn-gold" id="newClientBtn">+ New client</button>
+          <button class="btn-portal btn-gold" id="newClientBtn" type="button">+ New client</button>
         </div>
       </div>
 
@@ -99,7 +99,7 @@
   <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
     <div class="modal-head">
       <h3 id="modalTitle">New client</h3>
-      <button class="modal-close" id="modalClose" aria-label="Close">&times;</button>
+      <button class="modal-close" id="modalClose" type="button" aria-label="Close">&times;</button>
     </div>
     <div class="modal-body">
       <div id="modalAlert" class="alert" hidden></div>
@@ -120,7 +120,7 @@
         </div>
         <div class="field" style="margin-bottom:1rem;">
           <label for="cf_password" style="display:block;font-size:.85rem;font-weight:600;color:var(--ink-soft);margin-bottom:.4rem;">Initial password <span style="color:var(--rust);" id="cf_password_required">*</span></label>
-          <input type="password" id="cf_password" autocomplete="new-password" minlength="12" style="width:100%;padding:.65rem .9rem;font:inherit;font-size:.95rem;background:var(--paper);border:1px solid var(--border);border-radius:var(--radius);">
+          <input type="password" id="cf_password" autocomplete="off" data-1p-ignore="true" data-lpignore="true" minlength="12" style="width:100%;padding:.65rem .9rem;font:inherit;font-size:.95rem;background:var(--paper);border:1px solid var(--border);border-radius:var(--radius);">
           <small id="cf_password_help" style="display:block;color:var(--muted);font-size:.78rem;margin-top:.25rem;">Set a 12+ character password to activate this household. You will not be able to view it again.</small>
         </div>
         <div class="field" style="margin-bottom:1rem;">
@@ -142,8 +142,8 @@
       </form>
     </div>
     <div class="modal-foot">
-      <button class="btn-portal btn-ghost" id="modalCancel">Cancel</button>
-      <button class="btn-portal btn-primary" id="modalSave">Save client</button>
+      <button class="btn-portal btn-ghost" id="modalCancel" type="button">Cancel</button>
+      <button class="btn-portal btn-primary" id="modalSave" type="button">Save client</button>
     </div>
   </div>
 </div>
@@ -154,7 +154,7 @@
   </div>
 </footer>
 
-<script src="/js/portal-admin.js?v=20260810p2"></script>
+<script src="/js/portal-admin.js?v=20260810p3"></script>
 <script src="/js/main.js?v=20260727a"></script>
 </body>
 </html>
