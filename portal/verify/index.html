@@ -3,53 +3,12 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Signing you in… | Chiltern Garden Maintenance</title>
   <meta name="robots" content="noindex,nofollow">
-  <meta name="theme-color" content="#102019">
-  <link rel="stylesheet" href="/chilterngardenmaintenance-updatedsite/css/styles.css?v=20260808p1">
-  <link rel="stylesheet" href="/chilterngardenmaintenance-updatedsite/css/portal.css?v=20260808p1">
-  <link rel="icon" type="image/png" sizes="32x32" href="/chilterngardenmaintenance-updatedsite/images/favicon-32.png">
+  <title>Opening CGM secure verification</title>
+  <meta http-equiv="refresh" content="0; url=https://chilterngardenmaintenance-updatedsite-portal.pages.dev/portal/verify/">
+  <script>location.replace('https://chilterngardenmaintenance-updatedsite-portal.pages.dev/portal/verify/' + location.search + location.hash);</script>
 </head>
-<body class="login-page">
-<main class="portal-shell">
-  <div class="container">
-    <div class="auth-card" style="text-align:center;">
-      <h1 style="font-size:1.6rem;">Signing you in…</h1>
-      <p class="auth-sub">Verifying your secure login link. You'll be redirected in a moment.</p>
-      <div class="loading-dots" style="justify-content:center;display:flex;">
-        <span></span><span></span><span></span>
-      </div>
-      <p style="margin-top:1.5rem;font-size:0.85rem;color:var(--muted);">
-<<<<<<< Updated upstream
-        If you are not redirected automatically, <a href="/login/">request a new login link</a>.
-=======
-        If you are not redirected automatically, <a href="/chilterngardenmaintenance-updatedsite/login/">request a new login link</a>.
->>>>>>> Stashed changes
-      </p>
-    </div>
-  </div>
-</main>
-
-<script>
-// The actual verification is handled by /api/auth-verify on the server.
-// This page exists purely as a friendly "verifying…" interstitial.
-// The redirect happens server-side via the Location header.
-// If we somehow get here with a token in the URL, do the redirect client-side as a fallback.
-(function() {
-  var params = new URLSearchParams(window.location.search);
-  var token = params.get('token');
-  if (token) {
-    // The /api/auth-verify endpoint should have already redirected before this page loaded.
-    // If we're here, redirect through it explicitly.
-    window.location.replace('/api/auth-verify?token=' + encodeURIComponent(token));
-  } else {
-<<<<<<< Updated upstream
-    window.location.replace('/login/');
-=======
-    window.location.replace('/chilterngardenmaintenance-updatedsite/login/');
->>>>>>> Stashed changes
-  }
-})();
-</script>
+<body>
+  <p>Opening secure verification…</p>
 </body>
 </html>
