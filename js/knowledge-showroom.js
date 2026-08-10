@@ -9,7 +9,11 @@
   ready(function () {
     var root = document.querySelector('.knowledge-showroom');
     if (!root) return;
-    root.classList.add('knowledge-showroom--enhanced');
+    // These catalogue pages must remain readable even where an
+    // IntersectionObserver is unsupported or never returns a callback.
+    // The animation is optional; the content is not.
+    var canObserve = typeof window.IntersectionObserver === 'function';
+    if (canObserve) root.classList.add('knowledge-showroom--enhanced');
 
     var routeButtons = Array.prototype.slice.call(root.querySelectorAll('[data-knowledge-route]'));
     var routeNumber = root.querySelector('[data-knowledge-route-number]');
@@ -59,21 +63,6 @@
         var direction = event.key === 'ArrowDown' || event.key === 'ArrowRight' ? 1 : event.key === 'ArrowUp' || event.key === 'ArrowLeft' ? -1 : 0;
         if (!direction) return;
         event.preventDefault();
-
-
-/* Keep public library content visible if scroll-reveal callbacks do not arrive. */
-(function () {
-  function showKnowledgeShowroom() {
-    var root = document.querySelector('.knowledge-showroom');
-    if (!root) return;
-    window.setTimeout(function () {
-      root.classList.remove('knowledge-showroom--enhanced');
-      root.querySelectorAll('[data-knowledge-reveal]').forEach(function (node) { node.classList.add('is-visible'); });
-    }, 950);
-  }
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', showKnowledgeShowroom, { once: true });
-  else showKnowledgeShowroom();
-}());
         var next = (index + direction + routeButtons.length) % routeButtons.length;
         routeButtons[next].focus();
         setRoute(routeButtons[next]);
@@ -120,7 +109,7 @@
       });
     }
 
-    if ('IntersectionObserver' in window) {
+    if (canObserve) {
       var chapterObserver = new IntersectionObserver(function (entries) {
         entries.forEach(function (entry) {
           if (entry.isIntersecting) activateChapter(entry.target.getAttribute('data-knowledge-chapter'));
@@ -136,6 +125,15 @@
         });
       }, { rootMargin: '0px 0px -9% 0px', threshold: .08 });
       root.querySelectorAll('[data-knowledge-reveal]').forEach(function (element) { revealObserver.observe(element); });
+
+      // A browser should never be able to hide the library merely because a
+      // scroll observer is delayed.  Keep the entrance animation where it
+      // works, then reveal any remaining content as a safe fallback.
+      window.setTimeout(function () {
+        root.querySelectorAll('[data-knowledge-reveal]:not(.is-visible)').forEach(function (element) {
+          element.classList.add('is-visible');
+        });
+      }, 900);
     } else {
       root.querySelectorAll('[data-knowledge-reveal]').forEach(function (element) { element.classList.add('is-visible'); });
     }
