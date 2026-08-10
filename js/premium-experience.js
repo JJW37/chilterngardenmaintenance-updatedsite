@@ -60,39 +60,6 @@
     hero.appendChild(badge);
   }
 
-
-/* Keep the long public catalogues readable when reveal observers are unavailable. */
-(function () {
-  'use strict';
-  function restoreCatalogueVisibility() {
-    var path = window.location.pathname;
-    if (path.indexOf('/plants/') === -1 && path.indexOf('/tips/') === -1) return;
-    document.documentElement.classList.remove('cgm-premium-ready');
-    document.querySelectorAll('[data-cgm-reveal]').forEach(function (node) {
-      node.classList.add('is-visible');
-    });
-  }
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', restoreCatalogueVisibility, { once: true });
-  } else {
-    restoreCatalogueVisibility();
-  }
-}());
-
-/* Final fallback: animation must never keep catalogue content hidden. */
-(function () {
-  function showCatalogueContent() {
-    var path = window.location.pathname;
-    if (path.indexOf('/plants/') === -1 && path.indexOf('/tips/') === -1) return;
-    window.setTimeout(function () {
-      document.documentElement.classList.remove('cgm-premium-ready');
-      document.querySelectorAll('[data-cgm-reveal]').forEach(function (node) { node.classList.add('is-visible'); });
-    }, 900);
-  }
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', showCatalogueContent, { once: true });
-  else showCatalogueContent();
-}());
-
   function setupHeroDepth() {
     if (reduceMotion) return;
     var hero = document.querySelector(heroSelector);
@@ -121,6 +88,12 @@
   }
 
   function setupReveals() {
+    // The Plant Library and Gardening Knowledge pages have their own, smaller
+    // showroom controller.  Applying this generic reveal layer to every card
+    // on those two long catalogue pages can leave their content transparent
+    // when an observer callback is delayed or unavailable.
+    if (routeKey === 'plant' || routeKey === 'knowledge') return;
+
     var selectors = [
       'main > .section',
       'main > section',
