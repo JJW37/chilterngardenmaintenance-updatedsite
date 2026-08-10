@@ -12,6 +12,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap">
   <link rel="stylesheet" href="/chilterngardenmaintenance-updatedsite/css/editorial.css?v=20260807a">
+  <link rel="stylesheet" href="/chilterngardenmaintenance-updatedsite/css/content-studio.css?v=20260810a">
   <link rel="icon" type="image/png" sizes="32x32" href="/chilterngardenmaintenance-updatedsite/images/favicon-32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/chilterngardenmaintenance-updatedsite/images/favicon-16.png">
   <link rel="apple-touch-icon" href="/chilterngardenmaintenance-updatedsite/images/cgm-logo-square.png">
@@ -110,10 +111,27 @@
   </nav>
 </header>
 
-<main id="main-content">
+<main id="main-content" class="content-studio content-studio--passport">
+  <div class="content-command-bar" aria-label="Garden Passport controls">
+    <a class="content-command-bar__brand" href="/chilterngardenmaintenance-updatedsite/"><b>CG</b><span>Garden Passport</span></a>
+    <div class="content-command-bar__center" aria-live="polite"><span data-studio-progress-label>01 / 06</span><span class="content-command-bar__progress"><i data-studio-progress-bar></i></span><span data-studio-progress-title>Garden Passport</span></div>
+    <div class="content-command-bar__actions">
+      <button class="content-command-bar__button" type="button" data-studio-action="passport-how">How it works</button>
+      <button class="content-command-bar__button" type="button" data-studio-action="pricing">Options</button>
+      <button class="content-command-bar__button" type="button" data-studio-action="passport-quote">Get a quote</button>
+    </div>
+  </div>
+  <nav class="content-chapter-rail" aria-label="Garden Passport sections">
+    <a href="#passport-hero" data-studio-chapter-link="hero">Garden Passport</a>
+    <a href="#passport-how" data-studio-chapter-link="how">How a scan works</a>
+    <a href="#passport-record" data-studio-chapter-link="record">What is recorded</a>
+    <a href="#pricing" data-studio-chapter-link="pricing">Choose your route</a>
+    <a href="#passport-questions" data-studio-chapter-link="questions">Questions</a>
+    <a href="#passport-quote" data-studio-chapter-link="quote">Start a quote</a>
+  </nav>
 
   <!-- HERO -->
-  <section class="hero" style="min-height:62vh;display:flex;align-items:flex-end;padding:0;">
+  <section class="hero" id="passport-hero" data-studio-chapter="hero" style="min-height:62vh;display:flex;align-items:flex-end;padding:0;">
     <div class="hero-bg" style="background:#102019;"><img src="/chilterngardenmaintenance-updatedsite/images/project/full-width-1-garden-makeover.webp" alt="Beautifully maintained Chiltern garden" style="opacity:0.55;" loading="eager"></div>
     <div class="container" style="position:relative;z-index:2;width:100%;padding:5rem 1.5rem 4rem;">
       <div style="max-width:46rem;">
@@ -131,7 +149,7 @@
   </section>
 
   <!-- WHAT IT IS -->
-  <section class="section-editorial">
+  <section class="section-editorial" id="passport-how" data-studio-chapter="how">
     <div class="container">
       <div class="editorial-intro">
         <div class="editorial-intro__kicker-block">
@@ -143,7 +161,7 @@
         </div>
       </div>
 
-      <div class="editorial-feature" style="margin-top:3rem;">
+      <div class="editorial-feature" data-studio-reveal style="margin-top:3rem;">
         <div class="editorial-feature__media">
           <div class="passport-plaque-visual">
             <img src="/chilterngardenmaintenance-updatedsite/images/project/qr-plaque-lavender.jpeg" alt="CGM lavender QR plaque examples with plant care information" loading="lazy" decoding="async">
@@ -163,7 +181,7 @@
   </section>
 
   <!-- WHAT YOU GET -->
-  <section class="section-editorial-loose section-tinted">
+  <section class="section-editorial-loose section-tinted" id="passport-record" data-studio-chapter="record">
     <div class="container">
       <div class="editorial-intro" style="margin-bottom:3rem;">
         <div class="editorial-intro__kicker-block">
@@ -173,7 +191,7 @@
           <h2 class="editorial-h2">Every tag links to a living plant profile.</h2>
         </div>
       </div>
-      <div class="editorial-card-grid">
+      <div class="editorial-card-grid" data-studio-reveal>
         <div class="editorial-card-grid__cell">
           <h3>Care notes</h3>
           <p>Light, water, soil, feeding and pruning, all tailored to your garden's conditions, not generic.</p>
@@ -203,7 +221,7 @@
   </section>
 
   <!-- PRICING -->
-  <section class="section-editorial-loose" id="pricing">
+  <section class="section-editorial-loose" id="pricing" data-studio-chapter="pricing">
     <div class="container">
       <div class="editorial-intro" style="margin-bottom:3rem;">
         <div class="editorial-intro__kicker-block">
@@ -214,7 +232,7 @@
           <p class="editorial-lede">One-off for a small garden, or annual subscription for gardens we maintain. Either way, tags stay live forever, even if you stop subscribing.</p>
         </div>
       </div>
-      <div class="editorial-calc-grid">
+      <div class="editorial-calc-grid" data-studio-reveal>
         <div class="editorial-calc-card">
           <div class="editorial-calc-card__num">Option 1 &middot; One-off</div>
           <h3 class="editorial-calc-card__title">Tag installation visit</h3>
@@ -268,7 +286,7 @@
   </section>
 
   <!-- FAQ -->
-  <section class="section-editorial section-tinted">
+  <section class="section-editorial section-tinted" id="passport-questions" data-studio-chapter="questions">
     <div class="container">
       <div class="editorial-intro" style="margin-bottom:2.5rem;">
         <div class="editorial-intro__kicker-block">
@@ -304,7 +322,7 @@
   </section>
 
   <!-- CTA -->
-  <section class="section-dark" style="padding:5rem 0;">
+  <section class="section-dark" id="passport-quote" data-studio-chapter="quote" style="padding:5rem 0;">
     <div class="container">
       <div style="max-width:42rem;">
         <span class="editorial-kicker" style="color:var(--gold);">Ready to tag your garden?</span>
@@ -398,5 +416,6 @@
   <script src="/chilterngardenmaintenance-updatedsite/js/custom-scrollbar.js?v=20260719b"></script>
   <script src="/chilterngardenmaintenance-updatedsite/js/predictive-search.js?v=20260719b"></script>
   <script src="/chilterngardenmaintenance-updatedsite/js/mobile-dock.js?v=20260719b"></script>
+  <script src="/chilterngardenmaintenance-updatedsite/js/content-studio.js?v=20260810a"></script>
 </body>
 </html>
