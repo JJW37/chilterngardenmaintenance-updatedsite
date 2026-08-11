@@ -47,12 +47,10 @@ export async function onRequestPost({ request, env }) {
 
     const { cookieValue, expiresAt } = await createSession(env.DB, env, { isAdmin: true });
 
-<<<<<<< Updated upstream
     return json({ ok: true, redirect: '/portal/admin/dashboard/' }, 200, {
-=======
-    return json({ ok: true, redirect: '/chilterngardenmaintenance-updatedsite/portal/admin/dashboard/' }, 200, {
->>>>>>> Stashed changes
-      'Set-Cookie': buildSetCookieHeader(cookieValue, expiresAt),
+      'Set-Cookie': buildSetCookieHeader(cookieValue, expiresAt, {
+        secure: new URL(request.url).protocol === 'https:',
+      }),
     });
   } catch (err) {
     console.error('[auth-admin]', err);

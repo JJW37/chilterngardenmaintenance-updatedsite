@@ -16,7 +16,15 @@ export async function onRequestPost({ request, env }) {
     if (session) {
       await destroySession(env.DB, session.session_id);
     }
-    return json({ ok: true }, 200, { 'Set-Cookie': buildClearCookieHeader() });
+    return json(
+      { ok: true },
+      200,
+      {
+        'Set-Cookie': buildClearCookieHeader({
+          secure: new URL(request.url).protocol === 'https:',
+        }),
+      },
+    );
   } catch (err) {
     console.error('[auth-logout]', err);
     return json({ ok: false, error: 'logout_failed' }, 500);

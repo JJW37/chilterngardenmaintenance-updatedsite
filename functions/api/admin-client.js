@@ -9,6 +9,7 @@
  *     serviceArea?:  string
  *     notesInternal?: string
  *     isActive?:     boolean
+ *     newPassword?:  string (optional password reset)
  *   }
  *
  * Updates an existing client. Cannot change username (it's used as the
@@ -18,7 +19,7 @@
  */
 
 import { json, handlePreflight, run, first } from '../_lib/db.js';
-import { getSessionFromRequest } from '../_lib/auth.js';
+import { getSessionFromRequest, hashPassword, passwordError } from '../_lib/auth.js';
 
 export async function onRequestPatch({ request, env }) {
   const preflight = handlePreflight(request);
@@ -74,6 +75,15 @@ export async function onRequestPatch({ request, env }) {
       fields.push('is_active = ?');
       params.push(body.isActive ? 1 : 0);
     }
+    let newPasswordHash = null;
+    if (body.newPassword !== undefined && body.newPassword.toString().length > 0) {
+      const policyError = passwordError(body.newPassword.toString());
+      if (policyError) return json({ ok: false, error: policyError }, 400);
+      newPasswordHash = await hashPassword(body.newPassword.toString());
+      fields.push('password_hash = ?');
+      params.push(newPasswordHash);
+      fields.push("password_updated_at = datetime('now')");
+    }
 
     if (fields.length === 0) {
       return json({ ok: false, error: 'No fields to update.' }, 400);
@@ -83,6 +93,10 @@ export async function onRequestPatch({ request, env }) {
     params.push(id);
 
     await run(env.DB, `UPDATE clients SET ${fields.join(', ')} WHERE id = ?`, params);
+    if (newPasswordHash) {
+      // Password reset invalidates every pre-existing client browser session.
+      await run(env.DB, 'DELETE FROM sessions WHERE client_id = ?', [id]);
+    }
 
     return json({ ok: true });
   } catch (err) {

@@ -73,6 +73,18 @@ export async function onRequestGet({ request, env }) {
       [clientId],
     );
 
+    const planItems = await all(
+      db,
+      `SELECT id, season, title, detail, status, priority, target_date, created_at, updated_at
+       FROM garden_plan_items
+       WHERE client_id = ?
+       ORDER BY
+         CASE status WHEN 'in_progress' THEN 0 WHEN 'planned' THEN 1 ELSE 2 END,
+         COALESCE(target_date, '9999-12-31') ASC,
+         id DESC`,
+      [clientId],
+    );
+
     // Images (newest first)
     const images = await all(
       db,
@@ -122,8 +134,19 @@ export async function onRequestGet({ request, env }) {
             title: latestVisit.title,
             body: latestVisit.body,
             createdAt: latestVisit.created_at,
-          }
+        }
         : null,
+      planItems: planItems.map((item) => ({
+        id: item.id,
+        season: item.season,
+        title: item.title,
+        detail: item.detail,
+        status: item.status,
+        priority: item.priority,
+        targetDate: item.target_date,
+        createdAt: item.created_at,
+        updatedAt: item.updated_at,
+      })),
       notes: notes.map((n) => ({
         id: n.id,
         authorType: n.author_type,

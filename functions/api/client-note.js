@@ -67,6 +67,13 @@ export async function onRequestPost({ request, env }) {
       authorName = client?.household_name || 'Client';
     }
 
+    // Check the target immediately before writing. This stops an admin or a
+    // stale client session posting to a household that has just been closed.
+    const targetClient = await first(env.DB, `SELECT id, is_active FROM clients WHERE id = ?`, [clientId]);
+    if (!targetClient || targetClient.is_active !== 1) {
+      return json({ ok: false, error: 'client_not_found' }, 404);
+    }
+
     const result = await run(
       env.DB,
       `INSERT INTO notes (client_id, author_type, author_name, note_type, visit_date, title, body)

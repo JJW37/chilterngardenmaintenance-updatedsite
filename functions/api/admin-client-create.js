@@ -8,6 +8,7 @@
  *     addressLine?:   string
  *     serviceArea?:   string
  *     notesInternal?: string  (admin-only notes, NOT visible to client)
+ *     initialPassword: string, required for password activation
  *   }
  *
  * Creates a new client row. Returns the new client's id.
@@ -16,7 +17,7 @@
  */
 
 import { json, handlePreflight, run, first } from '../_lib/db.js';
-import { getSessionFromRequest } from '../_lib/auth.js';
+import { getSessionFromRequest, hashPassword, passwordError } from '../_lib/auth.js';
 
 export async function onRequestPost({ request, env }) {
   const preflight = handlePreflight(request);
@@ -35,6 +36,8 @@ export async function onRequestPost({ request, env }) {
     const addressLine = (body.addressLine || '').toString().trim() || null;
     const serviceArea = (body.serviceArea || '').toString().trim() || null;
     const notesInternal = (body.notesInternal || '').toString().trim() || null;
+    const initialPassword = (body.initialPassword || '').toString();
+    const isActive = body.isActive !== false;
 
     if (!username || !householdName || !email) {
       return json({ ok: false, error: 'Username, household name and email are required.' }, 400);
@@ -48,6 +51,10 @@ export async function onRequestPost({ request, env }) {
     if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
       return json({ ok: false, error: 'Email address is not valid.' }, 400);
     }
+    const passwordPolicyError = passwordError(initialPassword);
+    if (passwordPolicyError) {
+      return json({ ok: false, error: passwordPolicyError }, 400);
+    }
 
     // Uniqueness check
     const existing = await first(env.DB, `SELECT id FROM clients WHERE LOWER(username) = ? OR LOWER(email) = ?`, [
@@ -58,11 +65,14 @@ export async function onRequestPost({ request, env }) {
       return json({ ok: false, error: 'A client with that username or email already exists.' }, 409);
     }
 
+    const passwordHash = await hashPassword(initialPassword);
     const result = await run(
       env.DB,
-      `INSERT INTO clients (username, household_name, email, address_line, service_area, notes_internal)
-       VALUES (?, ?, ?, ?, ?, ?)`,
-      [username, householdName, email, addressLine, serviceArea, notesInternal],
+      `INSERT INTO clients (
+          username, household_name, email, password_hash, password_updated_at,
+          address_line, service_area, notes_internal, is_active
+       ) VALUES (?, ?, ?, ?, datetime('now'), ?, ?, ?, ?)`,
+      [username, householdName, email, passwordHash, addressLine, serviceArea, notesInternal, isActive ? 1 : 0],
     );
 
     const newId = result.meta?.last_row_id;
@@ -77,6 +87,7 @@ export async function onRequestPost({ request, env }) {
         addressLine,
         serviceArea,
         notesInternal,
+        isActive,
       },
     });
   } catch (err) {
