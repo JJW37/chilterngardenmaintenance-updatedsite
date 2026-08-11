@@ -7,7 +7,7 @@
   <meta name="robots" content="noindex,nofollow">
   <meta name="theme-color" content="#102019">
   <link rel="stylesheet" href="/css/styles.css?v=20260808p1">
-  <link rel="stylesheet" href="/css/portal.css?v=20260811invoices1">
+  <link rel="stylesheet" href="/css/portal.css?v=20260811production2">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap">
@@ -23,7 +23,7 @@
     <div id="loadingState" class="portal-loading"><div class="loading-dots"><span></span><span></span><span></span></div><p>Loading invoice management…</p></div>
     <div id="notAuthState" class="portal-empty-screen" hidden><h1>Admin access required</h1><p>Sign in as an administrator to manage invoices.</p><a href="/portal/admin/" class="btn-portal btn-primary">Go to admin login</a></div>
     <div id="invoiceApp" hidden>
-      <div class="portal-header invoice-page-header"><div><span class="portal-badge admin">Accounts</span><h1>Invoices &amp; payments</h1><p class="portal-sub">Create client invoices, attach your PDF, and keep an accurate payment record.</p></div><div class="invoice-header-actions"><button id="bankDetailsBtn" class="btn-portal btn-ghost" type="button">Payment details</button><button id="newInvoiceBtn" class="btn-portal btn-gold" type="button">+ New invoice</button></div></div>
+      <div class="portal-header invoice-page-header"><div><span class="portal-badge admin">Accounts</span><h1>Invoices &amp; payments</h1><p class="portal-sub">Create itemised invoices, print or save the finished CGM document as a PDF, and keep an accurate payment record.</p></div><div class="invoice-header-actions"><button id="bankDetailsBtn" class="btn-portal btn-ghost" type="button">Payment details</button><button id="newInvoiceBtn" class="btn-portal btn-gold" type="button">+ New invoice</button></div></div>
       <div id="pageAlert" class="alert" hidden></div>
       <div class="invoice-toolbar"><label>Client<select id="clientFilter"><option value="">All clients</option></select></label><label>Status<select id="statusFilter"><option value="">All statuses</option><option value="sent">Sent</option><option value="partial">Part paid</option><option value="paid">Paid</option><option value="overdue">Overdue</option><option value="cancelled">Cancelled</option></select></label><button id="clearInvoiceFilters" class="btn-portal btn-ghost" type="button">Clear filters</button></div>
       <section class="portal-section invoice-list-section"><div class="section-heading-row"><div><h2>Invoice register</h2><p id="invoiceSummary">Loading…</p></div></div><div id="invoiceList"></div></section>
@@ -32,6 +32,7 @@
 
   <div id="invoiceModal" class="modal-backdrop" hidden><div class="modal invoice-modal" role="dialog" aria-modal="true" aria-labelledby="invoiceModalTitle"><div class="modal-head"><h3 id="invoiceModalTitle">New invoice</h3><button class="modal-close" type="button" data-close-modal aria-label="Close">×</button></div><div id="invoiceModalBody" class="modal-body"></div><div id="invoiceModalFoot" class="modal-foot"></div></div></div>
   <footer class="footer" style="background:var(--forest-dark);color:#c5d1be;padding:1.5rem 0;margin-top:3rem;"><div class="container" style="text-align:center;font-size:.82rem;">&copy; <span id="year"></span> Chiltern Garden Maintenance · Private accounts area</div></footer>
-  <script src="/js/portal-invoices-admin.js?v=20260811invoices1"></script>
+  <script src="/js/portal-shared.js?v=20260811production2"></script>
+  <script src="/js/portal-invoices-admin.js?v=20260811production2"></script>
 </body>
 </html>
