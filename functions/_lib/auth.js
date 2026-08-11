@@ -15,11 +15,21 @@
  *                          Store as a SHA-256 hash for safety - see README.
  */
 
-import { all, first } from './db.js';
+import { first } from './db.js';
 
 export const COOKIE_NAME = 'cgm_portal_session';
 export const SESSION_TTL_HOURS = 24 * 7; // 7 days
 export const MAGIC_LINK_TTL_MINUTES = 15;
+export const PASSWORD_MIN_LENGTH = 12;
+/*
+ * Pages Functions have a deliberately short CPU budget. The former 600,000
+ * rounds take roughly 80–100 ms in the Worker-compatible runtime, causing
+ * client creation to fail with a generic server_error on standard Pages
+ * deployments. This remains a salted PBKDF2-SHA-256 hash, while keeping the
+ * operation inside the budget available to this private, low-volume portal.
+ */
+export const PBKDF2_ITERATIONS = 60000;
+const PASSWORD_PREFIX = 'pbkdf2_sha256';
 
 /** Generate a cryptographically strong hex token. */
 export function randomToken(byteLength = 32) {
@@ -34,6 +44,82 @@ export async function sha256(str) {
   return Array.from(new Uint8Array(buf)).map((b) => b.toString(16).padStart(2, '0')).join('');
 }
 
+function bytesToHex(bytes) {
+  return Array.from(bytes).map((b) => b.toString(16).padStart(2, '0')).join('');
+}
+
+function hexToBytes(value) {
+  if (!/^[a-f0-9]+$/i.test(value) || value.length % 2 !== 0) return null;
+  const bytes = new Uint8Array(value.length / 2);
+  for (let i = 0; i < bytes.length; i += 1) {
+    bytes[i] = Number.parseInt(value.slice(i * 2, i * 2 + 2), 16);
+  }
+  return bytes;
+}
+
+/**
+ * Password policy deliberately favours a memorable passphrase over obscure
+ * complexity rules. It is enforced on the server for both initial activation
+ * and later password changes.
+ */
+export function passwordError(password) {
+  if (typeof password !== 'string' || password.length < PASSWORD_MIN_LENGTH) {
+    return `Password must be at least ${PASSWORD_MIN_LENGTH} characters.`;
+  }
+  if (password.length > 256) return 'Password is too long.';
+  return null;
+}
+
+async function derivePasswordHash(password, salt, iterations) {
+  const passwordKey = await crypto.subtle.importKey(
+    'raw',
+    new TextEncoder().encode(password),
+    'PBKDF2',
+    false,
+    ['deriveBits'],
+  );
+  const derived = await crypto.subtle.deriveBits(
+    {
+      name: 'PBKDF2',
+      salt,
+      iterations,
+      hash: 'SHA-256',
+    },
+    passwordKey,
+    256,
+  );
+  return new Uint8Array(derived);
+}
+
+/**
+ * Produce a portable D1-safe password hash. The value is deliberately
+ * self-describing so iteration upgrades can be made without guessing how an
+ * existing profile was created: pbkdf2_sha256$iterations$hexSalt$hexHash.
+ */
+export async function hashPassword(password, salt = null) {
+  const error = passwordError(password);
+  if (error) throw new Error(error);
+  const saltBytes = salt || crypto.getRandomValues(new Uint8Array(16));
+  const hash = await derivePasswordHash(password, saltBytes, PBKDF2_ITERATIONS);
+  return `${PASSWORD_PREFIX}$${PBKDF2_ITERATIONS}$${bytesToHex(saltBytes)}$${bytesToHex(hash)}`;
+}
+
+/** Verify a PBKDF2 password hash without ever returning a password. */
+export async function verifyPassword(password, storedHash) {
+  if (typeof password !== 'string' || typeof storedHash !== 'string') return false;
+  const parts = storedHash.split('$');
+  if (parts.length !== 4 || parts[0] !== PASSWORD_PREFIX) return false;
+  const iterations = Number.parseInt(parts[1], 10);
+  const salt = hexToBytes(parts[2]);
+  const expected = hexToBytes(parts[3]);
+  if (!salt || !expected || expected.length !== 32 || !Number.isInteger(iterations)) return false;
+  // Reject malformed database values rather than allowing a poisoned value to
+  // force unexpectedly expensive work during a login request.
+  if (iterations < 50000 || iterations > 1000000) return false;
+  const actual = await derivePasswordHash(password, salt, iterations);
+  return safeEqual(bytesToHex(actual), bytesToHex(expected));
+}
+
 /** HMAC-SHA-256 hex digest. */
 export async function hmac(secret, message) {
   const key = await crypto.subtle.importKey(
@@ -45,6 +131,14 @@ export async function hmac(secret, message) {
   );
   const sig = await crypto.subtle.sign('HMAC', key, new TextEncoder().encode(message));
   return Array.from(new Uint8Array(sig)).map((b) => b.toString(16).padStart(2, '0')).join('');
+}
+
+/** Compare strings without early exit. Keeps cookie-signature checks uniform. */
+function safeEqual(a, b) {
+  if (typeof a !== 'string' || typeof b !== 'string' || a.length !== b.length) return false;
+  let diff = 0;
+  for (let i = 0; i < a.length; i += 1) diff |= a.charCodeAt(i) ^ b.charCodeAt(i);
+  return diff === 0;
 }
 
 /**
@@ -70,23 +164,34 @@ export async function createSession(db, env, { clientId = null, isAdmin = false 
 
 /** Parse and verify a cookie value, returning the session row if valid. */
 export async function verifySession(db, env, cookieValue) {
-  if (!cookieValue || typeof cookieValue !== 'string') return null;
+  if (!db || !env.SESSION_SECRET || !cookieValue || typeof cookieValue !== 'string') return null;
   const dot = cookieValue.lastIndexOf('.');
   if (dot < 1) return null;
   const sessionId = cookieValue.slice(0, dot);
   const sig = cookieValue.slice(dot + 1);
 
   const expectedSig = await hmac(env.SESSION_SECRET, sessionId);
-  if (sig !== expectedSig) return null;
+  if (!safeEqual(sig, expectedSig)) return null;
 
   const row = await first(
     db,
     `SELECT session_id, client_id, is_admin, expires_at
      FROM sessions
-     WHERE session_id = ? AND expires_at > datetime('now')`,
-    [sessionId],
+     WHERE session_id = ? AND expires_at > ?`,
+    [sessionId, new Date().toISOString()],
   );
-  return row || null;
+  if (!row) return null;
+
+  // A deactivated household must lose access immediately, even if an older
+  // browser still has a valid seven-day session cookie.
+  if (row.client_id) {
+    const client = await first(db, `SELECT is_active FROM clients WHERE id = ?`, [row.client_id]);
+    if (!client || client.is_active !== 1) {
+      await destroySession(db, sessionId);
+      return null;
+    }
+  }
+  return row;
 }
 
 /** Delete a session from D1 (logout). */
@@ -107,7 +212,7 @@ export async function getSessionFromRequest(db, env, request) {
 }
 
 /** Build a Set-Cookie header value for the session cookie. */
-export function buildSetCookieHeader(cookieValue, expiresAt) {
+export function buildSetCookieHeader(cookieValue, expiresAt, { secure = true } = {}) {
   const expires = new Date(expiresAt).toUTCString();
   return [
     `${COOKIE_NAME}=${cookieValue}`,
@@ -115,21 +220,21 @@ export function buildSetCookieHeader(cookieValue, expiresAt) {
     `Expires=${expires}`,
     `Max-Age=${SESSION_TTL_HOURS * 3600}`,
     `HttpOnly`,
-    `Secure`,
-    `SameSite=Lax`,
+    ...(secure ? [`Secure`] : []),
+    `SameSite=Strict`,
   ].join('; ');
 }
 
 /** Build a Set-Cookie header that clears the session cookie. */
-export function buildClearCookieHeader() {
+export function buildClearCookieHeader({ secure = true } = {}) {
   return [
     `${COOKIE_NAME}=`,
     `Path=/`,
     `Expires=Thu, 01 Jan 1970 00:00:00 GMT`,
     `Max-Age=0`,
     `HttpOnly`,
-    `Secure`,
-    `SameSite=Lax`,
+    ...(secure ? [`Secure`] : []),
+    `SameSite=Strict`,
   ].join('; ');
 }
 
@@ -143,9 +248,14 @@ export async function verifyAdminCredentials(env, username, password) {
   if (username !== env.MASTER_ADMIN_USER) return false;
   const stored = env.MASTER_ADMIN_PASS;
   if (!stored) return false;
+  if (stored.startsWith(`${PASSWORD_PREFIX}$`)) {
+    return verifyPassword(password, stored);
+  }
+  // Legacy support is kept only so an existing local development admin can
+  // still sign in once and replace the secret. New credentials must use PBKDF2.
   if (stored.startsWith('sha256:')) {
     const hash = await sha256(password);
-    return hash === stored.slice(7);
+    return safeEqual(hash, stored.slice(7));
   }
-  return password === stored;
+  return safeEqual(password, stored);
 }

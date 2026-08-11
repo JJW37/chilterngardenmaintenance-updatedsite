@@ -43,16 +43,11 @@ export async function first(db, sql, params = []) {
 }
 
 /**
- * Standard CORS headers for the portal API.
- * Locked to same-origin (Cloudflare Pages serves the HTML on the same
- * domain as the /api/* functions, so same-origin works in production).
+ * The portal is deliberately same-origin only. Do not add permissive CORS
+ * headers here: browser requests carry an authenticated HttpOnly cookie and
+ * must only be made by pages served from this Cloudflare Pages project.
  */
-export const corsHeaders = {
-  'Access-Control-Allow-Origin': '*',
-  'Access-Control-Allow-Methods': 'GET, POST, DELETE, OPTIONS',
-  'Access-Control-Allow-Headers': 'Content-Type',
-  'Access-Control-Allow-Credentials': 'true',
-};
+export const corsHeaders = {};
 
 /** Standard JSON response helper. */
 export function json(data, status = 200, extraHeaders = {}) {
@@ -66,10 +61,14 @@ export function json(data, status = 200, extraHeaders = {}) {
   });
 }
 
-/** Handle CORS preflight. */
+/**
+ * Same-origin browser requests do not preflight. Returning a plain 204 here
+ * keeps unexpected OPTIONS requests harmless without granting cross-origin
+ * access.
+ */
 export function handlePreflight(request) {
   if (request.method === 'OPTIONS') {
-    return new Response(null, { headers: corsHeaders });
+    return new Response(null, { status: 204 });
   }
   return null;
 }

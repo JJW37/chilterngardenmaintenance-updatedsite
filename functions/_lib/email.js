@@ -23,6 +23,7 @@
 export async function sendMagicLinkEmail({ to, householdName, token, verifyPath }, env) {
   const baseUrl = (env.SITE_BASE_URL || '').replace(/\/+$/, '');
   const link = `${baseUrl}${verifyPath}?token=${token}`;
+  const safeHouseholdName = escapeHtml(householdName || '');
 
   const subject = `Your secure login link – Chiltern Garden Maintenance`;
   const text = `Hello${householdName ? ` from ${householdName}` : ''},
@@ -48,7 +49,7 @@ https://www.chilterngardenmaintenance.com`;
     </div>
     <div style="background:#ffffff;padding:32px 28px;border:1px solid #ddd6c4;border-top:none;">
       <h1 style="font-family:'Cormorant Garamond',Georgia,serif;font-size:26px;color:#1e3a2a;margin:0 0 16px;font-weight:600;">Your secure login link</h1>
-      <p style="font-size:16px;line-height:1.6;color:#2d3528;margin:0 0 16px;">Hello${householdName ? ` from <strong>${householdName}</strong>` : ''},</p>
+      <p style="font-size:16px;line-height:1.6;color:#2d3528;margin:0 0 16px;">Hello${safeHouseholdName ? ` from <strong>${safeHouseholdName}</strong>` : ''},</p>
       <p style="font-size:16px;line-height:1.6;color:#2d3528;margin:0 0 24px;">You requested a secure login link to your private client portal. Click the button below to sign in. The link expires in 15 minutes and can only be used once.</p>
       <p style="margin:0 0 24px;text-align:center;">
         <a href="${link}" style="display:inline-block;background:#2d5a3d;color:#ffffff;text-decoration:none;font-weight:600;font-size:16px;padding:14px 32px;border-radius:8px;border:2px solid #2d5a3d;">Sign in to my portal</a>
@@ -64,6 +65,12 @@ https://www.chilterngardenmaintenance.com`;
   </div>
 </body></html>`;
 
+  // Local testing must never send a message to a real address. The caller may
+  // expose this link only when PORTAL_ENVIRONMENT is exactly "local".
+  if (env.PORTAL_ENVIRONMENT === 'local' && env.PORTAL_DEV_CAPTURE_EMAILS === 'true') {
+    return { ok: true, delivery: 'captured', magicLink: link };
+  }
+
   return sendEmail(env, {
     to,
     subject,
@@ -75,11 +82,10 @@ https://www.chilterngardenmaintenance.com`;
 /** Send a "new note posted" notification to a client. */
 export async function sendNewNoteEmail({ to, householdName, authorName, notePreview }, env) {
   const baseUrl = (env.SITE_BASE_URL || '').replace(/\/+$/, '');
-<<<<<<< Updated upstream
   const link = `${baseUrl}/login/`;
-=======
-  const link = `${baseUrl}/chilterngardenmaintenance-updatedsite/login/`;
->>>>>>> Stashed changes
+  const safeHouseholdName = escapeHtml(householdName || '');
+  const safeAuthorName = escapeHtml(authorName || 'your gardener');
+  const safePreview = escapeHtml(notePreview || '');
   const subject = `New update from Chiltern Garden Maintenance`;
   const text = `Hello${householdName ? ` from ${householdName}` : ''},
 
@@ -101,9 +107,9 @@ Chiltern Garden Maintenance`;
       <div style="font-size:13px;color:#c8a45e;margin-top:4px;letter-spacing:0.08em;text-transform:uppercase;">New Update</div>
     </div>
     <div style="background:#ffffff;padding:32px 28px;border:1px solid #ddd6c4;border-top:none;">
-      <h1 style="font-family:'Cormorant Garamond',Georgia,serif;font-size:24px;color:#1e3a2a;margin:0 0 16px;">New update from ${authorName || 'your gardener'}</h1>
-      <p style="font-size:16px;line-height:1.6;color:#2d3528;margin:0 0 16px;">Hello${householdName ? ` from <strong>${householdName}</strong>` : ''},</p>
-      <div style="background:#f7f3ea;padding:16px 20px;border-left:4px solid #c8a45e;border-radius:6px;font-size:15px;line-height:1.6;color:#2d3528;margin:0 0 24px;">${notePreview}</div>
+      <h1 style="font-family:'Cormorant Garamond',Georgia,serif;font-size:24px;color:#1e3a2a;margin:0 0 16px;">New update from ${safeAuthorName}</h1>
+      <p style="font-size:16px;line-height:1.6;color:#2d3528;margin:0 0 16px;">Hello${safeHouseholdName ? ` from <strong>${safeHouseholdName}</strong>` : ''},</p>
+      <div style="background:#f7f3ea;padding:16px 20px;border-left:4px solid #c8a45e;border-radius:6px;font-size:15px;line-height:1.6;color:#2d3528;margin:0 0 24px;">${safePreview}</div>
       <p style="margin:0 0 24px;text-align:center;">
         <a href="${link}" style="display:inline-block;background:#2d5a3d;color:#ffffff;text-decoration:none;font-weight:600;font-size:15px;padding:12px 28px;border-radius:8px;">Visit my portal</a>
       </p>
@@ -111,6 +117,23 @@ Chiltern Garden Maintenance`;
   </div>
 </body></html>`;
 
+  return sendEmail(env, { to, subject, html, text });
+}
+
+/**
+ * Notify the CGM accounts address when the administrator records a payment.
+ * No mail is sent unless PORTAL_ACCOUNTS_EMAIL is configured in Cloudflare.
+ */
+export async function sendPaymentRecordedEmail({ invoiceNumber, householdName, amount, total, amountPaid, status }, env) {
+  const to = String(env.PORTAL_ACCOUNTS_EMAIL || '').trim();
+  if (!to) {
+    console.log(JSON.stringify({ event: 'payment_recorded', invoiceNumber, householdName, amount, total, amountPaid, status }));
+    return { ok: false, reason: 'no_accounts_email' };
+  }
+  const money = (value) => `£${Number(value).toFixed(2)}`;
+  const subject = `Payment recorded — ${invoiceNumber}`;
+  const text = `Payment recorded for ${invoiceNumber}\nClient: ${householdName}\nPayment received: ${money(amount)}\nTotal invoice value: ${money(total)}\nTotal paid: ${money(amountPaid)}\nStatus: ${status}`;
+  const html = `<p>A payment has been recorded in the CGM Client Portal.</p><ul><li><strong>Invoice:</strong> ${escapeHtml(invoiceNumber)}</li><li><strong>Client:</strong> ${escapeHtml(householdName)}</li><li><strong>Payment received:</strong> ${money(amount)}</li><li><strong>Total paid:</strong> ${money(amountPaid)} of ${money(total)}</li><li><strong>Status:</strong> ${escapeHtml(status)}</li></ul>`;
   return sendEmail(env, { to, subject, html, text });
 }
 
@@ -143,4 +166,13 @@ async function sendEmail(env, { to, subject, html, text }) {
     return { ok: false, reason: 'resend_error', status: res.status, body: errText };
   }
   return { ok: true, data: await res.json() };
+}
+
+function escapeHtml(value) {
+  return String(value)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/\"/g, '&quot;')
+    .replace(/'/g, '&#39;');
 }
