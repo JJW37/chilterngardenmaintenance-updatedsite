@@ -120,6 +120,23 @@ Chiltern Garden Maintenance`;
   return sendEmail(env, { to, subject, html, text });
 }
 
+/**
+ * Notify the CGM accounts address when the administrator records a payment.
+ * No mail is sent unless PORTAL_ACCOUNTS_EMAIL is configured in Cloudflare.
+ */
+export async function sendPaymentRecordedEmail({ invoiceNumber, householdName, amount, total, amountPaid, status }, env) {
+  const to = String(env.PORTAL_ACCOUNTS_EMAIL || '').trim();
+  if (!to) {
+    console.log(JSON.stringify({ event: 'payment_recorded', invoiceNumber, householdName, amount, total, amountPaid, status }));
+    return { ok: false, reason: 'no_accounts_email' };
+  }
+  const money = (value) => `£${Number(value).toFixed(2)}`;
+  const subject = `Payment recorded — ${invoiceNumber}`;
+  const text = `Payment recorded for ${invoiceNumber}\nClient: ${householdName}\nPayment received: ${money(amount)}\nTotal invoice value: ${money(total)}\nTotal paid: ${money(amountPaid)}\nStatus: ${status}`;
+  const html = `<p>A payment has been recorded in the CGM Client Portal.</p><ul><li><strong>Invoice:</strong> ${escapeHtml(invoiceNumber)}</li><li><strong>Client:</strong> ${escapeHtml(householdName)}</li><li><strong>Payment received:</strong> ${money(amount)}</li><li><strong>Total paid:</strong> ${money(amountPaid)} of ${money(total)}</li><li><strong>Status:</strong> ${escapeHtml(status)}</li></ul>`;
+  return sendEmail(env, { to, subject, html, text });
+}
+
 /** Low-level Resend API call. */
 async function sendEmail(env, { to, subject, html, text }) {
   if (!env.RESEND_API_KEY) {
