@@ -3,12 +3,191 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>My Household Portal | Chiltern Garden Maintenance</title>
+  <meta name="description" content="Your private client portal. View progress notes from your most recent visit, your full service history, and your household image portfolio.">
+  <meta name="theme-color" content="#102019">
   <meta name="robots" content="noindex,nofollow">
-  <title>Opening your CGM garden record</title>
-  <meta http-equiv="refresh" content="0; url=https://chilterngardenmaintenance-updatedsite-portal.pages.dev/portal/">
-  <script>location.replace('https://chilterngardenmaintenance-updatedsite-portal.pages.dev/portal/' + location.search + location.hash);</script>
+  <link rel="canonical" href="https://www.chilterngardenmaintenance.com/portal/">
+  <link rel="stylesheet" href="/css/styles.css?v=20260808p1">
+  <link rel="stylesheet" href="/css/portal.css?v=20260808p1">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16.png">
+  <link rel="apple-touch-icon" href="/images/cgm-logo-square.png">
+  <script src="/js/analytics.js?v=20260713a"></script>
 </head>
-<body>
-  <p>Opening the secure <a href="https://chilterngardenmaintenance-updatedsite-portal.pages.dev/portal/">CGM garden record</a>…</p>
+<body class="portal-page">
+
+<style>
+.skip-link{position:absolute;left:-9999px;top:0;z-index:9999;padding:.75rem 1.25rem;background:var(--forest,#102019);color:#fff;text-decoration:none;border-radius:0 0 8px 0;font-size:.9rem;}
+.skip-link:focus{left:0;outline:2px solid var(--gold,#b89243);outline-offset:2px;}
+</style>
+<a class="skip-link" href="#main-content">Skip to main content</a>
+
+<header class="header">
+  <div class="container">
+    <nav class="nav" aria-label="Primary">
+      <a class="brand" href="/">
+        <img class="brand-logo" src="/images/cgm-logo-square.png" alt="Chiltern Garden Maintenance logo" width="48" height="48">
+        <span class="brand-title">
+          <strong>Chiltern Garden</strong>
+          <span>Maintenance</span>
+        </span>
+      </a>
+      <div class="nav-links" aria-label="Site links">
+        <a href="/services/">Services</a>
+        <a href="/portfolio/">Portfolio</a>
+        <a href="/locations/">Locations</a>
+        <a href="/about/maintenance.html">The CGM Method</a>
+        <a href="/booking/">Get a Quote</a>
+      </div>
+      <div class="nav-cta">
+        <a class="btn btn-ghost" href="/contact/" id="contactLink" style="margin-right:.5rem;">Contact</a>
+        <button id="logoutBtn" class="btn-portal btn-ghost" type="button">Sign out</button>
+        <button id="mobileMenuToggle" class="mobile-menu-toggle" type="button" aria-controls="mobileMenu" aria-expanded="false" aria-label="Open navigation menu">
+          <span aria-hidden="true">&#9776;</span>
+        </button>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main id="main-content" class="portal-shell">
+  <div class="container">
+
+    <!-- Loading state -->
+    <div id="loadingState" style="text-align:center;padding:4rem 0;">
+      <div class="loading-dots" style="justify-content:center;display:flex;">
+        <span></span><span></span><span></span>
+      </div>
+      <p style="margin-top:1rem;color:var(--muted);">Loading your household portal…</p>
+    </div>
+
+    <!-- Not authenticated state -->
+    <div id="notAuthState" hidden style="max-width:480px;margin:3rem auto;text-align:center;">
+      <h1 style="font-size:1.8rem;">Please sign in</h1>
+      <p style="color:var(--muted);margin-bottom:1.5rem;">You need to sign in to view your private household portal.</p>
+      <a href="/login/" class="btn-portal btn-primary">Go to login</a>
+    </div>
+
+    <!-- Portal content (populated by JS) -->
+    <div id="portalContent" hidden>
+
+      <div class="portal-header">
+        <div>
+          <span class="portal-badge" id="householdBadge">Household</span>
+          <h1 id="householdName">—</h1>
+          <p class="portal-sub" id="householdSub">Your private client portal</p>
+        </div>
+        <div class="portal-meta">
+          <div><strong>Email:</strong> <span id="householdEmail">—</span></div>
+          <div><strong>Service area:</strong> <span id="householdArea">—</span></div>
+          <div><strong>Client since:</strong> <span id="householdSince">—</span></div>
+        </div>
+      </div>
+
+      <!-- Admin viewing a client: back to dashboard -->
+      <div id="adminBanner" class="alert alert-info" hidden style="margin-bottom:1.5rem;">
+        <div>
+          <strong>Admin view.</strong> You are viewing this client's portal as an administrator.
+          <a href="/portal/admin/dashboard/" style="font-weight:600;margin-left:.5rem;">← Back to dashboard</a>
+        </div>
+      </div>
+
+      <nav class="portal-nav" aria-label="Your garden record">
+        <a href="/portal/" data-portal-path="/portal/" data-portal-key="overview" aria-current="page">Overview</a>
+        <a href="/portal/history/" data-portal-path="/portal/history/" data-portal-key="history">Visit history</a>
+        <a href="/portal/plan/" data-portal-path="/portal/plan/" data-portal-key="plan">Garden plan</a>
+        <a href="/portal/photos/" data-portal-path="/portal/photos/" data-portal-key="photos">Photos</a>
+        <a href="/portal/messages/" data-portal-path="/portal/messages/" data-portal-key="messages">Messages</a>
+        <a href="/portal/invoices/" data-portal-path="/portal/invoices/" data-portal-key="invoices">Invoices</a>
+        <a href="/portal/account/" data-portal-path="/portal/account/" data-portal-key="account">Account</a>
+      </nav>
+
+      <!-- Latest visit callout -->
+      <section class="latest-visit" id="latestVisitSection">
+        <div class="lv-label">Most recent visit</div>
+        <h2 id="lvTitle">No visit recorded yet</h2>
+        <div class="lv-date" id="lvDate"></div>
+        <div class="lv-body" id="lvBody">
+          <span class="lv-empty">Once your gardener records a visit, the latest progress notes will appear here.</span>
+        </div>
+      </section>
+
+      <div class="portal-grid">
+
+        <!-- LEFT: notes & composer -->
+        <div>
+          <!-- Add a note -->
+          <section class="portal-section" id="composerSection">
+            <h2>Add a note</h2>
+            <p style="font-size:0.88rem;color:var(--muted);margin:-0.5rem 0 1rem;">
+              Leave a message, question, or update for your gardener. Only you and Chiltern Garden Maintenance can see this.
+            </p>
+            <div class="composer">
+              <textarea id="noteBody" placeholder="Type your note here…" maxlength="8000"></textarea>
+              <div class="composer-row">
+                <div class="composer-meta">
+                  <span class="char-count"><span id="charCount">0</span> / 8000</span>
+                </div>
+                <button type="button" class="btn-portal btn-primary" id="postNoteBtn">Post note</button>
+              </div>
+            </div>
+          </section>
+
+          <!-- Notes list -->
+          <section class="portal-section">
+            <h2>Notes &amp; updates <span class="count-pill" id="notesCount">0</span></h2>
+            <div id="notesList"></div>
+          </section>
+        </div>
+
+        <!-- RIGHT: image portfolio + upload -->
+        <div>
+          <section class="portal-section">
+            <h2>Image portfolio <span class="count-pill" id="imagesCount">0</span></h2>
+
+            <div id="uploadBlock">
+              <div class="upload-zone" id="uploadZone" tabindex="0" role="button" aria-label="Upload images">
+                <div class="uz-icon">&#128247;</div>
+                <div class="uz-text"><strong>Click to upload</strong> or drag &amp; drop</div>
+                <div class="uz-text" style="font-size:0.78rem;margin-top:.3rem;">JPG, PNG, WebP, GIF, HEIC, AVIF · 10MB max</div>
+                <input type="file" id="fileInput" accept="image/jpeg,image/png,image/webp,image/gif,image/heic,image/avif" multiple>
+              </div>
+              <div class="upload-preview" id="uploadPreview"></div>
+              <div id="uploadCaptionRow" style="margin-top:.6rem;">
+                <input type="text" id="uploadCaption" placeholder="Optional caption (applies to all selected images)" style="width:100%;padding:.5rem .7rem;font:inherit;font-size:.85rem;background:var(--bone);border:1px solid var(--border);border-radius:var(--radius-sm);">
+              </div>
+              <div id="adminImageMeta" hidden style="display:flex;gap:.5rem;flex-wrap:wrap;margin-top:.6rem;">
+                <select id="imageCategorySelect" aria-label="Image category" style="flex:1 1 12rem;padding:.5rem .7rem;font:inherit;font-size:.85rem;background:var(--bone);border:1px solid var(--border);border-radius:var(--radius-sm);">
+                  <option value="progress">Progress record</option>
+                  <option value="before_after">Before / after</option>
+                  <option value="reference">Reference</option>
+                </select>
+                <input type="date" id="imageVisitDate" aria-label="Associated visit date" style="flex:1 1 10rem;padding:.5rem .7rem;font:inherit;font-size:.85rem;background:var(--bone);border:1px solid var(--border);border-radius:var(--radius-sm);">
+              </div>
+              <button type="button" class="btn-portal btn-gold" id="uploadBtn" style="width:100%;margin-top:.6rem;" disabled>Upload images</button>
+            </div>
+
+            <div id="portfolioGrid" class="portfolio-grid" style="margin-top:1.25rem;"></div>
+          </section>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<footer class="footer" style="background:var(--forest-dark);color:#c5d1be;padding:1.5rem 0;margin-top:3rem;">
+  <div class="container" style="text-align:center;font-size:0.82rem;">
+    <p style="margin:0;">&copy; <span id="year"></span> Chiltern Garden Maintenance. This portal is private – only you and CGM can see its contents.</p>
+  </div>
+</footer>
+
+<script src="/js/portal-shared.js?v=20260809p2"></script>
+<script src="/js/portal.js?v=20260810p1"></script>
+<script src="/js/main.js?v=20260727a"></script>
 </body>
 </html>
