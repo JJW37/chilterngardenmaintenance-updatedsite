@@ -3,12 +3,137 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Admin Login | Chiltern Garden Maintenance</title>
+  <meta name="description" content="Master admin login for the CGM client portal.">
+  <meta name="theme-color" content="#102019">
   <meta name="robots" content="noindex,nofollow">
-  <title>Opening CGM staff portal</title>
-  <meta http-equiv="refresh" content="0; url=https://chilterngardenmaintenance-updatedsite-portal.pages.dev/portal/admin/">
-  <script>location.replace('https://chilterngardenmaintenance-updatedsite-portal.pages.dev/portal/admin/' + location.search + location.hash);</script>
+  <link rel="canonical" href="https://www.chilterngardenmaintenance.com/portal/admin/">
+  <link rel="stylesheet" href="/css/styles.css?v=20260808p1">
+  <link rel="stylesheet" href="/css/portal.css?v=20260808p1">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16.png">
+  <link rel="apple-touch-icon" href="/images/cgm-logo-square.png">
 </head>
-<body>
-  <p>Opening the secure <a href="https://chilterngardenmaintenance-updatedsite-portal.pages.dev/portal/admin/">CGM staff portal</a>…</p>
+<body class="admin-login-page">
+
+<style>
+.skip-link{position:absolute;left:-9999px;top:0;z-index:9999;padding:.75rem 1.25rem;background:var(--forest,#102019);color:#fff;text-decoration:none;border-radius:0 0 8px 0;font-size:.9rem;}
+.skip-link:focus{left:0;outline:2px solid var(--gold,#b89243);outline-offset:2px;}
+</style>
+<a class="skip-link" href="#main-content">Skip to main content</a>
+
+<header class="header">
+  <div class="container">
+    <nav class="nav" aria-label="Primary">
+      <a class="brand" href="/">
+        <img class="brand-logo" src="/images/cgm-logo-square.png" alt="Chiltern Garden Maintenance logo" width="48" height="48">
+        <span class="brand-title">
+          <strong>Chiltern Garden</strong>
+          <span>Maintenance</span>
+        </span>
+      </a>
+      <div class="nav-links" aria-label="Site links">
+        <a href="/services/">Services</a>
+        <a href="/portfolio/">Portfolio</a>
+        <a href="/locations/">Locations</a>
+        <a href="/booking/">Get a Quote</a>
+      </div>
+      <div class="nav-cta">
+        <a class="btn btn-ghost" href="/login/" style="margin-right:.5rem;">Client login</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main id="main-content" class="portal-shell">
+  <div class="container">
+    <div class="auth-card" style="margin-top:2rem;">
+      <h1>Admin Login</h1>
+      <p class="auth-sub">Master login for staff only.</p>
+
+      <div id="alertBox" class="alert" hidden role="status" aria-live="polite"></div>
+
+      <form id="adminForm" autocomplete="off" novalidate>
+        <div class="field">
+          <label for="username">Admin username</label>
+          <input type="text" id="username" name="username" required autocapitalize="off" spellcheck="false" autocomplete="username">
+        </div>
+        <div class="field">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" required autocomplete="current-password">
+        </div>
+        <button type="submit" class="btn-portal btn-primary" id="submitBtn">
+          <span id="submitLabel">Sign in</span>
+        </button>
+      </form>
+
+      <div class="auth-foot">
+        <p style="margin:0;font-size:0.78rem;color:var(--muted-light);">
+          Authorised staff only. All access is logged.
+        </p>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer class="footer" style="background:var(--forest-dark);color:#c5d1be;padding:1.5rem 0;margin-top:3rem;">
+  <div class="container" style="text-align:center;font-size:0.82rem;">
+    <p style="margin:0;">&copy; <span id="year"></span> Chiltern Garden Maintenance.</p>
+  </div>
+</footer>
+
+<script src="/js/portal-shared.js?v=20260811portalfix2"></script>
+<script>
+document.getElementById('year').textContent = new Date().getFullYear();
+
+(function() {
+  var form = document.getElementById('adminForm');
+  var submitBtn = document.getElementById('submitBtn');
+  var submitLabel = document.getElementById('submitLabel');
+  var alertBox = document.getElementById('alertBox');
+
+  function showAlert(msg, type) {
+    alertBox.hidden = false;
+    alertBox.className = 'alert alert-' + (type || 'info');
+    alertBox.textContent = msg;
+  }
+  function setLoading(isLoading) {
+    submitBtn.disabled = isLoading;
+    submitLabel.textContent = isLoading ? 'Signing in…' : 'Sign in';
+  }
+
+  form.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    var username = document.getElementById('username').value.trim();
+    var password = document.getElementById('password').value;
+    if (!username || !password) {
+      showAlert('Please enter both username and password.', 'error');
+      return;
+    }
+    setLoading(true);
+    try {
+      var res = await fetch('/api/auth-admin', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        credentials: 'include',
+        body: JSON.stringify({ username: username, password: password }),
+      });
+      var data = await res.json();
+      if (data.ok) {
+        window.location.href = data.redirect || '/portal/admin/dashboard/';
+      } else {
+        showAlert(data.error || 'Invalid credentials.', 'error');
+      }
+    } catch (err) {
+      showAlert('Network error. Please try again.', 'error');
+    } finally {
+      setLoading(false);
+    }
+  });
+})();
+</script>
 </body>
 </html>
