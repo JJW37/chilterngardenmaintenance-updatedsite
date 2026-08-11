@@ -47,6 +47,9 @@
         var urlClientId = parseInt(params.get('clientId') || '0', 10);
         if (urlClientId) {
           state.clientId = urlClientId;
+          // Keep the staff-selected household for every subsequent Garden
+          // Passport tab, even when a browser strips a query string.
+          if (window.CGMPortal) window.CGMPortal.rememberAdminClient(urlClientId);
         } else {
           window.location.replace('/portal/admin/dashboard/');
           return;

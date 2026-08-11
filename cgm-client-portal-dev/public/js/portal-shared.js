@@ -39,14 +39,6 @@
     // The portal is hosted separately for secure server-side functions. Keep
     // every public-site link pointed at the public CGM website, rather than at
     // an empty matching path on the portal host.
-    var publicLinks = [
-      ['Services', 'services/'],
-      ['Portfolio', 'portfolio/'],
-      ['Garden Knowledge', 'tips/'],
-      ['Locations', 'locations/'],
-      ['The CGM Method', 'about/maintenance.html'],
-      ['Get a Quote', 'booking/']
-    ];
     var siteLinks = header.querySelector('.nav-links');
     if (!siteLinks) {
       siteLinks = document.createElement('div');
@@ -54,9 +46,30 @@
       header.insertBefore(siteLinks, header.querySelector('.nav-cta'));
     }
     siteLinks.setAttribute('aria-label', 'CGM website links');
-    siteLinks.innerHTML = publicLinks.map(function (item) {
-      return '<a href="' + publicSiteUrl(item[1]) + '">' + item[0] + '</a>';
-    }).join('');
+    siteLinks.innerHTML =
+      '<a href="' + publicSiteUrl('services/') + '">Services</a>' +
+      '<a href="' + publicSiteUrl('portfolio/') + '">Portfolio</a>' +
+      '<div class="nav-dropdown">' +
+        '<button class="nav-dropdown-toggle" type="button" aria-haspopup="true" aria-expanded="false">Garden Knowledge</button>' +
+        '<div class="nav-dropdown-menu">' +
+          '<a href="' + publicSiteUrl('tips/') + '">Gardening Knowledge</a>' +
+          '<a href="' + publicSiteUrl('plants/') + '">Chiltern Plant Library</a>' +
+          '<a href="' + publicSiteUrl('calculators/') + '">Garden Tools &amp; Planners</a>' +
+          '<a href="' + publicSiteUrl('guides/') + '">Garden Guides</a>' +
+          '<a href="' + publicSiteUrl('garden-passport/') + '">Garden Passport</a>' +
+        '</div>' +
+      '</div>' +
+      '<a href="' + publicSiteUrl('locations/') + '">Locations</a>' +
+      '<a href="' + publicSiteUrl('about/maintenance.html') + '">The CGM Method</a>';
+
+    var knowledgeToggle = siteLinks.querySelector('.nav-dropdown-toggle');
+    if (knowledgeToggle) {
+      knowledgeToggle.addEventListener('click', function () {
+        var open = knowledgeToggle.getAttribute('aria-expanded') === 'true';
+        knowledgeToggle.setAttribute('aria-expanded', open ? 'false' : 'true');
+        knowledgeToggle.parentElement.classList.toggle('is-open', !open);
+      });
+    }
 
     var actions = header.querySelector('.nav-cta');
     if (actions && !actions.querySelector('.cgm-site-return')) {
@@ -106,7 +119,15 @@
     // Staff can move between the Garden Passport tabs without each link
     // having to carry an id forever. Keep only the current household id in
     // this browser tab; it is never used as an authorisation mechanism.
-    if (session.isAdmin && requestedId) rememberAdminClient(requestedId);
+    if (session.isAdmin && requestedId) {
+      rememberAdminClient(requestedId);
+      // Keep the selected household in the address bar too. This makes staff
+      // navigation resilient to browser storage restrictions and copied tabs.
+      if (query.get('clientId') !== String(requestedId)) {
+        query.set('clientId', String(requestedId));
+        window.history.replaceState(null, '', window.location.pathname + '?' + query.toString() + window.location.hash);
+      }
+    }
     var savedId = session.isAdmin && !requestedId ? selectedAdminClientId() : null;
     var clientId = session.isAdmin ? (requestedId || savedId) : session.client && session.client.id;
     if (session.isAdmin && !clientId) {
