@@ -43,6 +43,8 @@ function mapInvoice(row) {
     hasPdf: Boolean(row.r2_key),
     clientName: row.household_name,
     clientEmail: row.email,
+    clientAddress: row.address_line,
+    clientServiceArea: row.service_area,
     createdAt: row.created_at,
   };
 }
@@ -57,7 +59,7 @@ export async function onRequestGet({ request, env }) {
     const invoiceId = Number.parseInt(url.searchParams.get('id'), 10);
 
     if (Number.isSafeInteger(invoiceId) && invoiceId > 0) {
-      const invoice = await first(env.DB, `SELECT i.*, c.household_name, c.email FROM invoices i JOIN clients c ON c.id = i.client_id WHERE i.id = ?`, [invoiceId]);
+      const invoice = await first(env.DB, `SELECT i.*, c.household_name, c.email, c.address_line, c.service_area FROM invoices i JOIN clients c ON c.id = i.client_id WHERE i.id = ?`, [invoiceId]);
       if (!invoice) return json({ ok: false, error: 'Invoice not found.' }, 404);
       const [items, payments, bank] = await Promise.all([
         all(env.DB, `SELECT id, description, quantity, unit_price, line_total, sort_order FROM invoice_items WHERE invoice_id = ? ORDER BY sort_order, id`, [invoiceId]),
@@ -70,7 +72,7 @@ export async function onRequestGet({ request, env }) {
     const clientId = Number.parseInt(url.searchParams.get('clientId'), 10);
     const status = String(url.searchParams.get('status') || '').trim();
     const params = [];
-    let sql = `SELECT i.*, c.household_name, c.email FROM invoices i JOIN clients c ON c.id = i.client_id WHERE 1=1`;
+    let sql = `SELECT i.*, c.household_name, c.email, c.address_line, c.service_area FROM invoices i JOIN clients c ON c.id = i.client_id WHERE 1=1`;
     if (Number.isSafeInteger(clientId) && clientId > 0) { sql += ' AND i.client_id = ?'; params.push(clientId); }
     if (['draft', 'sent', 'paid', 'partial', 'overdue', 'cancelled'].includes(status)) { sql += ' AND i.status = ?'; params.push(status); }
     sql += ' ORDER BY i.issue_date DESC, i.id DESC';
@@ -104,7 +106,7 @@ export async function onRequestPost({ request, env }) {
       if (!PAYMENT_METHODS.has(method) || !validIsoDate(paidDate) || reference.length > 160 || notes.length > 4000) {
         return json({ ok: false, error: 'One or more payment fields are invalid.' }, 400);
       }
-      const invoice = await first(env.DB, `SELECT i.*, c.household_name, c.email FROM invoices i JOIN clients c ON c.id = i.client_id WHERE i.id = ?`, [invoiceId]);
+      const invoice = await first(env.DB, `SELECT i.*, c.household_name, c.email, c.address_line, c.service_area FROM invoices i JOIN clients c ON c.id = i.client_id WHERE i.id = ?`, [invoiceId]);
       if (!invoice) return json({ ok: false, error: 'Invoice not found.' }, 404);
       if (['paid', 'cancelled'].includes(invoice.status)) return json({ ok: false, error: 'This invoice cannot receive another payment.' }, 409);
       const balance = roundMoney(invoice.total - invoice.amount_paid);
