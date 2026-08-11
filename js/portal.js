@@ -47,12 +47,11 @@
         var urlClientId = parseInt(params.get('clientId') || '0', 10);
         if (urlClientId) {
           state.clientId = urlClientId;
+          // Keep the staff-selected household for every subsequent Garden
+          // Passport tab, even when a browser strips a query string.
+          if (window.CGMPortal) window.CGMPortal.rememberAdminClient(urlClientId);
         } else {
-<<<<<<< Updated upstream
           window.location.replace('/portal/admin/dashboard/');
-=======
-          window.location.replace('/chilterngardenmaintenance-updatedsite/portal/admin/dashboard/');
->>>>>>> Stashed changes
           return;
         }
       }
@@ -63,6 +62,7 @@
       }
 
       await loadClientData();
+      if (window.CGMPortal) window.CGMPortal.setupNavigation({ isAdmin: state.isAdmin, clientId: state.clientId }, 'overview');
       bindEvents();
       loadingState.hidden = true;
       portalContent.hidden = false;
@@ -116,34 +116,76 @@
     var composerSection = $('composerSection');
     var composerMeta = composerSection.querySelector('.composer-meta');
     if (state.isAdmin) {
-      // Add type selector + visit date input if not already present
+      // Make the work date unmistakable for staff. A visit is the default
+      // record because it is what drives the household's visit history.
       if (!$('noteTypeSelect')) {
+        var adminFields = document.createElement('div');
+        adminFields.className = 'admin-note-fields';
+
+        var typeLabel = document.createElement('label');
+        typeLabel.htmlFor = 'noteTypeSelect';
+        typeLabel.textContent = 'Record';
+
+        var titleInput = document.createElement('input');
+        titleInput.type = 'text';
+        titleInput.id = 'noteTitle';
+        titleInput.maxLength = 200;
+        titleInput.placeholder = 'Visit summary';
+        titleInput.setAttribute('aria-label', 'Visit summary');
+
         var typeSelect = document.createElement('select');
         typeSelect.id = 'noteTypeSelect';
         typeSelect.innerHTML =
-          '<option value="update">Update note (visible to client)</option>' +
-          '<option value="visit">Visit note (records a visit)</option>';
-        composerMeta.insertBefore(typeSelect, composerMeta.firstChild);
+          '<option value="visit">Completed visit</option>' +
+          '<option value="update">Client update</option>';
+        typeLabel.appendChild(typeSelect);
 
+        var dateLabel = document.createElement('label');
+        dateLabel.htmlFor = 'noteVisitDate';
+        dateLabel.id = 'noteVisitDateLabel';
+        dateLabel.textContent = 'Visit made on';
         var dateInput = document.createElement('input');
         dateInput.type = 'date';
         dateInput.id = 'noteVisitDate';
         dateInput.value = new Date().toISOString().slice(0, 10);
-        composerMeta.insertBefore(dateInput, typeSelect.nextSibling);
+        dateInput.required = true;
+        dateLabel.appendChild(dateInput);
 
-        // Hide the upload block for admin (uploads happen from the dashboard OR same - keep)
-        // Actually keep - admin can upload from here too.
+        adminFields.appendChild(typeLabel);
+        adminFields.appendChild(dateLabel);
+        adminFields.appendChild(titleInput);
+        composerMeta.insertBefore(adminFields, composerMeta.firstChild);
+        typeSelect.addEventListener('change', syncAdminNoteComposer);
       }
+      var imageMeta = $('adminImageMeta');
+      if (imageMeta) imageMeta.hidden = false;
       var para = composerSection.querySelector('p');
       if (para) {
         para.textContent = 'Post an update or record a visit. Visit notes appear in the "Most recent visit" callout. Update notes notify the client by email.';
       }
-      $('postNoteBtn').textContent = 'Post update';
+      syncAdminNoteComposer();
     } else {
       var introP = composerSection.querySelector('p');
       if (introP) {
         introP.textContent = 'Leave a message, question, or update for your gardener. Only you and Chiltern Garden Maintenance can see this.';
       }
+    }
+  }
+
+  function syncAdminNoteComposer() {
+    var typeSelect = $('noteTypeSelect');
+    var dateLabel = $('noteVisitDateLabel');
+    var dateInput = $('noteVisitDate');
+    var titleInput = $('noteTitle');
+    var isVisit = !typeSelect || typeSelect.value === 'visit';
+    if (dateLabel) dateLabel.hidden = !isVisit;
+    if (dateInput) dateInput.required = isVisit;
+    if (titleInput) {
+      titleInput.placeholder = isVisit ? 'Visit summary' : 'Update title';
+      titleInput.setAttribute('aria-label', isVisit ? 'Visit summary' : 'Update title');
+    }
+    if ($('postNoteBtn') && !$('postNoteBtn').disabled) {
+      $('postNoteBtn').textContent = isVisit ? 'Record visit' : 'Post update';
     }
   }
 
@@ -260,11 +302,7 @@
     try {
       await fetch('/api/auth-logout', { method: 'POST', credentials: 'include' });
     } catch (e) {}
-<<<<<<< Updated upstream
     window.location.href = '/login/';
-=======
-    window.location.href = '/chilterngardenmaintenance-updatedsite/login/';
->>>>>>> Stashed changes
   }
 
   async function postNote() {
@@ -276,7 +314,9 @@
       var typeSel = $('noteTypeSelect');
       var dateInput = $('noteVisitDate');
       if (typeSel) payload.noteType = typeSel.value;
-      if (dateInput && dateInput.value) payload.visitDate = dateInput.value;
+      if (typeSel && typeSel.value === 'visit' && dateInput && dateInput.value) payload.visitDate = dateInput.value;
+      var titleInput = $('noteTitle');
+      if (titleInput && titleInput.value.trim()) payload.title = titleInput.value.trim();
       payload.clientId = state.clientId;
     }
 
@@ -292,6 +332,8 @@
       var data = await res.json();
       if (data.ok) {
         $('noteBody').value = '';
+        if ($('noteTitle')) $('noteTitle').value = '';
+        if ($('noteVisitDate')) $('noteVisitDate').value = new Date().toISOString().slice(0, 10);
         $('charCount').textContent = '0';
         await loadClientData();
       } else {
@@ -301,7 +343,8 @@
       alert('Network error. Please try again.');
     } finally {
       $('postNoteBtn').disabled = false;
-      $('postNoteBtn').textContent = state.isAdmin ? 'Post update' : 'Post note';
+      if (state.isAdmin) syncAdminNoteComposer();
+      else $('postNoteBtn').textContent = 'Post note';
     }
   }
 
@@ -380,7 +423,10 @@
       fd.append('file', file);
       fd.append('caption', caption);
       if (state.isAdmin) {
-        fd.append('category', 'progress');
+        var category = $('imageCategorySelect');
+        var visitDate = $('imageVisitDate');
+        fd.append('category', category ? category.value : 'progress');
+        if (visitDate && visitDate.value) fd.append('visitDate', visitDate.value);
         fd.append('clientId', state.clientId);
       } else {
         fd.append('category', 'client_upload');
