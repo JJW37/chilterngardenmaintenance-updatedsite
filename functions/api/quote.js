@@ -18,8 +18,20 @@
 const leadStore = new Map();
 
 export async function onRequestPost({ request, env }) {
+  const allowedOrigins = new Set([
+    'https://jjw37.github.io',
+    'https://www.chilterngardenmaintenance.com',
+    'https://chilterngardenmaintenance-updatedsite-portal.pages.dev'
+  ]);
+  const origin = request.headers.get('Origin');
+  if (origin && !allowedOrigins.has(origin)) {
+    return new Response(JSON.stringify({ success: false, message: 'Invalid form origin.' }), {
+      status: 403,
+      headers: { 'Content-Type': 'application/json' }
+    });
+  }
   const corsHeaders = {
-    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Origin': origin && allowedOrigins.has(origin) ? origin : 'https://jjw37.github.io',
     'Access-Control-Allow-Methods': 'POST, OPTIONS',
     'Access-Control-Allow-Headers': 'Content-Type',
   };
@@ -82,6 +94,16 @@ export async function onRequestPost({ request, env }) {
     const sourcePage = (formData.get('sourcePage') || '').toString().trim();
     const calculatorData = (formData.get('calculatorData') || '').toString().trim();
     const consent = formData.get('consent') === 'true' || formData.get('consent') === 'on';
+    const website = (formData.get('website') || '').toString().trim();
+
+    // Hidden field used only to reject automated form fills. It is deliberately
+    // handled before validation and responds as success to avoid aiding bots.
+    if (website) {
+      return new Response(JSON.stringify({ success: true, message: 'Thank you.' }), {
+        status: 200,
+        headers: { 'Content-Type': 'application/json', ...corsHeaders }
+      });
+    }
 
     // Validation
     const errors = [];
