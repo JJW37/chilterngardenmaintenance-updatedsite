@@ -12440,3 +12440,12 @@ article li {
   background: linear-gradient(90deg, var(--gold, #b89243), transparent);
   margin-top: 0.5rem;
 }
+
+/* Bot trap: kept outside the visual and keyboard flow, but submitted by simplistic bots. */
+.cgm-honeypot {
+  position: absolute !important;
+  left: -10000px !important;
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden !important;
+}
