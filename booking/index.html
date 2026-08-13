@@ -6,7 +6,7 @@
   <title>Get a Quote | Chiltern Garden Maintenance</title>
   <meta name="description" content="Request a quote for garden maintenance, clearance, soft landscaping, pressure washing, hedge cutting, fencing, garden design, border restoration or lawn...">
   <meta name="theme-color" content="#102019">
-  <link rel="canonical" href="https://www.chilterngardenmaintenance.com/booking/">
+  <link rel="canonical" href="https://jjw37.github.io/chilterngardenmaintenance-updatedsite/booking/">
   <link rel="stylesheet" href="/chilterngardenmaintenance-updatedsite/css/styles.css?v=20260727a-v9">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,11 +18,11 @@
   <meta property="og:title" content="Get a Quote | Chiltern Garden Maintenance">
   <meta property="og:description" content="Request a quote for garden maintenance, clearance, soft landscaping, pressure washing, hedge cutting, fencing, garden design, border restoration or lawn...">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://www.chilterngardenmaintenance.com/booking/">
-  <meta property="og:image" content="https://www.chilterngardenmaintenance.com/images/hero-garden.jpg">
+  <meta property="og:url" content="https://jjw37.github.io/chilterngardenmaintenance-updatedsite/booking/">
+  <meta property="og:image" content="https://jjw37.github.io/chilterngardenmaintenance-updatedsite/images/project/portfolio-index.webp">
   <meta property="og:site_name" content="Chiltern Garden Maintenance">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:image" content="https://www.chilterngardenmaintenance.com/images/hero-garden.jpg">
+  <meta name="twitter:image" content="https://jjw37.github.io/chilterngardenmaintenance-updatedsite/images/project/portfolio-index.webp">
   <!-- Google Analytics 4, stub loaded from analytics.js, full library loaded after cookie consent -->
   <script src="/chilterngardenmaintenance-updatedsite/js/analytics.js?v=20260713a"></script>
   
@@ -104,7 +104,11 @@
               <span class="quote-form-disclosure__hint">Takes about two minutes</span>
             </summary>
             <div class="quote-form-disclosure__body">
-          <form id="quoteForm" enctype="multipart/form-data">
+          <form id="quoteForm" action="mailto:hello@chilterngardenmaintenance.com" method="post" enctype="text/plain">
+            <div class="cgm-honeypot" aria-hidden="true">
+              <label for="website">Leave this field empty</label>
+              <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+            </div>
             <div class="calc-step">
               <label for="name">Your name</label>
               <input type="text" id="name" name="name" class="calc-number" required>
@@ -191,6 +195,7 @@
               <button type="submit" class="btn btn-primary btn-lg" id="submitBtn">Submit enquiry</button>
               <span id="formStatus" style="font-size:.85rem;color:var(--muted);"></span>
             </div>
+            <noscript><p style="font-size:.9rem;color:var(--muted);margin-top:1rem;">JavaScript is off, so submitting opens your email app with the enquiry details. You can also call or WhatsApp us on 07467 657459.</p></noscript>
           </form>
             </div>
           </details>
@@ -245,6 +250,15 @@
           // Form submission
           document.getElementById('quoteForm').addEventListener('submit', async function(e) {
             e.preventDefault();
+
+            // Quietly discard automated submissions that complete the hidden
+            // field. The server repeats this check when the live API is used.
+            if (document.getElementById('website').value.trim()) {
+              document.getElementById('successText').textContent = 'Thank you. Your enquiry has been received.';
+              document.getElementById('successMessage').hidden = false;
+              document.getElementById('quoteFormDisclosure').hidden = true;
+              return;
+            }
 
             var submitBtn = document.getElementById('submitBtn');
             var formStatus = document.getElementById('formStatus');
@@ -479,7 +493,7 @@
 
   <div id="cookie-banner" class="cookie-banner" role="dialog" aria-live="polite" aria-label="Cookie consent" hidden>
     <div class="cookie-banner__inner">
-      <p>We use essential cookies and privacy-friendly analytics to improve the website. By continuing to use the site, you agree to our <a href="/chilterngardenmaintenance-updatedsite/cookies.html">Cookie Policy</a>, <a href="/chilterngardenmaintenance-updatedsite/privacy.html">Privacy Policy</a> and <a href="/chilterngardenmaintenance-updatedsite/terms.html">Terms</a>.</p>
+      <p>We use essential storage and ask before loading optional analytics. Choose whether to allow optional analytics, then read our <a href="/chilterngardenmaintenance-updatedsite/cookies.html">Cookie Policy</a>, <a href="/chilterngardenmaintenance-updatedsite/privacy.html">Privacy Policy</a> and <a href="/chilterngardenmaintenance-updatedsite/terms.html">Terms</a>.</p>
       <div class="cookie-banner__actions">
         <button id="cookie-accept" class="btn btn-primary" type="button">Accept</button>
         <button id="cookie-reject" class="btn" type="button">Decline</button>
