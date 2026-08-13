@@ -27,6 +27,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // One small enhancer keeps the public navigation consistent across the
   // static site without hand-editing hundreds of individual HTML files.
   // Portal pages have their own sign-in/sign-out controls and are excluded.
+  var clientPortalLoginUrl = "https://chilterngardenmaintenance-updatedsite-portal.pages.dev/login/";
   if (!document.body.classList.contains("portal-page") &&
       !document.body.classList.contains("login-page") &&
       !document.body.classList.contains("admin-login-page") &&
@@ -34,7 +35,7 @@ document.addEventListener("DOMContentLoaded", function () {
     var navCta = document.querySelector(".nav-cta");
     if (navCta && !navCta.querySelector("[data-client-login-link], a[href*='/login/']")) {
       var clientLogin = document.createElement("a");
-      clientLogin.href = "/chilterngardenmaintenance-updatedsite/login/";
+      clientLogin.href = clientPortalLoginUrl;
       clientLogin.className = "btn btn-ghost";
       clientLogin.textContent = "Client Login";
       clientLogin.setAttribute("data-client-login-link", "true");
@@ -43,6 +44,9 @@ document.addEventListener("DOMContentLoaded", function () {
       var primaryCta = navCta.querySelector(".btn-primary");
       navCta.insertBefore(clientLogin, primaryCta || navCta.firstChild);
     }
+    document.querySelectorAll("[data-client-login-link]").forEach(function (link) {
+      link.href = clientPortalLoginUrl;
+    });
   }
 
   // ---- Mobile navigation (Safari-safe native click) ----
