@@ -359,6 +359,15 @@
 .premium-v2 .estimator-library__grid .editorial-calc-card__body { color: rgba(16, 32, 25, .74) !important; }
 .premium-v2 .estimator-library__grid .editorial-calc-card__num,
 .premium-v2 .estimator-library__grid .editorial-calc-card__cta { color: var(--v2-gold) !important; }
+.premium-v2 .estimator-library__grid .editorial-calc-card:hover,
+.premium-v2 .estimator-library__grid .editorial-calc-card:focus-visible,
+.premium-v2 .estimator-library__grid .editorial-calc-card.is-spotlight { background: var(--v2-forest) !important; color: #fff !important; }
+.premium-v2 .estimator-library__grid .editorial-calc-card:hover .editorial-calc-card__title,
+.premium-v2 .estimator-library__grid .editorial-calc-card:focus-visible .editorial-calc-card__title,
+.premium-v2 .estimator-library__grid .editorial-calc-card.is-spotlight .editorial-calc-card__title { color: #fff !important; }
+.premium-v2 .estimator-library__grid .editorial-calc-card:hover .editorial-calc-card__body,
+.premium-v2 .estimator-library__grid .editorial-calc-card:focus-visible .editorial-calc-card__body,
+.premium-v2 .estimator-library__grid .editorial-calc-card.is-spotlight .editorial-calc-card__body { color: rgba(255, 255, 255, .8) !important; }
 .premium-v2 .estimator-library__grid .editorial-calc-card.estimator-library__utility { background: var(--v2-deep) !important; color: #fff !important; }
 .premium-v2 .estimator-library__grid .editorial-calc-card.estimator-library__utility .editorial-calc-card__title { color: #fff !important; }
 .premium-v2 .estimator-library__grid .editorial-calc-card.estimator-library__utility .editorial-calc-card__body { color: rgba(255, 255, 255, .8) !important; }
