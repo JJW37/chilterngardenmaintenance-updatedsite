@@ -1,0 +1,657 @@
+{
+  "stage": "/workspace/scratch/3f2fadb99a67/seo-publish-20260814",
+  "batches": [
+    {
+      "dir": "",
+      "files": [
+        "cookies.html",
+        "index.html",
+        "privacy.html",
+        "terms.html"
+      ]
+    },
+    {
+      "dir": "about",
+      "files": [
+        "about/index.html",
+        "about/maintenance.html"
+      ]
+    },
+    {
+      "dir": "booking",
+      "files": [
+        "booking/index.html"
+      ]
+    },
+    {
+      "dir": "calculators",
+      "files": [
+        "calculators/clearance.html",
+        "calculators/index.html",
+        "calculators/lawn-recovery.html",
+        "calculators/lawn.html",
+        "calculators/maintenance.html",
+        "calculators/pressure-wash.html",
+        "calculators/privacy-planner.html",
+        "calculators/wildflower.html"
+      ]
+    },
+    {
+      "dir": "contact",
+      "files": [
+        "contact/index.html"
+      ]
+    },
+    {
+      "dir": "garden-passport",
+      "files": [
+        "garden-passport/index.html"
+      ]
+    },
+    {
+      "dir": "guides",
+      "files": [
+        "guides/index.html"
+      ]
+    },
+    {
+      "dir": "guides/bedding-themes",
+      "files": [
+        "guides/bedding-themes/index.html"
+      ]
+    },
+    {
+      "dir": "guides/cgm-condition-report",
+      "files": [
+        "guides/cgm-condition-report/index.html"
+      ]
+    },
+    {
+      "dir": "guides/garden-design",
+      "files": [
+        "guides/garden-design/index.html"
+      ]
+    },
+    {
+      "dir": "guides/gardener-skills",
+      "files": [
+        "guides/gardener-skills/index.html"
+      ]
+    },
+    {
+      "dir": "guides/lawn-care",
+      "files": [
+        "guides/lawn-care/index.html"
+      ]
+    },
+    {
+      "dir": "locations",
+      "files": [
+        "locations/abingdon.html",
+        "locations/amersham.html",
+        "locations/ascot.html",
+        "locations/aylesbury.html",
+        "locations/banbury.html",
+        "locations/beaconsfield.html",
+        "locations/berkhamsted.html",
+        "locations/bicester.html",
+        "locations/bourne-end.html",
+        "locations/bracknell.html"
+      ]
+    },
+    {
+      "dir": "locations",
+      "files": [
+        "locations/buckingham.html",
+        "locations/calendar.html",
+        "locations/carterton.html",
+        "locations/chalfont-st-peter.html",
+        "locations/charlbury.html",
+        "locations/chesham.html",
+        "locations/chinnor.html",
+        "locations/crowthorne.html",
+        "locations/denham.html",
+        "locations/didcot.html"
+      ]
+    },
+    {
+      "dir": "locations",
+      "files": [
+        "locations/eynsham.html",
+        "locations/faringdon.html",
+        "locations/farnham-common.html",
+        "locations/farnham-royal.html",
+        "locations/flackwell-heath.html",
+        "locations/gerrards-cross.html",
+        "locations/great-missenden.html",
+        "locations/grove.html",
+        "locations/haddenham.html",
+        "locations/hazlemere.html"
+      ]
+    },
+    {
+      "dir": "locations",
+      "files": [
+        "locations/henley-on-thames.html",
+        "locations/high-wycombe.html",
+        "locations/index.html",
+        "locations/iver.html",
+        "locations/kidlington.html",
+        "locations/leighton-buzzard.html",
+        "locations/long-crendon.html",
+        "locations/maidenhead.html",
+        "locations/marlow.html",
+        "locations/newbury.html"
+      ]
+    },
+    {
+      "dir": "locations",
+      "files": [
+        "locations/north-ascot.html",
+        "locations/old-windsor.html",
+        "locations/oxford.html",
+        "locations/prestwood.html",
+        "locations/princes-risborough.html",
+        "locations/reading.html",
+        "locations/sandhurst.html",
+        "locations/slough.html",
+        "locations/stokenchurch.html",
+        "locations/sunninghill.html"
+      ]
+    },
+    {
+      "dir": "locations",
+      "files": [
+        "locations/taplow.html",
+        "locations/thame.html",
+        "locations/thatcham.html",
+        "locations/twyford.html",
+        "locations/waddeston.html",
+        "locations/wallingford.html",
+        "locations/wantage.html",
+        "locations/watlington.html",
+        "locations/wendover.html",
+        "locations/windsor.html"
+      ]
+    },
+    {
+      "dir": "locations",
+      "files": [
+        "locations/winslow.html",
+        "locations/witney.html",
+        "locations/woburn.html",
+        "locations/wokingham.html",
+        "locations/woodley.html",
+        "locations/woodstock.html",
+        "locations/wraysbury.html"
+      ]
+    },
+    {
+      "dir": "plants",
+      "files": [
+        "plants/agapanthus.html",
+        "plants/ajuga.html",
+        "plants/alliums.html",
+        "plants/amelanchier.html",
+        "plants/anemone.html",
+        "plants/apple-tree.html",
+        "plants/aquilegia.html",
+        "plants/astilbe.html",
+        "plants/bay.html",
+        "plants/beech.html"
+      ]
+    },
+    {
+      "dir": "plants",
+      "files": [
+        "plants/begonia.html",
+        "plants/berberis.html",
+        "plants/bergenia.html",
+        "plants/blackberry.html",
+        "plants/blackcurrant.html",
+        "plants/blackthorn.html",
+        "plants/blueberry.html",
+        "plants/box.html",
+        "plants/brunnera.html",
+        "plants/buxus-alternatives.html"
+      ]
+    },
+    {
+      "dir": "plants",
+      "files": [
+        "plants/calamagrostis.html",
+        "plants/camassia.html",
+        "plants/camellia.html",
+        "plants/carex.html",
+        "plants/cercis.html",
+        "plants/cherry-tree.html",
+        "plants/chives.html",
+        "plants/choisya.html",
+        "plants/clematis.html",
+        "plants/cornus.html"
+      ]
+    },
+    {
+      "dir": "plants",
+      "files": [
+        "plants/cotinus.html",
+        "plants/cotoneaster.html",
+        "plants/crocosmia.html",
+        "plants/crocus.html",
+        "plants/cyclamen.html",
+        "plants/daffodils.html",
+        "plants/dahlia.html",
+        "plants/daphne.html",
+        "plants/delphinium.html",
+        "plants/deutzia.html"
+      ]
+    },
+    {
+      "dir": "plants",
+      "files": [
+        "plants/dianthus.html",
+        "plants/dicentra.html",
+        "plants/echinacea.html",
+        "plants/edgeworthia.html",
+        "plants/epimedium.html",
+        "plants/escallonia.html",
+        "plants/euonymus.html",
+        "plants/ferns.html",
+        "plants/field-maple.html",
+        "plants/fig.html"
+      ]
+    },
+    {
+      "dir": "plants",
+      "files": [
+        "plants/forsythia.html",
+        "plants/fothergilla.html",
+        "plants/foxglove.html",
+        "plants/fritillaria.html",
+        "plants/geranium.html",
+        "plants/gladiolus.html",
+        "plants/gooseberry.html",
+        "plants/hakonechloa.html",
+        "plants/hamamelis.html",
+        "plants/hawthorn.html"
+      ]
+    },
+    {
+      "dir": "plants",
+      "files": [
+        "plants/hazel.html",
+        "plants/hellebores.html",
+        "plants/heuchera.html",
+        "plants/heucherella.html",
+        "plants/holly.html",
+        "plants/honeysuckle.html",
+        "plants/hornbeam.html",
+        "plants/hostas.html",
+        "plants/hyacinths.html",
+        "plants/hydrangea.html"
+      ]
+    },
+    {
+      "dir": "plants",
+      "files": [
+        "plants/index.html",
+        "plants/iris.html",
+        "plants/japanese-anemone.html",
+        "plants/japanese-maple.html",
+        "plants/laburnum.html",
+        "plants/laurel.html",
+        "plants/lavender.html",
+        "plants/lemon-balm.html",
+        "plants/leylandii.html",
+        "plants/lily.html"
+      ]
+    },
+    {
+      "dir": "plants",
+      "files": [
+        "plants/liriope.html",
+        "plants/lupin.html",
+        "plants/magnolia.html",
+        "plants/mahonia.html",
+        "plants/malus.html",
+        "plants/mint.html",
+        "plants/miscanthus.html",
+        "plants/muscari.html",
+        "plants/nepeta.html",
+        "plants/oregano.html"
+      ]
+    },
+    {
+      "dir": "plants",
+      "files": [
+        "plants/pachysandra.html",
+        "plants/parsley.html",
+        "plants/pear-tree.html",
+        "plants/pennisetum.html",
+        "plants/peony.html",
+        "plants/philadelphus.html",
+        "plants/photinia.html",
+        "plants/pieris.html",
+        "plants/pittosporum.html",
+        "plants/plum-tree.html"
+      ]
+    },
+    {
+      "dir": "plants",
+      "files": [
+        "plants/poppies.html",
+        "plants/privet.html",
+        "plants/prunus.html",
+        "plants/pulmonaria.html",
+        "plants/pyracantha.html",
+        "plants/raspberry.html",
+        "plants/redcurrant.html",
+        "plants/rhododendron.html",
+        "plants/rosemary.html",
+        "plants/roses.html"
+      ]
+    },
+    {
+      "dir": "plants",
+      "files": [
+        "plants/rudbeckia.html",
+        "plants/sage.html",
+        "plants/salvia.html",
+        "plants/sarcococca.html",
+        "plants/skimmia.html",
+        "plants/snowdrops.html",
+        "plants/sorbus.html",
+        "plants/star-jasmine.html",
+        "plants/stipa.html",
+        "plants/strawberry.html"
+      ]
+    },
+    {
+      "dir": "plants",
+      "files": [
+        "plants/syringa.html",
+        "plants/thyme.html",
+        "plants/tiarella.html",
+        "plants/tulips.html",
+        "plants/verbena-bonariensis.html",
+        "plants/viburnum.html",
+        "plants/vinca.html",
+        "plants/weigela.html",
+        "plants/wildflower-mixes.html",
+        "plants/wisteria.html"
+      ]
+    },
+    {
+      "dir": "plants",
+      "files": [
+        "plants/yew.html"
+      ]
+    },
+    {
+      "dir": "portfolio",
+      "files": [
+        "portfolio/clearance.html",
+        "portfolio/fencing.html",
+        "portfolio/hardstanding.html",
+        "portfolio/index.html",
+        "portfolio/lawn-recovery.html",
+        "portfolio/maintenance.html",
+        "portfolio/premium-oxfordshire-garden-uplift.html",
+        "portfolio/pressure-washing.html",
+        "portfolio/tidy-up.html"
+      ]
+    },
+    {
+      "dir": "products",
+      "files": [
+        "products/index.html"
+      ]
+    },
+    {
+      "dir": "services",
+      "files": [
+        "services/fencing.html",
+        "services/garden-analysis-report.html",
+        "services/garden-clearance.html",
+        "services/garden-design.html",
+        "services/garden-maintenance.html",
+        "services/hedge-cutting.html",
+        "services/index.html",
+        "services/lawn-recovery.html",
+        "services/pressure-washing.html",
+        "services/soft-landscaping.html"
+      ]
+    },
+    {
+      "dir": "tips",
+      "files": [
+        "tips/add-wildlife-value-to-formal-garden.html",
+        "tips/aeration-overseeding-top-dressing-explained.html",
+        "tips/august-garden-jobs-dry-weather.html",
+        "tips/autumn-garden-checklist.html",
+        "tips/autumn-lawn-care-guide.html",
+        "tips/balance-tidy-garden-with-biodiversity.html",
+        "tips/best-drought-tolerant-plants-south-east-england.html",
+        "tips/best-evergreen-shrubs-year-round-structure.html",
+        "tips/best-flowering-shrubs-low-maintenance-borders.html",
+        "tips/best-hedging-plants-privacy-berks-oxon-bucks.html"
+      ]
+    },
+    {
+      "dir": "tips",
+      "files": [
+        "tips/best-native-shrubs-for-birds-uk.html",
+        "tips/best-plants-chalk-soil-chilterns.html",
+        "tips/best-plants-clay-and-chalk-mixed-gardens.html",
+        "tips/best-plants-driveway-entrances-front-gardens.html",
+        "tips/best-plants-large-country-gardens.html",
+        "tips/best-plants-privacy-fences-boundaries.html",
+        "tips/best-plants-windy-chiltern-hills.html",
+        "tips/best-time-to-plant-hedges-uk.html",
+        "tips/best-wildlife-plants-chiltern-gardens.html",
+        "tips/beyond-mulch-gravel-permeable-surfaces-water-conservation.html"
+      ]
+    },
+    {
+      "dir": "tips",
+      "files": [
+        "tips/build-better-borders-chalky-ground.html",
+        "tips/chalk-soil-chilterns-what-grows-well.html",
+        "tips/cheap-garden-clearance-quotes-hidden-costs.html",
+        "tips/chilterns-heatwave-guide-2026-27.html",
+        "tips/choosing-right-compost-bin.html",
+        "tips/clear-brambles-ivy-overgrowth-cost.html",
+        "tips/clear-brambles-properly-without-regrowing.html",
+        "tips/clear-neglected-rental-property-garden.html",
+        "tips/clear-overgrown-garden-before-listing-property.html",
+        "tips/common-uk-garden-pests-control.html"
+      ]
+    },
+    {
+      "dir": "tips",
+      "files": [
+        "tips/composting-guide-uk.html",
+        "tips/container-gardening-tips-uk.html",
+        "tips/control-large-garden-without-redesigning.html",
+        "tips/control-nettles-brambles-self-seeded-trees.html",
+        "tips/country-garden-design-ideas-chiltern-homes.html",
+        "tips/create-luxury-looking-garden-without-full-redesign.html",
+        "tips/create-wildflower-area-large-lawn.html",
+        "tips/creating-pollinator-paradise-native-planting-2026-chilterns.html",
+        "tips/deal-with-bindweed-uk-gardens.html",
+        "tips/deal-with-brambles-overgrown-garden.html"
+      ]
+    },
+    {
+      "dir": "tips",
+      "files": [
+        "tips/dealing-with-japanese-knotweed.html",
+        "tips/december-garden-jobs-large-uk-gardens.html",
+        "tips/design-garden-for-privacy-without-closed-in.html",
+        "tips/diy-vs-professional-garden-clearance.html",
+        "tips/end-of-tenancy-garden-checklist-landlords.html",
+        "tips/estate-garden-maintenance-cost.html",
+        "tips/estate-garden-maintenance-different.html",
+        "tips/fix-garden-become-unmanageable.html",
+        "tips/front-garden-tidy-up-checklist-viewings.html",
+        "tips/full-garden-reset-budget.html"
+      ]
+    },
+    {
+      "dir": "tips",
+      "files": [
+        "tips/garden-clearance-before-probate-inherited-sale.html",
+        "tips/garden-clearance-cost.html",
+        "tips/garden-clearance-costs-buckinghamshire.html",
+        "tips/garden-design-for-entertaining-seating-lighting-privacy.html",
+        "tips/garden-design-ideas-large-gardens-oxon-bucks.html",
+        "tips/garden-design-mistakes-make-maintenance-expensive.html",
+        "tips/garden-drainage-problems-signs-professional-help.html",
+        "tips/garden-improvements-help-sell-homes-oxon-bucks.html",
+        "tips/garden-jobs-add-kerb-appeal-before-valuation.html",
+        "tips/garden-maintenance-busy-professionals-oxon-bucks.html"
+      ]
+    },
+    {
+      "dir": "tips",
+      "files": [
+        "tips/garden-maintenance-cost.html",
+        "tips/garden-maintenance-second-homes-empty-properties.html",
+        "tips/garden-tidy-checklist-summer.html",
+        "tips/garden-waste-removal-costs.html",
+        "tips/garden-zoning-ideas-divide-large-garden.html",
+        "tips/get-rid-of-ivy-without-damaging-fences-walls.html",
+        "tips/hedge-better-for-birds-pollinators.html",
+        "tips/hedge-cutting-cost-chilterns.html",
+        "tips/hedges-left-too-long.html",
+        "tips/how-much-spend-on-garden-before-selling.html"
+      ]
+    },
+    {
+      "dir": "tips",
+      "files": [
+        "tips/how-often-should-gardener-visit.html",
+        "tips/how-to-clean-patio-slabs-with-or-without-pressure-washer.html",
+        "tips/how-to-improve-clay-soil-garden.html",
+        "tips/how-to-mulch-properly-and-what-to-buy.html",
+        "tips/how-to-prepare-lawn-for-summer.html",
+        "tips/improve-lawn-before-selling-house.html",
+        "tips/improve-soil-around-mature-trees-hedges.html",
+        "tips/improve-soil-before-planting-border.html",
+        "tips/improve-thin-dry-soil-sloping-gardens.html",
+        "tips/index.html"
+      ]
+    },
+    {
+      "dir": "tips",
+      "files": [
+        "tips/january-garden-jobs-oxon-berks-bucks.html",
+        "tips/june-garden-jobs-cut-feed-tidy.html",
+        "tips/keep-lawn-green-dry-summers-oxon-bucks.html",
+        "tips/large-garden-tidy-cost-oxfordshire.html",
+        "tips/lawn-care-plan-large-gardens-chilterns.html",
+        "tips/lawn-renovation-cost-uk.html",
+        "tips/lawn-renovation-spring-uk.html",
+        "tips/lawn-scarification-worth-doing.html",
+        "tips/leave-part-garden-wild.html",
+        "tips/low-maintenance-garden-design-busy-professionals.html"
+      ]
+    },
+    {
+      "dir": "tips",
+      "files": [
+        "tips/low-maintenance-plants-chilterns.html",
+        "tips/maintain-mature-garden-without-losing-character.html",
+        "tips/make-large-garden-look-manageable-to-buyers.html",
+        "tips/make-old-garden-look-cared-for.html",
+        "tips/march-garden-jobs-chilterns.html",
+        "tips/modern-garden-design-ideas-period-homes.html",
+        "tips/mulching-guide-benefits-types.html",
+        "tips/mushroom-compost-manure-bark-mulch.html",
+        "tips/neglected-garden-before-selling.html",
+        "tips/one-off-tidy-vs-regular-maintenance.html"
+      ]
+    },
+    {
+      "dir": "tips",
+      "files": [
+        "tips/plan-borders-look-good-all-year.html",
+        "tips/plan-garden-redesign-without-wasting-money.html",
+        "tips/plan-garden-renovation-in-stages.html",
+        "tips/plan-garden-tidy-up-weekend.html",
+        "tips/post-holiday-garden-rescue.html",
+        "tips/pre-holiday-garden-checklist.html",
+        "tips/prepare-garden-for-family-event-party.html",
+        "tips/prepare-garden-for-professional-maintenance.html",
+        "tips/prepare-garden-for-professional-property-photos.html",
+        "tips/prepare-soil-after-garden-clearance.html"
+      ]
+    },
+    {
+      "dir": "tips",
+      "files": [
+        "tips/pressure-washing-patio-cost-2026.html",
+        "tips/preventing-weeds-garden-beds.html",
+        "tips/pruning-guide-uk-shrubs.html",
+        "tips/raised-bed-gardening-guide-uk.html",
+        "tips/reclaim-overgrown-lawn-and-border.html",
+        "tips/regular-maintenance-large-gardens-included.html",
+        "tips/remove-ivy-from-fences-walls-trees.html",
+        "tips/rental-property-garden-presentable-between-tenants.html",
+        "tips/repair-lawn-after-dogs-children.html",
+        "tips/rescue-garden-after-tenants-move-out.html"
+      ]
+    },
+    {
+      "dir": "tips",
+      "files": [
+        "tips/restore-overgrown-garden.html",
+        "tips/returf-or-reseed-lawn.html",
+        "tips/rewilding-with-intent-professional-maintenance-wild-garden.html",
+        "tips/september-garden-jobs-before-autumn.html",
+        "tips/shade-garden-plants-uk.html",
+        "tips/soil-improvement-new-build-gardens.html",
+        "tips/spring-garden-checklist.html",
+        "tips/stop-garden-becoming-overgrown-again.html",
+        "tips/storm-damage-garden-checklist.html",
+        "tips/tidy-garden-after-building-work.html"
+      ]
+    },
+    {
+      "dir": "tips",
+      "files": [
+        "tips/topsoil-vs-compost-garden.html",
+        "tips/turn-neglected-corner-into-wildlife-area.html",
+        "tips/watering-garden-drought-uk.html",
+        "tips/weekly-vs-fortnightly-gardening.html",
+        "tips/what-buyers-notice-first-neglected-garden.html",
+        "tips/what-professional-gardener-does-maintenance-visit.html",
+        "tips/when-to-cut-hedges-uk.html",
+        "tips/when-to-plant-trees-shrubs-uk.html",
+        "tips/when-to-pressure-wash-a-patio.html",
+        "tips/why-borders-dry-tired-underperforming.html"
+      ]
+    },
+    {
+      "dir": "tips",
+      "files": [
+        "tips/why-garden-flooding-after-heavy-rain.html",
+        "tips/why-garden-looks-tired-after-mowing.html",
+        "tips/why-garden-needs-maintenance-plan-not-random-visits.html",
+        "tips/why-is-my-lawn-full-of-moss.html",
+        "tips/why-lawn-patchy-how-to-fix.html",
+        "tips/why-new-turf-fails-how-to-prevent.html",
+        "tips/why-patios-go-green-and-slippery-wet-weather.html",
+        "tips/wildlife-friendly-garden-without-looking-messy.html",
+        "tips/wildlife-garden-guide-uk.html",
+        "tips/wildlife-pond-maintenance-what-to-cut-back.html"
+      ]
+    },
+    {
+      "dir": "tips",
+      "files": [
+        "tips/winter-garden-tasks-checklist.html"
+      ]
+    }
+  ]
+}
