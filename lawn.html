@@ -3,10 +3,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Lawn Recovery Predictor | Chiltern Garden Maintenance</title>
-  <meta name="description" content="Premium diagnostic tool that assesses your lawn&#x27;s recovery potential, recommends a route forward and gives seasonal maintenance advice. No costs, just...">
+  <title>Lawn Renovation Planning Tool | Chiltern Garden Maintenance</title>
+  <meta name="description" content="Free lawn renovation planning tool. Get a specific seed species and cultivar recommendation with a full renovation plan based on your lawn conditions and...">
   <meta name="theme-color" content="#102019">
-  <link rel="canonical" href="https://jjw37.github.io/chilterngardenmaintenance-updatedsite/calculators/lawn-recovery.html">
+  <link rel="canonical" href="https://jjw37.github.io/chilterngardenmaintenance-updatedsite/calculators/lawn.html">
   <link rel="stylesheet" href="/chilterngardenmaintenance-updatedsite/css/styles.css?v=20260727a-v9">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,20 +15,20 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/chilterngardenmaintenance-updatedsite/images/favicon-32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/chilterngardenmaintenance-updatedsite/images/favicon-16.png">
   <link rel="apple-touch-icon" href="/chilterngardenmaintenance-updatedsite/images/cgm-logo-square.png">
-  <meta property="og:title" content="Lawn Recovery Predictor | Chiltern Garden Maintenance">
-  <meta property="og:description" content="Premium diagnostic tool that assesses your lawn&#x27;s recovery potential, recommends a route forward and gives seasonal maintenance advice. No costs, just...">
+  <meta property="og:title" content="Lawn Renovation Planning Tool | Chiltern Garden Maintenance">
+  <meta property="og:description" content="Free lawn renovation planning tool. Get a specific seed species and cultivar recommendation with a full renovation plan based on your lawn conditions and...">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://jjw37.github.io/chilterngardenmaintenance-updatedsite/calculators/lawn-recovery.html">
+  <meta property="og:url" content="https://jjw37.github.io/chilterngardenmaintenance-updatedsite/calculators/lawn.html">
   <meta property="og:image" content="https://jjw37.github.io/chilterngardenmaintenance-updatedsite/images/project/portfolio-index.webp">
   <meta property="og:site_name" content="Chiltern Garden Maintenance">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Lawn Recovery Predictor | Chiltern Garden Maintenance">
-  <meta name="twitter:description" content="Premium diagnostic tool that assesses your lawn&#x27;s recovery potential, recommends a route forward and gives seasonal maintenance advice. No costs, just...">
+  <meta name="twitter:title" content="Lawn Renovation Planning Tool | Chiltern Garden Maintenance">
+  <meta name="twitter:description" content="Free lawn renovation planning tool. Get a specific seed species and cultivar recommendation with a full renovation plan based on your lawn conditions and...">
   <meta name="twitter:image" content="https://jjw37.github.io/chilterngardenmaintenance-updatedsite/images/project/portfolio-index.webp">
   <!-- Google Analytics 4, stub loaded from analytics.js, full library loaded after cookie consent -->
   <script src="/chilterngardenmaintenance-updatedsite/js/analytics.js?v=20260713a"></script>
   <script src="/chilterngardenmaintenance-updatedsite/js/calculators-core.js?v=20260713a" defer></script>
-  <script src="/chilterngardenmaintenance-updatedsite/js/calculators-lawn-recovery.js?v=20260713a" defer></script>
+  <script src="/chilterngardenmaintenance-updatedsite/js/calculators-lawn.js?v=20260713a" defer></script>
 </head>
 <body>
 
@@ -103,14 +103,14 @@
     </nav>
   </header>
 <main id="main-content">
-<nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/chilterngardenmaintenance-updatedsite/">Home</a><span>/</span><a href="/chilterngardenmaintenance-updatedsite/calculators/">Garden Tools &amp; Planners</a><span>/</span>Lawn Recovery Predictor</nav>
+<nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/chilterngardenmaintenance-updatedsite/">Home</a><span>/</span><a href="/chilterngardenmaintenance-updatedsite/calculators/">Garden Tools &amp; Planners</a><span>/</span>Lawn Renovation Planning Tool</nav>
   <section class="page-header page-header-editorial">
     <div class="page-header-bg"><img src="/chilterngardenmaintenance-updatedsite/images/project/interlude-lawn-stripes.webp" alt="" loading="eager" decoding="async"></div>
     <div class="container">
       
-      <span class="editorial-kicker">Calculator &middot; Lawn Recovery</span>
-      <h1>Lawn Recovery Predictor</h1>
-      <p class="page-header-lede">Answer the questions below and we will diagnose your lawn's condition, give you a recovery score, and recommend the best route forward. No costs, just practical guidance.</p>
+      <span class="editorial-kicker">Calculator &middot; Lawn</span>
+      <h1>Lawn Renovation Planning Tool</h1>
+      <p class="page-header-lede">Answer a few questions about your lawn conditions and problems. We will recommend specific grass species and cultivars (botanical names, not product names) and give you a step by step renovation plan. These results are a guide only. For a full lawn renovation quote, contact us and we will do the work for you.</p>
     </div>
   </section>
 
@@ -130,137 +130,53 @@
         <div class="calc-form">
           
               <div class="calc-step">
-                <label>Lawn size</label>
-                <div class="calc-options">
-                  <input type="radio" name="lr-size" id="lr-s-small" value="small" checked><label for="lr-s-small">Small (under 50 m2)</label>
-                  <input type="radio" name="lr-size" id="lr-s-medium" value="medium"><label for="lr-s-medium">Medium (50 to 200 m2)</label>
-                  <input type="radio" name="lr-size" id="lr-s-large" value="large"><label for="lr-s-large">Large (200+ m2)</label>
-                </div>
+                <label for="size">Lawn size in square metres</label>
+                <input type="number" name="size" id="size" class="calc-number" min="10" max="1000" value="50" step="5">
               </div>
               <div class="calc-step">
-                <label>Main lawn condition</label>
+                <label>Sun exposure <span class="hint">(what percentage of the day is full sun?)</span></label>
                 <div class="calc-options">
-                  <input type="radio" name="lr-condition" id="lr-c-patchy" value="patchy" checked><label for="lr-c-patchy">Patchy</label>
-                  <input type="radio" name="lr-condition" id="lr-c-mossy" value="mossy"><label for="lr-c-mossy">Mossy</label>
-                  <input type="radio" name="lr-condition" id="lr-c-weedy" value="weedy"><label for="lr-c-weedy">Weedy</label>
-                  <input type="radio" name="lr-condition" id="lr-c-compacted" value="compacted"><label for="lr-c-compacted">Compacted</label>
-                  <input type="radio" name="lr-condition" id="lr-c-bare" value="bare-soil"><label for="lr-c-bare">Bare soil</label>
-                  <input type="radio" name="lr-condition" id="lr-c-yellow" value="yellowing"><label for="lr-c-yellow">Yellowing</label>
-                  <input type="radio" name="lr-condition" id="lr-c-uneven" value="uneven"><label for="lr-c-uneven">Uneven</label>
-                  <input type="radio" name="lr-condition" id="lr-c-water" value="waterlogged"><label for="lr-c-water">Waterlogged</label>
-                </div>
-              </div>
-              <div class="calc-step">
-                <label>Moss level</label>
-                <div class="calc-options">
-                  <input type="radio" name="lr-moss" id="lr-m-none" value="none" checked><label for="lr-m-none">None</label>
-                  <input type="radio" name="lr-moss" id="lr-m-light" value="light"><label for="lr-m-light">Light</label>
-                  <input type="radio" name="lr-moss" id="lr-m-mod" value="moderate"><label for="lr-m-mod">Moderate</label>
-                  <input type="radio" name="lr-moss" id="lr-m-heavy" value="heavy"><label for="lr-m-heavy">Heavy</label>
-                </div>
-              </div>
-              <div class="calc-step">
-                <label>Weed level</label>
-                <div class="calc-options">
-                  <input type="radio" name="lr-weed" id="lr-w-none" value="none" checked><label for="lr-w-none">None</label>
-                  <input type="radio" name="lr-weed" id="lr-w-light" value="light"><label for="lr-w-light">Light</label>
-                  <input type="radio" name="lr-weed" id="lr-w-mod" value="moderate"><label for="lr-w-mod">Moderate</label>
-                  <input type="radio" name="lr-weed" id="lr-w-heavy" value="heavy"><label for="lr-w-heavy">Heavy</label>
-                </div>
-              </div>
-              <div class="calc-step">
-                <label>Bare patch level</label>
-                <div class="calc-options">
-                  <input type="radio" name="lr-bare" id="lr-b-none" value="none" checked><label for="lr-b-none">None</label>
-                  <input type="radio" name="lr-bare" id="lr-b-light" value="light"><label for="lr-b-light">Light</label>
-                  <input type="radio" name="lr-bare" id="lr-b-mod" value="moderate"><label for="lr-b-mod">Moderate</label>
-                  <input type="radio" name="lr-bare" id="lr-b-heavy" value="heavy"><label for="lr-b-heavy">Heavy</label>
-                </div>
-              </div>
-              <div class="calc-step">
-                <label>Shade level</label>
-                <div class="calc-options">
-                  <input type="radio" name="lr-shade" id="lr-sh-full" value="full-sun" checked><label for="lr-sh-full">Full sun</label>
-                  <input type="radio" name="lr-shade" id="lr-sh-partial" value="partial-shade"><label for="lr-sh-partial">Partial shade</label>
-                  <input type="radio" name="lr-shade" id="lr-sh-heavy" value="heavy-shade"><label for="lr-sh-heavy">Heavy shade</label>
+                  <input type="radio" name="sunExposure" id="sun-full" value="full-sun" checked><label for="sun-full">Full sun (6+ hours)</label>
+                  <input type="radio" name="sunExposure" id="sun-partial" value="partial-shade"><label for="sun-partial">Partial shade (3 to 6 hours)</label>
+                  <input type="radio" name="sunExposure" id="sun-full-shade" value="full-shade"><label for="sun-full-shade">Full shade (under 3 hours)</label>
                 </div>
               </div>
               <div class="calc-step">
                 <label>Soil type</label>
                 <div class="calc-options">
-                  <input type="radio" name="lr-soil" id="lr-so-clay" value="clay"><label for="lr-so-clay">Clay</label>
-                  <input type="radio" name="lr-so-chalk" value="chalk" id="lr-so-chalk"><label for="lr-so-chalk">Chalk</label>
-                  <input type="radio" name="lr-soil" id="lr-so-sandy" value="sandy"><label for="lr-so-sandy">Sandy</label>
-                  <input type="radio" name="lr-soil" id="lr-so-unknown" value="unknown" checked><label for="lr-so-unknown">Unknown</label>
+                  <input type="radio" name="soilType" id="soil-sandy" value="sandy"><label for="soil-sandy">Sandy</label>
+                  <input type="radio" name="soilType" id="soil-loam" value="loam" checked><label for="soil-loam">Loam</label>
+                  <input type="radio" name="soilType" id="soil-clay" value="clay"><label for="soil-clay">Clay</label>
+                  <input type="radio" name="soilType" id="soil-chalk" value="chalk"><label for="soil-chalk">Chalk</label>
                 </div>
               </div>
               <div class="calc-step">
-                <label>Drainage</label>
+                <label>Main problem</label>
                 <div class="calc-options">
-                  <input type="radio" name="lr-drain" id="lr-d-good" value="good" checked><label for="lr-d-good">Good</label>
-                  <input type="radio" name="lr-drain" id="lr-d-slow" value="slow-draining"><label for="lr-d-slow">Slow draining</label>
-                  <input type="radio" name="lr-drain" id="lr-d-water" value="waterlogged"><label for="lr-d-water">Waterlogged</label>
-                  <input type="radio" name="lr-drain" id="lr-d-unknown" value="unknown"><label for="lr-d-unknown">Unknown</label>
+                  <input type="radio" name="problem" id="p-moss" value="moss" checked><label for="p-moss">Moss</label>
+                  <input type="radio" name="problem" id="p-bare" value="bare"><label for="p-bare">Bare patches</label>
+                  <input type="radio" name="problem" id="p-weeds" value="weeds"><label for="p-weeds">Weeds</label>
+                  <input type="radio" name="problem" id="p-drain" value="drainage"><label for="p-drain">Poor drainage</label>
+                  <input type="radio" name="problem" id="p-comp" value="compaction"><label for="p-comp">Compacted soil</label>
+                  <input type="radio" name="problem" id="p-drought" value="drought"><label for="p-drought">Drought damage</label>
                 </div>
               </div>
               <div class="calc-step">
-                <label>Foot traffic</label>
+                <label>Traffic level <span class="hint">(how much use does the lawn get?)</span></label>
                 <div class="calc-options">
-                  <input type="radio" name="lr-traffic" id="lr-t-low" value="low" checked><label for="lr-t-low">Low (ornamental)</label>
-                  <input type="radio" name="lr-traffic" id="lr-t-medium" value="medium"><label for="lr-t-medium">Medium (family use)</label>
-                  <input type="radio" name="lr-traffic" id="lr-t-heavy" value="heavy"><label for="lr-t-heavy">Heavy (dogs, children)</label>
+                  <input type="radio" name="trafficLevel" id="t-light" value="light" checked><label for="t-light">Light (ornamental)</label>
+                  <input type="radio" name="trafficLevel" id="t-medium" value="medium"><label for="t-medium">Medium (family use)</label>
+                  <input type="radio" name="trafficLevel" id="t-heavy" value="heavy"><label for="t-heavy">Heavy (dogs, children)</label>
                 </div>
               </div>
-              <div class="calc-step">
-                <label>Pets using the lawn?</label>
-                <div class="calc-options">
-                  <input type="radio" name="lr-pets" id="lr-p-yes" value="yes"><label for="lr-p-yes">Yes</label>
-                  <input type="radio" name="lr-pets" id="lr-p-no" value="no" checked><label for="lr-p-no">No</label>
-                </div>
-              </div>
-              <div class="calc-step">
-                <label>Children playing on lawn?</label>
-                <div class="calc-options">
-                  <input type="radio" name="lr-children" id="lr-ch-yes" value="yes"><label for="lr-ch-yes">Yes</label>
-                  <input type="radio" name="lr-children" id="lr-ch-no" value="no" checked><label for="lr-ch-no">No</label>
-                </div>
-              </div>
-              <div class="calc-step">
-                <label>Last lawn feed</label>
-                <div class="calc-options">
-                  <input type="radio" name="lr-feed" id="lr-f-recent" value="recently" checked><label for="lr-f-recent">Recently</label>
-                  <input type="radio" name="lr-feed" id="lr-f-year" value="this-year"><label for="lr-f-year">This year</label>
-                  <input type="radio" name="lr-feed" id="lr-f-over" value="over-a-year"><label for="lr-f-over">Over a year ago</label>
-                  <input type="radio" name="lr-feed" id="lr-f-never" value="never"><label for="lr-f-never">Never / unknown</label>
-                </div>
-              </div>
-              <div class="calc-step">
-                <label>Last scarified or aerated</label>
-                <div class="calc-options">
-                  <input type="radio" name="lr-scarified" id="lr-sc-recent" value="recently" checked><label for="lr-sc-recent">Recently</label>
-                  <input type="radio" name="lr-scarified" id="lr-sc-year" value="this-year"><label for="lr-sc-year">This year</label>
-                  <input type="radio" name="lr-scarified" id="lr-sc-over" value="over-a-year"><label for="lr-sc-over">Over a year ago</label>
-                  <input type="radio" name="lr-scarified" id="lr-sc-never" value="never"><label for="lr-sc-never">Never / unknown</label>
-                </div>
-              </div>
-              <div class="calc-step">
-                <label>Desired result</label>
-                <div class="calc-options">
-                  <input type="radio" name="lr-desired" id="lr-d-tidy" value="tidy-usable" checked><label for="lr-d-tidy">Tidy usable lawn</label>
-                  <input type="radio" name="lr-desired" id="lr-d-premium" value="premium-lawn"><label for="lr-d-premium">Premium lawn</label>
-                  <input type="radio" name="lr-desired" id="lr-d-wildlife" value="wildlife-lawn"><label for="lr-d-wildlife">Wildlife-friendly lawn</label>
-                  <input type="radio" name="lr-desired" id="lr-d-durable" value="durable-lawn"><label for="lr-d-durable">Child/pet durable lawn</label>
-                  <input type="radio" name="lr-desired" id="lr-d-low" value="low-maintenance"><label for="lr-d-low">Low-maintenance lawn</label>
-                </div>
-              </div>
-              <button class="btn btn-primary btn-lg" type="button" onclick="calcLawnRecovery()">Diagnose my lawn</button>
+              <button class="btn btn-primary btn-lg" type="button" onclick="calcLawn()">Get my lawn plan</button>
             
         </div>
         <div>
-          <div class="calc-result" id="lawn-recovery-result" hidden>
+          <div class="calc-result" id="lawn-result" hidden>
             <h3>Your CGM Care Level</h3>
-            <div class="estimate-range" id="lawn-recovery-range">Answer the questions to see your estimate</div>
-            <div id="lawn-recovery-summary" style="font-size:.92rem;line-height:1.6;"></div>
+            <div class="estimate-range" id="lawn-range">Answer the questions to see your estimate</div>
+            <div id="lawn-summary" style="font-size:.92rem;line-height:1.6;"></div>
           </div>
           <div class="sidebar-card" style="background:var(--cream);border:1px solid var(--border);">
             <h3>How this works</h3>
@@ -273,7 +189,7 @@
       <div class="calc-cta-bottom" style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-top:2rem;">
         <a class="btn btn-whatsapp btn-lg" href="https://wa.me/447467657459" target="_blank" rel="noopener">WhatsApp</a>
         <a class="btn btn-primary btn-lg" href="/chilterngardenmaintenance-updatedsite/booking/">Get a Quote</a>
-        <a class="btn btn-ghost btn-lg" href="/chilterngardenmaintenance-updatedsite/booking/" style="border:2px solid var(--forest);color:var(--forest-dark);">Add 3 lawn photos to improve this recovery estimate</a>
+        <a class="btn btn-ghost btn-lg" href="/chilterngardenmaintenance-updatedsite/booking/" style="border:2px solid var(--forest);color:var(--forest-dark);">Add 3 lawn photos to improve this renovation estimate</a>
         <a class="btn btn-ghost btn-lg" href="/chilterngardenmaintenance-updatedsite/guides/" style="border:2px solid var(--gold);color:var(--gold-deep);">Relevant garden PDF guides</a>
       </div>
     </div>
@@ -299,12 +215,6 @@
           <a class="card-link" href="/chilterngardenmaintenance-updatedsite/calculators/maintenance.html">Open calculator</a>
         </div>
         <div class="card">
-          <div class="card-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19.2 2.96c1.4 9.3-3.6 18.5-8.2 17.04Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6"/></svg></div>
-          <h3>Lawn Renovation Planning Tool</h3>
-          <p>Get a seed variety recommendation and renovation plan for your lawn.</p>
-          <a class="card-link" href="/chilterngardenmaintenance-updatedsite/calculators/lawn.html">Open calculator</a>
-        </div>
-        <div class="card">
           <div class="card-icon">flower</div>
           <h3>Wildflower Seed Selector</h3>
           <p>Get a wildflower seed mix recommendation based on your soil, light and desired look.</p>
@@ -321,6 +231,12 @@
           <h3>Privacy Plant Planner</h3>
           <p>Get a premium privacy screening plan with plant recommendations, arrangement and scoring.</p>
           <a class="card-link" href="/chilterngardenmaintenance-updatedsite/calculators/privacy-planner.html">Open calculator</a>
+        </div>
+        <div class="card">
+          <div class="card-icon">grass</div>
+          <h3>Lawn Recovery Predictor</h3>
+          <p>Diagnose your lawn condition and get a recovery score, action plan and timeline.</p>
+          <a class="card-link" href="/chilterngardenmaintenance-updatedsite/calculators/lawn-recovery.html">Open calculator</a>
         </div>
       </div>
     </div>
