@@ -172,6 +172,9 @@ body { padding-top: 0; }
   gap: 0.65rem;
   color: var(--forest-deep);
   text-decoration: none;
+  position: relative;
+  z-index: 10002;
+  pointer-events: auto;
 }
 .brand:hover { text-decoration: none; }
 .brand-logo {
