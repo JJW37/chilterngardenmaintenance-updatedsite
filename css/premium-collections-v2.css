@@ -351,6 +351,21 @@
 .premium-v2.content-studio .editorial-card-grid__cell:hover,
 .premium-v2.content-studio .guide-cat-card:hover { background: var(--v2-sage) !important; }
 
+/* The older site-wide calculator-card skin uses white type on a dark surface.
+   The estimator library intentionally uses a light editorial surface, so give
+   its text its own explicit, high-specificity palette. */
+.premium-v2 .estimator-library__grid .editorial-calc-card { color: var(--v2-ink) !important; }
+.premium-v2 .estimator-library__grid .editorial-calc-card__title { color: var(--v2-ink) !important; }
+.premium-v2 .estimator-library__grid .editorial-calc-card__body { color: rgba(16, 32, 25, .74) !important; }
+.premium-v2 .estimator-library__grid .editorial-calc-card__num,
+.premium-v2 .estimator-library__grid .editorial-calc-card__cta { color: var(--v2-gold) !important; }
+.premium-v2 .estimator-library__grid .editorial-calc-card.estimator-library__utility { background: var(--v2-deep) !important; color: #fff !important; }
+.premium-v2 .estimator-library__grid .editorial-calc-card.estimator-library__utility .editorial-calc-card__title { color: #fff !important; }
+.premium-v2 .estimator-library__grid .editorial-calc-card.estimator-library__utility .editorial-calc-card__body { color: rgba(255, 255, 255, .8) !important; }
+.premium-v2 .estimator-library__grid .editorial-calc-card.estimator-library__utility:last-child { background: var(--v2-sage) !important; color: var(--v2-ink) !important; }
+.premium-v2 .estimator-library__grid .editorial-calc-card.estimator-library__utility:last-child .editorial-calc-card__title { color: var(--v2-ink) !important; }
+.premium-v2 .estimator-library__grid .editorial-calc-card.estimator-library__utility:last-child .editorial-calc-card__body { color: rgba(16, 32, 25, .74) !important; }
+
 /* Estimator: the restored real planning photograph gets a clean art-direction
    pass.  It should feel like an advisory desk, never a generic calculator. */
 .premium-v2 .estimator-hero {
