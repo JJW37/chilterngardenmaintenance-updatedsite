@@ -1658,6 +1658,9 @@
       </div>
       <div class="town-data-panel" id="townDataPanel">
         <div class="town-data-panel__summary" id="townSummary">
+          <figure class="town-data-panel__image" id="townSummaryImageWrap" hidden>
+            <img id="townSummaryImage" src="" alt="" width="720" height="420" loading="eager" decoding="async">
+          </figure>
           <h3 id="townSummaryName">Select a town</h3>
           <p id="townSummaryCounty">Choose a town from the map or swiper above to see local garden data.</p>
           <a class="town-data-panel__link" id="townFullPageLink" href="#" style="display:none;">View full town page <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
@@ -1929,12 +1932,27 @@
       var nameEl = document.getElementById('townSummaryName');
       var countyEl = document.getElementById('townSummaryCounty');
       var linkEl = document.getElementById('townFullPageLink');
+      var imageWrap = document.getElementById('townSummaryImageWrap');
+      var imageEl = document.getElementById('townSummaryImage');
 
       nameEl.textContent = town.name;
       var coverageLabel = town.coverage === 'extended' ? 'Extended coverage - larger projects by arrangement' : 'Regularly covered';
       countyEl.textContent = town.county + (town.region ? ', ' + town.region : '') + ', ' + coverageLabel + ', nearby villages and hamlets considered';
       linkEl.href = '/chilterngardenmaintenance-updatedsite/locations/' + town.slug + '.html';
       linkEl.style.display = 'inline-flex';
+
+      // The swiper card and the individual town page share this image source.
+      // Reading it from the selected card prevents the panel drifting from the
+      // canonical image used elsewhere for the same town.
+      var townCard = document.querySelector('.town-card[data-slug="' + town.slug + '"]');
+      var townCardImage = townCard ? townCard.querySelector('.town-card__thumb-image') : null;
+      if (imageWrap && imageEl && townCardImage && townCardImage.getAttribute('src')) {
+        imageEl.src = townCardImage.getAttribute('src');
+        imageEl.alt = townCardImage.getAttribute('alt') || ('Garden services in ' + town.name);
+        imageWrap.hidden = false;
+      } else if (imageWrap) {
+        imageWrap.hidden = true;
+      }
 
       // ---- Parse pH from the soil_ph text ----
       // e.g. "Alkaline, pH 7.5 to 8.2 on chalk" -> [7.5, 8.2]
@@ -2056,6 +2074,37 @@
         '</div>' +
         '</div>';
 
+      // Keep a complete, keyboard-readable yearly table alongside the visual
+      // calendar. It uses the very same town.calendar data as the town page,
+      // so a selection can never leave the summary panel without monthly data.
+      var calendarRows = monthFull.map(function(month, i) {
+        var entry = calData[i] || { t: [], h: 'Seasonal guidance coming soon.' };
+        var activities = (entry.t || []).map(function(tag) {
+          var labels = {
+            'frost': 'Frost protection',
+            'sow-plant': 'Sow and plant',
+            'prune': 'Pruning',
+            'lawn': 'Lawn care',
+            'feed-mulch': 'Feed and mulch',
+            'water': 'Watering',
+            'flowering': 'Flowering',
+            'pests-watch': 'Watch for pests'
+          };
+          return labels[tag] || tag;
+        }).join(', ') || 'General seasonal care';
+        return '<tr><th scope="row">' + month + '</th><td>' + activities + '</td><td>' + (entry.h || 'General seasonal care') + '</td></tr>';
+      }).join('');
+      cardsHtml += '<div class="town-data-card town-data-card--calendar-table">' +
+        '<span class="town-data-card__label">Month-by-month garden work</span>' +
+        '<details class="town-calendar-details">' +
+          '<summary>View the full 12-month calendar for ' + town.name + '</summary>' +
+          '<div class="town-calendar-table-wrap"><table class="town-calendar-table">' +
+            '<thead><tr><th scope="col">Month</th><th scope="col">Seasonal activity</th><th scope="col">Local focus</th></tr></thead>' +
+            '<tbody>' + calendarRows + '</tbody>' +
+          '</table></div>' +
+        '</details>' +
+        '</div>';
+
       // 5. Text data cards
       var textCards = [
         { label: 'County', value: town.county },
@@ -2167,12 +2216,23 @@
     }
 
     // ---- Postcode geocoding via postcodes.io ----
+    function normalisePostcode(query) {
+      var compact = String(query || '').trim().toUpperCase().replace(/\s+/g, '');
+      // Add the conventional space to a complete UK postcode while retaining
+      // outward-code searches such as OX14.
+      if (/^[A-Z]{1,2}\d[A-Z\d]?\d[A-Z]{2}$/.test(compact)) {
+        return compact.slice(0, -3) + ' ' + compact.slice(-3);
+      }
+      return compact;
+    }
     function isPostcode(query) {
+      query = normalisePostcode(query);
       // UK postcode regex (outward code + optional inward code)
       return /^[A-Z]{1,2}[0-9][A-Z0-9]?\s?[0-9][A-Z]{2}$/i.test(query) ||
              /^[A-Z]{1,2}[0-9][A-Z0-9]?$/i.test(query);
     }
     function geocodePostcode(query) {
+      query = normalisePostcode(query);
       var url = 'https://api.postcodes.io/postcodes/' + encodeURIComponent(query);
       // For partial postcodes (outward code only), use a different endpoint
       if (!query.match(/\s/) && query.length <= 4) {
@@ -2197,8 +2257,8 @@
       }).catch(function() { return null; });
     }
     function handlePostcodeSearch(query) {
-      query = query.trim();
-      searchInput.value = query.toUpperCase();
+      query = normalisePostcode(query);
+      searchInput.value = query;
       searchClear.hidden = false;
       // Show loading state
       var summaryName = document.getElementById('townSummaryName');
@@ -2223,7 +2283,16 @@
           if (dist < minDist) { minDist = dist; nearest = t; }
         });
         // Calculate distance in km (Haversine approximation)
-        var distKm = minDist > 0 ? (minDist * 111) : 0;
+        var distanceKm = function(latA, lngA, latB, lngB) {
+          var rad = Math.PI / 180;
+          var dLat = (latB - latA) * rad;
+          var dLng = (lngB - lngA) * rad;
+          var a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+            Math.cos(latA * rad) * Math.cos(latB * rad) *
+            Math.sin(dLng / 2) * Math.sin(dLng / 2);
+          return 6371 * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+        };
+        var distKm = nearest ? distanceKm(result.lat, result.lng, nearest.lat, nearest.lng) : 0;
         if (nearest) {
           selectTown(nearest.slug, 'search');
           // Show user location AFTER selectTown so marker isn't removed.
