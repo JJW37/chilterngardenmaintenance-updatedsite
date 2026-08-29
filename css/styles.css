@@ -12551,3 +12551,34 @@ article li {
 .guide-card__access { color:var(--forest); font-family:var(--sans); font-size:.76rem !important; font-weight:700; line-height:1.35; margin:-.1rem 0 .85rem !important; }
 .quote-prefill-notice { background:var(--sky); border-left:3px solid var(--forest); color:var(--ink-soft); font-size:.9rem; margin:1rem 0; padding:.85rem 1rem; }
 @media (max-width:700px) { .assessment-options, .assessment-routes, .guide-journey__grid { grid-template-columns:1fr; } .assessment-progress span { font-size:.62rem; } .assessment-actions .btn { width:100%; } }
+
+/* Guide previews and knowledge-access routes */
+.guide-preview { max-width:1040px; }
+.guide-preview__intro { background:linear-gradient(135deg,var(--forest-dark),var(--forest)); border-radius:var(--radius-lg); color:#fff; margin:0 0 1.5rem; padding:clamp(1.4rem,4vw,2.4rem); }
+.guide-preview__intro h2 { color:#fff; font-size:clamp(1.65rem,3.4vw,2.4rem); margin:0 0 .7rem; }
+.guide-preview__intro p { color:rgba(255,255,255,.9); margin:0; max-width:760px; }
+.guide-preview__eyebrow { color:var(--gold-light); display:block; font-family:var(--sans); font-size:.74rem; font-weight:700; letter-spacing:.1em; margin-bottom:.55rem; text-transform:uppercase; }
+.guide-preview__grid { display:grid; gap:1rem; grid-template-columns:minmax(0,1.2fr) minmax(260px,.8fr); }
+.guide-preview__panel { background:#fff; border:1px solid var(--border-soft); border-radius:var(--radius-lg); box-shadow:var(--shadow-sm); padding:clamp(1.2rem,3vw,1.8rem); }
+.guide-preview__panel h2, .guide-preview__panel h3 { color:var(--forest-deep); }
+.guide-preview__outcomes { display:grid; gap:.7rem; list-style:none; margin:1rem 0 0; padding:0; }
+.guide-preview__outcomes li { align-items:flex-start; border-top:1px solid var(--border-soft); display:flex; gap:.65rem; padding-top:.7rem; }
+.guide-preview__outcomes li::before { color:var(--gold-deep); content:"0" counter(guide-outcome); counter-increment:guide-outcome; font-family:var(--serif); font-size:1.2rem; font-weight:700; line-height:1; }
+.guide-preview__outcomes { counter-reset:guide-outcome; }
+.guide-preview__routes { display:grid; gap:.85rem; }
+.guide-preview__route { background:var(--paper); border-left:3px solid var(--forest); padding:.85rem 1rem; }
+.guide-preview__route h3 { font-family:var(--sans); font-size:.95rem; margin:0 0 .2rem; }
+.guide-preview__route p { color:var(--muted); font-size:.89rem; margin:0 0 .65rem; }
+.guide-preview__route .btn { font-size:.86rem; }
+.knowledge-access-panel, .plant-access-panel { background:var(--cream); border:1px solid var(--border-soft); border-radius:var(--radius-lg); margin:1.5rem 0 2rem; padding:clamp(1.3rem,3vw,2rem); }
+.knowledge-access-panel__header, .plant-access-panel__header { max-width:780px; }
+.knowledge-access-panel__eyebrow, .plant-access-panel__eyebrow { color:var(--gold-deep); display:block; font-family:var(--sans); font-size:.74rem; font-weight:700; letter-spacing:.1em; margin-bottom:.45rem; text-transform:uppercase; }
+.knowledge-access-panel__header h2, .plant-access-panel__header h2 { color:var(--forest-deep); margin-bottom:.45rem; }
+.knowledge-access-panel__header p, .plant-access-panel__header p { color:var(--muted); }
+.knowledge-access-panel__grid, .plant-access-panel__grid { display:grid; gap:1rem; grid-template-columns:repeat(3,minmax(0,1fr)); margin-top:1.25rem; }
+.knowledge-access-panel__item, .plant-access-panel__item { background:#fff; border:1px solid var(--border-soft); border-radius:var(--radius); display:flex; flex-direction:column; padding:1.1rem; }
+.knowledge-access-panel__item strong, .plant-access-panel__item strong { color:var(--forest-deep); font-family:var(--sans); font-size:.95rem; }
+.knowledge-access-panel__item p, .plant-access-panel__item p { color:var(--muted); font-size:.88rem; margin:.45rem 0 .9rem; }
+.knowledge-access-panel__item .btn, .plant-access-panel__item .btn { margin-top:auto; }
+.knowledge-access-panel__note, .plant-access-panel__note { color:var(--ink-soft); font-size:.85rem; margin:1rem 0 0; }
+@media (max-width:760px) { .guide-preview__grid, .knowledge-access-panel__grid, .plant-access-panel__grid { grid-template-columns:1fr; } }
