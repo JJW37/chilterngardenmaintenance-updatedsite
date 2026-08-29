@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Five-Minute Garden Assessment | Chiltern Garden Maintenance</title>
+  <meta name="description" content="Answer a few practical garden questions and get a responsible next step, relevant guide and CGM service route.">
+  <meta name="theme-color" content="#102019">
+  <link rel="canonical" href="https://jjw37.github.io/chilterngardenmaintenance-updatedsite/assessment/">
+  <link rel="stylesheet" href="/chilterngardenmaintenance-updatedsite/css/styles.css?v=20260829-assessment">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap">
+  <link rel="icon" type="image/png" sizes="32x32" href="/chilterngardenmaintenance-updatedsite/images/favicon-32.png">
+  <meta property="og:title" content="Five-Minute Garden Assessment | CGM">
+  <meta property="og:description" content="Get a practical next step without a misleading instant garden diagnosis.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://jjw37.github.io/chilterngardenmaintenance-updatedsite/assessment/">
+  <script src="/chilterngardenmaintenance-updatedsite/js/analytics.js?v=20260713a"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <header class="header">
+    <div class="container">
+      <nav class="nav" aria-label="Primary">
+        <a class="brand" href="/chilterngardenmaintenance-updatedsite/">
+          <img class="brand-logo" src="/chilterngardenmaintenance-updatedsite/images/cgm-logo-square.png" alt="Chiltern Garden Maintenance logo" width="48" height="48">
+          <span class="brand-title"><strong>Chiltern Garden</strong><span>Maintenance</span></span>
+        </a>
+        <div class="nav-links" aria-label="Site links">
+          <a href="/chilterngardenmaintenance-updatedsite/services/">Services</a>
+          <a href="/chilterngardenmaintenance-updatedsite/portfolio/">Portfolio</a>
+          <a href="/chilterngardenmaintenance-updatedsite/tips/">Garden Knowledge</a>
+          <a href="/chilterngardenmaintenance-updatedsite/guides/">Garden Guides</a>
+          <a href="/chilterngardenmaintenance-updatedsite/locations/">Locations</a>
+        </div>
+        <div class="nav-cta">
+          <a class="btn btn-ghost" href="/chilterngardenmaintenance-updatedsite/login/" data-client-login-link style="margin-right:.5rem;">Client Login</a>
+          <a class="btn btn-primary" href="/chilterngardenmaintenance-updatedsite/booking/">Get a Quote</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <section class="page-header">
+      <div class="container">
+        <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/chilterngardenmaintenance-updatedsite/">Home</a><span>/</span>Five-minute garden assessment</nav>
+        <span class="editorial-kicker">CGM Knowledge &middot; Practical next steps</span>
+        <h1>Five-minute garden assessment</h1>
+        <p>Tell us a little about the garden you have and the result you want. We will point you to useful reading, a relevant guide and the right level of CGM help.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container assessment-shell">
+        <div style="max-width:700px;margin:0 auto 1.75rem;text-align:center;">
+          <span class="guide-journey__eyebrow">A clearer route, not an instant diagnosis</span>
+          <h2>Find the right level of help</h2>
+          <p style="color:var(--muted);">This short assessment does not diagnose plants, soil, pests or drainage remotely. It gives a useful starting point and makes clear when a Garden Analysis Report is the more responsible route.</p>
+        </div>
+
+        <form id="gardenAssessmentForm" novalidate>
+          <div class="assessment-progress" aria-label="Assessment progress">
+            <span data-assessment-progress="1" aria-current="step">1. Garden</span>
+            <span data-assessment-progress="2">2. Conditions</span>
+            <span data-assessment-progress="3">3. Priorities</span>
+            <span data-assessment-progress="4">4. Photos</span>
+            <span data-assessment-progress="5">5. Result</span>
+          </div>
+          <div class="assessment-card">
+            <p id="assessmentError" class="assessment-error" role="alert" hidden></p>
+
+            <section data-assessment-step="1">
+              <span class="guide-journey__eyebrow">Step 1 of 5</span>
+              <h2>Where is the garden and how large is it?</h2>
+              <p class="assessment-step__lead">The postcode helps keep any later quote request in the right service area. No contact details are requested in this assessment.</p>
+              <div class="assessment-field">
+                <label for="assessmentPostcode">Postcode</label>
+                <input id="assessmentPostcode" name="postcode" type="text" inputmode="text" autocomplete="postal-code" placeholder="For example, HP11 1AA">
+              </div>
+              <div class="assessment-field">
+                <fieldset><legend>Garden size</legend>
+                  <div class="assessment-options">
+                    <label class="assessment-option"><input type="radio" name="gardenSize" value="Small (up to 50 m²)"><span>Small<br><small>Up to 50 m²</small></span></label>
+                    <label class="assessment-option"><input type="radio" name="gardenSize" value="Medium (50–150 m²)"><span>Medium<br><small>About 50–150 m²</small></span></label>
+                    <label class="assessment-option"><input type="radio" name="gardenSize" value="Large (150 m² or more)"><span>Large<br><small>More than 150 m²</small></span></label>
+                    <label class="assessment-option"><input type="radio" name="gardenSize" value="Not sure"><span>Not sure<br><small>A rough answer is fine</small></span></label>
+                  </div>
+                </fieldset>
+              </div>
+              <div class="assessment-actions"><button class="btn btn-primary" type="button" data-assessment-next>Continue to conditions</button></div>
+            </section>
+
+            <section data-assessment-step="2" hidden>
+              <span class="guide-journey__eyebrow">Step 2 of 5</span>
+              <h2>What are the main growing conditions?</h2>
+              <p class="assessment-step__lead">Choose the closest answer. If you do not know, select “Not sure” rather than guessing.</p>
+              <div class="assessment-field">
+                <fieldset><legend>Sun and exposure</legend>
+                  <div class="assessment-options">
+                    <label class="assessment-option"><input type="radio" name="exposure" value="Mostly shade"><span>Mostly shade</span></label>
+                    <label class="assessment-option"><input type="radio" name="exposure" value="Part shade / part sun"><span>Part shade / part sun</span></label>
+                    <label class="assessment-option"><input type="radio" name="exposure" value="Mostly sunny"><span>Mostly sunny</span></label>
+                    <label class="assessment-option"><input type="radio" name="exposure" value="Very exposed or windy"><span>Very exposed or windy</span></label>
+                    <label class="assessment-option"><input type="radio" name="exposure" value="Not sure"><span>Not sure</span></label>
+                  </div>
+                </fieldset>
+              </div>
+              <div class="assessment-field">
+                <fieldset><legend>What do you know about the soil?</legend>
+                  <div class="assessment-options">
+                    <label class="assessment-option"><input type="radio" name="soil" value="Clay or heavy soil"><span>Clay or heavy soil</span></label>
+                    <label class="assessment-option"><input type="radio" name="soil" value="Chalky or lime-rich soil"><span>Chalky or lime-rich soil</span></label>
+                    <label class="assessment-option"><input type="radio" name="soil" value="Sandy or free-draining soil"><span>Sandy or free-draining soil</span></label>
+                    <label class="assessment-option"><input type="radio" name="soil" value="Often wet or waterlogged"><span>Often wet or waterlogged</span></label>
+                    <label class="assessment-option"><input type="radio" name="soil" value="Not sure"><span>Not sure</span></label>
+                  </div>
+                </fieldset>
+              </div>
+              <div class="assessment-actions"><button class="btn btn-ghost" type="button" data-assessment-back>Back</button><button class="btn btn-primary" type="button" data-assessment-next>Continue to priorities</button></div>
+            </section>
+
+            <section data-assessment-step="3" hidden>
+              <span class="guide-journey__eyebrow">Step 3 of 5</span>
+              <h2>What matters most right now?</h2>
+              <p class="assessment-step__lead">The answer helps choose a useful reading and service route. It is not a diagnosis of the cause.</p>
+              <div class="assessment-field">
+                <fieldset><legend>Main problem</legend>
+                  <div class="assessment-options">
+                    <label class="assessment-option"><input type="radio" name="mainProblem" value="lawn"><span>Lawn is patchy, mossy or struggling</span></label>
+                    <label class="assessment-option"><input type="radio" name="mainProblem" value="borders"><span>Borders or plants are underperforming</span></label>
+                    <label class="assessment-option"><input type="radio" name="mainProblem" value="drainage"><span>Waterlogging, flooding or drainage</span></label>
+                    <label class="assessment-option"><input type="radio" name="mainProblem" value="overgrown"><span>Garden is overgrown or hard to manage</span></label>
+                    <label class="assessment-option"><input type="radio" name="mainProblem" value="design"><span>Layout, planting or overall design</span></label>
+                    <label class="assessment-option"><input type="radio" name="mainProblem" value="hedges"><span>Hedges, privacy or boundaries</span></label>
+                    <label class="assessment-option"><input type="radio" name="mainProblem" value="other"><span>Something else or several things</span></label>
+                  </div>
+                </fieldset>
+              </div>
+              <div class="assessment-field">
+                <fieldset><legend>Desired result</legend>
+                  <div class="assessment-options">
+                    <label class="assessment-option"><input type="radio" name="desiredResult" value="A healthier garden"><span>A healthier garden</span></label>
+                    <label class="assessment-option"><input type="radio" name="desiredResult" value="A lower-maintenance garden"><span>Less maintenance</span></label>
+                    <label class="assessment-option"><input type="radio" name="desiredResult" value="More colour or wildlife value"><span>More colour or wildlife value</span></label>
+                    <label class="assessment-option"><input type="radio" name="desiredResult" value="A tidy, usable garden"><span>A tidy, usable garden</span></label>
+                    <label class="assessment-option"><input type="radio" name="desiredResult" value="A longer-term garden plan"><span>A longer-term garden plan</span></label>
+                  </div>
+                </fieldset>
+              </div>
+              <div class="assessment-actions"><button class="btn btn-ghost" type="button" data-assessment-back>Back</button><button class="btn btn-primary" type="button" data-assessment-next>Continue to optional photos</button></div>
+            </section>
+
+            <section data-assessment-step="4" hidden>
+              <span class="guide-journey__eyebrow">Step 4 of 5</span>
+              <h2>Add optional photographs or a note</h2>
+              <p class="assessment-step__lead">The assessment does not upload or store photos. They stay on this device until you choose to add them to the quote form or WhatsApp.</p>
+              <div class="assessment-field">
+                <label for="assessmentPhotos">Optional garden photographs</label>
+                <input id="assessmentPhotos" type="file" accept="image/*" multiple>
+                <ul id="assessmentPhotoList" class="assessment-photo-list" aria-live="polite"></ul>
+              </div>
+              <div class="assessment-field">
+                <label for="assessmentNotes">Anything else that would help? <span class="assessment-note">Optional — only transferred if you choose a quote request.</span></label>
+                <textarea id="assessmentNotes" name="notes" maxlength="700" rows="5" placeholder="For example, ‘the lawn is soggy after rain’ or ‘the border is beneath mature trees’."></textarea>
+              </div>
+              <div class="assessment-actions"><button class="btn btn-ghost" type="button" data-assessment-back>Back</button><button class="btn btn-primary" type="button" data-assessment-next>Review and get my result</button></div>
+            </section>
+
+            <section data-assessment-step="5" hidden>
+              <span class="guide-journey__eyebrow">Step 5 of 5</span>
+              <h2>Ready for a practical next step?</h2>
+              <p class="assessment-step__lead">We will show a useful public article, a relevant guide and a CGM route. Where the cause cannot be judged responsibly from these answers, the result directs you to a Garden Analysis Report.</p>
+              <p class="assessment-note">No contact information is submitted here. Only if you choose a quote request will your postcode and assessment summary be temporarily passed within this browser to the existing quote form, where you can review it and give consent.</p>
+              <div class="assessment-actions"><button class="btn btn-ghost" type="button" data-assessment-back>Back</button><button class="btn btn-primary" type="submit">Show my next steps</button></div>
+            </section>
+          </div>
+        </form>
+
+        <section id="assessmentResults" hidden aria-labelledby="assessmentResultHeading">
+          <div class="assessment-result">
+            <span class="guide-journey__eyebrow" style="color:var(--gold-light);">Your garden starting point</span>
+            <h2 id="assessmentResultHeading">A practical next step</h2>
+            <p id="assessmentResultText"></p>
+            <p style="border-left:3px solid var(--gold-light);padding-left:.8rem;font-size:.9rem;">This is a short-form guide, not a definitive diagnosis. Soil, pests, disease, drainage and structural issues may need inspection before specific work is recommended.</p>
+          </div>
+          <div class="assessment-routes">
+            <article><span class="guide-journey__eyebrow">Read</span><h3>Understand the next decision</h3><p>Start with useful public advice before committing to a solution.</p><a id="assessmentArticleLink" class="btn btn-ghost" href="/chilterngardenmaintenance-updatedsite/tips/">Browse garden advice</a></article>
+            <article><span class="guide-journey__eyebrow">Guide</span><h3>Use a structured guide</h3><p>Explore the relevant Chiltern Guides category for practical plans and checklists.</p><a id="assessmentGuideLink" class="btn btn-ghost" href="/chilterngardenmaintenance-updatedsite/guides/">Browse Chiltern Guides</a></article>
+            <article><span class="guide-journey__eyebrow">CGM route</span><h3>Get the right level of help</h3><p>See the service suggested by your answers, or choose a deeper assessment where the cause is unclear.</p><a id="assessmentServiceLink" class="btn btn-primary" href="/chilterngardenmaintenance-updatedsite/services/">See the recommended service</a></article>
+          </div>
+          <div class="guide-journey" style="margin-top:1.5rem;">
+            <span class="guide-journey__eyebrow">When more evidence is needed</span>
+            <h2>Choose a Garden Analysis Report</h2>
+            <p>For drainage, persistent plant failure, soil uncertainty or several interacting issues, a site-based analysis is safer than relying on a short online form.</p>
+            <div class="assessment-actions"><a class="btn btn-ghost" href="/chilterngardenmaintenance-updatedsite/services/garden-analysis-report.html">See what it includes</a><a id="assessmentQuoteLink" class="btn btn-primary" href="/chilterngardenmaintenance-updatedsite/booking/?source=assessment">Request a quote with this summary</a><button class="btn btn-ghost" type="button" data-assessment-restart>Start a new assessment</button></div>
+            <p class="assessment-note" style="margin-top:1rem;">If you continue to the quote form, add any photos there or attach them in WhatsApp. This assessment never uploads the selected files.</p>
+          </div>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer"><div class="container"><div class="footer-grid"><div class="footer-brand"><strong>Chiltern Garden Maintenance</strong><br><span class="footer-desc">Garden and grounds maintenance, clearance, soft landscaping, pressure washing and lawn recovery.</span><br><br><a href="https://wa.me/447467657459" target="_blank" rel="noopener" class="footer-link">WhatsApp</a><br><span class="footer-desc">Servicing Oxfordshire, Buckinghamshire, Berkshire and Bedfordshire</span></div><div><h3>Explore</h3><ul><li><a href="/chilterngardenmaintenance-updatedsite/guides/">Garden Guides</a></li><li><a href="/chilterngardenmaintenance-updatedsite/tips/">Gardening Knowledge</a></li><li><a href="/chilterngardenmaintenance-updatedsite/booking/">Get a Quote</a></li></ul></div><div><h3>Company</h3><ul><li><a href="/chilterngardenmaintenance-updatedsite/about/maintenance.html">The CGM Method</a></li><li><a href="/chilterngardenmaintenance-updatedsite/privacy.html">Privacy</a></li><li><a href="/chilterngardenmaintenance-updatedsite/terms.html">Terms</a></li></ul></div></div><div class="footer-bottom"><span>&copy; 2026 Chiltern Garden Maintenance. All rights reserved.</span><span>Oxfordshire &middot; Buckinghamshire &middot; Berkshire &middot; Bedfordshire</span></div></div></footer>
+  <script src="/chilterngardenmaintenance-updatedsite/js/main.js?v=20260713a"></script>
+  <script src="/chilterngardenmaintenance-updatedsite/js/garden-assessment.js?v=20260829a"></script>
+</body>
+</html>
