@@ -12581,4 +12581,7 @@ article li {
 .knowledge-access-panel__item p, .plant-access-panel__item p { color:var(--muted); font-size:.88rem; margin:.45rem 0 .9rem; }
 .knowledge-access-panel__item .btn, .plant-access-panel__item .btn { margin-top:auto; }
 .knowledge-access-panel__note, .plant-access-panel__note { color:var(--ink-soft); font-size:.85rem; margin:1rem 0 0; }
+.plant-access-panel--matcher #rightPlantTool { margin-top:1.35rem; }
+.plant-access-panel__followup { display:grid; gap:1rem; grid-template-columns:repeat(2,minmax(0,1fr)); margin-top:1.25rem; }
 @media (max-width:760px) { .guide-preview__grid, .knowledge-access-panel__grid, .plant-access-panel__grid { grid-template-columns:1fr; } }
+@media (max-width:760px) { .plant-access-panel__followup { grid-template-columns:1fr; } }
