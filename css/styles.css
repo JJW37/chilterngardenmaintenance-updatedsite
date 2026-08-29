@@ -12514,3 +12514,40 @@ article li {
   height: 1px !important;
   overflow: hidden !important;
 }
+
+/* Five-minute assessment and outcome-led guide journey */
+.skip-link { background:var(--forest,#102019); border-radius:0 0 8px 0; color:#fff; font-family:var(--sans,system-ui,sans-serif); font-size:.9rem; left:-9999px; padding:.75rem 1.25rem; position:absolute; text-decoration:none; top:0; z-index:9999; }
+.skip-link:focus { left:0; outline:2px solid var(--gold,#b89243); outline-offset:2px; }
+.assessment-shell { max-width: 860px; margin: 0 auto; }
+.assessment-card, .guide-journey { background:#fff; border:1px solid var(--border-soft); border-radius:var(--radius-lg); box-shadow:var(--shadow); padding:clamp(1.35rem,4vw,2.35rem); }
+.assessment-progress { display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:.4rem; margin-bottom:1.35rem; }
+.assessment-progress span { border-top:3px solid var(--border); color:var(--muted); font-family:var(--sans); font-size:.72rem; padding-top:.45rem; }
+.assessment-progress span[aria-current="step"], .assessment-progress span.is-complete { border-color:var(--forest); color:var(--forest-deep); font-weight:700; }
+.assessment-step__lead, .guide-journey p { color:var(--muted); }
+.assessment-field { margin:0 0 1.35rem; }
+.assessment-field fieldset { border:0; margin:0; padding:0; }
+.assessment-field legend, .assessment-field > label { color:var(--forest-deep); display:block; font-family:var(--sans); font-size:.95rem; font-weight:700; margin-bottom:.55rem; }
+.assessment-field input[type="text"], .assessment-field textarea { background:var(--paper); border:1px solid var(--border); border-radius:var(--radius-sm); font:inherit; padding:.8rem .9rem; width:100%; }
+.assessment-options { display:grid; gap:.65rem; grid-template-columns:repeat(2,minmax(0,1fr)); }
+.assessment-option { align-items:flex-start; background:var(--paper); border:1px solid var(--border-soft); border-radius:var(--radius-sm); cursor:pointer; display:flex; font-size:.9rem; gap:.6rem; line-height:1.35; padding:.75rem .8rem; }
+.assessment-option:has(input:checked) { background:var(--sky); border-color:var(--forest); box-shadow:inset 0 0 0 1px var(--forest); }
+.assessment-option input { accent-color:var(--forest); margin:.16rem 0 0; }
+.assessment-actions { align-items:center; display:flex; flex-wrap:wrap; gap:.7rem; justify-content:space-between; margin-top:1.6rem; }
+.assessment-error { color:#a32626; font-size:.9rem; margin:0 0 1rem; }
+.assessment-note { color:var(--muted); font-size:.84rem; }
+.assessment-photo-list { color:var(--muted); font-size:.84rem; margin:.65rem 0 0; }
+.assessment-result { background:linear-gradient(135deg,var(--forest-dark),var(--forest)); border-radius:var(--radius-lg); color:#fff; padding:clamp(1.3rem,3vw,2rem); }
+.assessment-result h2 { color:#fff; }
+.assessment-result p { color:rgba(255,255,255,.9); }
+.assessment-routes, .guide-journey__grid { display:grid; gap:1rem; grid-template-columns:repeat(3,minmax(0,1fr)); margin-top:1.2rem; }
+.assessment-routes article, .guide-journey__item { background:var(--paper); border:1px solid var(--border-soft); border-radius:var(--radius); display:flex; flex-direction:column; padding:1.15rem; }
+.assessment-routes p, .guide-journey__item p { font-size:.9rem; }
+.assessment-routes .btn, .guide-journey__item .btn { margin-top:auto; }
+.guide-journey { background:var(--cream); box-shadow:none; margin:0 0 2rem; }
+.guide-journey__eyebrow { color:var(--gold-deep); display:block; font-family:var(--sans); font-size:.72rem; font-weight:700; letter-spacing:.1em; margin-bottom:.45rem; text-transform:uppercase; }
+.guide-journey__item { background:#fff; }
+.guide-journey__item strong { color:var(--forest-deep); font-family:var(--sans); font-size:.92rem; }
+.guide-access-note { background:var(--sky); border-left:3px solid var(--forest); color:var(--ink-soft); font-size:.9rem; margin:1rem 0 1.5rem; padding:.85rem 1rem; }
+.guide-card__access { color:var(--forest); font-family:var(--sans); font-size:.76rem !important; font-weight:700; line-height:1.35; margin:-.1rem 0 .85rem !important; }
+.quote-prefill-notice { background:var(--sky); border-left:3px solid var(--forest); color:var(--ink-soft); font-size:.9rem; margin:1rem 0; padding:.85rem 1rem; }
+@media (max-width:700px) { .assessment-options, .assessment-routes, .guide-journey__grid { grid-template-columns:1fr; } .assessment-progress span { font-size:.62rem; } .assessment-actions .btn { width:100%; } }
