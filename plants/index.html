@@ -7,7 +7,7 @@
   <meta name="description" content="Free, open plant library with full profiles of 120+ plants we use in client gardens across Oxfordshire, Buckinghamshire, Berkshire and Bedfordshire. Light,...">
   <meta name="theme-color" content="#102019">
   <link rel="canonical" href="https://jjw37.github.io/chilterngardenmaintenance-updatedsite/plants/">
-  <link rel="stylesheet" href="/chilterngardenmaintenance-updatedsite/css/styles.css?v=20260830-knowledgeaccess">
+  <link rel="stylesheet" href="/chilterngardenmaintenance-updatedsite/css/styles.css?v=20260830-plantmatcher">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap">
@@ -93,7 +93,7 @@
       <strong data-knowledge-progress-title>Browse the library</strong>
     </div>
     <div class="knowledge-command-bar__actions">
-      <button type="button" data-knowledge-scroll-target="plant-access">Plant match</button>
+      <button type="button" data-knowledge-scroll-target="plant-access">Find my plant</button>
       <button type="button" data-knowledge-scroll-target="plant-routes">By condition</button>
       <button type="button" data-knowledge-scroll-target="knowledge-quote">Planting help</button>
     </div>
@@ -126,30 +126,28 @@
 
   <section class="section knowledge-tool-stage" id="plant-access" style="padding-top:2rem;">
     <div class="container">
-      <section class="plant-access-panel" aria-labelledby="plantAccessHeading">
+      <section class="plant-access-panel plant-access-panel--matcher" aria-labelledby="plantAccessHeading">
         <div class="plant-access-panel__header">
-          <span class="plant-access-panel__eyebrow">From plant profile to garden fit</span>
-          <h2 id="plantAccessHeading">Browse plants freely. Match a plant to a real garden with the right evidence.</h2>
-          <p>The public library stays open for plant profiles and basic browsing. The deeper “find my plant” layer is for garden-specific choices: pollinator value, pets and children, colour, desired height, companion planting, seasonal performance and what has already worked at the property.</p>
+          <span class="plant-access-panel__eyebrow">Right plant, right place</span>
+          <h2 id="plantAccessHeading">Use your postcode, choose the conditions, then refine the plant match here.</h2>
+          <p>Start with either route—or combine both. A postcode pre-fills local soil and drainage clues; the plant options then let you refine for light, height, colour, pollinators, pets and children, screening and maintenance. Your matches appear below without leaving the Plant Library.</p>
         </div>
-        <div class="plant-access-panel__grid">
+
+        <div id="rightPlantTool" aria-live="polite"></div>
+
+        <div class="plant-access-panel__followup" aria-label="Further plant planning options">
           <article class="plant-access-panel__item">
-            <strong>Browse the free plant library</strong>
-            <p>Explore the public collection by plant name, garden condition and broad planting direction.</p>
-            <a class="btn btn-ghost" href="#plant-search-stage">Search the library</a>
+            <strong>Keep exploring the free library</strong>
+            <p>Use the plant name search and collections below alongside the matcher. Full public profiles remain available to everyone.</p>
+            <a class="btn btn-ghost" href="#plant-search-stage">Browse plant profiles</a>
           </article>
           <article class="plant-access-panel__item">
-            <strong>Start a plant brief</strong>
-            <p>Not sure whether the issue is light, soil, water, safety or planting design? Start with the five-minute assessment.</p>
-            <a class="btn btn-ghost" href="/chilterngardenmaintenance-updatedsite/assessment/?source=plant-library">Take the assessment</a>
-          </article>
-          <article class="plant-access-panel__item">
-            <strong>Active CGM client access</strong>
-            <p>Property-specific plant matching, seasonal calendars and connected care notes belong in secure client access, not a pretend public restriction.</p>
-            <a class="btn btn-primary" href="/chilterngardenmaintenance-updatedsite/login/" data-client-login-link>Client access</a>
+            <strong>Need a whole-garden planting plan?</strong>
+            <p>For a decision involving cost, safety, drainage, companion planting or long-term performance, use a Garden Analysis Report or active client access.</p>
+            <a class="btn btn-primary" href="/chilterngardenmaintenance-updatedsite/assessment/?source=plant-library">Plan the next step</a>
           </article>
         </div>
-        <p class="plant-access-panel__note">For a planting plan that affects cost, safety, drainage or long-term performance, choose a Garden Analysis Report or ask CGM to inspect the garden before committing to a plant list.</p>
+        <p class="plant-access-panel__note">This matcher is a practical starting point, not a substitute for inspecting a specific garden. The extra value of CGM client access is the property history, seasonal calendar, plant relationships and decisions that depend on the real site—not hiding ordinary information behind a paywall.</p>
       </section>
     </div>
   </section>
@@ -2347,5 +2345,6 @@
   <script src="/chilterngardenmaintenance-updatedsite/js/predictive-search.js?v=20260719b"></script>
   <script src="/chilterngardenmaintenance-updatedsite/js/mobile-dock.js?v=20260719b"></script>
   <script src="/chilterngardenmaintenance-updatedsite/js/knowledge-showroom.js?v=20260810-knowledgefix"></script>
+  <script src="/chilterngardenmaintenance-updatedsite/js/right-plant-tool.js?v=20260830-combinedmatcher"></script>
 </body>
 </html>
