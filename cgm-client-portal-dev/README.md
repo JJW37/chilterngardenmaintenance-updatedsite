@@ -24,10 +24,25 @@ not a client account. Sign in to the staff portal with the values from
 
 ## Included scope
 
-- Household-only client portal with visit notes, history, client notes and
-  private image uploads.
+- A six-screen Garden Passport: overview, visit history, garden plan, photo
+  library, two-way messages, invoices, and household account/security.
+- Operational visit records with scheduled date/time, arrival window, work
+  list, client confirmation, reschedule requests, completion state and
+  household feedback. Historical visit notes remain visible.
+- A private, persistent two-way message thread with read receipts, optional
+  authenticated photo attachments, and optional links to a visit or invoice.
+- Private image uploads with optional garden area, tags, visit link, photo
+  date and deliberately assigned before/after pair key. Image bytes remain
+  behind the authenticated proxy; no R2 object key is exposed to a browser.
+- Garden-plan Kanban board. Staff can create, edit, delete and move priorities;
+  households can read the authoritative plan and contact CGM about it.
+- Invoice list/detail, outstanding balance, category-based issued-work summary,
+  PDF download and bank-transfer details. A household can notify CGM that it
+  has made a transfer or request a payment-plan conversation; neither action
+  moves money nor marks an invoice paid. Staff must record a received payment.
 - Staff dashboard for household creation, updates, activation and private
-  administration.
+  administration, including unread message indicators and direct access to a
+  selected household’s message thread.
 - Password-based household logins with salted PBKDF2 hashes, HttpOnly sessions
   and server-side household checks.
 - A five-page private record: overview, visit history, garden plan, photo
@@ -42,6 +57,17 @@ Do not run a deployment command from this project. This build has no production
 database, image bucket, mail key, client data or custom domain configured.
 When the experience is approved, the next stage is a separate Cloudflare preview
 environment with new resources and secrets — still before any production launch.
-For an existing D1 database, apply
-`migrations/0002-client-passwords-and-plan.sql` once. Fresh local databases get
-the same fields directly from `db/schema.sql`.
+For an existing D1 database, apply the migrations already required by that
+environment in numeric order. The redesign is additive: after the earlier
+password/plan and invoice migrations, apply
+`migrations/0004-portal-redesign-records.sql` once before publishing this
+portal bundle. Fresh local databases receive the same fields directly from
+`db/schema.sql`.
+
+## Verification
+
+- `npm run check` performs syntax checks and runs the unit/workflow tests.
+- The workflow test uses an in-memory SQLite-compatible D1 adapter to prove
+  that a staff-scheduled visit can be confirmed by a household, completed,
+  rated, discussed in the private thread, and paired with a payment signal
+  without changing the invoice payment ledger.
