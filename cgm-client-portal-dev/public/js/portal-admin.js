@@ -98,12 +98,15 @@
           '<div class="cr-stats">' +
             '<span><strong>' + c.noteCount + '</strong> notes</span>' +
             '<span><strong>' + c.imageCount + '</strong> images</span>' +
+            '<span><strong>' + (c.upcomingVisitCount || 0) + '</strong> upcoming visits</span>' +
+            (c.unreadMessageCount ? '<span class="admin-unread-message"><strong>' + c.unreadMessageCount + '</strong> unread message' + (c.unreadMessageCount === 1 ? '' : 's') + '</span>' : '') +
             '<span>Last activity: <strong>' + lastNote + '</strong></span>' +
           '</div>' +
         '</div>' +
         '<div style="display:flex;flex-direction:column;gap:.4rem;align-items:flex-end;">' +
           '<a class="btn-portal btn-primary" href="/portal/?clientId=' + c.id + '" data-action="open">Open portal</a>' +
           '<div style="display:flex;gap:.4rem;">' +
+            '<a class="btn-portal btn-ghost" href="/portal/messages/?clientId=' + c.id + '" title="Open the private message thread">Messages' + (c.unreadMessageCount ? ' (' + c.unreadMessageCount + ')' : '') + '</a>' +
             '<button class="btn-portal btn-ghost" data-action="login-link" title="Send a secure password-reset link by email">Send reset link</button>' +
             '<button class="btn-portal btn-ghost" data-action="copy-link" title="Copy the portal sign-in URL">Copy login URL</button>' +
             '<button class="btn-portal btn-ghost" data-action="edit">Edit</button>' +
