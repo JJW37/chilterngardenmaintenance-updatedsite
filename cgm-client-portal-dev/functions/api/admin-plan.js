@@ -17,6 +17,7 @@ const PRIORITIES = new Set(['essential', 'recommended', 'optional']);
 const MAX_TITLE = 200;
 const MAX_DETAIL = 8000;
 const MAX_SEASON = 80;
+const MAX_AREA = 80;
 
 function text(value, max) {
   return (value || '').toString().trim().slice(0, max);
@@ -49,6 +50,7 @@ export async function onRequestPost({ request, env }) {
     const status = STATUSES.has(body.status) ? body.status : 'planned';
     const priority = PRIORITIES.has(body.priority) ? body.priority : 'recommended';
     const targetDate = nullableDate(body.targetDate);
+    const area = text(body.area, MAX_AREA) || null;
 
     if (!clientId || !title) return json({ ok: false, error: 'Client and plan title are required.' }, 400);
     if (!targetDate.ok) return json({ ok: false, error: targetDate.error }, 400);
@@ -57,9 +59,9 @@ export async function onRequestPost({ request, env }) {
 
     const result = await run(
       env.DB,
-      `INSERT INTO garden_plan_items (client_id, season, title, detail, status, priority, target_date)
-       VALUES (?, ?, ?, ?, ?, ?, ?)`,
-      [clientId, season, title, detail, status, priority, targetDate.value],
+      `INSERT INTO garden_plan_items (client_id, season, title, detail, status, priority, target_date, area)
+       VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
+      [clientId, season, title, detail, status, priority, targetDate.value, area],
     );
     return json({ ok: true, id: result.meta?.last_row_id });
   } catch (error) {
@@ -102,6 +104,7 @@ export async function onRequestPatch({ request, env }) {
       if (!targetDate.ok) return json({ ok: false, error: targetDate.error }, 400);
       fields.push('target_date = ?'); values.push(targetDate.value);
     }
+    if (body.area !== undefined) { fields.push('area = ?'); values.push(text(body.area, MAX_AREA) || null); }
     if (!fields.length) return json({ ok: false, error: 'No plan changes supplied.' }, 400);
 
     fields.push("updated_at = datetime('now')");

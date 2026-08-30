@@ -69,9 +69,9 @@ export async function onRequestPost({ request, env }) {
       const item = lineItems.items[index];
       await run(
         env.DB,
-        `INSERT INTO invoice_items (invoice_id, description, quantity, unit_price, line_total, sort_order)
-         VALUES (?, ?, ?, ?, ?, ?)`,
-        [invoiceId, item.description, item.quantity, item.unitPrice, item.lineTotal, index],
+        `INSERT INTO invoice_items (invoice_id, description, quantity, unit_price, line_total, sort_order, category)
+         VALUES (?, ?, ?, ?, ?, ?, ?)`,
+        [invoiceId, item.description, item.quantity, item.unitPrice, item.lineTotal, index, item.category],
       );
     }
 

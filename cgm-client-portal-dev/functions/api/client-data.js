@@ -14,6 +14,16 @@
 
 import { json, handlePreflight, all, first } from '../_lib/db.js';
 import { getSessionFromRequest } from '../_lib/auth.js';
+import { loadVisits } from './client-visits.js';
+
+function parseTags(value) {
+  try {
+    const parsed = JSON.parse(value || '[]');
+    return Array.isArray(parsed) ? parsed : [];
+  } catch (_) {
+    return [];
+  }
+}
 
 export async function onRequestGet({ request, env }) {
   const preflight = handlePreflight(request);
@@ -75,7 +85,7 @@ export async function onRequestGet({ request, env }) {
 
     const planItems = await all(
       db,
-      `SELECT id, season, title, detail, status, priority, target_date, created_at, updated_at
+      `SELECT id, season, title, detail, status, priority, target_date, area, created_at, updated_at
        FROM garden_plan_items
        WHERE client_id = ?
        ORDER BY
@@ -89,7 +99,7 @@ export async function onRequestGet({ request, env }) {
     const images = await all(
       db,
       `SELECT id, uploader_type, uploader_name, filename, mime_type, size_bytes,
-              caption, category, visit_date, created_at, r2_key
+              caption, category, visit_date, visit_id, area, tags_json, comparison_key, taken_at, created_at, r2_key
        FROM images
        WHERE client_id = ?
        ORDER BY created_at DESC`,
@@ -107,15 +117,47 @@ export async function onRequestGet({ request, env }) {
       caption: img.caption,
       category: img.category,
       visitDate: img.visit_date,
+      visitId: img.visit_id,
+      area: img.area,
+      tags: parseTags(img.tags_json),
+      comparisonKey: img.comparison_key,
+      takenAt: img.taken_at,
       createdAt: img.created_at,
       url: `/api/client-image-get?id=${img.id}`,
     }));
+
+    const [visits, outstandingInvoices, unreadMessageRow, lastMessage] = await Promise.all([
+      loadVisits(db, clientId),
+      all(
+        db,
+        `SELECT id, invoice_number, status, due_date, total, amount_paid
+         FROM invoices
+         WHERE client_id = ? AND status IN ('sent', 'partial', 'overdue')
+         ORDER BY CASE status WHEN 'overdue' THEN 0 ELSE 1 END, due_date ASC, id ASC`,
+        [clientId],
+      ),
+      first(
+        db,
+        `SELECT COUNT(*) AS count FROM portal_messages
+         WHERE client_id = ? AND sender_type = ? AND recipient_read_at IS NULL`,
+        [clientId, session.is_admin === 1 ? 'client' : 'admin'],
+      ),
+      first(
+        db,
+        `SELECT id, sender_type, sender_name, body, created_at
+         FROM portal_messages WHERE client_id = ? ORDER BY created_at DESC, id DESC LIMIT 1`,
+        [clientId],
+      ),
+    ]);
+    const nextVisit = visits
+      .filter((visit) => !['completed', 'cancelled'].includes(visit.status))
+      .sort((a, b) => String(a.scheduledStart).localeCompare(String(b.scheduledStart)))[0] || null;
 
     return json({
       ok: true,
       viewer: {
         isAdmin: session.is_admin === 1,
-        clientId: session.client_id,
+        clientId,
       },
       client: {
         id: client.id,
@@ -136,6 +178,25 @@ export async function onRequestGet({ request, env }) {
             createdAt: latestVisit.created_at,
         }
         : null,
+      visits,
+      nextVisit,
+      unreadMessages: Number(unreadMessageRow?.count || 0),
+      lastMessage: lastMessage ? {
+        id: lastMessage.id,
+        senderType: lastMessage.sender_type,
+        senderName: lastMessage.sender_name,
+        body: lastMessage.body,
+        createdAt: lastMessage.created_at,
+      } : null,
+      outstandingInvoices: outstandingInvoices.map((invoice) => ({
+        id: invoice.id,
+        invoiceNumber: invoice.invoice_number,
+        status: invoice.status,
+        dueDate: invoice.due_date,
+        total: invoice.total,
+        amountPaid: invoice.amount_paid,
+        balanceDue: Math.round(((Number(invoice.total) - Number(invoice.amount_paid)) + Number.EPSILON) * 100) / 100,
+      })),
       planItems: planItems.map((item) => ({
         id: item.id,
         season: item.season,
@@ -144,6 +205,7 @@ export async function onRequestGet({ request, env }) {
         status: item.status,
         priority: item.priority,
         targetDate: item.target_date,
+        area: item.area,
         createdAt: item.created_at,
         updatedAt: item.updated_at,
       })),

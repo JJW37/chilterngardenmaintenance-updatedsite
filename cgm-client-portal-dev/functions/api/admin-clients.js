@@ -31,7 +31,9 @@ export async function onRequestGet({ request, env }) {
              c.service_area, c.notes_internal, c.is_active, c.created_at,
              (SELECT COUNT(*) FROM notes  n WHERE n.client_id = c.id) AS note_count,
              (SELECT COUNT(*) FROM images i WHERE i.client_id = c.id) AS image_count,
-             (SELECT MAX(n.created_at) FROM notes n WHERE n.client_id = c.id) AS last_note_at
+             (SELECT MAX(n.created_at) FROM notes n WHERE n.client_id = c.id) AS last_note_at,
+             (SELECT COUNT(*) FROM portal_messages m WHERE m.client_id = c.id AND m.sender_type = 'client' AND m.recipient_read_at IS NULL) AS unread_message_count,
+             (SELECT COUNT(*) FROM visits v WHERE v.client_id = c.id AND v.status IN ('scheduled','confirmed','reschedule_requested')) AS upcoming_visit_count
       FROM clients c
       WHERE 1=1
     `;
@@ -68,6 +70,8 @@ export async function onRequestGet({ request, env }) {
         noteCount: r.note_count,
         imageCount: r.image_count,
         lastNoteAt: r.last_note_at,
+        unreadMessageCount: r.unread_message_count,
+        upcomingVisitCount: r.upcoming_visit_count,
       })),
     });
   } catch (err) {

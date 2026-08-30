@@ -17,6 +17,8 @@
 import { json, handlePreflight, run, first } from '../_lib/db.js';
 import { getSessionFromRequest } from '../_lib/auth.js';
 import { validateImageFile, buildImageKey, putImage } from '../_lib/r2.js';
+import { cleanText, normaliseTags, positiveId } from '../_lib/portal-records.js';
+import { validIsoDate } from '../_lib/invoices.js';
 
 export async function onRequestPost({ request, env }) {
   const preflight = handlePreflight(request);
@@ -33,6 +35,11 @@ export async function onRequestPost({ request, env }) {
     const caption = (formData.get('caption') || '').toString().trim().slice(0, 500);
     const visitDate = (formData.get('visitDate') || '').toString().trim() || null;
     const requestedCategory = (formData.get('category') || '').toString();
+    const area = cleanText(formData.get('area'), 80) || null;
+    const tags = normaliseTags(formData.get('tags'), { max: 12, maxLength: 48 });
+    const requestedVisitId = positiveId(formData.get('visitId'));
+    const requestedComparisonKey = cleanText(formData.get('comparisonKey'), 80) || null;
+    const takenAt = cleanText(formData.get('takenAt'), 10) || null;
 
     const v = validateImageFile(file);
     if (!v.ok) {
@@ -43,11 +50,15 @@ export async function onRequestPost({ request, env }) {
       };
       return json({ ok: false, error: reasonMap[v.reason] || 'Invalid file.' }, 400);
     }
+    if (visitDate && !validIsoDate(visitDate)) return json({ ok: false, error: 'Visit date must use YYYY-MM-DD.' }, 400);
+    if (takenAt && !validIsoDate(takenAt)) return json({ ok: false, error: 'Photo date must use YYYY-MM-DD.' }, 400);
 
     let clientId;
     let uploaderType;
     let uploaderName;
     let category;
+    let visitId = null;
+    let comparisonKey = null;
 
     if (session.is_admin === 1) {
       uploaderType = 'admin';
@@ -59,6 +70,8 @@ export async function onRequestPost({ request, env }) {
       category = ['progress', 'before_after', 'reference', 'client_upload'].includes(requestedCategory)
         ? requestedCategory
         : 'progress';
+      visitId = requestedVisitId;
+      comparisonKey = requestedComparisonKey;
     } else {
       uploaderType = 'client';
       clientId = session.client_id;
@@ -73,6 +86,10 @@ export async function onRequestPost({ request, env }) {
     if (!client) {
       return json({ ok: false, error: 'client_not_found' }, 404);
     }
+    if (visitId) {
+      const visit = await first(env.DB, 'SELECT id FROM visits WHERE id = ? AND client_id = ?', [visitId, clientId]);
+      if (!visit) return json({ ok: false, error: 'The selected visit does not belong to this household.' }, 400);
+    }
 
     // Build R2 key & upload
     const r2Key = buildImageKey(clientId, file);
@@ -81,8 +98,8 @@ export async function onRequestPost({ request, env }) {
     // Insert metadata row
     const result = await run(
       env.DB,
-      `INSERT INTO images (client_id, uploader_type, uploader_name, r2_key, filename, mime_type, size_bytes, caption, category, visit_date)
-       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+      `INSERT INTO images (client_id, uploader_type, uploader_name, r2_key, filename, mime_type, size_bytes, caption, category, visit_date, visit_id, area, tags_json, comparison_key, taken_at)
+       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
       [
         clientId,
         uploaderType,
@@ -94,6 +111,11 @@ export async function onRequestPost({ request, env }) {
         caption || null,
         category,
         visitDate,
+        visitId,
+        area,
+        JSON.stringify(tags),
+        comparisonKey,
+        takenAt,
       ],
     );
 
@@ -111,6 +133,11 @@ export async function onRequestPost({ request, env }) {
         caption,
         category,
         visitDate,
+        visitId,
+        area,
+        tags,
+        comparisonKey,
+        takenAt,
         createdAt: new Date().toISOString(),
         url: `/api/client-image-get?id=${imageId}`,
       },
