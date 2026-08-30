@@ -8,6 +8,7 @@
 
 const MAX_LINE_ITEMS = 50;
 const MAX_DESCRIPTION_LENGTH = 500;
+export const INVOICE_CATEGORIES = new Set(['maintenance', 'materials', 'planting', 'project', 'other']);
 
 export function roundMoney(value) {
   return Math.round((Number(value) + Number.EPSILON) * 100) / 100;
@@ -35,6 +36,7 @@ export function normaliseLineItems(value) {
     const description = String(rawItem?.description || '').trim();
     const quantity = Number(rawItem?.quantity);
     const unitPrice = Number(rawItem?.unitPrice);
+    const category = String(rawItem?.category || 'maintenance').trim().toLowerCase();
     if (!description || description.length > MAX_DESCRIPTION_LENGTH) {
       return { ok: false, error: 'Each line item needs a description of up to 500 characters.' };
     }
@@ -44,6 +46,9 @@ export function normaliseLineItems(value) {
     if (!Number.isFinite(unitPrice) || unitPrice < 0 || unitPrice > 10000000) {
       return { ok: false, error: 'Each unit price must be a valid non-negative amount.' };
     }
+    if (!INVOICE_CATEGORIES.has(category)) {
+      return { ok: false, error: 'Each line item needs a valid spend category.' };
+    }
     const cleanQuantity = roundMoney(quantity);
     const cleanUnitPrice = roundMoney(unitPrice);
     items.push({
@@ -51,6 +56,7 @@ export function normaliseLineItems(value) {
       quantity: cleanQuantity,
       unitPrice: cleanUnitPrice,
       lineTotal: roundMoney(cleanQuantity * cleanUnitPrice),
+      category,
     });
   }
   return { ok: true, items };
