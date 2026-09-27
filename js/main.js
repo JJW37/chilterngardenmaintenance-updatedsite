@@ -1,4 +1,4 @@
-/* Chiltern Garden Maintenance - main.js (v3)
+/* Chiltern Garden Management - main.js (v3)
    Handles: mobile nav toggle (native click, Safari-safe),
    cookie consent, smooth scroll, contact-float widget.
 */
@@ -23,11 +23,71 @@
 document.addEventListener("DOMContentLoaded", function () {
   "use strict";
 
+  // ---- Shared brand identity ----
+  // Keep the repeated static-site header consistent without rewriting hundreds
+  // of otherwise independent HTML pages.
+  var isGitHubPagesHost = window.location.hostname.toLowerCase() === "jjw37.github.io";
+  var siteBasePath = isGitHubPagesHost ? "/chilterngardenmaintenance-updatedsite" : "";
+  var brandName = "Chiltern Garden Management";
+  var replaceBrandName = function (value) {
+    return value.replace(/Chiltern Garden Maintenance/g, brandName);
+  };
+  if (document.title) document.title = replaceBrandName(document.title);
+  document.querySelectorAll("[alt], [title], [aria-label]").forEach(function (el) {
+    ["alt", "title", "aria-label"].forEach(function (attr) {
+      var value = el.getAttribute(attr);
+      if (value) el.setAttribute(attr, replaceBrandName(value));
+    });
+  });
+  var textWalker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+  var textNode;
+  while ((textNode = textWalker.nextNode())) {
+    var parent = textNode.parentElement;
+    if (parent && !parent.closest("script, style, noscript, svg")) {
+      textNode.nodeValue = replaceBrandName(textNode.nodeValue);
+    }
+  }
+  document.querySelectorAll("meta[content]").forEach(function (meta) {
+    var value = meta.getAttribute("content");
+    if (value) meta.setAttribute("content", replaceBrandName(value));
+  });
+  document.querySelectorAll('script[type="application/ld+json"]').forEach(function (schema) {
+    schema.textContent = replaceBrandName(schema.textContent);
+  });
+  document.querySelectorAll(".brand").forEach(function (brand) {
+    brand.href = siteBasePath + "/";
+    var brandTitle = brand.querySelector(".brand-title");
+    if (brandTitle) {
+      var primaryName = brandTitle.querySelector("strong");
+      var secondaryName = brandTitle.querySelector("span");
+      if (primaryName) primaryName.textContent = "Chiltern Garden";
+      if (secondaryName) secondaryName.textContent = "Management";
+    }
+    brand.querySelectorAll(".brand-logo").forEach(function (logo) {
+      var logoUrl = new URL(logo.getAttribute("src") || "/images/cgm-logo-square.png", window.location.href);
+      logoUrl.pathname = logoUrl.pathname.replace(/[^/]+$/, "chiltern-garden-management-mark.svg");
+      logo.src = logoUrl.href;
+      logo.alt = "Chiltern Garden Management logo";
+    });
+  });
+
+
+
+  // Show the requested web brand while domain hosting is configured separately.
+  document.querySelectorAll("footer").forEach(function (footer) {
+    if (footer.querySelector(".cgm-brand-domain")) return;
+    var domain = document.createElement("p");
+    domain.className = "cgm-brand-domain";
+    domain.textContent = "www.chilterngardenmanagement.com";
+    domain.style.cssText = "text-align:center;font-size:.8rem;margin:1rem 0;opacity:.85;overflow-wrap:anywhere";
+    footer.appendChild(domain);
+  });
+
   // ---- Client portal entry point ----
   // One small enhancer keeps the public navigation consistent across the
   // static site without hand-editing hundreds of individual HTML files.
   // Portal pages have their own sign-in/sign-out controls and are excluded.
-  var clientPortalLoginUrl = "https://chilterngardenmaintenance-updatedsite-portal.pages.dev/login/";
+  var clientPortalLoginUrl = siteBasePath + "/login/";
   if (!document.body.classList.contains("portal-page") &&
       !document.body.classList.contains("login-page") &&
       !document.body.classList.contains("admin-login-page") &&
